@@ -30,6 +30,16 @@
 
         // Fix: Placeholder polyfill.
         $('form').placeholder();
+        $('form').validate({
+            rules: {
+                name: "required",
+                email: {
+                    required: true,
+                    email: true
+                },
+                message: "required"
+            }
+        });
 
         // Fix: Flexbox min-height bug on IE.
         if (skel.vars.IEVersion < 12) {

@@ -287,7 +287,7 @@ form {
 }
 
 form .field {
-    margin: 0 0 1.5rem 0;
+    margin: 0 0 2.5rem 0;
 }
 
 form .field.half {
@@ -301,7 +301,7 @@ form .field.half.first {
 }
 
 form > .actions {
-    margin: 1.875rem 0 0 0 !important;
+    margin: 2.5rem 0 0 0 !important;
 }
 
 @media screen and (max-width: 736px) {
@@ -551,6 +551,12 @@ input[type="radio"] + label:before {
     color: rgba(255, 255, 255, 0.5) !important;
     opacity: 1.0;
 }
+label.error{
+    position: absolute;
+    margin: 3px 0 0;
+    font-size: 0.7rem;
+}
+
 
 /* Box */
 
@@ -1473,7 +1479,7 @@ body.is-loading #header .content .inner {
     -webkit-transition: opacity 0.325s ease-in-out, -webkit-transform 0.325s ease-in-out;
     -ms-transition: opacity 0.325s ease-in-out, -ms-transform 0.325s ease-in-out;
     transition: opacity 0.325s ease-in-out, transform 0.325s ease-in-out;
-    padding: 4.5rem 2.5rem 1.5rem 2.5rem;
+    padding: 3.5rem 2.5rem 2.5rem 2.5rem;
     position: relative;
     width: 40rem;
     max-width: 100%;
@@ -1549,7 +1555,7 @@ body.is-loading #header .content .inner {
 @media screen and (max-width: 480px) {
 
     #main article {
-        padding: 3rem 1.5rem 0.5rem 1.5rem;
+        padding: 3rem 1.5rem 1rem 1.5rem;
     }
 
 }
