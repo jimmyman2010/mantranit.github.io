@@ -30,6 +30,7 @@
 
         // Fix: Placeholder polyfill.
         $('form').placeholder();
+        // validate form before submit
         $('form').validate({
             rules: {
                 name: "required",
