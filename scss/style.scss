@@ -1,0 +1,94 @@
+@import "compass/reset";
+
+body{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    background: url(../images/banner.jpg) no-repeat center center fixed black;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #fff;
+}
+a{
+    color: #FDF70A;
+    text-decoration: none;
+    &:hover{
+        text-decoration: underline;
+    }
+}
+@import "app/intro";
+.site-wrapper{
+    background-color: rgba(0,0,0,0.8);
+}
+.items-wrap{
+    font-size: 20px;
+    line-height: 28px;
+    color: white;
+    padding: 15px;
+    .about {
+        margin-top: 50px;
+        text-align: center;
+        padding: 20px 0;
+        h2{
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        .social {
+            font-size: 14px;
+            a {
+                color: gray;
+                display: inline-block;
+                margin: 10px;
+                &:hover{
+                    color: whitesmoke;
+                }
+            }
+        }
+    }
+    .refresh{
+        text-align: center;
+        a{
+            color: ghostwhite;
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+}
+@media screen and (min-width: 480px) {
+
+}
+
+@media screen and (min-width: 640px) {
+
+}
+
+@media screen and (min-width: 768px) {
+    .items-wrap{
+        font-size: 26px;
+        line-height: 32px;
+        padding: 0 100px;
+        .about {
+            margin-top: 60px;
+            padding: 40px 0;
+        }
+    }
+}
+
+@media screen and (min-width: 1024px) {
+
+}
+
+@media screen and (min-width: 1200px) {
+    .items-wrap{
+        padding: 0 200px;
+        .about {
+            margin-top: 70px;
+            padding: 50px 0;
+        }
+    }
+}
