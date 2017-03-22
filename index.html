@@ -41,7 +41,7 @@
                 <li><a href="#about">ABOUT</a></li>
                 <li><a href="#work">WORK</a></li>
                 <li><a href="#contact">CONTACT</a></li>
-                <!--<li><a href="#elements">ELEMENTS</a></li>-->
+                <li><a href="#elements">ELEMENTS</a></li>
             </ul>
         </nav>
     </header>
@@ -56,16 +56,13 @@
 
             <h3>Hi! <span>I am <strong>MAN TRAN</strong></span> <em>(aka Jimmy)</em></h3>
 
-            <p>A freelance developer specialized in Front-end and Back-end.</p>
-
-            <p>After spending several years (from 2007) to learn and explore the information technology major, I've had
-                deeply knowledgeable about developing website.</p>
+            <p>A freelance developer living in Ho Chi Minh City which is one of the busiest cities in Asia Pacific.
+                <br>After spending several years (from 2007) to learn and explore the information technology major, I've had deeply knowledgeable about developing website.</p>
 
             <p>As the Full-stack developer, I can build the complete website. And the W3C standards, SEO and
                 capabilities of different web browsers are factors I always keep in mind.</p>
 
-            <p>Don’t hesitate to say <a href="tel:+84 908 036 105">Hellow</a> or <a
-                    href="mailto:tranduyminhman@gmail.com">Poke</a> me. :)</p>
+            <p>Don’t hesitate to say <a href="tel:+84 908 036 105">Hello</a> or <a href="mailto:tranduyminhman@gmail.com">Poke</a> me. :)</p>
 
             <ul class="icons">
                 <li><a target="_blank" href="https://twitter.com/jimmyman2010" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
@@ -95,7 +92,33 @@
         <article id="contact">
             <h2 class="major">CONTACT</h2>
 
-            <form method="post" action="#">
+            <form method="POST" action="http://formspree.io/tranduyminhman@gmail.com">
+                <input type="hidden" name="_subject" value="Client contact" />
+                <input type="hidden" name="_next" value="//mantranit.github.io/#thankyou" />
+                <div class="field half first">
+                    <label for="name">Name</label>
+                    <input type="text" name="name" id="name"/>
+                </div>
+                <div class="field half">
+                    <label for="email">Email</label>
+                    <input type="text" name="email" id="email"/>
+                </div>
+                <div class="field">
+                    <label for="message">Message</label>
+                    <textarea name="message" id="message" rows="4"></textarea>
+                </div>
+                <ul class="actions">
+                    <li><input type="submit" value="Send Message" class="special"/></li>
+                    <li><input type="reset" value="Reset"/></li>
+                </ul>
+            </form>
+        </article>
+
+        <!-- Contact -->
+        <article id="thankyou">
+            <h2 class="major">CONTACT</h2>
+
+            <form method="POST" action="http://formspree.io/tranduyminhman@gmail.com">
                 <div class="field half first">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name"/>
@@ -141,16 +164,17 @@
                     sit amet nullam adipiscing eu felis.
                 </blockquote>
                 <h4>Preformatted</h4>
-									<pre><code>i = 0;
+<pre><code>
+i = 0;
 
-                                        while (!deck.isInOrder()) {
-                                        print 'Iteration ' + i;
-                                        deck.shuffle();
-                                        i++;
-                                        }
+while (!deck.isInOrder()) {
+    print 'Iteration ' + i;
+    deck.shuffle();
+    i++;
+}
 
-                                        print 'It took ' + i + ' iterations to sort the deck.';
-                                    </code></pre>
+print 'It took ' + i + ' iterations to sort the deck.';
+</code></pre>
             </section>
 
             <section>
