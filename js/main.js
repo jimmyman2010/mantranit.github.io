@@ -413,8 +413,7 @@
 				"I am <br>a Freelancer.",
 				"I design <br>Website.",
 				"I develop <br>Website.",
-				"I live in <br>Ho Chi Minh.",
-				"Feel free <br>to contact me :)"
+				"I live in <br>Ho Chi Minh."
 			],
             startDelay: 1000,
             typeSpeed: 100,
