@@ -409,7 +409,13 @@
             });
 
         Typed.new('#typing', {
-            strings: ["I am <br>a Freelancer.", "I design <br>Website.", "I develop <br>Website.", "I live in <br>Ho Chi Minh."],
+            strings: [
+				"I am <br>a Freelancer.",
+				"I design <br>Website.",
+				"I develop <br>Website.",
+				"I live in <br>Ho Chi Minh.",
+				"Feel free <br>to contact me :)"
+			],
             startDelay: 1000,
             typeSpeed: 100,
             backSpeed: 10,
