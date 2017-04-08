@@ -397,6 +397,13 @@ $(function(){
 
         $('#input-json-view').html(JSON.stringify(objArray, null, 2));
         data = objArray;
+
+        //close behaviour to alert user
+        $('#wrapper').removeClass('toggled');
+        var body = $("html, body");
+        body.stop().animate({scrollTop:0}, '500', 'swing', function() {
+            //alert("Finished animating");
+        });
     });
 
     $('#add-face').on('click', function(){
