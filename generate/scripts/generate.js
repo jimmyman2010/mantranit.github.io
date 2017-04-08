@@ -351,6 +351,8 @@ $(function(){
         var that = $(this);
         that.addClass('processing');
 
+        $('#clear').trigger('click');
+
         if(data.length > 0) {
             obj = new AnimateCanvas('canvas', WIDTH, HEIGHT, data);
 
