@@ -251,7 +251,6 @@ $(function(){
     var index = 0;
     var WIDTH = 640,
         HEIGHT = 480,
-
         data = [];
 
     var obj = new AnimateCanvas('canvas', WIDTH, HEIGHT, data);
@@ -351,6 +350,8 @@ $(function(){
     $('#process').on('click', function(){
         var that = $(this);
         that.addClass('processing');
+
+        obj = new AnimateCanvas('canvas', WIDTH, HEIGHT, data);
 
         obj.loadImages(frames, function(images) {
             var imagesCombined = obj.createSequence(images);
