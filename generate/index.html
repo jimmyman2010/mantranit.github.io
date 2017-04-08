@@ -63,6 +63,7 @@
         .header-top input[type="file"]{ display: inline; }
         .header-top .btn{ margin: 8px 10px; }
         .footer p{ margin: 0; }
+        .to-top{  position: fixed; right: 20px; bottom: 20px; display: block; padding: 0 20px; font-size: 60px; line-height: 1; }
 
     </style>
 
@@ -144,14 +145,6 @@
                 <div class="row">
                     <div class="col-sm-12">
 
-                        <!--<ul class="nav nav-tabs">-->
-                            <!--<li><a data-toggle="tab" href="#input-json">Input Json</a></li>-->
-                            <!--<li class="active"><a data-toggle="tab" href="#preview">Preview</a></li>-->
-                            <!--<li><a data-toggle="tab" href="#error">Error</a></li>-->
-                            <!--<li><a data-toggle="tab" href="#result">Result</a></li>-->
-                            <!--<li><a data-toggle="tab" href="#json">Output Json</a></li>-->
-                        <!--</ul>-->
-
                         <div class="tab-content">
 
                             <div id="input-json" class="tab-pane fade">
@@ -205,6 +198,7 @@
 
 </div>
 <!-- /#wrapper -->
+<a href="javascript:void(0);" class="to-top"><i class="fa fa-angle-up"></i></a>
 
 <script type="text/html" id="template-text">
     <div class="panel panel-primary">
@@ -365,6 +359,10 @@
     $("#menu-toggle").click(function(e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
+    });
+    $('.to-top').click(function(e){
+        var body = $("html, body");
+        body.stop().animate({scrollTop:0}, '500', 'swing');
     });
 </script>
 </body>
