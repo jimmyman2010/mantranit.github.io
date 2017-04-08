@@ -253,7 +253,7 @@ $(function(){
         HEIGHT = 480,
         data = [];
 
-    var obj = new AnimateCanvas('canvas', WIDTH, HEIGHT, data);
+    var obj;
 
     uploadFrame.on('click', function(){
         var that = $(this);
@@ -351,27 +351,32 @@ $(function(){
         var that = $(this);
         that.addClass('processing');
 
-        obj = new AnimateCanvas('canvas', WIDTH, HEIGHT, data);
+        if(data.length > 0) {
+            obj = new AnimateCanvas('canvas', WIDTH, HEIGHT, data);
 
-        obj.loadImages(frames, function(images) {
-            var imagesCombined = obj.createSequence(images);
+            obj.loadImages(frames, function (images) {
+                var imagesCombined = obj.createSequence(images);
 
-            $.each(imagesCombined, function(i, e){
-                results.append('<img src="' + e + '" alt="frame' + i + '" title="frame' + i + '" />');
+                $.each(imagesCombined, function (i, e) {
+                    results.append('<img src="' + e + '" alt="frame' + i + '" title="frame' + i + '" />');
+                });
+
+                jsonView.html(JSON.stringify(obj.json, null, 2));
+
+                var a = document.getElementById("link");
+                obj.exportJSON(frames, function (json) {
+                    var file = new Blob([JSON.stringify(json, null, 2)], {type: 'application/json;charset=UTF-8'});
+                    a.href = URL.createObjectURL(file);
+                    a.download = 'myFile.json';
+
+                    a.style.display = 'inline-block';
+                    that.removeClass('processing');
+                });
             });
-
-            jsonView.html(JSON.stringify(obj.json, null, 2));
-
-            var a = document.getElementById("link");
-            obj.exportJSON(frames, function(json){
-                var file = new Blob([JSON.stringify(json, null, 2)], {type: 'application/json;charset=UTF-8'});
-                a.href = URL.createObjectURL(file);
-                a.download = 'myFile.json';
-
-                a.style.display = 'inline-block';
-                that.removeClass('processing');
-            });
-        });
+        } else {
+            alert('No data.');
+            that.removeClass('processing');
+        }
     });
 
     $('#clear').on('click', function(){
