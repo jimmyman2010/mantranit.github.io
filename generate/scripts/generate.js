@@ -244,6 +244,7 @@ $(function(){
     var uploadFrame = $('#upload-frame');
     var loading = $('#loading');
     var source = $('#source');
+    var results = $('#results');
     var jsonView = $('#json-view');
     var errorView = $('#error-view');
     var frames = [];
@@ -355,7 +356,7 @@ $(function(){
             var imagesCombined = obj.createSequence(images);
 
             $.each(imagesCombined, function(i, e){
-                $('#results').append('<img src="' + e + '" alt="frame' + i + '" title="frame' + i + '" />');
+                results.append('<img src="' + e + '" alt="frame' + i + '" title="frame' + i + '" />');
             });
 
             jsonView.html(JSON.stringify(obj.json, null, 2));
@@ -373,7 +374,7 @@ $(function(){
     });
 
     $('#clear').on('click', function(){
-        source.empty();
+        results.empty();
         jsonView.empty();
         $('#link').hide();
     });
