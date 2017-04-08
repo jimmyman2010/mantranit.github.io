@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Generate</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/font-awesome.min.css"/>
+    <style>
+
+        @font-face {
+            font-family: 'Baloo-Regular';
+            src: url('fonts/Baloo-Regular.eot');
+            src: url('fonts/Baloo-Regular.eot?#iefix') format('embedded-opentype'),
+            url('fonts/Baloo-Regular.woff') format('woff'),
+            url('fonts/Baloo-Regular.ttf') format('truetype'),
+            url('fonts/Baloo-Regular.svg#Baloo-Regular') format('svg');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+
+        body{ font-family: Helvetica, Arial, sans-serif; }
+        button{ font-family: Baloo-Regular, sans-serif; }
+        img{ max-width: 100%; }
+        input[type="number"]{ padding-right: 0 }
+        .form-control{ padding: 6px 8px; }
+
+        .canvas{ position: fixed; z-index: -1; left: 0;  top: 0; }
+        .image-group{ min-height: 100vh; }
+        .image-group img{ max-width: 20%; }
+
+        .btn{ min-width: 80px; }
+        .btn-sm, .btn-xs{ min-width: 50px; }
+        .btn i{ margin-right: 5px; }
+        .btn .active{ display: none; }
+        .btn.processing .normal{ display: none; }
+        .btn.processing .active{ display: inline; }
+        #main{ height: 50px;}
+
+        /* Toggle Styles */
+        .site-wrapper {  padding-left: 0;
+            -webkit-transition: all 0.5s ease;  -moz-transition: all 0.5s ease;  -o-transition: all 0.5s ease;  transition: all 0.5s ease;
+        }
+        .site-wrapper.toggled {  padding-left: 270px;  }
+        .sidebar-wrapper {  z-index: 1000;  position: fixed;  left: 270px;  width: 0;  height: 100%;  margin-left: -270px;  overflow-y: auto;  background: #000; color: white;
+            -webkit-transition: all 0.5s ease;  -moz-transition: all 0.5s ease;  -o-transition: all 0.5s ease;  transition: all 0.5s ease;
+        }
+        .site-wrapper.toggled .sidebar-wrapper {  width: 270px;  }
+        .navbar-toggle{ display: inline; float: none; background-color: white; }
+        .navbar-toggle .icon-bar{ background-color: black; }
+        .header-top{ background-color: black;  color: white;  position: fixed;  width: 100%;  left: 0;  top: 0;  padding-left: 0;  z-index: 999;
+            -webkit-transition: all 0.5s ease;  -moz-transition: all 0.5s ease;  -o-transition: all 0.5s ease;  transition: all 0.5s ease;
+        }
+        .tab-sticky{ background-color: whitesmoke; padding-top: 12px; }
+        .panel-title{ position: relative; }
+        .remove-panel{ position: absolute; right: 0; top: 0; }
+        #page-content-wrapper{ padding-top: 50px; }
+        .site-wrapper.toggled .header-top{ padding-left: 270px; }
+        .sidebar-wrapper-inner{ padding: 8px; }
+        .sidebar-wrapper-inner .panel-heading{ padding: 0 }
+        .sidebar-wrapper-inner .panel-heading a{ padding: 10px 15px; text-decoration: none; display: block; }
+        .sidebar-wrapper-inner .panel-body{ color: black; }
+        .header-top input[type="file"]{ display: inline; }
+        .header-top .btn{ margin: 8px 10px; }
+        .footer p{ margin: 0; }
+
+    </style>
+
+</head>
+<body>
+
+<div class="site-wrapper toggled">
+
+    <!-- Sidebar -->
+    <div class="sidebar-wrapper">
+
+        <div class="sidebar-wrapper-inner">
+
+            <div class="panel-group" id="accordion">
+
+            </div>
+
+            <div class="button-group text-center">
+                <button type="button" id="add-face" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Face</button>
+                <button type="button" id="add-text" class="btn btn-info btn-sm"><i class="fa fa-plus"></i> Text</button>
+                <br>
+                <br>
+                <button type="button" id="ok" class="btn btn-primary">OK</button>
+                <br>
+                <br>
+            </div>
+
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="header-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-2">
+                        <button type="button" class="navbar-toggle" id="menu-toggle">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="col-sm-10 text-right">
+                        <input type="file" id="input-frame" multiple="multiple"/>
+
+                        <button id="upload-frame" class="btn btn-primary" type="button">
+                            <span class="normal">Upload</span>
+                            <span class="active"><i class="fa fa-refresh fa-spin"></i> Uploading</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row tab-sticky">
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+                            <li><a data-toggle="tab" href="#input-json">Input Json</a></li>
+                            <li class="active"><a data-toggle="tab" href="#preview">Preview</a></li>
+                            <li><a data-toggle="tab" href="#error">Error</a></li>
+                            <li><a data-toggle="tab" href="#result">Result</a></li>
+                            <li><a data-toggle="tab" href="#json">Output Json</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <main role="main" class="main">
+            <div class="container-fluid">
+                <div class="row">
+                    <header class="col-sm-12">
+                        <div id="main">
+                            <div class="canvas">
+                                <canvas id="canvas" width="640" height="480"></canvas>
+                            </div>
+                        </div>
+                    </header>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <!--<ul class="nav nav-tabs">-->
+                            <!--<li><a data-toggle="tab" href="#input-json">Input Json</a></li>-->
+                            <!--<li class="active"><a data-toggle="tab" href="#preview">Preview</a></li>-->
+                            <!--<li><a data-toggle="tab" href="#error">Error</a></li>-->
+                            <!--<li><a data-toggle="tab" href="#result">Result</a></li>-->
+                            <!--<li><a data-toggle="tab" href="#json">Output Json</a></li>-->
+                        <!--</ul>-->
+
+                        <div class="tab-content">
+
+                            <div id="input-json" class="tab-pane fade">
+                                <br>
+                                <pre id="input-json-view" class="image-group"></pre>
+                            </div>
+
+                            <div id="preview" class="tab-pane fade in active">
+                                <br>
+                                <button id="sort" class="btn btn-info" type="button">
+                                    <span class="normal">Sort</span>
+                                    <span class="active"><i class="fa fa-refresh fa-spin"></i> Sorting</span>
+                                </button>
+                                <br>
+                                <br>
+                                <div id="source" class="image-group"></div>
+                            </div>
+
+                            <div id="error" class="tab-pane fade">
+                                <div id="error-view" class="image-group"></div>
+                            </div>
+
+                            <div id="result" class="tab-pane fade">
+                                <br>
+                                <button id="process" class="btn btn-danger" type="button">
+                                    <span class="normal">Process</span>
+                                    <span class="active"><i class="fa fa-refresh fa-spin"></i> Processing</span>
+                                </button>
+                                <button id="clear" class="btn btn-default" type="button">Clear</button>
+                                <br>
+                                <br>
+                                <div id="results" class="image-group"></div>
+                            </div>
+                            <div id="json" class="tab-pane fade">
+                                <br>
+                                <a href="" id="link" class="btn btn-info" style="display: none;">Click here to download JSON file.</a>
+                                <br>
+                                <br>
+                                <pre id="json-view" class="image-group"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer row">
+                    <div class="col-sm-12"><p>&copy; Man Tran</p></div>
+                </footer>
+            </div>
+        </main>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+
+<script type="text/html" id="template-text">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-text">Text</a>
+                <a class="remove-panel" href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+            </h4>
+        </div>
+        <div id="collapse-text" class="panel-collapse collapse in">
+            <form class="data">
+                <div class="panel-body">
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="src" />
+                        <input type="hidden" name="type" value="text" />
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <label>From:</label>
+                            <input type="number" class="form-control" name="from" value="0">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>To:</label>
+                            <input type="number" class="form-control" name="to" value="0">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>Rotate:</label>
+                            <input type="number" class="form-control" name="rotate" value="0">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <label>Width:</label>
+                            <input type="number" class="form-control" name="width" value="350">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>+ X:</label>
+                            <input type="number" class="form-control" name="x" value="50">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>+ Y:</label>
+                            <input type="number" class="form-control" name="y" value="50">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-6">
+                            <label>Font Family:</label>
+                            <input type="text" class="form-control" name="fontFamily" value="Baloo-Regular">
+                        </div>
+
+                        <div class="form-group col-xs-6">
+                            <label>Fade:</label>
+                            <select class="form-control" name="fade">
+                                <option>false</option>
+                                <option>in</option>
+                                <option>out</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-6">
+                            <label>Font Size:</label>
+                            <input type="number" class="form-control" name="fontSize" value="32">
+                        </div>
+                        <div class="form-group col-xs-6">
+                            <label>Line Height:</label>
+                            <input type="number" class="form-control" name="lineHeight" value="36">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <label>Red:</label>
+                            <input type="number" class="form-control" name="color[red]" value="44">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>Green:</label>
+                            <input type="number" class="form-control" name="color[green]" value="42">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>Blue:</label>
+                            <input type="number" class="form-control" name="color[blue]" value="106">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <label>Gradient:</label>
+                            <textarea class="form-control" name="gradient">false</textarea>
+                            Example:<code>[ { 'point': 0, 'color': '#ff0000' } ]</code>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+</script>
+
+<script type="text/html" id="template-face">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4 class="panel-title">
+                <a data-toggle="collapse" data-parent="#accordion" href="#collapse-face">Face</a>
+                <a class="remove-panel" href="javascript:void(0);"><i class="fa fa-minus"></i></a>
+            </h4>
+        </div>
+        <div id="collapse-face" class="panel-collapse collapse in">
+            <form class="data">
+                <div class="panel-body">
+                    <div class="form-group face">
+                        <img src="images/1.png" alt=""/>
+                        <input type="hidden" name="src" value="images/1.png"/>
+                        <input type="hidden" name="type" value="image"/>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <label>From:</label>
+                            <input type="number" class="form-control" name="from" value="0">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>To:</label>
+                            <input type="number" class="form-control" name="to" value="0">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>Rotate:</label>
+                            <input type="number" class="form-control" name="rotate" value="0">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-xs-4">
+                            <label>Width:</label>
+                            <input type="number" class="form-control" name="width" value="2">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>+ X:</label>
+                            <input type="number" class="form-control" name="x" value="-1">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>+ Y:</label>
+                            <input type="number" class="form-control" name="y" value="-1">
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</script>
+
+
+<script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="scripts/generate.js"></script>
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+</script>
+</body>
+</html>
+
