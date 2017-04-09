@@ -440,7 +440,7 @@ $(function(){
     $('#clear').on('click', function(){
         results.empty();
         jsonView.empty();
-        $('#link').hide();
+        $('.button-top').hide();
     });
 
     $('#ok').on('click', function(){
