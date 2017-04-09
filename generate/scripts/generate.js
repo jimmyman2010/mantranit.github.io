@@ -426,7 +426,7 @@ $(function(){
                     a.href = URL.createObjectURL(file);
                     a.download = 'myFile.json';
 
-                    a.style.display = 'inline-block';
+                    $('.button-top').show();
                     that.removeClass('processing');
                 }
             });

@@ -37,7 +37,7 @@
         .form-control{ padding: 6px 8px; }
 
         .canvas{ position: fixed; z-index: -1; left: 0;  top: 0; }
-        .image-group{ min-height: 100vh; }
+        .image-group{ min-height: 50vh; }
         .image-group img{ max-width: 20%; }
 
         .btn{ min-width: 80px; }
@@ -166,19 +166,23 @@
                             </div>
 
                             <div id="result" class="tab-pane fade">
-                                <button id="process" class="btn btn-danger" type="button">
-                                    <span class="normal">Process</span>
-                                    <span class="active"><i class="fa fa-refresh fa-spin"></i> Processing</span>
-                                </button>
-                                <button id="clear" class="btn btn-default" type="button">Clear</button>
-                                <br>
-                                <br>
+                                <div class="button-top">
+                                    <button id="process" class="btn btn-danger" type="button">
+                                        <span class="normal">Process</span>
+                                        <span class="active"><i class="fa fa-refresh fa-spin"></i> Processing</span>
+                                    </button>
+                                    <button id="clear" class="btn btn-default" type="button">Clear</button>
+                                    <br>
+                                    <br>
+                                </div>
                                 <div id="results" class="image-group"></div>
                             </div>
                             <div id="json" class="tab-pane fade">
-                                <a href="" id="link" class="btn btn-info" style="display: none;">Click here to download JSON file.</a>
-                                <br>
-                                <br>
+                                <div class="button-top" style="display: none;">
+                                    <a href="" id="link" class="btn btn-info">Click here to download JSON file.</a>
+                                    <br>
+                                    <br>
+                                </div>
                                 <pre id="json-view" class="image-group"></pre>
                             </div>
                         </div>
