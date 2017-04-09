@@ -385,7 +385,7 @@ $(function(){
                 inputFrame.value = '';
             },
             item: function(index, src, fileName){
-                source.append('<img src="' + src + '" alt="' + fileName + '" title="frame_' + index + '" />');
+                source.append('<span><img src="' + src + '" alt="' + fileName + '" title="frame_' + index + '" /></span>');
             },
             complete: function(){
                 that.removeClass('processing');
@@ -414,11 +414,11 @@ $(function(){
 
             obj.createSequence({
                 item: function(index, src, json){
-                    results.append('<img src="' + src + '" alt="frame_' + index + '" title="frame_' + index + '" />');
+                    results.append('<span><img src="' + src + '" alt="frame_' + index + '" title="frame_' + index + '" /></span>');
                 },
                 complete: function(json){
 
-                    jsonView.html(JSON.stringify(obj.json, null, 2));
+                    jsonView.html(JSON.stringify(json, null, 2));
 
                     var a = document.getElementById("link");
 
