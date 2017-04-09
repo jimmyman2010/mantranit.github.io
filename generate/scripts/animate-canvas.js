@@ -525,6 +525,12 @@ $(function(){
         } else {
             alert('No data.');
             that.removeClass('processing');
+
+            $('.nav-tabs .active').removeClass('active');
+            $('a[href="#input-json"]').parent().addClass('active');
+
+            $('.tab-content .active').removeClass('active').removeClass('in');
+            $('#input-json').addClass('active in');
         }
     });
 
@@ -544,15 +550,15 @@ $(function(){
 
         $('#input-json-view').html(JSON.stringify(objArray, null, 2));
 
-        //close behaviour to alert user
-        $('#wrapper').removeClass('toggled');
         var body = $("html, body");
         body.stop().animate({scrollTop:0}, '500', 'swing', function() {
             $('.nav-tabs .active').removeClass('active');
-            $('a[href="#result"]').parent().addClass('active');
+            $('a[href="#input-json"]').parent().addClass('active');
 
             $('.tab-content .active').removeClass('active').removeClass('in');
-            $('#result').addClass('active in');
+            $('#input-json').addClass('active in');
+
+            $('#clear').trigger('click');
         });
     });
 
