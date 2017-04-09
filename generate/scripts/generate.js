@@ -43,8 +43,15 @@ AnimateCanvas.prototype.setData = function(data){
     this.data = data;
 };
 
-AnimateCanvas.prototype.setFrame = function(){
+AnimateCanvas.prototype.setFrame = function(selector){
+    var that = this;
 
+    if(selector) {
+        that.frames = [];
+        document.querySelectorAll(selector).forEach(function (image) {
+            that.frames[that.frames.length] = image.src;
+        });
+    }
 };
 
 AnimateCanvas.prototype.readFrame = function(input, options){
