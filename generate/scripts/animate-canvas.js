@@ -467,6 +467,9 @@ $(function(){
                 that.removeClass('processing');
                 inputFrame.value = '';
             },
+            begin: function(){
+                source.empty();
+            },
             item: function(index, src, fileName){
                 source.append('<span><img src="' + src + '" alt="' + fileName + '" title="frame_' + index + '" /></span>');
             },
@@ -476,6 +479,11 @@ $(function(){
                 if(error){
                     alert(error);
                 }
+                $('.nav-tabs .active').removeClass('active');
+                $('a[href="#preview"]').parent().addClass('active');
+
+                $('.tab-content .active').removeClass('active').removeClass('in');
+                $('#preview').addClass('active in');
             },
             errorFileSize: function(index, fileName){
                 error += index + '. File size is larger than 500 KB (' + fileName + ')\n';
@@ -540,7 +548,11 @@ $(function(){
         $('#wrapper').removeClass('toggled');
         var body = $("html, body");
         body.stop().animate({scrollTop:0}, '500', 'swing', function() {
-            //alert("Finished animating");
+            $('.nav-tabs .active').removeClass('active');
+            $('a[href="#result"]').parent().addClass('active');
+
+            $('.tab-content .active').removeClass('active').removeClass('in');
+            $('#result').addClass('active in');
         });
     });
 
