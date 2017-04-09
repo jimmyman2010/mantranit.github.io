@@ -7,11 +7,9 @@
  data: link to uploaded photo
  */
 
-var AnimateCanvas = function(id, cW, cH, data) {
+var AnimateCanvas = function(id, cW, cH) {
     // main canvas
     var c = document.getElementById(id);
-    var ctx = c.getContext('2d');
-    /*ctx.globalCompositeOperation = 'destination-over';*/
     c.width = cW;
     c.height = cH;
 
@@ -20,20 +18,129 @@ var AnimateCanvas = function(id, cW, cH, data) {
     var copy = c2.getContext('2d');
     c2.width = cW;
     c2.height = cH;
-    /*copy.globalCompositeOperation = 'destination-over';*/
 
     this.cW = cW;
     this.cH = cH;
-    this.c = c;
-    this.ctx = ctx;
     this.c2 = c2;
     this.copy = copy;
-    this.data = data ? data : [];
-    this.json = null;
+    this.data = [];
+    this.json = [];
+    this.frames = [];
 };
 
-AnimateCanvas.prototype.createSequence = function(frames, callback) {
-    var sequence = [];
+AnimateCanvas.prototype.extend = function(defaults, options){
+    if(typeof options === 'object') {
+        for (var key in options) {
+            if (options.hasOwnProperty(key)) {
+                defaults[key] = options[key];
+            }
+        }
+    }
+    return defaults;
+};
+
+AnimateCanvas.prototype.setData = function(data){
+    this.data = data;
+};
+
+AnimateCanvas.prototype.setFrame = function(){
+
+};
+
+AnimateCanvas.prototype.readFrame = function(input, options){
+    var that = this;
+
+    var inputFrame = document.getElementById(input);
+    var callbacks = that.extend({
+        noFile: function(){},
+        begin: function(){},
+        item: function(index, src){},
+        complete: function(){},
+        errorFileType: function(index, fileName){},
+        errorFileSize: function(index, fileName){}
+    }, options);
+
+    if(inputFrame.files.length === 0){
+        if(typeof callbacks.noFile === 'function'){
+            callbacks.noFile();
+        }
+        return false;
+    }
+    var file, sFileName, sFileExtension, iFileSize;
+
+    var reader = new FileReader();
+    that.frames = [];
+
+    if(typeof callbacks.begin === 'function'){
+        callbacks.begin();
+    }
+
+    readFile(0);
+
+    function readFile(i) {
+
+        if(i >= inputFrame.files.length){
+
+            if(typeof callbacks.complete === 'function'){
+                callbacks.complete();
+            }
+
+            return false;
+        }
+
+        file = inputFrame.files[i];
+
+        sFileName = file.name;
+        sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
+        iFileSize = file.size;
+
+        if ((sFileExtension === "jpg" ||
+            sFileExtension === "png" ||
+            sFileExtension === "jpeg")) { /// file type
+
+            if (iFileSize <= 524288) { /// 0.5 mb
+
+                //reader = new FileReader();
+                reader.onloadend = function () {
+
+                    if(typeof callbacks.item === 'function'){
+                        callbacks.item(i, reader.result);
+                    }
+
+                    //push to frames
+                    that.frames[that.frames.length] = reader.result;
+
+                    readFile(++i);
+
+                };
+                reader.readAsDataURL(file);
+
+            } else {
+                if(typeof callbacks.errorFileSize === 'function'){
+                    callbacks.errorFileSize(i, sFileName);
+                }
+                readFile(++i);
+            }
+
+        } else {
+            if(typeof callbacks.errorFileType === 'function'){
+                callbacks.errorFileType(i, sFileName);
+            }
+            readFile(++i);
+        }
+
+    }
+};
+
+AnimateCanvas.prototype.createSequence = function(options) {
+    var that = this;
+
+    var callbacks = that.extend({
+        begin: function(){},
+        item: function(){},
+        complete: function(){}
+    }, options);
+
     var bound = {
         left: null,
         top: null,
@@ -41,7 +148,6 @@ AnimateCanvas.prototype.createSequence = function(frames, callback) {
         right: null
     };
     var x, y;
-    var that = this;
     var holeHeight, holeWidth;
     var frameWidth = that.cW;
     var frameHeight = that.cH;
@@ -55,12 +161,17 @@ AnimateCanvas.prototype.createSequence = function(frames, callback) {
 
     var image = new Image();
 
+    if(typeof callbacks.begin === 'function'){
+        callbacks.begin();
+    }
+
     loopFile(0);
+
     function loopFile(i){
 
-        if(i >= frames.length) {
-            if(typeof callback === 'function'){
-                callback(sequence);
+        if(i >= that.frames.length) {
+            if(typeof callbacks.complete === 'function'){
+                callbacks.complete(that.json);
             }
             return false;
         }
@@ -206,12 +317,14 @@ AnimateCanvas.prototype.createSequence = function(frames, callback) {
             //for variable json
             that.json[that.json.length] = jsonItem;
 
-            sequence.push(that.c2.toDataURL("image/jpeg"));
+            if(typeof callbacks.item === 'function'){
+                callbacks.item(i, that.c2.toDataURL("image/jpeg"));
+            }
 
             loopFile(++i);
         };
 
-        image.src = frames[i];
+        image.src = that.frames[i];
     }
 
 };
@@ -220,21 +333,11 @@ AnimateCanvas.prototype.rgbToHex = function(r, g, b){
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 };
 
-AnimateCanvas.prototype.exportJSON = function(frames, callback) {
-    var that = this;
-    if(that.json === null){
-        that.createSequence(frames, function(){
-            if(typeof callback === 'function'){
-                callback(that.json);
-            }
-        });
-    } else {
-        if(typeof callback === 'function'){
-            callback(that.json);
-        }
-    }
+AnimateCanvas.prototype.getRandomInt = function(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min)) + min;
 };
-
 
 $(function(){
     var uploadFrame = $('#upload-frame');
@@ -243,13 +346,12 @@ $(function(){
     var results = $('#results');
     var jsonView = $('#json-view');
     var errorView = $('#error-view');
-    var frames = [];
+
     var index = 0;
     var WIDTH = 640,
-        HEIGHT = 480,
-        data = [];
+        HEIGHT = 480;
 
-    var obj;
+    var obj = new AnimateCanvas('canvas', WIDTH, HEIGHT);
 
     uploadFrame.on('click', function(){
         var that = $(this);
@@ -261,77 +363,29 @@ $(function(){
             return false;
         }
 
+        var inputFrame = document.getElementById('input-frame');
 
-        var inputFrame = document.getElementById("input-frame");
-        if(inputFrame.files.length === 0){
-            alert('Please select your frames.');
-            $(inputFrame).trigger('click');
-            that.removeClass('processing');
-            inputFrame.value = '';
-
-            return false;
-        }
-
-        var file, sFileName, sFileExtension, iFileSize;
-
-        var tempImg = new Image();
-        var reader = new FileReader();
-        frames = [];
-        source.empty();
-
-        readFile(0);
-
-        function readFile(i) {
-
-            if(i >= inputFrame.files.length){
-                // hide loading
+        obj.readFrame('input-frame', {
+            noFile: function(){
+                alert('Please select your frames.');
+                $('#input-frame').trigger('click');
                 that.removeClass('processing');
                 inputFrame.value = '';
-
-                return false;
+            },
+            item: function(index, src){
+                source.append('<img src="' + src + '" alt="frame_' + index + '" title="frame_' + index + '" />');
+            },
+            complete: function(){
+                that.removeClass('processing');
+                inputFrame.value = '';
+            },
+            errorFileSize: function(index, fileName){
+                errorView.append('<p>Dung lượng quá 500 KB (' + fileName + ' - ' + index + ')</p>');
+            },
+            errorFileType: function(index, fileName){
+                errorView.append('<p>Định dạng không đúng (' + fileName + ' - ' + index + ')</p>');
             }
-
-            file = inputFrame.files[i];
-
-            sFileName = file.name;
-            sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
-            iFileSize = file.size;
-
-            if ((sFileExtension === "jpg" ||
-                sFileExtension === "png" ||
-                sFileExtension === "jpeg")) { /// file type
-
-                if (iFileSize <= 524288) { /// 0.5 mb
-
-                    //reader = new FileReader();
-                    reader.onloadend = function () {
-                        tempImg = new Image();
-                        tempImg.src = reader.result;
-                        tempImg.id = 'frame' + i;
-                        tempImg.alt = 'frame' + i;
-                        tempImg.title = 'frame' + i;
-
-                        source.append(tempImg);
-
-                        //push to frames
-                        frames[i] = tempImg.src;
-
-                        readFile(++i);
-
-                    };
-                    reader.readAsDataURL(file);
-
-                } else {
-                    errorView.append('<p>Dung lượng quá 500 KB (' + sFileName + ' - ' + i + ')</p>');
-                    readFile(++i);
-                }
-
-            } else {
-                errorView.append('<p>Định dạng không đúng (' + sFileName + ' - ' + i + ')</p>');
-                readFile(++i);
-            }
-
-        }
+        });
 
     });
 
@@ -341,27 +395,26 @@ $(function(){
 
         $('#clear').trigger('click');
 
-        if(data.length > 0) {
-            obj = new AnimateCanvas('canvas', WIDTH, HEIGHT, data);
+        if(obj.data.length > 0) {
 
-            obj.createSequence(frames, function(imagesCombined){
-                $.each(imagesCombined, function (i, e) {
-                    results.append('<img src="' + e + '" alt="frame' + i + '" title="frame' + i + '" />');
-                });
+            obj.createSequence({
+                item: function(index, src){
+                    results.append('<img src="' + src + '" alt="frame_' + index + '" title="frame_' + index + '" />');
+                },
+                complete: function(json){
 
-                jsonView.html(JSON.stringify(obj.json, null, 2));
+                    jsonView.html(JSON.stringify(obj.json, null, 2));
 
-                var a = document.getElementById("link");
-                obj.exportJSON(frames, function (json) {
+                    var a = document.getElementById("link");
+
                     var file = new Blob([JSON.stringify(json, null, 2)], {type: 'application/json;charset=UTF-8'});
                     a.href = URL.createObjectURL(file);
                     a.download = 'myFile.json';
 
                     a.style.display = 'inline-block';
                     that.removeClass('processing');
-                });
+                }
             });
-
 
         } else {
             alert('No data.');
@@ -381,8 +434,9 @@ $(function(){
             objArray.push( toJSONString(this) );
         });
 
+        obj.setData(objArray);
+
         $('#input-json-view').html(JSON.stringify(objArray, null, 2));
-        data = objArray;
 
         //close behaviour to alert user
         $('#wrapper').removeClass('toggled');
@@ -397,7 +451,7 @@ $(function(){
 
         var template = $($('#template-face').html());
         var id = 'collapse-face-' + index;
-        var image = 'images/' + getRandomInt(1,7) + '.png';
+        var image = 'images/' + obj.getRandomInt(1,7) + '.png';
 
         template.find('#collapse-face').attr('id', id);
         template.find('a[data-toggle="collapse"]').attr('href', '#' + id).html(index + '. Face');
@@ -451,10 +505,4 @@ function toJSONString( form ) {
     }
 
     return obj;
-}
-
-function getRandomInt(min, max) {
-    min = Math.ceil(min);
-    max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min)) + min;
 }
