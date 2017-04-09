@@ -453,7 +453,7 @@ $(function(){
                     a.href = URL.createObjectURL(file);
                     a.download = 'myFile.json';
 
-                    $('.button-top').show();
+                    $('#json .button-top').show();
                     that.removeClass('processing');
                 }
             });
@@ -467,7 +467,7 @@ $(function(){
     $('#clear').on('click', function(){
         results.empty();
         jsonView.empty();
-        $('.button-top').hide();
+        $('#json .button-top').hide();
     });
 
     $('#ok').on('click', function(){
