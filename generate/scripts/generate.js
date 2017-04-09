@@ -357,7 +357,7 @@ $(function(){
     var source = $('#source');
     var results = $('#results');
     var jsonView = $('#json-view');
-    var errorView = $('#error-view');
+    var error = '';
 
     var index = 0;
     var WIDTH = 640,
@@ -390,12 +390,15 @@ $(function(){
             complete: function(){
                 that.removeClass('processing');
                 inputFrame.value = '';
+                if(error){
+                    alert(error);
+                }
             },
             errorFileSize: function(index, fileName){
-                errorView.append('<p>Dung lượng quá 500 KB (' + fileName + ' - ' + index + ')</p>');
+                error += 'Dung lượng quá 500 KB (' + fileName + ' - ' + index + ')\n';
             },
             errorFileType: function(index, fileName){
-                errorView.append('<p>Định dạng không đúng (' + fileName + ' - ' + index + ')</p>');
+                error += 'Định dạng không đúng (' + fileName + ' - ' + index + ')\n';
             }
         });
 
