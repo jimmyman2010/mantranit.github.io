@@ -1,3 +1,28 @@
+(function() {
+
+    var lastTime = 0;
+    var vendors = ['ms', 'moz', 'webkit', 'o'];
+    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
+        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
+        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
+            || window[vendors[x]+'CancelRequestAnimationFrame'];
+    }
+
+    if (!window.requestAnimationFrame)
+        window.requestAnimationFrame = function(callback, element) {
+            var currTime = new Date().getTime();
+            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
+            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
+                timeToCall);
+            lastTime = currTime + timeToCall;
+            return id;
+        };
+
+    if (!window.cancelAnimationFrame)
+        window.cancelAnimationFrame = function(id) {
+            clearTimeout(id);
+        };
+})();
 
 /*
  AnimateCanvas
@@ -6,7 +31,6 @@
  cH: canvas height
  data: link to uploaded photo
  */
-
 var AnimateCanvas = function(id, cW, cH) {
     // main canvas
     var c = document.getElementById(id);
@@ -105,7 +129,6 @@ AnimateCanvas.prototype.readFrame = function(input, options){
 
             if (iFileSize <= 524288) { /// 0.5 mb
 
-                //reader = new FileReader();
                 reader.onloadend = function () {
 
                     if(typeof callbacks.item === 'function'){
@@ -308,7 +331,11 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     }
                     that.copy.fillStyle = gradient;
                 }
-                that.copy.fillText(objectText.src, objectText.x, objectText.y);
+                that.copy.translate(objectText.x, objectText.y);
+                that.copy.rotate(objectText.rotate * (Math.PI / 180));
+                that.copy.fillText(objectText.src, 0, 0);
+                that.copy.rotate(-objectText.rotate * (Math.PI / 180));
+                that.copy.translate(-objectText.x, -objectText.y);
 
                 //for variable json
                 jsonItem.text = {};
