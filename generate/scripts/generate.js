@@ -61,7 +61,7 @@ AnimateCanvas.prototype.readFrame = function(input, options){
     var callbacks = that.extend({
         noFile: function(){},
         begin: function(){},
-        item: function(index, src){},
+        item: function(index, src, fileName){},
         complete: function(){},
         errorFileType: function(index, fileName){},
         errorFileSize: function(index, fileName){}
@@ -111,7 +111,7 @@ AnimateCanvas.prototype.readFrame = function(input, options){
                 reader.onloadend = function () {
 
                     if(typeof callbacks.item === 'function'){
-                        callbacks.item(i, reader.result);
+                        callbacks.item(i, reader.result, sFileName);
                     }
 
                     //push to frames
@@ -139,13 +139,20 @@ AnimateCanvas.prototype.readFrame = function(input, options){
     }
 };
 
+AnimateCanvas.prototype.pad = function(num, size) {
+    var s = num + '';
+    while (s.length < size) s = '0' + s;
+    return s;
+};
+
 AnimateCanvas.prototype.createSequence = function(options) {
     var that = this;
 
     var callbacks = that.extend({
+        name: 0,
         begin: function(){},
-        item: function(){},
-        complete: function(){}
+        item: function(index, src, json){},
+        complete: function(json){}
     }, options);
 
     var bound = {
@@ -204,7 +211,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
             var jsonItem = {
                 text: null,
                 imageFace: null,
-                imageFrame: 'frame_' + i
+                imageFrame: 'frame_' + that.pad((i + 1), (that.frames.length).toString().length) + '.png'
             };
 
             // pre draw image to analyze.
@@ -273,7 +280,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
 
                 //for variable json
                 jsonItem.imageFace = {};
-                jsonItem.imageFace.src = 'face_' + indexImage;
+                jsonItem.imageFace.src = 'face_' + indexImage + '.jpg';
                 jsonItem.imageFace.width = holeWidth;
                 jsonItem.imageFace.height = holeHeight;
                 jsonItem.imageFace.position = x + ',' + y;
@@ -325,7 +332,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
             that.json[that.json.length] = jsonItem;
 
             if(typeof callbacks.item === 'function'){
-                callbacks.item(i, that.c2.toDataURL("image/jpeg"));
+                callbacks.item(i, that.c2.toDataURL("image/jpeg"), jsonItem);
             }
 
             loopFile(++i);
@@ -379,8 +386,8 @@ $(function(){
                 that.removeClass('processing');
                 inputFrame.value = '';
             },
-            item: function(index, src){
-                source.append('<img src="' + src + '" alt="frame_' + index + '" title="frame_' + index + '" />');
+            item: function(index, src, fileName){
+                source.append('<img src="' + src + '" alt="' + fileName + '" title="frame_' + index + '" />');
             },
             complete: function(){
                 that.removeClass('processing');
@@ -405,7 +412,7 @@ $(function(){
         if(obj.data.length > 0) {
 
             obj.createSequence({
-                item: function(index, src){
+                item: function(index, src, json){
                     results.append('<img src="' + src + '" alt="frame_' + index + '" title="frame_' + index + '" />');
                 },
                 complete: function(json){
