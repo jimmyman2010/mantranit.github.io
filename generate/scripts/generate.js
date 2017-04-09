@@ -4,7 +4,7 @@
  id: id of canvas
  cW: canvas width
  cH: canvas height
- faceImgSrc: link to uploaded photo
+ data: link to uploaded photo
  */
 
 var AnimateCanvas = function(id, cW, cH, data) {
@@ -32,23 +32,7 @@ var AnimateCanvas = function(id, cW, cH, data) {
     this.json = null;
 };
 
-AnimateCanvas.prototype.loadImages = function(sources, callback) {
-    var images = [];
-    var loadedImages = 0;
-    var numImages = sources.length;
-
-    for (var k = 0; k < sources.length; k++) {
-        images[k] = new Image();
-        images[k].src = sources[k];
-        images[k].onload = function() {
-            if (++loadedImages >= numImages) {
-                callback(images);
-            }
-        }
-    }
-};
-
-AnimateCanvas.prototype.createSequence = function(images) {
+AnimateCanvas.prototype.createSequence = function(frames, callback) {
     var sequence = [];
     var bound = {
         left: null,
@@ -59,164 +43,177 @@ AnimateCanvas.prototype.createSequence = function(images) {
     var x, y;
     var that = this;
     var holeHeight, holeWidth;
-    var frameWidth = this.cW;
-    var frameHeight = this.cH;
-    var data = this.data;
+    var frameWidth = that.cW;
+    var frameHeight = that.cH;
+    var data = that.data;
     var objectImage = null;
     var objectText = null;
-    this.json = [];
     var indexImage = 0;
     var indexText = 0;
     var alpha = 1;
+    that.json = [];
 
-    for (var i = 0; i < images.length; i++) {
+    var image = new Image();
+
+    loopFile(0);
+    function loopFile(i){
+
+        if(i >= frames.length) {
+            if(typeof callback === 'function'){
+                callback(sequence);
+            }
+            return false;
+        }
+
         objectImage = null;
         objectText = null;
         for (var k = 0; k < data.length; k++) {
-            if(data[k].from <= i && i <= data[k].to){
-                if(data[k].type === 'image'){
+            if (data[k].from <= i && i <= data[k].to) {
+                if (data[k].type === 'image') {
                     objectImage = data[k];
-                    indexImage = k+1;
+                    indexImage = k + 1;
                 }
-                if(data[k].type === 'text'){
+                if (data[k].type === 'text') {
                     objectText = data[k];
                     indexText++;
                 }
             }
         }
 
-        var image = new Image();
-        image.src = images[i].src;
-        image = document.getElementById('frame' + i);
+        image.onload = function(){
 
-        //for variable json
-        var jsonItem = {
-            text: null,
-            imageFace: null,
-            imageFrame: 'frame_' + i
-        };
-
-        // pre draw image to analyze.
-        this.copy.clearRect(0, 0, frameWidth, frameHeight);
-        this.copy.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
-
-        //if we have the image need to draw.
-        if(objectImage !== null) {
-
-            var imgSrc = new Image();
-            imgSrc.src = objectImage.src;
-
-            var pixels = that.copy.getImageData(0, 0, frameWidth, frameHeight);
-            var l = pixels.data.length;
-
-            bound = {
-                left: null,
-                top: null,
-                bottom: null,
-                right: null
+            //for variable json
+            var jsonItem = {
+                text: null,
+                imageFace: null,
+                imageFrame: 'frame_' + i
             };
 
-            for (var j = 0; j < l; j += 4) {
-                if (pixels.data[j + 3] == 0) {
-                    x = (j / 4) % frameWidth;
-                    y = ~~((j / 4) / frameWidth);
-
-                    if (bound.top === null) {
-                        bound.top = y;
-                    }
-
-                    if (bound.left === null) {
-                        bound.left = x;
-                    } else if (x < bound.left) {
-                        bound.left = x;
-                    }
-
-                    if (bound.right === null) {
-                        bound.right = x;
-                    } else if (bound.right < x) {
-                        bound.right = x;
-                    }
-
-                    if (bound.bottom === null) {
-                        bound.bottom = y;
-                    } else if (bound.bottom < y) {
-                        bound.bottom = y;
-                    }
-                }
-            }
-
-            // set area to draw
-            holeWidth = bound.right - bound.left + objectImage.width;
-            holeHeight = holeWidth * imgSrc.height / imgSrc.width;
-
-            x = bound.left + (holeWidth / 2) + objectImage.x;
-            y = bound.top + (holeHeight / 2) + objectImage.y;
-
-            that.copy.translate(x, y);
-            that.copy.rotate(objectImage.rotate * (Math.PI / 180));
-            that.copy.drawImage(imgSrc, -holeWidth / 2, -holeHeight / 2, holeWidth, holeHeight);
-
-            that.copy.rotate(-objectImage.rotate * (Math.PI / 180));
-            that.copy.translate(-x, -y);
+            // pre draw image to analyze.
+            that.copy.clearRect(0, 0, frameWidth, frameHeight);
             that.copy.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 
-            //for variable json
-            jsonItem.imageFace = {};
-            jsonItem.imageFace.src = 'face_' + indexImage;
-            jsonItem.imageFace.width = holeWidth;
-            jsonItem.imageFace.height = holeHeight;
-            jsonItem.imageFace.position = x + ',' + y;
-            jsonItem.imageFace.opacity = 1;
-            jsonItem.imageFace.order = 'back';
-            jsonItem.imageFace.rotate = objectImage.rotate;
-            jsonItem.imageFace.start = objectImage.from;
-            jsonItem.imageFace.end = objectImage.to;
-            jsonItem.imageFace.id = indexImage;
+            //if we have the image need to draw.
+            if (objectImage !== null) {
 
-        }
-        if(objectText !== null) {
+                var imgSrc = new Image();
+                imgSrc.src = objectImage.src;
 
-            this.copy.font = objectText.fontSize + 'px/' + objectText.lineHeight + 'px ' + objectText.fontFamily;
-            alpha = 1;
-            if(objectText.fade === 'in'){
-                alpha = indexText / ((objectText.to - objectText.from) + 1);
-            }
-            if(objectText.fade === 'out'){
-                alpha = 1 - (indexText / ((objectText.to - objectText.from) + 1));
-            }
-            this.copy.fillStyle = 'rgba(' + objectText.color.red + ',' + objectText.color.green + ',' + objectText.color.blue + ',' + alpha + ')';
-            if(objectText.gradient) {
-                var gradient = this.copy.createLinearGradient(0, 0, this.c2.width, 0);
-                for(var n = 0; n < objectText.gradient.length; n++) {
-                    gradient.addColorStop(objectText.gradient[n].point, objectText.gradient[n].color);
+                var pixels = that.copy.getImageData(0, 0, frameWidth, frameHeight);
+                var l = pixels.data.length;
+
+                bound = {
+                    left: null,
+                    top: null,
+                    bottom: null,
+                    right: null
+                };
+
+                for (var j = 0; j < l; j += 4) {
+                    if (pixels.data[j + 3] == 0) {
+                        x = (j / 4) % frameWidth;
+                        y = ~~((j / 4) / frameWidth);
+
+                        if (bound.top === null) {
+                            bound.top = y;
+                        }
+
+                        if (bound.left === null) {
+                            bound.left = x;
+                        } else if (x < bound.left) {
+                            bound.left = x;
+                        }
+
+                        if (bound.right === null) {
+                            bound.right = x;
+                        } else if (bound.right < x) {
+                            bound.right = x;
+                        }
+
+                        if (bound.bottom === null) {
+                            bound.bottom = y;
+                        } else if (bound.bottom < y) {
+                            bound.bottom = y;
+                        }
+                    }
                 }
-                this.copy.fillStyle = gradient;
+
+                // set area to draw
+                holeWidth = bound.right - bound.left + objectImage.width;
+                holeHeight = holeWidth * imgSrc.height / imgSrc.width;
+
+                x = bound.left + (holeWidth / 2) + objectImage.x;
+                y = bound.top + (holeHeight / 2) + objectImage.y;
+
+                that.copy.translate(x, y);
+                that.copy.rotate(objectImage.rotate * (Math.PI / 180));
+                that.copy.drawImage(imgSrc, -holeWidth / 2, -holeHeight / 2, holeWidth, holeHeight);
+
+                that.copy.rotate(-objectImage.rotate * (Math.PI / 180));
+                that.copy.translate(-x, -y);
+                that.copy.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
+
+                //for variable json
+                jsonItem.imageFace = {};
+                jsonItem.imageFace.src = 'face_' + indexImage;
+                jsonItem.imageFace.width = holeWidth;
+                jsonItem.imageFace.height = holeHeight;
+                jsonItem.imageFace.position = x + ',' + y;
+                jsonItem.imageFace.opacity = 1;
+                jsonItem.imageFace.order = 'back';
+                jsonItem.imageFace.rotate = objectImage.rotate;
+                jsonItem.imageFace.start = objectImage.from;
+                jsonItem.imageFace.end = objectImage.to;
+                jsonItem.imageFace.id = indexImage;
+
             }
-            this.copy.fillText(objectText.src, objectText.x, objectText.y);
+            if (objectText !== null) {
+
+                that.copy.font = objectText.fontSize + 'px/' + objectText.lineHeight + 'px ' + objectText.fontFamily;
+                alpha = 1;
+                if (objectText.fade === 'in') {
+                    alpha = indexText / ((objectText.to - objectText.from) + 1);
+                }
+                if (objectText.fade === 'out') {
+                    alpha = 1 - (indexText / ((objectText.to - objectText.from) + 1));
+                }
+                that.copy.fillStyle = 'rgba(' + objectText.color.red + ',' + objectText.color.green + ',' + objectText.color.blue + ',' + alpha + ')';
+                if (objectText.gradient) {
+                    var gradient = that.copy.createLinearGradient(0, 0, that.c2.width, 0);
+                    for (var n = 0; n < objectText.gradient.length; n++) {
+                        gradient.addColorStop(objectText.gradient[n].point, objectText.gradient[n].color);
+                    }
+                    that.copy.fillStyle = gradient;
+                }
+                that.copy.fillText(objectText.src, objectText.x, objectText.y);
+
+                //for variable json
+                jsonItem.text = {};
+                jsonItem.text.text = objectText.src;
+                jsonItem.text.font = objectText.fontFamily;
+                jsonItem.text.size = objectText.fontSize;
+                jsonItem.text.position = objectText.x + ',' + objectText.y;
+                jsonItem.text.opacity = alpha;
+                jsonItem.text.color = that.rgbToHex(objectText.color.red, objectText.color.green, objectText.color.blue);
+                jsonItem.text.order = 'front';
+                jsonItem.text.rotate = objectText.rotate;
+                jsonItem.text.lineHeight = objectText.lineHeight;
+                jsonItem.text.start = objectText.from;
+                jsonItem.text.end = objectText.to;
+                jsonItem.text.maxW = objectText.width;
+            }
 
             //for variable json
-            jsonItem.text = {};
-            jsonItem.text.text = objectText.src;
-            jsonItem.text.font = objectText.fontFamily;
-            jsonItem.text.size = objectText.fontSize;
-            jsonItem.text.position = objectText.x + ',' + objectText.y;
-            jsonItem.text.opacity = alpha;
-            jsonItem.text.color = this.rgbToHex(objectText.color.red, objectText.color.green, objectText.color.blue);
-            jsonItem.text.order = 'front';
-            jsonItem.text.rotate = objectText.rotate;
-            jsonItem.text.lineHeight = objectText.lineHeight;
-            jsonItem.text.start = objectText.from;
-            jsonItem.text.end = objectText.to;
-            jsonItem.text.maxW = objectText.width;
-        }
+            that.json[that.json.length] = jsonItem;
 
-        //for variable json
-        this.json[this.json.length] = jsonItem;
+            sequence.push(that.c2.toDataURL("image/jpeg"));
 
-        sequence.push(this.c2.toDataURL("image/jpeg"));
+            loopFile(++i);
+        };
+
+        image.src = frames[i];
     }
 
-    return sequence;
 };
 
 AnimateCanvas.prototype.rgbToHex = function(r, g, b){
@@ -226,8 +223,7 @@ AnimateCanvas.prototype.rgbToHex = function(r, g, b){
 AnimateCanvas.prototype.exportJSON = function(frames, callback) {
     var that = this;
     if(that.json === null){
-        that.loadImages(frames, function(images) {
-            that.createSequence(images);
+        that.createSequence(frames, function(){
             if(typeof callback === 'function'){
                 callback(that.json);
             }
@@ -283,66 +279,58 @@ $(function(){
         frames = [];
         source.empty();
 
-        for (var i = 0; i < inputFrame.files.length; i++) {
+        readFile(0);
+
+        function readFile(i) {
+
+            if(i >= inputFrame.files.length){
+                // hide loading
+                that.removeClass('processing');
+                inputFrame.value = '';
+
+                return false;
+            }
+
             file = inputFrame.files[i];
 
-            (function(file, i, inputFrame, tempImg, reader) {
-                sFileName = file.name;
-                sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
-                iFileSize = file.size;
+            sFileName = file.name;
+            sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
+            iFileSize = file.size;
 
-                if ((sFileExtension === "jpg" ||
-                    sFileExtension === "png" ||
-                    sFileExtension === "jpeg")) { /// file type
+            if ((sFileExtension === "jpg" ||
+                sFileExtension === "png" ||
+                sFileExtension === "jpeg")) { /// file type
 
-                    if (iFileSize <= 524288) { /// 0.5 mb
+                if (iFileSize <= 524288) { /// 0.5 mb
 
-                        reader = new FileReader();
-                        reader.onloadend = function () {
-                            tempImg = new Image();
-                            tempImg.src = reader.result;
-                            tempImg.id = 'frame' + i;
-                            tempImg.alt = 'frame' + i;
-                            tempImg.title = 'frame' + i;
+                    //reader = new FileReader();
+                    reader.onloadend = function () {
+                        tempImg = new Image();
+                        tempImg.src = reader.result;
+                        tempImg.id = 'frame' + i;
+                        tempImg.alt = 'frame' + i;
+                        tempImg.title = 'frame' + i;
 
-                            source.append(tempImg);
+                        source.append(tempImg);
 
-                            //push to frames
-                            frames[i] = tempImg.src;
+                        //push to frames
+                        frames[i] = tempImg.src;
 
-                            // check hide loading
-                            if(i === inputFrame.files.length-1){
-                                that.removeClass('processing');
-                                inputFrame.value = '';
-                            }
-                        };
-                        reader.readAsDataURL(file);
+                        readFile(++i);
 
-                    } else {
-                        errorView.append('<p>Dung lượng quá 500 KB (' + sFileName + ' - ' + i + ')</p>');
-
-                        // check hide loading
-                        if(i === inputFrame.files.length-1){
-                            setTimeout(function(){
-                                that.removeClass('processing');
-                                inputFrame.value = '';
-                            }, 10000);
-                        }
-                    }
+                    };
+                    reader.readAsDataURL(file);
 
                 } else {
-                    errorView.append('<p>Định dạng không đúng (' + sFileName + ' - ' + i + ')</p>');
-
-                    // check hide loading
-                    if(i === inputFrame.files.length-1){
-                        setTimeout(function(){
-                            that.removeClass('processing');
-                            inputFrame.value = '';
-                        }, 10000);
-                    }
+                    errorView.append('<p>Dung lượng quá 500 KB (' + sFileName + ' - ' + i + ')</p>');
+                    readFile(++i);
                 }
 
-            })(file, i, inputFrame, tempImg, reader);
+            } else {
+                errorView.append('<p>Định dạng không đúng (' + sFileName + ' - ' + i + ')</p>');
+                readFile(++i);
+            }
+
         }
 
     });
@@ -356,9 +344,7 @@ $(function(){
         if(data.length > 0) {
             obj = new AnimateCanvas('canvas', WIDTH, HEIGHT, data);
 
-            obj.loadImages(frames, function (images) {
-                var imagesCombined = obj.createSequence(images);
-
+            obj.createSequence(frames, function(imagesCombined){
                 $.each(imagesCombined, function (i, e) {
                     results.append('<img src="' + e + '" alt="frame' + i + '" title="frame' + i + '" />');
                 });
@@ -375,6 +361,8 @@ $(function(){
                     that.removeClass('processing');
                 });
             });
+
+
         } else {
             alert('No data.');
             that.removeClass('processing');
@@ -385,15 +373,6 @@ $(function(){
         results.empty();
         jsonView.empty();
         $('#link').hide();
-    });
-
-    $('#sort').on('click', function(){
-        var that = $(this);
-        that.addClass('processing');
-
-        sortUsingNestedText(source, "img");
-
-        that.removeClass('processing');
     });
 
     $('#ok').on('click', function(){
@@ -443,15 +422,6 @@ $(function(){
     });
 
 });
-
-function sortUsingNestedText(parent, childSelector) {
-    var items = parent.children(childSelector).sort(function(a, b) {
-        var vA = parseInt($(a).attr('id').replace('frame', ''), 10);
-        var vB = parseInt($(b).attr('id').replace('frame', ''), 10);
-        return (vA < vB) ? -1 : (vA > vB) ? 1 : 0;
-    });
-    parent.append(items);
-}
 
 function toJSONString( form ) {
     var obj = {};
