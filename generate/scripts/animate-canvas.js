@@ -1,29 +1,3 @@
-(function() {
-
-    var lastTime = 0;
-    var vendors = ['ms', 'moz', 'webkit', 'o'];
-    for(var x = 0; x < vendors.length && !window.requestAnimationFrame; ++x) {
-        window.requestAnimationFrame = window[vendors[x]+'RequestAnimationFrame'];
-        window.cancelAnimationFrame = window[vendors[x]+'CancelAnimationFrame']
-            || window[vendors[x]+'CancelRequestAnimationFrame'];
-    }
-
-    if (!window.requestAnimationFrame)
-        window.requestAnimationFrame = function(callback, element) {
-            var currTime = new Date().getTime();
-            var timeToCall = Math.max(0, 16 - (currTime - lastTime));
-            var id = window.setTimeout(function() { callback(currTime + timeToCall); },
-                timeToCall);
-            lastTime = currTime + timeToCall;
-            return id;
-        };
-
-    if (!window.cancelAnimationFrame)
-        window.cancelAnimationFrame = function(id) {
-            clearTimeout(id);
-        };
-})();
-
 /*
  AnimateCanvas
  id: id of canvas
@@ -31,13 +5,8 @@
  cH: canvas height
  data: link to uploaded photo
  */
-var AnimateCanvas = function(id, cW, cH) {
-    // main canvas
-    var c = document.getElementById(id);
-    c.width = cW;
-    c.height = cH;
+var AnimateCanvas = function(cW, cH) {
 
-    // virutal canvas
     var c2 = document.createElement('canvas');
     var copy = c2.getContext('2d');
     c2.width = cW;
@@ -50,6 +19,10 @@ var AnimateCanvas = function(id, cW, cH) {
     this.data = [];
     this.json = [];
     this.frames = [];
+    this.sequence = [];
+    this.pause = false;
+    this.currentPlay = 0;
+    this.timer = false;
 };
 
 AnimateCanvas.prototype.extend = function(defaults, options){
@@ -75,6 +48,87 @@ AnimateCanvas.prototype.setFrame = function(selector){
         document.querySelectorAll(selector).forEach(function (image) {
             that.frames[that.frames.length] = image.src;
         });
+    }
+};
+
+AnimateCanvas.prototype.requestTimeout = function (fn, delay) {
+    var requestAnimFrame = (function () {
+            return window.requestAnimationFrame || function (callback, element) {
+                    window.setTimeout(callback, 1000 / 60);
+                };
+        })(),
+        start = new Date().getTime(),
+        handle = {};
+    function loop() {
+        var current = new Date().getTime(),
+            delta = current - start;
+        if (delta >= delay) {
+            fn.call();
+        } else {
+            handle.value = requestAnimFrame(loop);
+        }
+    }
+    handle.value = requestAnimFrame(loop);
+    return handle;
+};
+
+AnimateCanvas.prototype.clearRequestTimeout = function (handle) {
+    if (window.cancelAnimationFrame) {
+        window.cancelAnimationFrame(handle.value);
+    } else {
+        window.clearTimeout(handle);
+    }
+
+};
+
+AnimateCanvas.prototype.play = function(id, framesPerSecond){
+    var that = this;
+
+    var canvas = document.getElementById(id);
+    canvas.width = that.cW;
+    canvas.height = that.cH;
+
+    var context = canvas.getContext("2d"),
+        frameWidth = that.cW,
+        frameHeight = that.cH;
+    var image = new Image();
+    var fps = framesPerSecond || 24;
+
+    if(that.pause){
+        that.pause = false;
+        that.currentPlay--;
+    } else {
+        that.currentPlay = 0;
+    }
+
+    if(that.timer) {
+        that.clearRequestTimeout(that.timer);
+    }
+    that.timer = that.requestTimeout(loopImage, 0);
+
+    function loopImage(){
+
+        if(that.currentPlay >= that.sequence.length) {
+            return false;
+        }
+
+        image.onload = function() {
+
+            //context.clearRect(0, 0, frameWidth, frameHeight);
+            context.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
+
+            that.timer = that.requestTimeout(loopImage, 1000/fps);
+
+        };
+        image.src = that.sequence[that.currentPlay];
+        that.currentPlay++;
+    }
+};
+
+AnimateCanvas.prototype.stop = function(){
+    if(this.timer){
+        this.clearRequestTimeout(this.timer);
+        this.pause = true;
     }
 };
 
@@ -356,6 +410,8 @@ AnimateCanvas.prototype.createSequence = function(options) {
             //for variable json
             that.json[that.json.length] = jsonItem;
 
+            that.sequence[that.sequence.length] = that.c2.toDataURL("image/jpeg");
+
             if(typeof callbacks.item === 'function'){
                 callbacks.item(i, that.c2.toDataURL("image/jpeg"), jsonItem);
             }
@@ -390,7 +446,7 @@ $(function(){
     var WIDTH = 640,
         HEIGHT = 480;
 
-    var obj = new AnimateCanvas('canvas', WIDTH, HEIGHT);
+    var obj = new AnimateCanvas(WIDTH, HEIGHT);
 
     uploadFrame.on('click', function(){
         var that = $(this);
@@ -453,7 +509,7 @@ $(function(){
                     a.href = URL.createObjectURL(file);
                     a.download = 'myFile.json';
 
-                    $('#json .button-top').show();
+                    $('.button-hide').show();
                     that.removeClass('processing');
                 }
             });
@@ -467,7 +523,7 @@ $(function(){
     $('#clear').on('click', function(){
         results.empty();
         jsonView.empty();
-        $('#json .button-top').hide();
+        $('.button-hide').hide();
     });
 
     $('#ok').on('click', function(){
@@ -515,6 +571,15 @@ $(function(){
 
     $('#accordion').on('click', '.remove-panel', function(){
         $(this).parents('.panel').remove();
+    });
+
+
+    $('#play').on('click', function(){
+        obj.play('canvas', parseInt($('#fps').val(), 10));
+    });
+
+    $('#stop').on('click', function(){
+        obj.stop();
     });
 
 });
