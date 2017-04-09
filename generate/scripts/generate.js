@@ -395,10 +395,10 @@ $(function(){
                 }
             },
             errorFileSize: function(index, fileName){
-                error += 'Dung lượng quá 500 KB (' + fileName + ' - ' + index + ')\n';
+                error += index + '. File size is larger than 500 KB (' + fileName + ')\n';
             },
             errorFileType: function(index, fileName){
-                error += 'Định dạng không đúng (' + fileName + ' - ' + index + ')\n';
+                error += index + '. File type is not the PNG (' + fileName + ')\n';
             }
         });
 
