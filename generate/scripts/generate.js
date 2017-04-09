@@ -101,9 +101,7 @@ AnimateCanvas.prototype.readFrame = function(input, options){
         sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
         iFileSize = file.size;
 
-        if ((sFileExtension === "jpg" ||
-            sFileExtension === "png" ||
-            sFileExtension === "jpeg")) { /// file type
+        if (sFileExtension === "png") { /// file type
 
             if (iFileSize <= 524288) { /// 0.5 mb
 
