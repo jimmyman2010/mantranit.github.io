@@ -495,7 +495,7 @@ $(function(){
                 source.empty();
             },
             item: function(index, src, fileName){
-                source.append('<span><img src="' + src + '" alt="' + fileName + '" title="frame_' + index + '" /></span>');
+                source.append('<span><span class="number">' + index + '</span><img src="' + src + '" alt="' + fileName + '" title="frame_' + index + '" /></span>');
             },
             complete: function(){
                 that.removeClass('processing');
@@ -529,7 +529,7 @@ $(function(){
 
             obj.createSequence({
                 item: function(index, src, json){
-                    results.append('<span><img src="' + src + '" alt="frame_' + index + '" title="frame_' + index + '" /></span>');
+                    results.append('<span><span class="number">' + index + '</span><img src="' + src + '" alt="frame_' + index + '" title="frame_' + index + '" /></span>');
                 },
                 complete: function(json){
 
@@ -598,6 +598,8 @@ $(function(){
         template.find('.face img').attr('src', image);
         template.find('.face input[name="src"]').val(image);
 
+        $('#accordion [data-parent="#accordion"]').attr('aria-expanded', 'false');
+        $('#accordion .in').removeClass('in');
         $('#accordion').append(template);
     });
 
@@ -608,6 +610,8 @@ $(function(){
         template.find('#collapse-text').attr('id', id);
         template.find('a[data-toggle="collapse"]').attr('href', '#' + id).html(index + '. Text');
 
+        $('#accordion [data-parent="#accordion"]').attr('aria-expanded', 'false');
+        $('#accordion .in').removeClass('in');
         $('#accordion').append(template);
     });
 
