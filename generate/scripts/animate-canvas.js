@@ -294,7 +294,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     var imgSrc = new Image();
                     imgSrc.src = object.src;
 
-                    if(object.fix && typeof that.cache[index] === 'object'){
+                    if(object.fix && that.cache[index] && typeof that.cache[index] === 'object'){
                         holeWidth = that.cache[index].holeWidth;
                         holeHeight = that.cache[index].holeHeight;
                         x = that.cache[index].x;
@@ -367,7 +367,6 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     objImage.end = object.to;
                     objImage.id = indexImage;
 
-                    console.log(jsonItem);
                     if(jsonItem.imageFace === null){
                         jsonItem.imageFace = [];
                     }
