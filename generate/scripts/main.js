@@ -20,7 +20,7 @@ $(function(){
         var that = $(this);
         that.addClass('processing');
         if ( window.FileReader && window.File && window.FileList && window.Blob ) { } else {
-            alert("Your browser do not support edit image. Please update the new version.\n");
+            alert("Your browser do not support read image. Please update the new version.\n");
 
             that.removeClass('processing');
             return false;
