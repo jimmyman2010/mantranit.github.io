@@ -386,7 +386,6 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     }
 
                 }
-
                 if (object.type === 'text') {
 
                     that.copy.font = object.fontSize + 'px/' + object.lineHeight + 'px ' + object.fontFamily;
