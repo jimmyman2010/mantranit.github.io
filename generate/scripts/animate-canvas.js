@@ -358,7 +358,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
 
                     //for variable json
                     var objImage = {};
-                    objImage.src = 'face_' + objectIndex[index] + '.jpg';
+                    objImage.src = 'face_' + (objectIndex[index] + 1) + '.jpg';
                     objImage.width = holeWidth;
                     objImage.height = holeHeight;
                     objImage.position = x + ',' + y;
@@ -367,7 +367,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     objImage.rotate = object.rotate;
                     objImage.start = object.from;
                     objImage.end = object.to;
-                    objImage.id = objectIndex[index];
+                    objImage.id = (objectIndex[index] + 1);
 
                     if(jsonItem.imageFace === null){
                         jsonItem.imageFace = [];
