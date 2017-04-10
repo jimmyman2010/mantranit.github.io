@@ -172,6 +172,16 @@ $(function(){
         obj.stop();
     });
 
+    $('#import').on('click', function(){
+        var json = JSON.parse('{"data": ' + $('#import-value').val() + '}');
+
+        json.data.forEach(function(obj, index){
+            if(obj.type === 'image'){
+
+            }
+        });
+    });
+
 });
 
 function toJSONString( form ) {
