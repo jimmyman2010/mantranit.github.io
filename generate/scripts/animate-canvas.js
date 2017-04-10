@@ -24,10 +24,7 @@ var AnimateCanvas = function(cW, cH) {
     this.currentPlay = 0;
     this.timer = false;
 
-    this.cacheX = -1;
-    this.cacheY = -1;
-    this.cacheHoleWidth = 0;
-    this.cacheHoleHeight = 0;
+    this.cache = [];
 };
 
 AnimateCanvas.prototype.extend = function(defaults, options){
@@ -246,8 +243,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
     var frameWidth = that.cW;
     var frameHeight = that.cH;
     var data = that.data;
-    var objectImage = null;
-    var objectText = null;
+    var objectData = [];
     var indexImage = 0;
     var indexText = 0;
     var alpha = 1;
@@ -271,165 +267,170 @@ AnimateCanvas.prototype.createSequence = function(options) {
             return false;
         }
 
-        objectImage = null;
-        objectText = null;
+        objectData = [];
         for (var k = 0; k < data.length; k++) {
             if (data[k].from <= i && i <= data[k].to) {
-                if (data[k].type === 'image') {
-                    objectImage = data[k];
-                    indexImage = k + 1;
-                }
-                if (data[k].type === 'text') {
-                    objectText = data[k];
-                    indexText++;
-                }
+                objectData[objectData.length] = data[k];
             }
         }
 
-        image.onload = function(){
+        //for variable json
+        var jsonItem = {
+            text: null,
+            imageFace: null,
+            imageFrame: 'frame_' + that.pad((i + 1), (that.frames.length).toString().length) + '.png'
+        };
 
-            //for variable json
-            var jsonItem = {
-                text: null,
-                imageFace: null,
-                imageFrame: 'frame_' + that.pad((i + 1), (that.frames.length).toString().length) + '.png'
-            };
+        image.onload = function(){
 
             // pre draw image to analyze.
             that.copy.clearRect(0, 0, frameWidth, frameHeight);
             that.copy.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 
-            //if we have the image need to draw.
-            if (objectImage !== null) {
+            objectData.forEach(function(object, index){
+                //if we have the image need to draw.
+                if (object.type === 'image') {
 
-                var imgSrc = new Image();
-                imgSrc.src = objectImage.src;
+                    var imgSrc = new Image();
+                    imgSrc.src = object.src;
 
-                if(objectImage.fix && that.cacheX >= 0 && that.cacheY >= 0){
-                    holeWidth = that.cacheHoleWidth;
-                    holeHeight = that.cacheHoleHeight;
-                    x = that.cacheX;
-                    y = that.cacheY;
-                } else {
-                    var pixels = that.copy.getImageData(0, 0, frameWidth, frameHeight);
-                    var l = pixels.data.length;
+                    if(object.fix && typeof that.cache[index] === 'object'){
+                        holeWidth = that.cache[index].holeWidth;
+                        holeHeight = that.cache[index].holeHeight;
+                        x = that.cache[index].x;
+                        y = that.cache[index].y;
+                    } else {
+                        var pixels = that.copy.getImageData(0, 0, frameWidth, frameHeight);
+                        var l = pixels.data.length;
 
-                    bound = {
-                        left: null,
-                        top: null,
-                        bottom: null,
-                        right: null
-                    };
+                        bound = {
+                            left: null,
+                            top: null,
+                            bottom: null,
+                            right: null
+                        };
 
-                    for (var j = 0; j < l; j += 4) {
-                        if (pixels.data[j + 3] == 0) {
-                            x = (j / 4) % frameWidth;
-                            y = ~~((j / 4) / frameWidth);
+                        for (var j = 0; j < l; j += 4) {
+                            if (pixels.data[j + 3] == 0) {
+                                x = (j / 4) % frameWidth;
+                                y = ~~((j / 4) / frameWidth);
 
-                            if (bound.top === null) {
-                                bound.top = y;
-                            }
+                                if (bound.top === null) {
+                                    bound.top = y;
+                                }
 
-                            if (bound.left === null) {
-                                bound.left = x;
-                            } else if (x < bound.left) {
-                                bound.left = x;
-                            }
+                                if (bound.left === null) {
+                                    bound.left = x;
+                                } else if (x < bound.left) {
+                                    bound.left = x;
+                                }
 
-                            if (bound.right === null) {
-                                bound.right = x;
-                            } else if (bound.right < x) {
-                                bound.right = x;
-                            }
+                                if (bound.right === null) {
+                                    bound.right = x;
+                                } else if (bound.right < x) {
+                                    bound.right = x;
+                                }
 
-                            if (bound.bottom === null) {
-                                bound.bottom = y;
-                            } else if (bound.bottom < y) {
-                                bound.bottom = y;
+                                if (bound.bottom === null) {
+                                    bound.bottom = y;
+                                } else if (bound.bottom < y) {
+                                    bound.bottom = y;
+                                }
                             }
                         }
+
+                        // set area to draw
+                        holeWidth = bound.right - bound.left + object.width;
+                        holeHeight = holeWidth * imgSrc.height / imgSrc.width;
+                        x = bound.left + (holeWidth / 2) + object.x;
+                        y = bound.top + (holeHeight / 2) + object.y;
                     }
 
-                    // set area to draw
-                    holeWidth = bound.right - bound.left + objectImage.width;
-                    holeHeight = holeWidth * imgSrc.height / imgSrc.width;
-                    x = bound.left + (holeWidth / 2) + objectImage.x;
-                    y = bound.top + (holeHeight / 2) + objectImage.y;
-                }
+                    that.copy.translate(x, y);
+                    that.copy.rotate(object.rotate * (Math.PI / 180));
+                    that.copy.drawImage(imgSrc, -holeWidth / 2, -holeHeight / 2, holeWidth, holeHeight);
 
-                that.copy.translate(x, y);
-                that.copy.rotate(objectImage.rotate * (Math.PI / 180));
-                that.copy.drawImage(imgSrc, -holeWidth / 2, -holeHeight / 2, holeWidth, holeHeight);
+                    that.copy.rotate(-object.rotate * (Math.PI / 180));
+                    that.copy.translate(-x, -y);
+                    that.copy.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 
-                that.copy.rotate(-objectImage.rotate * (Math.PI / 180));
-                that.copy.translate(-x, -y);
-                that.copy.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
+                    //for variable json
+                    var objImage = {};
+                    objImage.src = 'face_' + indexImage + '.jpg';
+                    objImage.width = holeWidth;
+                    objImage.height = holeHeight;
+                    objImage.position = x + ',' + y;
+                    objImage.opacity = 1;
+                    objImage.order = 'back';
+                    objImage.rotate = object.rotate;
+                    objImage.start = object.from;
+                    objImage.end = object.to;
+                    objImage.id = indexImage;
 
-                //for variable json
-                jsonItem.imageFace = {};
-                jsonItem.imageFace.src = 'face_' + indexImage + '.jpg';
-                jsonItem.imageFace.width = holeWidth;
-                jsonItem.imageFace.height = holeHeight;
-                jsonItem.imageFace.position = x + ',' + y;
-                jsonItem.imageFace.opacity = 1;
-                jsonItem.imageFace.order = 'back';
-                jsonItem.imageFace.rotate = objectImage.rotate;
-                jsonItem.imageFace.start = objectImage.from;
-                jsonItem.imageFace.end = objectImage.to;
-                jsonItem.imageFace.id = indexImage;
-
-                if(objectImage.fix && i > objectImage.from && i < objectImage.to - 1){
-                    that.cacheHoleWidth = holeWidth;
-                    that.cacheHoleHeight = holeHeight;
-                    that.cacheX = x;
-                    that.cacheY = y;
-                } else {
-                    that.cacheHoleWidth = 0;
-                    that.cacheHoleHeight = 0;
-                    that.cacheX = -1;
-                    that.cacheY = -1;
-                }
-
-            }
-            if (objectText !== null) {
-
-                that.copy.font = objectText.fontSize + 'px/' + objectText.lineHeight + 'px ' + objectText.fontFamily;
-                alpha = 1;
-                if (objectText.fade === 'in') {
-                    alpha = indexText / ((objectText.to - objectText.from) + 1);
-                }
-                if (objectText.fade === 'out') {
-                    alpha = 1 - (indexText / ((objectText.to - objectText.from) + 1));
-                }
-                that.copy.fillStyle = 'rgba(' + objectText.color.red + ',' + objectText.color.green + ',' + objectText.color.blue + ',' + alpha + ')';
-                if (objectText.gradient) {
-                    var gradient = that.copy.createLinearGradient(0, 0, that.c2.width, 0);
-                    for (var n = 0; n < objectText.gradient.length; n++) {
-                        gradient.addColorStop(objectText.gradient[n].point, objectText.gradient[n].color);
+                    console.log(jsonItem);
+                    if(jsonItem.imageFace === null){
+                        jsonItem.imageFace = [];
                     }
-                    that.copy.fillStyle = gradient;
-                }
-                that.copy.translate(objectText.x, objectText.y);
-                that.copy.rotate(objectText.rotate * (Math.PI / 180));
-                that.copy.fillText(objectText.src, 0, 0);
-                that.copy.rotate(-objectText.rotate * (Math.PI / 180));
-                that.copy.translate(-objectText.x, -objectText.y);
 
-                //for variable json
-                jsonItem.text = {};
-                jsonItem.text.text = objectText.src;
-                jsonItem.text.font = objectText.fontFamily;
-                jsonItem.text.size = objectText.fontSize;
-                jsonItem.text.position = objectText.x + ',' + objectText.y;
-                jsonItem.text.opacity = alpha;
-                jsonItem.text.color = that.rgbToHex(objectText.color.red, objectText.color.green, objectText.color.blue);
-                jsonItem.text.order = 'front';
-                jsonItem.text.rotate = objectText.rotate;
-                jsonItem.text.lineHeight = objectText.lineHeight;
-                jsonItem.text.start = objectText.from;
-                jsonItem.text.end = objectText.to;
-                jsonItem.text.maxW = objectText.width;
-            }
+                    jsonItem.imageFace[jsonItem.imageFace.length] = objImage;
+
+                    if(object.fix && i > object.from && i < object.to - 1){
+                        that.cache[index] = {};
+                        that.cache[index].holeWidth = holeWidth;
+                        that.cache[index].holeHeight = holeHeight;
+                        that.cache[index].x = x;
+                        that.cache[index].y = y;
+                    } else {
+                        that.cache[index] = false;
+                    }
+
+                }
+
+                if (object.type === 'text') {
+
+                    that.copy.font = object.fontSize + 'px/' + object.lineHeight + 'px ' + object.fontFamily;
+                    alpha = 1;
+                    if (object.fade === 'in') {
+                        alpha = indexText / ((object.to - object.from) + 1);
+                    }
+                    if (object.fade === 'out') {
+                        alpha = 1 - (indexText / ((object.to - object.from) + 1));
+                    }
+                    that.copy.fillStyle = 'rgba(' + object.color.red + ',' + object.color.green + ',' + object.color.blue + ',' + alpha + ')';
+                    if (object.gradient) {
+                        var gradient = that.copy.createLinearGradient(0, 0, that.c2.width, 0);
+                        for (var n = 0; n < object.gradient.length; n++) {
+                            gradient.addColorStop(object.gradient[n].point, object.gradient[n].color);
+                        }
+                        that.copy.fillStyle = gradient;
+                    }
+                    that.copy.translate(object.x, object.y);
+                    that.copy.rotate(object.rotate * (Math.PI / 180));
+                    that.copy.fillText(object.src, 0, 0);
+                    that.copy.rotate(-object.rotate * (Math.PI / 180));
+                    that.copy.translate(-object.x, -object.y);
+
+                    //for variable json
+                    var objText = {};
+                    objText.text = object.src;
+                    objText.font = object.fontFamily;
+                    objText.size = object.fontSize;
+                    objText.position = object.x + ',' + object.y;
+                    objText.opacity = alpha;
+                    objText.color = that.rgbToHex(object.color.red, object.color.green, object.color.blue);
+                    objText.order = 'front';
+                    objText.rotate = object.rotate;
+                    objText.lineHeight = object.lineHeight;
+                    objText.start = object.from;
+                    objText.end = object.to;
+                    objText.maxW = object.width;
+
+                    if(jsonItem.text === null){
+                        jsonItem.text = [];
+                    }
+                    jsonItem.text[jsonItem.text.length] = objText;
+                }
+            });
 
             //for variable json
             that.json[that.json.length] = jsonItem;
