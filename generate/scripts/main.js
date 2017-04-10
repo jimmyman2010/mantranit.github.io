@@ -173,14 +173,19 @@ $(function(){
     });
 
     $('#import').on('click', function(){
-        var json = JSON.parse('{"data": ' + $('#import-value').val() + '}');
+        var input = $('#import-value').val();
+        if(!input.val()) {
+            return false;
+        }
+        var json = JSON.parse('{"data": ' + input.val() + '}');
 
         $('#accordion').empty();
+
+        var template, id;
         json.data.forEach(function(obj, index){
             if(obj.type === 'image'){
-                var template = $($('#template-face').html());
-                var id = 'collapse-face-' + index;
-                var image = obj.src;
+                template = $($('#template-face').html());
+                id = 'collapse-face-' + index;
 
                 template.find('#collapse-face').attr('id', id).removeClass('in');
                 template.find('a[data-toggle="collapse"]').attr('href', '#' + id).html((index + 1) + '. Face');
@@ -202,9 +207,8 @@ $(function(){
             }
 
             if(obj.type === 'text'){
-                var template = $($('#template-text').html());
-                var id = 'collapse-text-' + index;
-                var image = obj.src;
+                template = $($('#template-text').html());
+                id = 'collapse-text-' + index;
 
                 template.find('#collapse-text').attr('id', id).removeClass('in');
                 template.find('a[data-toggle="collapse"]').attr('href', '#' + id).html((index + 1) + '. Text');
@@ -231,7 +235,8 @@ $(function(){
             }
 
         });
-        $('#import-value').val('');
+
+        input.val('');
         $('#modalImport').modal('hide');
     });
 
