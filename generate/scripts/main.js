@@ -135,7 +135,7 @@ $(function(){
 
         var template = $($('#template-face').html());
         var id = 'collapse-face-' + index;
-        var image = 'images/' + index + '.png';
+        var image = 'images/' + obj.getRandomInt(1,7) + '.png';
 
         template.find('#collapse-face').attr('id', id);
         template.find('a[data-toggle="collapse"]').attr('href', '#' + id).html(index + '. Face');

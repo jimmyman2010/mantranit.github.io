@@ -244,8 +244,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
     var frameHeight = that.cH;
     var data = that.data;
     var objectData = [];
-    var indexImage = 0;
-    var indexText = 0;
+    var objectIndex = [];
     var alpha = 1;
     that.json = [];
     that.sequence = [];
@@ -268,9 +267,11 @@ AnimateCanvas.prototype.createSequence = function(options) {
         }
 
         objectData = [];
+        objectIndex = [];
         for (var k = 0; k < data.length; k++) {
             if (data[k].from <= i && i <= data[k].to) {
                 objectData[objectData.length] = data[k];
+                objectIndex[objectIndex.length] = k;
             }
         }
 
@@ -300,6 +301,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
                         x = that.cache[index].x;
                         y = that.cache[index].y;
                     } else {
+
                         var pixels = that.copy.getImageData(0, 0, frameWidth, frameHeight);
                         var l = pixels.data.length;
 
@@ -356,7 +358,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
 
                     //for variable json
                     var objImage = {};
-                    objImage.src = 'face_' + indexImage + '.jpg';
+                    objImage.src = 'face_' + objectIndex[index] + '.jpg';
                     objImage.width = holeWidth;
                     objImage.height = holeHeight;
                     objImage.position = x + ',' + y;
@@ -365,7 +367,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     objImage.rotate = object.rotate;
                     objImage.start = object.from;
                     objImage.end = object.to;
-                    objImage.id = indexImage;
+                    objImage.id = objectIndex[index];
 
                     if(jsonItem.imageFace === null){
                         jsonItem.imageFace = [];
@@ -390,10 +392,10 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     that.copy.font = object.fontSize + 'px/' + object.lineHeight + 'px ' + object.fontFamily;
                     alpha = 1;
                     if (object.fade === 'in') {
-                        alpha = indexText / ((object.to - object.from) + 1);
+                        alpha = (i - object.from) / ((object.to - object.from));
                     }
                     if (object.fade === 'out') {
-                        alpha = 1 - (indexText / ((object.to - object.from) + 1));
+                        alpha = 1 - ((i - object.from) / ((object.to - object.from)));
                     }
                     that.copy.fillStyle = 'rgba(' + object.color.red + ',' + object.color.green + ',' + object.color.blue + ',' + alpha + ')';
                     if (object.gradient) {
