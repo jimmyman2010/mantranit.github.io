@@ -23,6 +23,11 @@ var AnimateCanvas = function(cW, cH) {
     this.pause = false;
     this.currentPlay = 0;
     this.timer = false;
+
+    this.cacheX = -1;
+    this.cacheY = -1;
+    this.cacheHoleWidth = 0;
+    this.cacheHoleHeight = 0;
 };
 
 AnimateCanvas.prototype.extend = function(defaults, options){
@@ -247,6 +252,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
     var indexText = 0;
     var alpha = 1;
     that.json = [];
+    that.sequence = [];
 
     var image = new Image();
 
@@ -299,51 +305,57 @@ AnimateCanvas.prototype.createSequence = function(options) {
                 var imgSrc = new Image();
                 imgSrc.src = objectImage.src;
 
-                var pixels = that.copy.getImageData(0, 0, frameWidth, frameHeight);
-                var l = pixels.data.length;
+                if(objectImage.fix && that.cacheX >= 0 && that.cacheY >= 0){
+                    holeWidth = that.cacheHoleWidth;
+                    holeHeight = that.cacheHoleHeight;
+                    x = that.cacheX;
+                    y = that.cacheY;
+                } else {
+                    var pixels = that.copy.getImageData(0, 0, frameWidth, frameHeight);
+                    var l = pixels.data.length;
 
-                bound = {
-                    left: null,
-                    top: null,
-                    bottom: null,
-                    right: null
-                };
+                    bound = {
+                        left: null,
+                        top: null,
+                        bottom: null,
+                        right: null
+                    };
 
-                for (var j = 0; j < l; j += 4) {
-                    if (pixels.data[j + 3] == 0) {
-                        x = (j / 4) % frameWidth;
-                        y = ~~((j / 4) / frameWidth);
+                    for (var j = 0; j < l; j += 4) {
+                        if (pixels.data[j + 3] == 0) {
+                            x = (j / 4) % frameWidth;
+                            y = ~~((j / 4) / frameWidth);
 
-                        if (bound.top === null) {
-                            bound.top = y;
-                        }
+                            if (bound.top === null) {
+                                bound.top = y;
+                            }
 
-                        if (bound.left === null) {
-                            bound.left = x;
-                        } else if (x < bound.left) {
-                            bound.left = x;
-                        }
+                            if (bound.left === null) {
+                                bound.left = x;
+                            } else if (x < bound.left) {
+                                bound.left = x;
+                            }
 
-                        if (bound.right === null) {
-                            bound.right = x;
-                        } else if (bound.right < x) {
-                            bound.right = x;
-                        }
+                            if (bound.right === null) {
+                                bound.right = x;
+                            } else if (bound.right < x) {
+                                bound.right = x;
+                            }
 
-                        if (bound.bottom === null) {
-                            bound.bottom = y;
-                        } else if (bound.bottom < y) {
-                            bound.bottom = y;
+                            if (bound.bottom === null) {
+                                bound.bottom = y;
+                            } else if (bound.bottom < y) {
+                                bound.bottom = y;
+                            }
                         }
                     }
+
+                    // set area to draw
+                    holeWidth = bound.right - bound.left + objectImage.width;
+                    holeHeight = holeWidth * imgSrc.height / imgSrc.width;
+                    x = bound.left + (holeWidth / 2) + objectImage.x;
+                    y = bound.top + (holeHeight / 2) + objectImage.y;
                 }
-
-                // set area to draw
-                holeWidth = bound.right - bound.left + objectImage.width;
-                holeHeight = holeWidth * imgSrc.height / imgSrc.width;
-
-                x = bound.left + (holeWidth / 2) + objectImage.x;
-                y = bound.top + (holeHeight / 2) + objectImage.y;
 
                 that.copy.translate(x, y);
                 that.copy.rotate(objectImage.rotate * (Math.PI / 180));
@@ -365,6 +377,18 @@ AnimateCanvas.prototype.createSequence = function(options) {
                 jsonItem.imageFace.start = objectImage.from;
                 jsonItem.imageFace.end = objectImage.to;
                 jsonItem.imageFace.id = indexImage;
+
+                if(objectImage.fix && i > objectImage.from && i < objectImage.to - 1){
+                    that.cacheHoleWidth = holeWidth;
+                    that.cacheHoleHeight = holeHeight;
+                    that.cacheX = x;
+                    that.cacheY = y;
+                } else {
+                    that.cacheHoleWidth = 0;
+                    that.cacheHoleHeight = 0;
+                    that.cacheX = -1;
+                    that.cacheY = -1;
+                }
 
             }
             if (objectText !== null) {
@@ -610,10 +634,12 @@ function toJSONString( form ) {
         var name = element.name;
         var value = element.value;
 
-        if( name ) {
-            if(name.indexOf('color') >= 0){
+        if(element.type === 'checkbox') {
+            obj[name] = element.checked;
+        } else {
+            if (name.indexOf('color') >= 0) {
                 var c = name.replace('color[', '').replace(']', '');
-                if(!obj.color) {
+                if (!obj.color) {
                     obj['color'] = {};
                 }
                 obj['color'][c] = parseInt(value, 10);
