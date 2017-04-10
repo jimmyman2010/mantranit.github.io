@@ -173,7 +173,7 @@ $(function(){
     });
 
     $('#import').on('click', function(){
-        var input = $('#import-value').val();
+        var input = $('#import-value');
         if(input.val() === '') {
             return false;
         }
