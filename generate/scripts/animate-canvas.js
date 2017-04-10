@@ -391,11 +391,10 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     that.copy.font = object.fontSize + 'px/' + object.lineHeight + 'px ' + object.fontFamily;
                     alpha = 1;
                     if (object.fade === 'in') {
-                        console.log(i, object.to, object.from);
-                        alpha = (i - object.from) + 1 / ((object.to - object.from) + 1);
+                        alpha = (i - object.from + 1) / (object.to - object.from);
                     }
                     if (object.fade === 'out') {
-                        alpha = 1 - ((i - object.from) + 1 / ((object.to - object.from) + 1));
+                        alpha = 1 - ((i - object.from + 1) / (object.to - object.from));
                     }
                     that.copy.fillStyle = 'rgba(' + object.color.red + ',' + object.color.green + ',' + object.color.blue + ',' + alpha + ')';
                     if (object.gradient) {
