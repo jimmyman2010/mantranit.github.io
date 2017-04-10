@@ -266,7 +266,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
 
         if(i >= that.frames.length) {
             if(typeof callbacks.complete === 'function'){
-                callbacks.complete(that.json);
+                callbacks.complete(that.json, that.sequence);
             }
             return false;
         }
@@ -531,7 +531,7 @@ $(function(){
                 item: function(index, src, json){
                     results.append('<span><span class="number">' + index + '</span><img src="' + src + '" alt="frame_' + index + '" title="frame_' + index + '" /></span>');
                 },
-                complete: function(json){
+                complete: function(json, sequence){
 
                     jsonView.html(JSON.stringify(json, null, 2));
 
