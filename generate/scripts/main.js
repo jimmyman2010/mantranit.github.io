@@ -174,7 +174,7 @@ $(function(){
 
     $('#import').on('click', function(){
         var input = $('#import-value').val();
-        if(!input.val()) {
+        if(input.val() === '') {
             return false;
         }
         var json = JSON.parse('{"data": ' + input.val() + '}');
