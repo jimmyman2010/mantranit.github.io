@@ -20,7 +20,7 @@ $(function(){
         var that = $(this);
         that.addClass('processing');
         if ( window.FileReader && window.File && window.FileList && window.Blob ) { } else {
-            alert("Trình duy?t không h? tr? t?i ?nh, vui lòng c?p nh?t phiên b?n m?i.\n");
+            alert("Your browser do not support edit image. Please update the new version.\n");
 
             that.removeClass('processing');
             return false;
