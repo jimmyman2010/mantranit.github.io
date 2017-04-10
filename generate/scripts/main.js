@@ -175,11 +175,64 @@ $(function(){
     $('#import').on('click', function(){
         var json = JSON.parse('{"data": ' + $('#import-value').val() + '}');
 
+        $('#accordion').empty();
         json.data.forEach(function(obj, index){
             if(obj.type === 'image'){
+                var template = $($('#template-face').html());
+                var id = 'collapse-face-' + index;
+                var image = obj.src;
 
+                template.find('#collapse-face').attr('id', id).removeClass('in');
+                template.find('a[data-toggle="collapse"]').attr('href', '#' + id).html((index + 1) + '. Face');
+                template.find('.face img').attr('src', obj.src);
+                template.find('.face input[name="src"]').val(obj.src);
+
+                template.find('input[name="from"]').val(obj.from);
+                template.find('input[name="to"]').val(obj.to);
+                template.find('input[name="rotate"]').val(obj.rotate);
+                template.find('input[name="width"]').val(obj.width);
+                template.find('input[name="x"]').val(obj.x);
+                template.find('input[name="y"]').val(obj.y);
+
+                if(obj.fix){
+                    template.find('input[name="fix"]').prop('checked', 'checked');
+                }
+
+                $('#accordion').append(template);
             }
+
+            if(obj.type === 'text'){
+                var template = $($('#template-text').html());
+                var id = 'collapse-text-' + index;
+                var image = obj.src;
+
+                template.find('#collapse-text').attr('id', id).removeClass('in');
+                template.find('a[data-toggle="collapse"]').attr('href', '#' + id).html((index + 1) + '. Text');
+
+                template.find('input[name="src"]').val(obj.src);
+
+                template.find('input[name="from"]').val(obj.from);
+                template.find('input[name="to"]').val(obj.to);
+                template.find('input[name="rotate"]').val(obj.rotate);
+                template.find('input[name="width"]').val(obj.width);
+                template.find('input[name="x"]').val(obj.x);
+                template.find('input[name="y"]').val(obj.y);
+
+                template.find('input[name="fontFamily"]').val(obj.fontFamily);
+                template.find('select[name="fade"]').val(obj.fade.toString());
+                template.find('input[name="fontSize"]').val(obj.fontSize);
+                template.find('input[name="lineHeight"]').val(obj.lineHeight);
+                template.find('input[name="color[red]"]').val(obj.color.red);
+                template.find('input[name="color[green]"]').val(obj.color.green);
+                template.find('input[name="color[blue]"]').val(obj.color.blue);
+                template.find('input[name="gradient"]').val(obj.gradient);
+
+                $('#accordion').append(template);
+            }
+
         });
+        $('#import-value').val('');
+        $('#modalImport').modal('hide');
     });
 
 });
