@@ -421,8 +421,8 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     //for variable json
                     objTmp = {};
                     objTmp.src = 'face_' + (objectIndex[index] + 1) + '.jpg';
-                    objTmp.width = holeWidth;
-                    objTmp.height = holeHeight;
+                    objTmp.width = holeWidth - Math.sin(object.rotate * (Math.PI / 180)) * holeWidth;
+                    objTmp.height = holeHeight - Math.sin(object.rotate * (Math.PI / 180)) * holeHeight;
                     objTmp.position = (x - holeWidth/2) + ',' + (y - holeHeight/2);
                     objTmp.opacity = 1;
                     objTmp.order = 'back';
