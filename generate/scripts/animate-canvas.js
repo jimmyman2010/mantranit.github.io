@@ -160,11 +160,12 @@ AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
         image.onload = function() {
 
             //context.clearRect(0, 0, frameWidth, frameHeight);
-            context.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 
             if(typeof callbacks.playing === 'function'){
                 callbacks.playing(that.player);
             }
+            context.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
+
             that.player.timer = that.requestTimeout(loopImage, 1000/fps);
 
         };
