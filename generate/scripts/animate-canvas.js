@@ -53,6 +53,9 @@ AnimateCanvas.prototype.setData = function(data){
     this.data = data;
 };
 
+/**
+ * @param selector as css selector
+ */
 AnimateCanvas.prototype.setFrame = function(selector){
     var that = this;
 
@@ -64,6 +67,12 @@ AnimateCanvas.prototype.setFrame = function(selector){
     }
 };
 
+/**
+ * former setTimeout
+ * @param fn
+ * @param delay
+ * @returns {{}}
+ */
 AnimateCanvas.prototype.requestTimeout = function (fn, delay) {
     var requestAnimFrame = (function () {
             return window.requestAnimationFrame || function (callback, element) {
@@ -85,6 +94,10 @@ AnimateCanvas.prototype.requestTimeout = function (fn, delay) {
     return handle;
 };
 
+/**
+ * former clearTimeout
+ * @param handle
+ */
 AnimateCanvas.prototype.clearRequestTimeout = function (handle) {
     if (window.cancelAnimationFrame) {
         window.cancelAnimationFrame(handle.value);
@@ -94,6 +107,11 @@ AnimateCanvas.prototype.clearRequestTimeout = function (handle) {
 
 };
 
+/**
+ * @param id of canvas element
+ * @param framesPerSecond
+ * @param options object of callback functions
+ */
 AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
     var that = this;
 
@@ -166,6 +184,11 @@ AnimateCanvas.prototype.stopSequence = function(callback){
     }
 };
 
+/**
+ * @param input id of input file
+ * @param options object of callback functions
+ * @returns {boolean}
+ */
 AnimateCanvas.prototype.readFrame = function(input, options){
     var that = this;
 
@@ -486,6 +509,11 @@ AnimateCanvas.prototype.rgbToHex = function(r, g, b){
     return "#" + ((1 << 24) + (r << 16) + (g << 8) + b).toString(16).slice(1);
 };
 
+/**
+ * @param min
+ * @param max
+ * @returns {*}
+ */
 AnimateCanvas.prototype.getRandomInt = function(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
