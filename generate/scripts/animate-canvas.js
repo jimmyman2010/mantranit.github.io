@@ -34,19 +34,19 @@ var AnimateCanvas = function(cW, cH, data, frames) {
 
 /**
  * combine object
- * @param setting
+ * @param settings
  * @param options
  * @returns {*}
  */
-AnimateCanvas.prototype.extend = function(setting, options){
+AnimateCanvas.prototype.extend = function(settings, options){
     if(typeof options === 'object') {
         for (var key in options) {
             if (options.hasOwnProperty(key)) {
-                setting[key] = options[key];
+                settings[key] = options[key];
             }
         }
     }
-    return setting;
+    return settings;
 };
 
 AnimateCanvas.prototype.setData = function(data){
@@ -115,7 +115,7 @@ AnimateCanvas.prototype.clearRequestTimeout = function (handle) {
 AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
     var that = this;
 
-    var setting = that.extend({
+    var settings = that.extend({
         fps: framesPerSecond || 24,
         begin: function(player){},
         buffering: function(player){},
@@ -143,16 +143,16 @@ AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
         that.clearRequestTimeout(that.player.timer);
     }
 
-    if(typeof setting.begin === 'function'){
-        setting.begin();
+    if(typeof settings.begin === 'function'){
+        settings.begin();
     }
     that.player.timer = that.requestTimeout(loopImage, 0);
 
     function loopImage(){
 
         if(that.player.current >= that.sequence.length) {
-            if(typeof setting.complete === 'function'){
-                setting.complete(that.player);
+            if(typeof settings.complete === 'function'){
+                settings.complete(that.player);
             }
             return false;
         }
@@ -161,18 +161,18 @@ AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
 
             //context.clearRect(0, 0, frameWidth, frameHeight);
 
-            if(typeof setting.playing === 'function'){
-                setting.playing(that.player);
+            if(typeof settings.playing === 'function'){
+                settings.playing(that.player);
             }
             context.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 
-            that.player.timer = that.requestTimeout(loopImage, 1000/setting.fps);
+            that.player.timer = that.requestTimeout(loopImage, 1000/settings.fps);
 
         };
         image.src = that.sequence[that.player.current];
 
-        if(typeof setting.buffering === 'function'){
-            setting.buffering(that.player);
+        if(typeof settings.buffering === 'function'){
+            settings.buffering(that.player);
         }
         that.player.current++;
     }
@@ -199,7 +199,7 @@ AnimateCanvas.prototype.readFrame = function(input, options){
     var that = this;
 
     var inputFrame = document.getElementById(input);
-    var setting = that.extend({
+    var settings = that.extend({
         noFile: function(){},
         begin: function(){},
         item: function(index, src, fileName){},
@@ -209,8 +209,8 @@ AnimateCanvas.prototype.readFrame = function(input, options){
     }, options);
 
     if(inputFrame.files.length === 0){
-        if(typeof setting.noFile === 'function'){
-            setting.noFile();
+        if(typeof settings.noFile === 'function'){
+            settings.noFile();
         }
         return false;
     }
@@ -219,8 +219,8 @@ AnimateCanvas.prototype.readFrame = function(input, options){
     var reader = new FileReader();
     that.frames = [];
 
-    if(typeof setting.begin === 'function'){
-        setting.begin();
+    if(typeof settings.begin === 'function'){
+        settings.begin();
     }
 
     readFile(0);
@@ -229,8 +229,8 @@ AnimateCanvas.prototype.readFrame = function(input, options){
 
         if(i >= inputFrame.files.length){
 
-            if(typeof setting.complete === 'function'){
-                setting.complete();
+            if(typeof settings.complete === 'function'){
+                settings.complete();
             }
 
             return false;
@@ -248,8 +248,8 @@ AnimateCanvas.prototype.readFrame = function(input, options){
 
                 reader.onloadend = function () {
 
-                    if(typeof setting.item === 'function'){
-                        setting.item(i, reader.result, sFileName);
+                    if(typeof settings.item === 'function'){
+                        settings.item(i, reader.result, sFileName);
                     }
 
                     //push to frames
@@ -261,15 +261,15 @@ AnimateCanvas.prototype.readFrame = function(input, options){
                 reader.readAsDataURL(file);
 
             } else {
-                if(typeof setting.errorFileSize === 'function'){
-                    setting.errorFileSize(i, sFileName);
+                if(typeof settings.errorFileSize === 'function'){
+                    settings.errorFileSize(i, sFileName);
                 }
                 readFile(++i);
             }
 
         } else {
-            if(typeof setting.errorFileType === 'function'){
-                setting.errorFileType(i, sFileName);
+            if(typeof settings.errorFileType === 'function'){
+                settings.errorFileType(i, sFileName);
             }
             readFile(++i);
         }
@@ -292,7 +292,7 @@ AnimateCanvas.prototype.pad = function(num, size) {
 AnimateCanvas.prototype.createSequence = function(options) {
     var that = this;
 
-    var setting = that.extend({
+    var settings = that.extend({
         begin: function(){},
         item: function(index, src, json){},
         complete: function(json){}
@@ -320,8 +320,8 @@ AnimateCanvas.prototype.createSequence = function(options) {
 
     var image = new Image();
 
-    if(typeof setting.begin === 'function'){
-        setting.begin();
+    if(typeof settings.begin === 'function'){
+        settings.begin();
     }
 
     loopFile(0);
@@ -329,8 +329,8 @@ AnimateCanvas.prototype.createSequence = function(options) {
     function loopFile(i){
 
         if(i >= that.frames.length) {
-            if(typeof setting.complete === 'function'){
-                setting.complete(that.json, that.sequence);
+            if(typeof settings.complete === 'function'){
+                settings.complete(that.json, that.sequence);
             }
             return false;
         }
@@ -518,8 +518,8 @@ AnimateCanvas.prototype.createSequence = function(options) {
 
             that.sequence[that.sequence.length] = that.c2.toDataURL("image/jpeg");
 
-            if(typeof setting.item === 'function'){
-                setting.item(i, that.c2.toDataURL("image/jpeg"), jsonItem);
+            if(typeof settings.item === 'function'){
+                settings.item(i, that.c2.toDataURL("image/jpeg"), jsonItem);
             }
 
             loopFile(++i);
