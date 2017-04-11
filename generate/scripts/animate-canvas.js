@@ -245,6 +245,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
     var data = that.data;
     var objectData = [];
     var objectIndex = [];
+    var objTmp = {};
     var alpha = 1;
     that.json = [];
     that.sequence = [];
@@ -357,23 +358,23 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     that.copy.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 
                     //for variable json
-                    var objImage = {};
-                    objImage.src = 'face_' + (objectIndex[index] + 1) + '.jpg';
-                    objImage.width = holeWidth;
-                    objImage.height = holeHeight;
-                    objImage.position = (x - holeWidth/2) + ',' + (y - holeHeight/2);
-                    objImage.opacity = 1;
-                    objImage.order = 'back';
-                    objImage.rotate = object.rotate;
-                    objImage.start = object.from;
-                    objImage.end = object.to;
-                    objImage.id = (objectIndex[index] + 1);
+                    objTmp = {};
+                    objTmp.src = 'face_' + (objectIndex[index] + 1) + '.jpg';
+                    objTmp.width = holeWidth;
+                    objTmp.height = holeHeight;
+                    objTmp.position = (x - holeWidth/2) + ',' + (y - holeHeight/2);
+                    objTmp.opacity = 1;
+                    objTmp.order = 'back';
+                    objTmp.rotate = object.rotate;
+                    objTmp.start = object.from;
+                    objTmp.end = object.to;
+                    objTmp.id = (objectIndex[index] + 1);
 
                     if(jsonItem.imageFace === null){
                         jsonItem.imageFace = [];
                     }
 
-                    jsonItem.imageFace[jsonItem.imageFace.length] = objImage;
+                    jsonItem.imageFace[jsonItem.imageFace.length] = objTmp;
 
                     if(object.fix && i > object.from && i < object.to - 1){
                         that.cache[index] = {};
@@ -411,24 +412,24 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     that.copy.translate(-object.x, -object.y);
 
                     //for variable json
-                    var objText = {};
-                    objText.text = object.src;
-                    objText.font = object.fontFamily;
-                    objText.size = object.fontSize;
-                    objText.position = object.x + ',' + object.y;
-                    objText.opacity = alpha;
-                    objText.color = that.rgbToHex(object.color.red, object.color.green, object.color.blue);
-                    objText.order = 'front';
-                    objText.rotate = object.rotate;
-                    objText.lineHeight = object.lineHeight;
-                    objText.start = object.from;
-                    objText.end = object.to;
-                    objText.maxW = object.width;
+                    objTmp = {};
+                    objTmp.text = object.src;
+                    objTmp.font = object.fontFamily;
+                    objTmp.size = object.fontSize;
+                    objTmp.position = object.x + ',' + object.y;
+                    objTmp.opacity = alpha;
+                    objTmp.color = that.rgbToHex(object.color.red, object.color.green, object.color.blue);
+                    objTmp.order = 'front';
+                    objTmp.rotate = object.rotate;
+                    objTmp.lineHeight = object.lineHeight;
+                    objTmp.start = object.from;
+                    objTmp.end = object.to;
+                    objTmp.maxW = object.width;
 
                     if(jsonItem.text === null){
                         jsonItem.text = [];
                     }
-                    jsonItem.text[jsonItem.text.length] = objText;
+                    jsonItem.text[jsonItem.text.length] = objTmp;
                 }
             });
 
