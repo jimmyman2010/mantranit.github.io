@@ -117,7 +117,8 @@ AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
 
     var callbacks = that.extend({
         begin: function(){},
-        item: function(){},
+        buffer: function(){},
+        playing: function(){},
         complete: function(){}
     }, options);
 
@@ -161,13 +162,17 @@ AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
             //context.clearRect(0, 0, frameWidth, frameHeight);
             context.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 
-            if(typeof callbacks.item === 'function'){
-                callbacks.item(that.player);
+            if(typeof callbacks.playing === 'function'){
+                callbacks.playing(that.player);
             }
             that.player.timer = that.requestTimeout(loopImage, 1000/fps);
 
         };
         image.src = that.sequence[that.player.current];
+
+        if(typeof callbacks.buffer === 'function'){
+            callbacks.buffer(that.player);
+        }
         that.player.current++;
     }
 
