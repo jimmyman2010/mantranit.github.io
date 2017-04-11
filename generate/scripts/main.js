@@ -118,6 +118,9 @@ $(function(){
 
         $('#input-json-view').html(JSON.stringify(objArray, null, 2));
 
+        $('#accordion [data-parent="#accordion"]').attr('aria-expanded', 'false');
+        $('#accordion .in').removeClass('in');
+
         var body = $("html, body");
         body.stop().animate({scrollTop:0}, '500', 'swing', function() {
             $('.nav-tabs .active').removeClass('active');

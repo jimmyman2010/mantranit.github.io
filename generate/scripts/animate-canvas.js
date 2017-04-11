@@ -313,7 +313,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
     var objectIndex = [];
     var objTmp = {};
     var alpha = 1;
-    var bcX, bcY, abX, abY, acX, acY, addX, addY;
+    var bcX, bcY, abX, abY, acX, acY, ahX, ahY, addX, addY;
     var pixels, n, j, k, imgSrc, gradient;
     that.json = [];
     that.sequence = [];
@@ -369,8 +369,6 @@ AnimateCanvas.prototype.createSequence = function(options) {
                         holeHeight = that.cache[index].holeHeight;
                         x = that.cache[index].x;
                         y = that.cache[index].y;
-                        addX = that.cache[index].addX;
-                        addY = that.cache[index].addY;
                     } else {
 
                         pixels = that.copy.getImageData(0, 0, frameWidth, frameHeight);
@@ -410,6 +408,8 @@ AnimateCanvas.prototype.createSequence = function(options) {
                                 }
                             }
                         }
+                        bound.right += 1;
+                        bound.bottom += 1;
 
                         // set area to draw
                         holeWidth = bound.right - bound.left + object.width;
@@ -417,14 +417,6 @@ AnimateCanvas.prototype.createSequence = function(options) {
                         x = bound.left + (holeWidth / 2) + object.x;
                         y = bound.top + (holeHeight / 2) + object.y;
 
-                        bcX = holeWidth;
-                        bcY = holeHeight;
-                        abX = Math.sin(Math.abs(object.rotate) * Math.PI/180) * bcX;
-                        abY = Math.sin(Math.abs(object.rotate) * Math.PI/180) * bcY;
-                        acX = Math.sqrt(bcX * bcX + abX * abX);
-                        acY = Math.sqrt(bcY * bcY + abY * abY);
-                        addX = acX * abX / bcY;
-                        addY = acY * abY / bcY;
                     }
 
                     that.copy.translate(x, y);
@@ -438,9 +430,9 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     //for variable json
                     objTmp = {};
                     objTmp.src = 'face_' + (objectIndex[index] + 1) + '.jpg';
-                    objTmp.width = holeWidth + addX;
-                    objTmp.height = holeHeight + addY;
-                    objTmp.position = (x - holeWidth/2 - addX/4) + ',' + (y - holeHeight/2 - addY/4);
+                    objTmp.width = holeWidth;
+                    objTmp.height = holeHeight;
+                    objTmp.position = (x - holeWidth/2) + ',' + (y - holeHeight/2);
                     objTmp.opacity = 1;
                     objTmp.order = 'back';
                     objTmp.rotate = object.rotate;
@@ -460,8 +452,6 @@ AnimateCanvas.prototype.createSequence = function(options) {
                         that.cache[index].holeHeight = holeHeight;
                         that.cache[index].x = x;
                         that.cache[index].y = y;
-                        that.cache[index].addX = addX;
-                        that.cache[index].addY = addY;
                     } else {
                         that.cache[index] = false;
                     }
