@@ -116,10 +116,10 @@ AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
     var that = this;
 
     var callbacks = that.extend({
-        begin: function(){},
-        buffer: function(){},
-        playing: function(){},
-        complete: function(){}
+        begin: function(player){},
+        buffering: function(player){},
+        playing: function(player){},
+        complete: function(player){}
     }, options);
 
     var canvas = document.getElementById(id);
@@ -171,8 +171,8 @@ AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
         };
         image.src = that.sequence[that.player.current];
 
-        if(typeof callbacks.buffer === 'function'){
-            callbacks.buffer(that.player);
+        if(typeof callbacks.buffering === 'function'){
+            callbacks.buffering(that.player);
         }
         that.player.current++;
     }
