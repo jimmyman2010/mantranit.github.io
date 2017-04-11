@@ -308,6 +308,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
     var objectIndex = [];
     var objTmp = {};
     var alpha = 1;
+    var bcX, bcY, abX, abY, acX, acY, addX, addY;
     that.json = [];
     that.sequence = [];
 
@@ -419,11 +420,20 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     that.copy.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 
                     //for variable json
+                    bcX = holeWidth;
+                    bcY = holeHeight;
+                    abX = Math.sin(Math.abs(object.rotate) * Math.PI/180) * bcX;
+                    abY = Math.sin(Math.abs(object.rotate) * Math.PI/180) * bcY;
+                    acX = Math.sqrt(bcX * bcX + abX * abX);
+                    acY = Math.sqrt(bcY * bcY + abY * abY);
+                    addX = acX * abX / bcY;
+                    addY = acY * abY / bcY;
+
                     objTmp = {};
                     objTmp.src = 'face_' + (objectIndex[index] + 1) + '.jpg';
-                    objTmp.width = holeWidth - Math.sin(object.rotate * (Math.PI / 180)) * holeWidth;
-                    objTmp.height = holeHeight - Math.sin(object.rotate * (Math.PI / 180)) * holeHeight;
-                    objTmp.position = (x - holeWidth/2) + ',' + (y - holeHeight/2);
+                    objTmp.width = holeWidth + addX;
+                    objTmp.height = holeHeight + addY;
+                    objTmp.position = (x - holeWidth/2 - addX/4) + ',' + (y - holeHeight/2 - addY/4);
                     objTmp.opacity = 1;
                     objTmp.order = 'back';
                     objTmp.rotate = object.rotate;
