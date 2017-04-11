@@ -1,11 +1,12 @@
-/*
- AnimateCanvas
- id: id of canvas
- cW: canvas width
- cH: canvas height
- data: link to uploaded photo
+/**
+ * AnimateCanvas
+ * @param cW canvas width
+ * @param cH canvas height
+ * @param data array of object
+ * @param frames array of image source
+ * @constructor
  */
-var AnimateCanvas = function(cW, cH) {
+var AnimateCanvas = function(cW, cH, data, frames) {
 
     var c2 = document.createElement('canvas');
     var copy = c2.getContext('2d');
@@ -16,9 +17,10 @@ var AnimateCanvas = function(cW, cH) {
     this.cH = cH;
     this.c2 = c2;
     this.copy = copy;
-    this.data = [];
+
+    this.data = data || [];
+    this.frames = frames || [];
     this.json = [];
-    this.frames = [];
     this.sequence = [];
 
     this.player = {
@@ -30,6 +32,12 @@ var AnimateCanvas = function(cW, cH) {
     this.cache = [];
 };
 
+/**
+ * combine object
+ * @param defaults
+ * @param options
+ * @returns {*}
+ */
 AnimateCanvas.prototype.extend = function(defaults, options){
     if(typeof options === 'object') {
         for (var key in options) {
