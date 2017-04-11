@@ -165,11 +165,11 @@ $(function(){
 
 
     $('#play').on('click', function(){
-        obj.play('canvas', parseInt($('#fps').val(), 10));
+        obj.playSequence('canvas', parseInt($('#fps').val(), 10));
     });
 
     $('#stop').on('click', function(){
-        obj.stop();
+        obj.stopSequence();
     });
 
     $('#import').on('click', function(){

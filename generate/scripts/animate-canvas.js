@@ -20,9 +20,12 @@ var AnimateCanvas = function(cW, cH) {
     this.json = [];
     this.frames = [];
     this.sequence = [];
-    this.pause = false;
-    this.currentPlay = 0;
-    this.timer = false;
+
+    this.player = {
+        pause: false,
+        current: 0,
+        timer: false
+    };
 
     this.cache = [];
 };
@@ -83,8 +86,14 @@ AnimateCanvas.prototype.clearRequestTimeout = function (handle) {
 
 };
 
-AnimateCanvas.prototype.play = function(id, framesPerSecond){
+AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
     var that = this;
+
+    var callbacks = that.extend({
+        begin: function(){},
+        item: function(){},
+        complete: function(){}
+    }, options);
 
     var canvas = document.getElementById(id);
     canvas.width = that.cW;
@@ -96,21 +105,28 @@ AnimateCanvas.prototype.play = function(id, framesPerSecond){
     var image = new Image();
     var fps = framesPerSecond || 24;
 
-    if(that.pause){
-        that.pause = false;
-        that.currentPlay--;
+    if(that.player.pause){
+        that.player.pause = false;
+        that.player.current--;
     } else {
-        that.currentPlay = 0;
+        that.player.current = 0;
     }
 
-    if(that.timer) {
-        that.clearRequestTimeout(that.timer);
+    if(that.player.timer) {
+        that.clearRequestTimeout(that.player.timer);
     }
-    that.timer = that.requestTimeout(loopImage, 0);
+
+    if(typeof callbacks.begin === 'function'){
+        callbacks.begin();
+    }
+    that.player.timer = that.requestTimeout(loopImage, 0);
 
     function loopImage(){
 
-        if(that.currentPlay >= that.sequence.length) {
+        if(that.player.current >= that.sequence.length) {
+            if(typeof callbacks.complete === 'function'){
+                callbacks.complete(that.player);
+            }
             return false;
         }
 
@@ -119,18 +135,26 @@ AnimateCanvas.prototype.play = function(id, framesPerSecond){
             //context.clearRect(0, 0, frameWidth, frameHeight);
             context.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 
-            that.timer = that.requestTimeout(loopImage, 1000/fps);
+            if(typeof callbacks.item === 'function'){
+                callbacks.item(that.player);
+            }
+            that.player.timer = that.requestTimeout(loopImage, 1000/fps);
 
         };
-        image.src = that.sequence[that.currentPlay];
-        that.currentPlay++;
+        image.src = that.sequence[that.player.current];
+        that.player.current++;
     }
+
 };
 
-AnimateCanvas.prototype.stop = function(){
-    if(this.timer){
-        this.clearRequestTimeout(this.timer);
-        this.pause = true;
+AnimateCanvas.prototype.stopSequence = function(callback){
+    if(this.player.timer){
+        this.clearRequestTimeout(this.player.timer);
+        this.player.pause = true;
+
+        if(typeof callback === 'function'){
+            callback(this.player);
+        }
     }
 };
 
