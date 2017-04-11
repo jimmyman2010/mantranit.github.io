@@ -34,19 +34,19 @@ var AnimateCanvas = function(cW, cH, data, frames) {
 
 /**
  * combine object
- * @param defaults
+ * @param setting
  * @param options
  * @returns {*}
  */
-AnimateCanvas.prototype.extend = function(defaults, options){
+AnimateCanvas.prototype.extend = function(setting, options){
     if(typeof options === 'object') {
         for (var key in options) {
             if (options.hasOwnProperty(key)) {
-                defaults[key] = options[key];
+                setting[key] = options[key];
             }
         }
     }
-    return defaults;
+    return setting;
 };
 
 AnimateCanvas.prototype.setData = function(data){
@@ -115,7 +115,8 @@ AnimateCanvas.prototype.clearRequestTimeout = function (handle) {
 AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
     var that = this;
 
-    var callbacks = that.extend({
+    var setting = that.extend({
+        fps: framesPerSecond || 24,
         begin: function(player){},
         buffering: function(player){},
         playing: function(player){},
@@ -130,7 +131,6 @@ AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
         frameWidth = that.cW,
         frameHeight = that.cH;
     var image = new Image();
-    var fps = framesPerSecond || 24;
 
     if(that.player.pause){
         that.player.pause = false;
@@ -143,16 +143,16 @@ AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
         that.clearRequestTimeout(that.player.timer);
     }
 
-    if(typeof callbacks.begin === 'function'){
-        callbacks.begin();
+    if(typeof setting.begin === 'function'){
+        setting.begin();
     }
     that.player.timer = that.requestTimeout(loopImage, 0);
 
     function loopImage(){
 
         if(that.player.current >= that.sequence.length) {
-            if(typeof callbacks.complete === 'function'){
-                callbacks.complete(that.player);
+            if(typeof setting.complete === 'function'){
+                setting.complete(that.player);
             }
             return false;
         }
@@ -161,18 +161,18 @@ AnimateCanvas.prototype.playSequence = function(id, framesPerSecond, options){
 
             //context.clearRect(0, 0, frameWidth, frameHeight);
 
-            if(typeof callbacks.playing === 'function'){
-                callbacks.playing(that.player);
+            if(typeof setting.playing === 'function'){
+                setting.playing(that.player);
             }
             context.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 
-            that.player.timer = that.requestTimeout(loopImage, 1000/fps);
+            that.player.timer = that.requestTimeout(loopImage, 1000/setting.fps);
 
         };
         image.src = that.sequence[that.player.current];
 
-        if(typeof callbacks.buffering === 'function'){
-            callbacks.buffering(that.player);
+        if(typeof setting.buffering === 'function'){
+            setting.buffering(that.player);
         }
         that.player.current++;
     }
@@ -199,7 +199,7 @@ AnimateCanvas.prototype.readFrame = function(input, options){
     var that = this;
 
     var inputFrame = document.getElementById(input);
-    var callbacks = that.extend({
+    var setting = that.extend({
         noFile: function(){},
         begin: function(){},
         item: function(index, src, fileName){},
@@ -209,8 +209,8 @@ AnimateCanvas.prototype.readFrame = function(input, options){
     }, options);
 
     if(inputFrame.files.length === 0){
-        if(typeof callbacks.noFile === 'function'){
-            callbacks.noFile();
+        if(typeof setting.noFile === 'function'){
+            setting.noFile();
         }
         return false;
     }
@@ -219,8 +219,8 @@ AnimateCanvas.prototype.readFrame = function(input, options){
     var reader = new FileReader();
     that.frames = [];
 
-    if(typeof callbacks.begin === 'function'){
-        callbacks.begin();
+    if(typeof setting.begin === 'function'){
+        setting.begin();
     }
 
     readFile(0);
@@ -229,8 +229,8 @@ AnimateCanvas.prototype.readFrame = function(input, options){
 
         if(i >= inputFrame.files.length){
 
-            if(typeof callbacks.complete === 'function'){
-                callbacks.complete();
+            if(typeof setting.complete === 'function'){
+                setting.complete();
             }
 
             return false;
@@ -248,8 +248,8 @@ AnimateCanvas.prototype.readFrame = function(input, options){
 
                 reader.onloadend = function () {
 
-                    if(typeof callbacks.item === 'function'){
-                        callbacks.item(i, reader.result, sFileName);
+                    if(typeof setting.item === 'function'){
+                        setting.item(i, reader.result, sFileName);
                     }
 
                     //push to frames
@@ -261,15 +261,15 @@ AnimateCanvas.prototype.readFrame = function(input, options){
                 reader.readAsDataURL(file);
 
             } else {
-                if(typeof callbacks.errorFileSize === 'function'){
-                    callbacks.errorFileSize(i, sFileName);
+                if(typeof setting.errorFileSize === 'function'){
+                    setting.errorFileSize(i, sFileName);
                 }
                 readFile(++i);
             }
 
         } else {
-            if(typeof callbacks.errorFileType === 'function'){
-                callbacks.errorFileType(i, sFileName);
+            if(typeof setting.errorFileType === 'function'){
+                setting.errorFileType(i, sFileName);
             }
             readFile(++i);
         }
@@ -277,8 +277,14 @@ AnimateCanvas.prototype.readFrame = function(input, options){
     }
 };
 
+/**
+ * add leading zero for the number
+ * @param num
+ * @param size
+ * @returns {string}
+ */
 AnimateCanvas.prototype.pad = function(num, size) {
-    var s = num + '';
+    var s = num.toString();
     while (s.length < size) s = '0' + s;
     return s;
 };
@@ -286,8 +292,7 @@ AnimateCanvas.prototype.pad = function(num, size) {
 AnimateCanvas.prototype.createSequence = function(options) {
     var that = this;
 
-    var callbacks = that.extend({
-        name: 0,
+    var setting = that.extend({
         begin: function(){},
         item: function(index, src, json){},
         complete: function(json){}
@@ -309,13 +314,14 @@ AnimateCanvas.prototype.createSequence = function(options) {
     var objTmp = {};
     var alpha = 1;
     var bcX, bcY, abX, abY, acX, acY, addX, addY;
+    var pixels, n, j, k, imgSrc, gradient;
     that.json = [];
     that.sequence = [];
 
     var image = new Image();
 
-    if(typeof callbacks.begin === 'function'){
-        callbacks.begin();
+    if(typeof setting.begin === 'function'){
+        setting.begin();
     }
 
     loopFile(0);
@@ -323,15 +329,15 @@ AnimateCanvas.prototype.createSequence = function(options) {
     function loopFile(i){
 
         if(i >= that.frames.length) {
-            if(typeof callbacks.complete === 'function'){
-                callbacks.complete(that.json, that.sequence);
+            if(typeof setting.complete === 'function'){
+                setting.complete(that.json, that.sequence);
             }
             return false;
         }
 
         objectData = [];
         objectIndex = [];
-        for (var k = 0; k < data.length; k++) {
+        for (k = 0; k < data.length; k++) {
             if (data[k].from <= i && i <= data[k].to) {
                 objectData[objectData.length] = data[k];
                 objectIndex[objectIndex.length] = k;
@@ -355,7 +361,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
                 //if we have the image need to draw.
                 if (object.type === 'image') {
 
-                    var imgSrc = new Image();
+                    imgSrc = new Image();
                     imgSrc.src = object.src;
 
                     if(object.fix && that.cache[index] && typeof that.cache[index] === 'object'){
@@ -363,10 +369,11 @@ AnimateCanvas.prototype.createSequence = function(options) {
                         holeHeight = that.cache[index].holeHeight;
                         x = that.cache[index].x;
                         y = that.cache[index].y;
+                        addX = that.cache[index].addX;
+                        addY = that.cache[index].addY;
                     } else {
 
-                        var pixels = that.copy.getImageData(0, 0, frameWidth, frameHeight);
-                        var l = pixels.data.length;
+                        pixels = that.copy.getImageData(0, 0, frameWidth, frameHeight);
 
                         bound = {
                             left: null,
@@ -375,7 +382,7 @@ AnimateCanvas.prototype.createSequence = function(options) {
                             right: null
                         };
 
-                        for (var j = 0; j < l; j += 4) {
+                        for (j = 0; j < pixels.data.length; j += 4) {
                             if (pixels.data[j + 3] == 0) {
                                 x = (j / 4) % frameWidth;
                                 y = ~~((j / 4) / frameWidth);
@@ -409,6 +416,15 @@ AnimateCanvas.prototype.createSequence = function(options) {
                         holeHeight = holeWidth * imgSrc.height / imgSrc.width;
                         x = bound.left + (holeWidth / 2) + object.x;
                         y = bound.top + (holeHeight / 2) + object.y;
+
+                        bcX = holeWidth;
+                        bcY = holeHeight;
+                        abX = Math.sin(Math.abs(object.rotate) * Math.PI/180) * bcX;
+                        abY = Math.sin(Math.abs(object.rotate) * Math.PI/180) * bcY;
+                        acX = Math.sqrt(bcX * bcX + abX * abX);
+                        acY = Math.sqrt(bcY * bcY + abY * abY);
+                        addX = acX * abX / bcY;
+                        addY = acY * abY / bcY;
                     }
 
                     that.copy.translate(x, y);
@@ -420,15 +436,6 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     that.copy.drawImage(image, 0, 0, frameWidth, frameHeight, 0, 0, frameWidth, frameHeight);
 
                     //for variable json
-                    bcX = holeWidth;
-                    bcY = holeHeight;
-                    abX = Math.sin(Math.abs(object.rotate) * Math.PI/180) * bcX;
-                    abY = Math.sin(Math.abs(object.rotate) * Math.PI/180) * bcY;
-                    acX = Math.sqrt(bcX * bcX + abX * abX);
-                    acY = Math.sqrt(bcY * bcY + abY * abY);
-                    addX = acX * abX / bcY;
-                    addY = acY * abY / bcY;
-
                     objTmp = {};
                     objTmp.src = 'face_' + (objectIndex[index] + 1) + '.jpg';
                     objTmp.width = holeWidth + addX;
@@ -447,12 +454,14 @@ AnimateCanvas.prototype.createSequence = function(options) {
 
                     jsonItem.imageFace[jsonItem.imageFace.length] = objTmp;
 
-                    if(object.fix && i > object.from && i < object.to - 1){
+                    if(object.fix && i >= object.from && i < object.to){
                         that.cache[index] = {};
                         that.cache[index].holeWidth = holeWidth;
                         that.cache[index].holeHeight = holeHeight;
                         that.cache[index].x = x;
                         that.cache[index].y = y;
+                        that.cache[index].addX = addX;
+                        that.cache[index].addY = addY;
                     } else {
                         that.cache[index] = false;
                     }
@@ -470,8 +479,8 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     }
                     that.copy.fillStyle = 'rgba(' + object.color.red + ',' + object.color.green + ',' + object.color.blue + ',' + alpha + ')';
                     if (object.gradient) {
-                        var gradient = that.copy.createLinearGradient(0, 0, that.c2.width, 0);
-                        for (var n = 0; n < object.gradient.length; n++) {
+                        gradient = that.copy.createLinearGradient(0, 0, that.c2.width, 0);
+                        for (n = 0; n < object.gradient.length; n++) {
                             gradient.addColorStop(object.gradient[n].point, object.gradient[n].color);
                         }
                         that.copy.fillStyle = gradient;
@@ -509,8 +518,8 @@ AnimateCanvas.prototype.createSequence = function(options) {
 
             that.sequence[that.sequence.length] = that.c2.toDataURL("image/jpeg");
 
-            if(typeof callbacks.item === 'function'){
-                callbacks.item(i, that.c2.toDataURL("image/jpeg"), jsonItem);
+            if(typeof setting.item === 'function'){
+                setting.item(i, that.c2.toDataURL("image/jpeg"), jsonItem);
             }
 
             loopFile(++i);
