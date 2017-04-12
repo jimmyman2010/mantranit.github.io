@@ -57,12 +57,13 @@
             -webkit-transition: all 0.5s ease;  -moz-transition: all 0.5s ease;  -o-transition: all 0.5s ease;  transition: all 0.5s ease;
         }
         .site-wrapper.toggled .sidebar-wrapper {  width: 270px;  }
-        .navbar-toggle{ display: inline; float: none; background-color: white; }
+        .navbar-toggle{ display: inline; float: none; background-color: white; margin-left: 16px; }
         .navbar-toggle .icon-bar{ background-color: black; }
         .header-top{ background-color: black;  color: white;  position: fixed;  width: 100%;  left: 0;  top: 0;  padding-left: 0;  z-index: 999;
             -webkit-transition: all 0.5s ease;  -moz-transition: all 0.5s ease;  -o-transition: all 0.5s ease;  transition: all 0.5s ease;
         }
-        .fps{ display: inline-block; max-width: 50px; }
+        .fps{ display: inline-block; }
+        .fps input{ max-width: 50px; }
         .tab-sticky{ background-color: whitesmoke; padding-top: 12px; }
         .panel-title{ position: relative; }
         .remove-panel{ position: absolute; right: 0; top: 0; }
@@ -200,7 +201,7 @@
                             <div id="video" class="tab-pane fade">
                                 <div class="button-top button-hide text-center" style="display: none;">
                                     <div class="form-group fps">
-                                        <input id="fps" type="number" class="form-control" value="24" />
+                                        <nobr><input id="fps" type="number" class="form-control" value="24" />fps</nobr>
                                     </div>
                                     <button id="play" class="btn btn-danger" type="button">Play</button>
                                     <button id="stop" class="btn btn-default" type="button">Stop</button>
