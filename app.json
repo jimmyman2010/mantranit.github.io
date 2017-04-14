@@ -1,8 +1,8 @@
 {
-  "name": "Man Tran",
-  "description": "A freelance Front-end and Back-end developer",
-  "repository": "https://github.com/mantranit/mantranit.github.io/",
-  "logo": "https://mantranit.github.io/images/favicon/favicon-ios.png",
-  "keywords": ["nodejs", "php", "man", "tran"],
-  "image": "heroku/php"
+  "name": "Start on Heroku: Node.js",
+  "description": "A barebones Node.js app using Express 4",
+  "repository": "https://github.com/heroku/node-js-getting-started",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "heroku"],
+  "image": "heroku/nodejs"
 }
