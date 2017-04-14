@@ -348,7 +348,8 @@ AnimateCanvas.prototype.createSequence = function(options) {
         var jsonItem = {
             text: null,
             imageFace: null,
-            imageFrame: 'frame_' + that.pad((i + 1), (that.frames.length).toString().length) + '.png'
+            //imageFrame: 'frame_' + that.pad((i + 1), (that.frames.length).toString().length) + '.png'
+            imageFrame: '\'.$frame_url.\'frame_' + that.pad((i + 1), (that.frames.length).toString().length) + '.png'
         };
 
         image.onload = function(){
@@ -429,13 +430,20 @@ AnimateCanvas.prototype.createSequence = function(options) {
 
                     //for variable json
                     objTmp = {};
-                    objTmp.src = 'face_' + (objectIndex[index] + 1) + '.jpg';
-                    objTmp.width = holeWidth;
-                    objTmp.height = holeHeight;
-                    objTmp.position = (x - holeWidth/2) + ',' + (y - holeHeight/2);
+                    //objTmp.src = 'face_' + (objectIndex[index] + 1) + '.jpg';
+                    objTmp.src = '\'.$photo' + (objectIndex[index] + 1) + '.\'';
+                    objTmp.width = holeWidth + 8;
+                    objTmp.height = holeHeight + 8;
+                    objTmp.position = (x - holeWidth/2 - 4) + ',' + (y - holeHeight/2 + - 4);
                     objTmp.opacity = 1;
                     objTmp.order = 'back';
                     objTmp.rotate = object.rotate;
+                    if(object.rotate > 0) {
+                        objTmp.rotate = object.rotate - 1;
+                    }
+                    if(object.rotate < 0) {
+                        objTmp.rotate = object.rotate + 1;
+                    }
                     objTmp.start = object.from;
                     objTmp.end = object.to;
                     objTmp.id = (objectIndex[index] + 1);
@@ -484,7 +492,8 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     //for variable json
                     objTmp = {};
                     objTmp.text = object.src;
-                    objTmp.font = object.fontFamily;
+                    //objTmp.font = object.fontFamily;
+                    objTmp.font = '\'.$font_url.\'';
                     objTmp.size = object.fontSize;
                     objTmp.position = object.x + ',' + object.y;
                     objTmp.opacity = alpha;
