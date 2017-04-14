@@ -1,0 +1,8 @@
+{
+  "name": "Man Tran",
+  "description": "A freelance Front-end and Back-end developer",
+  "repository": "https://github.com/mantranit/mantranit.github.io/",
+  "logo": "https://mantranit.github.io/images/favicon/favicon-ios.png",
+  "keywords": ["nodejs", "php", "man", "tran"],
+  "image": "heroku/php"
+}
