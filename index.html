@@ -117,7 +117,7 @@
             <h2 class="major">CONTACT</h2>
 
             <form action="https://getsimpleform.com/messages?form_api_token=b6cfeeecf683abe090f274abca60f45f" method="post">
-                <input type="hidden" name="redirect_to" value="https://mantranit.github.io/#thankyou" />
+                <input type="hidden" id="redirect-to" name="redirect_to" value="https://mantranit.github.io/#thankyou" />
                 <div class="field half first">
                     <label for="name">Name</label>
                     <input type="text" name="name" id="name"/>
@@ -412,6 +412,10 @@ print 'It took ' + i + ' iterations to sort the deck.';
 <script src="assets/js/typed.min.js"></script>
 <script src="assets/js/util.min.js"></script>
 <script src="assets/js/main.min.js"></script>
+<script type="text/javascript">
+    document.getElementById('redirect-to').value = window.location.protocol + '://' + window.location.hostname + '#thank-you';
+</script>
+
 
 </body>
 </html>
