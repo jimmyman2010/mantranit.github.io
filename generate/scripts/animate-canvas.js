@@ -536,3 +536,39 @@ AnimateCanvas.prototype.getRandomInt = function(min, max) {
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min)) + min;
 };
+
+AnimateCanvas.prototype.randomFace = function(faceW, faceH, grid){
+    var c = document.createElement('canvas');
+    c.width = faceW;
+    c.height = faceH;
+
+    var r = this.getRandomInt(0, 255),
+        g = this.getRandomInt(0, 255),
+        b = this.getRandomInt(0, 255),
+        line = 'white';
+    if((r*299 + g*587 + b*114)/1000 >= 125){
+        line = 'black';
+    }
+
+    var ctx = c.getContext("2d");
+    ctx.beginPath();
+    ctx.rect(0, 0, faceW, faceH);
+    ctx.fillStyle = this.rgbToHex(r, g, b);
+    ctx.fill();
+
+    for(var i = 1; i < grid; i++){
+        ctx.beginPath();
+        ctx.moveTo((faceW/grid)*i, 0);
+        ctx.lineTo((faceW/grid)*i, faceH);
+        ctx.strokeStyle = line;
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.moveTo(0, (faceH/grid)*i);
+        ctx.lineTo(faceW, (faceH/grid)*i);
+        ctx.strokeStyle = line;
+        ctx.stroke();
+    }
+
+    return c.toDataURL();
+};
