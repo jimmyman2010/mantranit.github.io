@@ -560,12 +560,14 @@ AnimateCanvas.prototype.randomFace = function(faceW, faceH, grid){
         ctx.beginPath();
         ctx.moveTo((faceW/grid)*i, 0);
         ctx.lineTo((faceW/grid)*i, faceH);
+        ctx.lineWidth = 2;
         ctx.strokeStyle = line;
         ctx.stroke();
 
         ctx.beginPath();
         ctx.moveTo(0, (faceH/grid)*i);
         ctx.lineTo(faceW, (faceH/grid)*i);
+        ctx.lineWidth = 2;
         ctx.strokeStyle = line;
         ctx.stroke();
     }
