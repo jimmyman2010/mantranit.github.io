@@ -133,12 +133,17 @@ $(function(){
         });
     });
 
+
+    var width = $('input[name="faceWidth"]'),
+        height = $('input[name="faceHeight"]'),
+        grid = $('input[name="faceGrid"]');
+
     $('#add-face').on('click', function(){
         index++;
 
         var template = $($('#template-face').html());
         var id = 'collapse-face-' + index;
-        var image = obj.randomFace(300, 300, 4);
+        var image = obj.randomFace(parseInt(width.val(), 10), parseInt(height.val(), 10), parseInt(grid.val(), 10));
 
         template.find('#collapse-face').attr('id', id);
         template.find('a[data-toggle="collapse"]').attr('href', '#' + id).html(index + '. Face');
@@ -148,6 +153,8 @@ $(function(){
         $('#accordion [data-parent="#accordion"]').attr('aria-expanded', 'false');
         $('#accordion .in').removeClass('in');
         $('#accordion').append(template);
+
+        $("#modalFace").modal('hide');
     });
 
     $('#add-text').on('click', function(){
