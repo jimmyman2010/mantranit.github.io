@@ -202,6 +202,11 @@ $(function(){
                 template.find('input[name="x"]').val(obj.x);
                 template.find('input[name="y"]').val(obj.y);
 
+                template.find('input[name="phpRotate"]').val(obj.phpRotate);
+                template.find('input[name="phpWidth"]').val(obj.phpWidth);
+                template.find('input[name="phpX"]').val(obj.phpX);
+                template.find('input[name="phpY"]').val(obj.phpY);
+
                 if(obj.fix){
                     template.find('input[name="fix"]').prop('checked', 'checked');
                 }

@@ -313,7 +313,6 @@ AnimateCanvas.prototype.createSequence = function(options) {
     var objectIndex = [];
     var objTmp = {};
     var alpha = 1;
-    var bcX, bcY, abX, abY, acX, acY, ahX, ahY, addX, addY;
     var pixels, n, j, k, imgSrc, gradient;
     that.json = [];
     that.sequence = [];
@@ -432,18 +431,12 @@ AnimateCanvas.prototype.createSequence = function(options) {
                     objTmp = {};
                     //objTmp.src = 'face_' + (objectIndex[index] + 1) + '.jpg';
                     objTmp.src = '\'.$photo' + (objectIndex[index] + 1) + '.\'';
-                    objTmp.width = holeWidth + 8;
-                    objTmp.height = holeHeight + 8;
-                    objTmp.position = (x - holeWidth/2 - 4) + ',' + (y - holeHeight/2 + - 4);
+                    objTmp.width = holeWidth + object.phpWidth;
+                    objTmp.height = objTmp.width * imgSrc.height / imgSrc.width;
+                    objTmp.position = ((x - holeWidth/2) + object.phpX) + ',' + ((y - holeHeight/2) + object.phpY);
                     objTmp.opacity = 1;
                     objTmp.order = 'back';
-                    objTmp.rotate = object.rotate;
-                    if(object.rotate > 0) {
-                        objTmp.rotate = object.rotate - 1;
-                    }
-                    if(object.rotate < 0) {
-                        objTmp.rotate = object.rotate + 1;
-                    }
+                    objTmp.rotate = object.rotate + object.phpRotate;
                     objTmp.start = object.from;
                     objTmp.end = object.to;
                     objTmp.id = (objectIndex[index] + 1);
