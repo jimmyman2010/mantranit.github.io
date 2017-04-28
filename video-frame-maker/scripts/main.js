@@ -279,6 +279,9 @@ $(function(){
         });
 
         input.val('');
+
+        $('#ok').trigger('click');
+
         $('#modalImport').modal('hide');
     });
 
