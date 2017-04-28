@@ -154,9 +154,15 @@ $(function(){
             $('#create-face').trigger('click');
 
         } else {
-            $("#modalFace").modal('show');
+            $("#modalFace").modal({backdrop: 'static', keyboard: false});
         }
 
+    });
+
+    $('#cancel-face').on('click', function(){
+        dontAskAgain.get(0).checked = false;
+
+        $("#modalFace").modal('hide');
     });
 
     $('#create-face').on('click', function(){
