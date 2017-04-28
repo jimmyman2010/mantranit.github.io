@@ -574,3 +574,4 @@ AnimateCanvas.prototype.randomFace = function(faceW, faceH, grid){
 
     return c.toDataURL();
 };
+

@@ -11,10 +11,19 @@ $(function(){
     var error = '';
 
     var index = 0;
-    var WIDTH = 640,
-        HEIGHT = 480;
 
-    var obj = new AnimateCanvas(WIDTH, HEIGHT);
+    var obj;
+    $('#modalCanvas').modal('show');
+
+    $('#init-canvas').on('click', function(){
+        var width = parseInt($('input[name="canvasWidth"]').val(), 10),
+            height = parseInt($('input[name="canvasHeight"]').val(), 10);
+
+        obj = new AnimateCanvas(width, height);
+
+        $('#modalCanvas').modal('hide');
+    });
+
 
     uploadFrame.on('click', function(){
         var that = $(this);
