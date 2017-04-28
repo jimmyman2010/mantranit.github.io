@@ -13,7 +13,7 @@ $(function(){
     var index = 0;
 
     var obj;
-    $('#modalCanvas').modal('show');
+    $('#modalCanvas').modal({backdrop: 'static', keyboard: false});
 
     $('#init-canvas').on('click', function(){
         var width = parseInt($('input[name="canvasWidth"]').val(), 10),
@@ -142,12 +142,24 @@ $(function(){
         });
     });
 
-
     var width = $('input[name="faceWidth"]'),
         height = $('input[name="faceHeight"]'),
-        grid = $('input[name="faceGrid"]');
+        grid = $('input[name="faceGrid"]'),
+        dontAskAgain = $('input[name="dontAskAgain"]');
 
     $('#add-face').on('click', function(){
+
+        if(dontAskAgain.get(0).checked){
+
+            $('#create-face').trigger('click');
+
+        } else {
+            $("#modalFace").modal('show');
+        }
+
+    });
+
+    $('#create-face').on('click', function(){
         index++;
 
         var template = $($('#template-face').html());
