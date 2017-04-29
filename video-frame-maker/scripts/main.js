@@ -222,6 +222,7 @@ $(function(){
         var json = JSON.parse('{"data": ' + input.val() + '}');
 
         $('#accordion').empty();
+        var fontCookieName = localStorage.getItem('fontCookieName') !== null ? JSON.parse(localStorage.getItem('fontCookieName')) : { data: [] };
 
         var template, id;
         json.data.forEach(function(obj, index){
@@ -255,6 +256,10 @@ $(function(){
 
             if(obj.type === 'text'){
                 template = $($('#template-text').html());
+
+                for(var i = 0; i < fontCookieName.data.length; i++){
+                    template.find('.font-family').append('<option>' + fontCookieName.data[i] + '</option>');
+                }
                 id = 'collapse-text-' + index;
 
                 template.find('#collapse-text').attr('id', id).removeClass('in');
