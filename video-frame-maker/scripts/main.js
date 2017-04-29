@@ -274,6 +274,7 @@ $(function(){
                 template.find('input[name="x"]').val(obj.x);
                 template.find('input[name="y"]').val(obj.y);
 
+
                 template.find('select[name="fontFamily"]').val(obj.fontFamily);
                 template.find('select[name="fade"]').val(obj.fade.toString());
                 template.find('input[name="fontSize"]').val(obj.fontSize);
