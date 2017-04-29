@@ -274,7 +274,7 @@ $(function(){
                 template.find('input[name="x"]').val(obj.x);
                 template.find('input[name="y"]').val(obj.y);
 
-                template.find('input[name="fontFamily"]').val(obj.fontFamily);
+                template.find('select[name="fontFamily"]').val(obj.fontFamily);
                 template.find('select[name="fade"]').val(obj.fade.toString());
                 template.find('input[name="fontSize"]').val(obj.fontSize);
                 template.find('input[name="lineHeight"]').val(obj.lineHeight);
@@ -418,39 +418,4 @@ function toJSONString( form ) {
     }
 
     return obj;
-}
-
-function setCookie(cname, cvalue, exdays, cpath) {
-    var path = cpath || '/';
-    var d = new Date();
-    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-    var expires = "expires="+d.toUTCString();
-    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=" + path;
-}
-
-function getCookie(cname) {
-    var name = cname + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-    return "";
-}
-
-function checkCookie() {
-    var user = getCookie("username");
-    if (user != "") {
-        alert("Welcome again " + user);
-    } else {
-        user = prompt("Please enter your name:", "");
-        if (user != "" && user != null) {
-            setCookie("username", user, 365);
-        }
-    }
 }
