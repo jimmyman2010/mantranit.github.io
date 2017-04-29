@@ -88,6 +88,8 @@
 </head>
 <body>
 
+<div id="body-style" style="visibility: hidden; position: absolute; z-index: 1; max-width: 20px; overflow: hidden;"></div>
+
 <div id="wrapper" class="site-wrapper toggled">
 
     <!-- Sidebar -->
@@ -117,16 +119,25 @@
     <div id="page-content-wrapper">
         <div class="header-top">
             <div class="row">
-                <div class="col-sm-2">
+                <div class="col-sm-6">
                     <button type="button" class="navbar-toggle" id="menu-toggle">
                         <span class="sr-only">Toggle navigation</span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
+
+                    <div style="visibility: hidden; position: absolute; z-index: -1; max-width: 20px; overflow: hidden;">
+                        <input type="file" id="input-font" multiple="multiple" accept=".ttf, .otf"/>
+                    </div>
+
+                    <button id="upload-font" class="btn btn-info" type="button">
+                        <span class="normal">Import font</span>
+                        <span class="process"><i class="fa fa-refresh fa-spin"></i> Importing font</span>
+                    </button>
                 </div>
-                <div class="col-sm-10 text-right">
-                    <input type="file" id="input-frame" multiple="multiple"/>
+                <div class="col-sm-6 text-right">
+                    <input type="file" id="input-frame" multiple="multiple" accept="image/png"/>
 
                     <button id="upload-frame" class="btn btn-primary" type="button">
                         <span class="normal">Upload</span>
@@ -266,29 +277,30 @@
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-xs-6">
+                        <div class="form-group col-xs-12">
                             <label>Font Family:</label>
-                            <input type="text" class="form-control" name="fontFamily" value="Baloo-Regular">
-                        </div>
-
-                        <div class="form-group col-xs-6">
-                            <label>Fade:</label>
-                            <select class="form-control" name="fade">
-                                <option>false</option>
-                                <option>in</option>
-                                <option>out</option>
+                            <select class="form-control font-family" name="fontFamily">
+                                <option>Baloo-Regular</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="row">
-                        <div class="form-group col-xs-6">
+                        <div class="form-group col-xs-4">
                             <label>Font Size:</label>
                             <input type="number" class="form-control" name="fontSize" value="32">
                         </div>
-                        <div class="form-group col-xs-6">
+                        <div class="form-group col-xs-4">
                             <label>Line Height:</label>
                             <input type="number" class="form-control" name="lineHeight" value="36">
+                        </div>
+                        <div class="form-group col-xs-4">
+                            <label>&nbsp;<br>Fade:</label>
+                            <select class="form-control" name="fade">
+                                <option>false</option>
+                                <option>in</option>
+                                <option>out</option>
+                            </select>
                         </div>
                     </div>
 

@@ -191,6 +191,11 @@ $(function(){
         template.find('#collapse-text').attr('id', id);
         template.find('a[data-toggle="collapse"]').attr('href', '#' + id).html(index + '. Text');
 
+        var fontCookieName = getCookie('fontCookieName') !== '' ? JSON.parse(getCookie('fontCookieName')) : { data: [] };
+        for(var i = 0; i < fontCookieName.data.length; i++){
+            template.find('.font-family').append('<option>' + fontCookieName.data[i] + '</option>');
+        }
+
         $('#accordion [data-parent="#accordion"]').attr('aria-expanded', 'false');
         $('#accordion .in').removeClass('in');
         $('#accordion').append(template);
@@ -285,6 +290,97 @@ $(function(){
         $('#modalImport').modal('hide');
     });
 
+    var fontCookieName = localStorage.getItem('fontCookieName') !== null ? JSON.parse(localStorage.getItem('fontCookieName')) : { data: [] };
+    var fontCookieSrc = localStorage.getItem('fontCookieSrc') !== null ? JSON.parse(localStorage.getItem('fontCookieSrc')) : { data: [] };
+    for(var i = 0; i < fontCookieName.data.length; i++){
+        var strStyle = '<style type="text/css">@font-face {font-family:"' + fontCookieName.data[i] + '";src:' + fontCookieSrc.data[i] + ';font-style:normal;font-weight:normal;}</style>';
+        $(strStyle).appendTo('head');
+        $('.font-family').append('<option>' + fontCookieName.data[i] + '</option>');
+    }
+
+    $('#upload-font').on('click', function(){
+
+        $(this).addClass('processing');
+        $('#input-font').trigger('click');
+    });
+
+    $('#input-font').on('change', function(){
+
+        var that = this;
+        var file, sFileName, sFileExtension, iFileSize, strStyle, fontSrc, fontName, fontCookieSrc, fontCookieName;
+
+        var reader = new FileReader();
+
+        readFile(0);
+
+        function readFile(i) {
+
+            if(i >= that.files.length){
+
+                $('#upload-font').removeClass('processing');
+                that.value = '';
+
+                return false;
+            }
+
+            file = that.files[i];
+
+            sFileName = file.name;
+            sFileExtension = sFileName.split('.')[sFileName.split('.').length - 1].toLowerCase();
+            iFileSize = file.size;
+
+            fontName = sFileName.split('.')[0].replace(new RegExp(' ', 'g'), '_').toLowerCase();
+            fontCookieName = localStorage.getItem('fontCookieName') !== null ? JSON.parse(localStorage.getItem('fontCookieName')) : { data: [] };
+            fontCookieSrc = localStorage.getItem('fontCookieSrc') !== null ? JSON.parse(localStorage.getItem('fontCookieSrc')) : { data: [] };
+
+            if(fontCookieName.data.indexOf(fontName) === -1) {
+
+                if (sFileExtension === "ttf" || sFileExtension === "otf") { /// file type
+
+                    if (iFileSize <= 104857.6) { /// 0.1 mb
+
+                        reader.onloadend = function () {
+
+                            if (sFileExtension === 'otf') {
+                                fontSrc = 'url(data:font/opentype;charset=utf-8' + reader.result.replace('data:', '') + ')';
+                            }
+
+                            if (sFileExtension === 'ttf') {
+                                fontSrc = 'url(data:font/truetype;charset=utf-8' + reader.result.replace('data:', '') + ')';
+                            }
+                            strStyle = '<style type="text/css">@font-face {font-family:"' + fontName + '";src:' + fontSrc + ';font-style:normal;font-weight:normal;}</style>';
+                            $(strStyle).appendTo('head');
+
+                            fontCookieName.data[fontCookieName.data.length] = fontName;
+                            fontCookieSrc.data[fontCookieSrc.data.length] = fontSrc;
+                            localStorage.setItem('fontCookieName', JSON.stringify(fontCookieName));
+                            localStorage.setItem('fontCookieSrc', JSON.stringify(fontCookieSrc));
+
+                            $('.font-family').append('<option>' + fontName + '</option>');
+
+                            readFile(++i);
+
+                        };
+                        reader.readAsDataURL(file);
+
+                    } else {
+
+                        readFile(++i);
+                    }
+
+                } else {
+
+                    readFile(++i);
+                }
+            } else {
+
+                readFile(++i);
+            }
+
+        }
+
+    });
+
 });
 
 function toJSONString( form ) {
@@ -317,4 +413,39 @@ function toJSONString( form ) {
     }
 
     return obj;
+}
+
+function setCookie(cname, cvalue, exdays, cpath) {
+    var path = cpath || '/';
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires="+d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=" + path;
+}
+
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
+}
+
+function checkCookie() {
+    var user = getCookie("username");
+    if (user != "") {
+        alert("Welcome again " + user);
+    } else {
+        user = prompt("Please enter your name:", "");
+        if (user != "" && user != null) {
+            setCookie("username", user, 365);
+        }
+    }
 }
