@@ -306,11 +306,12 @@ $(function(){
 
     $('#upload-font').on('click', function(){
 
-        $(this).addClass('processing');
         $('#input-font').trigger('click');
     });
 
     $('#input-font').on('change', function(){
+
+        $('#upload-font').addClass('processing');
 
         var that = this;
         var file, sFileName, sFileExtension, iFileSize, strStyle, fontSrc, fontName, fontCookieSrc, fontCookieName;
