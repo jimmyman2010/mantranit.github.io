@@ -191,7 +191,7 @@ $(function(){
         template.find('#collapse-text').attr('id', id);
         template.find('a[data-toggle="collapse"]').attr('href', '#' + id).html(index + '. Text');
 
-        var fontCookieName = getCookie('fontCookieName') !== '' ? JSON.parse(getCookie('fontCookieName')) : { data: [] };
+        var fontCookieName = localStorage.getItem('fontCookieName') !== null ? JSON.parse(localStorage.getItem('fontCookieName')) : { data: [] };
         for(var i = 0; i < fontCookieName.data.length; i++){
             template.find('.font-family').append('<option>' + fontCookieName.data[i] + '</option>');
         }
