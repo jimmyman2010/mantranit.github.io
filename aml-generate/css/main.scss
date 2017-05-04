@@ -73,6 +73,7 @@ input[type="number"] {
 
     .col-xs-12{
         border: 1px solid;
+        padding: 5px;
     }
 }
 
@@ -228,4 +229,10 @@ input[type="number"] {
     padding: 0 20px;
     font-size: 60px;
     line-height: 1;
+}
+
+@media (min-width: 1380px){
+    .modal-xlg{
+        width: 1380px;
+    }
 }
