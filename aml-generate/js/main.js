@@ -34,15 +34,20 @@ $(function(){
     });
 
     $('#offerAndJoin').summernote({
-        minHeight: 300
+        minHeight: 200
+    });
+
+    $('#bodyMore').summernote({
+        minHeight: 100
     });
 
     $('#hotelHighlight').summernote({
-        minHeight: 300
+        minHeight: 100
     });
 
     $('#termAndConditions').summernote({
-        minHeight: 300
+        minHeight: 200
     });
+
 
 });

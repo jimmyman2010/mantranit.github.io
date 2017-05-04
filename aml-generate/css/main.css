@@ -1,11 +1,5 @@
 body {
   font-family: Helvetica, Arial, sans-serif; }
-  body div::-webkit-scrollbar {
-    width: 10px; }
-  body div::-webkit-scrollbar-track {
-    background: #f3f3f3; }
-  body div::-webkit-scrollbar-thumb {
-    background: gray; }
 
 img {
   max-width: 100%; }
@@ -44,7 +38,7 @@ input[type="number"] {
 
 .wrap-temp {
   zoom: 1;
-  border: 1px solid;
+  border: 1px solid #f3f3f3;
   padding: 5px;
   background-color: white;
   color: black;
@@ -55,8 +49,9 @@ input[type="number"] {
   .wrap-temp:after {
     clear: both; }
   .wrap-temp .col-xs-12 {
-    border: 1px solid;
-    padding: 5px; }
+    border: 1px solid #e1e1e1;
+    padding: 5px;
+    background-color: #f3f3f3; }
 
 .btn {
   min-width: 80px; }
@@ -178,8 +173,7 @@ input[type="number"] {
   font-size: 60px;
   line-height: 1; }
 
-@media (min-width: 1380px) {
-  .modal-xlg {
-    width: 1380px; } }
+.modal-xlg {
+  width: 90%; }
 
 /*# sourceMappingURL=main.css.map */
