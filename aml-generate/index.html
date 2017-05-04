@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="keyword" content="jimmy man, mantran, man tran, frontend, developer, backend, full-stack, html, stylesheet, grunt, ruby, nodejs, javascript, jquery, backbonejs, angularjs, php, phpunit, yii2, symfony, lavarel, wordpress"/>
+    <meta name="description" content="A freelance Front-end and Back-end developer with the excellent coding standards. W3C standards, SEO and capabilities of different web browsers are factors I always keep in mind while developing websites."/>
+    <meta name="p:domain_verify" content="29a6026dd8de40359663d7726ffa4984"/>
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../assets/images/favicon/favicon.ico"/>
+    <link rel="apple-touch-icon" href="../assets/images/favicon/favicon-ios.png" type="image/png"/>
+    <link rel="icon" href="../assets/images/favicon/favicon.png" type="image/png"/>
+
+    <title>AML generate online - Man Tran</title>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" href="css/main.css"/>
+
+</head>
+<body>
+
+<div id="body-style" style="visibility: hidden; position: absolute; z-index: 1; max-width: 20px; overflow: hidden;"></div>
+
+<div id="wrapper" class="site-wrapper">
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+        <div class="header-top">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-sm-12 text-right">
+                        <input type="file" id="input-html" accept="text/html"/>
+
+                        <button id="upload-html" class="btn btn-primary" type="button">
+                            <span class="normal">Upload</span>
+                            <span class="process"><i class="fa fa-refresh fa-spin"></i> Uploading</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="row tab-sticky">
+                    <div class="col-sm-12">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#input-json">Input Json</a></li>
+                            <li><a data-toggle="tab" href="#preview">Preview</a></li>
+                            <li><a data-toggle="tab" href="#result">Result</a></li>
+                            <li><a data-toggle="tab" class="button-hide" style="display: none;" href="#video">Video</a></li>
+                            <li><a data-toggle="tab" class="button-hide" style="display: none;" href="#json">Output Json</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <main role="main" class="main">
+            <div class="container-fluid">
+
+                <div id="main"></div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+
+                        <div class="tab-content">
+
+                            <div id="input-json" class="tab-pane fade in active">
+                                <div class="button-top text-center">
+                                    <button data-toggle="modal" data-target="#modalImport" class="btn btn-info" type="button">Import</button>
+                                    <br>
+                                    <br>
+                                </div>
+
+                                <pre id="input-json-view" class="image-group"></pre>
+                            </div>
+
+                            <div id="preview" class="tab-pane fade">
+                                <div id="source" class="image-group"></div>
+                            </div>
+
+                            <div id="result" class="tab-pane fade">
+                                <div class="button-top text-center">
+                                    <button id="process" class="btn btn-danger" type="button">
+                                        <span class="normal">Process</span>
+                                        <span class="process"><i class="fa fa-refresh fa-spin"></i> Processing</span>
+                                    </button>
+                                    <button id="clear" class="btn btn-default" type="button">Clear</button>
+                                    <br>
+                                    <br>
+                                </div>
+                                <div id="results" class="image-group"></div>
+                            </div>
+
+                            <div id="video" class="tab-pane fade">
+                                <div class="button-top button-hide text-center" style="display: none;">
+                                    <div class="form-group fps">
+                                        <nobr><input id="fps" type="number" class="form-control" value="24" />fps</nobr>
+                                    </div>
+                                    <button id="play" class="btn btn-danger" type="button">Play</button>
+                                    <button id="stop" class="btn btn-default" type="button">Stop</button>
+                                    <br>
+                                    <br>
+                                </div>
+                                <div id="video-canvas" class="image-group text-center">
+                                    <canvas id="canvas" width="640" height="480"></canvas>
+                                </div>
+                            </div>
+
+                            <div id="json" class="tab-pane fade">
+                                <div class="button-top button-hide text-center" style="display: none;">
+                                    <a href="" id="link" class="btn btn-info">Click here to download JSON file.</a>
+                                    <br>
+                                    <br>
+                                </div>
+                                <pre id="json-view" class="image-group"></pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <footer class="footer row">
+                    <div class="col-sm-12"><p>&copy; Man Tran</p></div>
+                </footer>
+            </div>
+        </main>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+<a href="javascript:void(0);" class="to-top"><i class="fa fa-angle-up"></i></a>
+
+
+<!-- Modal Import -->
+<div class="modal fade" id="modalImport" tabindex="-1" role="dialog" aria-labelledby="modalImportLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="modalImportLabel">Import JSON</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <textarea id="import-value" class="form-control" placeholder="JSON Array format" rows="16"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" id="import" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Face -->
+<div class="modal fade" id="modalFace" tabindex="-1" role="dialog" aria-labelledby="modalFaceLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                <h4 class="modal-title" id="modalFaceLabel">Dimension of Face</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-xs-4">
+                        <label>Width:</label>
+                        <input type="number" class="form-control" name="faceWidth" value="300">
+                    </div>
+                    <div class="form-group col-xs-4">
+                        <label>Height:</label>
+                        <input type="number" class="form-control" name="faceHeight" value="300">
+                    </div>
+                    <div class="form-group col-xs-4">
+                        <label>Grid:</label>
+                        <input type="number" class="form-control" name="faceGrid" value="4">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="checkbox col-xs-12">
+                        <label><input type="checkbox" name="dontAskAgain" value="1">Don't ask me again, use this dimension for the rest images later.</label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="cancel-face" class="btn btn-default">Cancel</button>
+                <button type="button" id="create-face" class="btn btn-primary">Create</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Face -->
+<div class="modal fade" id="modalCanvas" tabindex="-1" role="dialog" aria-labelledby="modalCanvasLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalCanvasLabel">Dimension of Video</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="form-group col-xs-6">
+                        <label>Width:</label>
+                        <input type="number" class="form-control" name="canvasWidth" value="640">
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <label>Height:</label>
+                        <input type="number" class="form-control" name="canvasHeight" value="480">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="init-canvas" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="js/main.js"></script>
+
+<script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    $('.to-top').click(function(e){
+        var body = $("html, body");
+        body.stop().animate({scrollTop:0}, '500', 'swing');
+    });
+//    $('#editor').wysiwyg();
+
+</script>
+</body>
+</html>
+
