@@ -42,11 +42,9 @@
                 <div class="row tab-sticky">
                     <div class="col-sm-12">
                         <ul class="nav nav-tabs">
-                            <li class="active"><a data-toggle="tab" href="#input-json">Input Json</a></li>
+                            <li><a data-toggle="tab" href="#input">Input</a></li>
+                            <li class="active"><a data-toggle="tab" href="#design">Design</a></li>
                             <li><a data-toggle="tab" href="#preview">Preview</a></li>
-                            <li><a data-toggle="tab" href="#result">Result</a></li>
-                            <li><a data-toggle="tab" class="button-hide" style="display: none;" href="#video">Video</a></li>
-                            <li><a data-toggle="tab" class="button-hide" style="display: none;" href="#json">Output Json</a></li>
                         </ul>
                     </div>
                 </div>
@@ -62,56 +60,26 @@
 
                         <div class="tab-content">
 
-                            <div id="input-json" class="tab-pane fade in active">
-                                <div class="button-top text-center">
-                                    <button data-toggle="modal" data-target="#modalImport" class="btn btn-info" type="button">Import</button>
-                                    <br>
-                                    <br>
-                                </div>
+                            <div id="input" class="tab-pane fade">
+                                <pre id="json-view" class="image-group"></pre>
+                            </div>
 
-                                <pre id="input-json-view" class="image-group"></pre>
+                            <div id="design" class="tab-pane fade in active">
+                                <div id="source" class="image-group"></div>
+
+                                <div class="buttons text-center">
+                                    <br>
+                                    <button id="one-column" class="btn btn-info btn-sm">One</button>
+                                    <button id="two-columns" class="btn btn-info btn-sm">Two</button>
+                                    <br><br>
+                                    <button id="ok" class="btn btn-primary">OK</button>
+                                </div>
                             </div>
 
                             <div id="preview" class="tab-pane fade">
-                                <div id="source" class="image-group"></div>
+
                             </div>
 
-                            <div id="result" class="tab-pane fade">
-                                <div class="button-top text-center">
-                                    <button id="process" class="btn btn-danger" type="button">
-                                        <span class="normal">Process</span>
-                                        <span class="process"><i class="fa fa-refresh fa-spin"></i> Processing</span>
-                                    </button>
-                                    <button id="clear" class="btn btn-default" type="button">Clear</button>
-                                    <br>
-                                    <br>
-                                </div>
-                                <div id="results" class="image-group"></div>
-                            </div>
-
-                            <div id="video" class="tab-pane fade">
-                                <div class="button-top button-hide text-center" style="display: none;">
-                                    <div class="form-group fps">
-                                        <nobr><input id="fps" type="number" class="form-control" value="24" />fps</nobr>
-                                    </div>
-                                    <button id="play" class="btn btn-danger" type="button">Play</button>
-                                    <button id="stop" class="btn btn-default" type="button">Stop</button>
-                                    <br>
-                                    <br>
-                                </div>
-                                <div id="video-canvas" class="image-group text-center">
-                                    <canvas id="canvas" width="640" height="480"></canvas>
-                                </div>
-                            </div>
-
-                            <div id="json" class="tab-pane fade">
-                                <div class="button-top button-hide text-center" style="display: none;">
-                                    <a href="" id="link" class="btn btn-info">Click here to download JSON file.</a>
-                                    <br>
-                                    <br>
-                                </div>
-                                <pre id="json-view" class="image-group"></pre>
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -126,29 +94,6 @@
 </div>
 <!-- /#wrapper -->
 <a href="javascript:void(0);" class="to-top"><i class="fa fa-angle-up"></i></a>
-
-
-<!-- Modal Import -->
-<div class="modal fade" id="modalImport" tabindex="-1" role="dialog" aria-labelledby="modalImportLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="modalImportLabel">Import JSON</h4>
-            </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <textarea id="import-value" class="form-control" placeholder="JSON Array format" rows="16"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" id="import" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 <!-- Modal Face -->
 <div class="modal fade" id="modalFace" tabindex="-1" role="dialog" aria-labelledby="modalFaceLabel">

@@ -1,3 +1,15 @@
+
+@mixin clearfix{
+    zoom: 1;
+    &:before, &:after{
+        content: '';
+        display: table;
+    }
+    &:after{
+        clear: both;
+    }
+}
+
 body {
     font-family: Helvetica, Arial, sans-serif;
     div {
@@ -26,7 +38,10 @@ input[type="number"] {
 }
 
 .image-group {
+    @include clearfix;
+
     min-height: 50vh;
+    background-color: #ddd;
     > span {
         position: relative;
         float: left;
@@ -44,6 +59,20 @@ input[type="number"] {
         background-color: white;
         color: black;
         border-radius: 100%;
+    }
+}
+
+.wrap-temp{
+    @include clearfix;
+
+    border: 1px solid;
+    padding: 5px;
+    background-color: white;
+    color: black;
+    margin: 10px;
+
+    .col-xs-12{
+        border: 1px solid;
     }
 }
 

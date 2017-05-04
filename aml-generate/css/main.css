@@ -17,7 +17,14 @@ input[type="number"] {
   padding: 6px 8px; }
 
 .image-group {
-  min-height: 50vh; }
+  zoom: 1;
+  min-height: 50vh;
+  background-color: #ddd; }
+  .image-group:before, .image-group:after {
+    content: '';
+    display: table; }
+  .image-group:after {
+    clear: both; }
   .image-group > span {
     position: relative;
     float: left;
@@ -34,6 +41,21 @@ input[type="number"] {
     background-color: white;
     color: black;
     border-radius: 100%; }
+
+.wrap-temp {
+  zoom: 1;
+  border: 1px solid;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  margin: 10px; }
+  .wrap-temp:before, .wrap-temp:after {
+    content: '';
+    display: table; }
+  .wrap-temp:after {
+    clear: both; }
+  .wrap-temp .col-xs-12 {
+    border: 1px solid; }
 
 .btn {
   min-width: 80px; }
