@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_bootstrap.min.css" rel="stylesheet">
+    <link href="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_aml.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <meta name="description" content="@asiamileslimited">
+    <link rel="image_src" href="">
+    <meta name="title" content="">
+    <meta property="og:title" content="">
+    <meta property="og:image" content="">
+    <meta property="og:description" content="">
+    <style type="text/css">
+        #header{ border-top: none; height: 82px; border-bottom-width: 5px; }
+        header.scroll #header .selector-lang{ padding-top: 16px; }
+        .icon-am { margin-top: -5px; }
+        h4 .icon-am { width: 14px; }
+        .aml-text-yellow { white-space: nowrap; }
+        #content h3{ font-size: 14px; line-height: 17px; margin: 15px 10px 25px; }
+        .btn-aml { padding: 0 10px; line-height: 42px; }
+        .offer-detail-desktop ul,
+        .offer-detail-desktop ol { padding-left: 30px; }
+        .offer-detail-desktop .line-break > li { margin-top: 10px; }
+        #nav .selector-section{ white-space: nowrap; }
+        #nav #selector-section-scroll{ text-align: center; }
+        #content .offer-item figure,
+        #content .offer-item-no-expand figure{ margin-bottom: 0; }
+        #content .offer-item h6 span,
+        #content .offer-item-no-expand h6 span{ line-height: 1.3; }
+        .offer-item-image{ margin-bottom: 15px; }
+        .offer-item-image figure{ padding-bottom: 65%; background-color: #f5f5f5; }
+        .offer-item-image .hidden-sm{ padding-bottom: 32%; }
+        .offer-item-image .loaded{ padding-bottom: 0; text-align: center; }
+        .offer-item-image figure img{ opacity: 0; width: 0; height: 0; display: inline-block;
+            -webkit-transition: opacity 0.3s;
+            -moz-transition: opacity 0.3s;
+            -ms-transition: opacity 0.3s;
+            -o-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+        }
+        .offer-item-image .loaded img{ opacity: 1; width: 100%; height: auto; }
+        .offer-gallery img{ opacity: 0;
+            -webkit-transition: opacity 0.3s;
+            -moz-transition: opacity 0.3s;
+            -ms-transition: opacity 0.3s;
+            -o-transition: opacity 0.3s;
+            transition: opacity 0.3s;
+        }
+        .offer-gallery .loaded{ opacity: 1; }
+
+        #nav h2.nav span{ display: block; max-width: 400px; margin: 0 auto; border: 1px solid #facf00; overflow: hidden;
+            -webkit-border-radius: 5px;  -moz-border-radius: 5px;  border-radius: 5px;
+        }
+        #nav h2.nav a{  float: left; width: 50%; padding: 5px 15px; text-align: center; }
+        #nav h2.nav a:hover, #nav h2.nav a.active{  color: #272f38;  background-color: #facf00;  }
+
+        @media screen and (max-width: 768px) {
+            .img-responsive{ width: 100%; }
+            .offer-logo a img{ max-width: 170px; }
+        }
+        @media screen and (min-width: 769px) {
+            .btn-aml { line-height: 44px; }
+            #header .selector-lang{ padding-top: 14px; }
+            #header .row{ padding: 16px 40px; }
+            header.scroll #header .row{ padding: 10px 40px; }
+            #header .nav-toggle{ margin-top: 11px; }
+            #nav h2.nav span{ -webkit-border-radius: 10px;  -moz-border-radius: 10px;  border-radius: 10px;  }
+            #nav h2.nav a{  padding: 10px 20px;  }
+        }
+    </style>
+    <script>
+        window.defaultPage = 'tod';
+    </script>
+</head>
+<body style="" class="">
+<div id="bk2top"><a class="scrollToTop" href="#"><img class="^ nlui-widget" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_Lifestyle_scrollback_button.png" unselectable="on" /></a></div>
+<header class="navbar-header">
+    <div id="header">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-7 col-md-3">
+                    <div class="nav-toggle"><span></span><span></span><span></span></div>
+                    <div class="navbar-brand">
+                        <a class="logo" href="" target="_top">
+                            <img class="img-responsive nlui-widget" id="AM_Logo" alt="" src="" unselectable="on" />
+                        </a>
+                    </div>
+                </div>
+                <div class="hidden-xs hidden-sm col-md-6 text-center">
+                    <ul class="selector-section list-inline list-unstyled hidden">
+                        <li data-page="lod"><a href="#dining" data-target="lod-section-1">Dining</a></li>
+                        <li data-page="lod"><a href="#shopping" data-target="lod-section-2">Shopping</a></li>
+                        <li data-page="lod"><a href="#l-awards" data-target="lod-section-3">Lifestyle Awards</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-5 col-md-3 text-right">
+                    <ul class="selector-lang list-inline list-unstyled">
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="nav-menu">
+            <ul class="list-unstyled">
+                <li><a class="btn-menu-close" href="javascript:void(0)">&times;</a></li>
+            </ul>
+            <ul class="selector-section list-unstyled">
+                <li data-page="lod"><a href="#dining" data-target="lod-section-1">Dining</a></li>
+                <li data-page="lod"><a href="#shopping" data-target="lod-section-2">Shopping</a></li>
+                <li data-page="lod"><a href="#l-awards" data-target="lod-section-3">Lifestyle Awards</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id="nav">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h1><img class="img-responsive nlui-widget" alt="Offer Digest" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_OfferDigest_EN.png" unselectable="on" /></h1>
+                    <h2 class="nav">
+                <span class="clearfix">
+                    <a class="lod_page_link" href="#lod" data-type="lod">Lifestyle</a>
+                    <a class="tod_page_link active" href="#tod" data-type="tod">Travel</a>
+                </span>
+                    </h2>
+                </div>
+            </div>
+            <div class="col-xs-12 text-center-md">
+                <div id="selector-section-scroll" style="display: none;">
+                    <ul class="selector-section list-inline list-unstyled">
+                        <li data-page="lod"><a href="#dining" data-target="lod-section-1">Dining</a></li>
+                        <li data-page="lod"><a href="#shopping" data-target="lod-section-2">Shopping</a></li>
+                        <li data-page="lod"><a href="#l-awards" data-target="lod-section-3">Lifestyle Awards</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="content">
+    <div class="container">
+        <div class="row od_page" style="display: none;" data-page="lod">
+            <div class="col-xs-12">
+                <figure class="hidden-xs hidden-sm"><img class="img-responsive nlui-widget" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_desktop_kv.jpg" unselectable="on" /></figure>
+                <figure class="visible-xs visible-sm"><img class="img-responsive nlui-widget" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_mobile_kv.jpg" unselectable="on" /></figure>
+                <h3 class="text-center">Pamper yourself with an array of dining and shopping offers. You&rsquo;ll find ways to earn miles from everyday to once-in-a-lifetime experiences, all in this Offer Digest. Make life rewarded.</h3>
+            </div>
+            <div id="dining-earn">
+                <div class="col-xs-12" id="lod-section-1">
+                    <div class="title-separator"><span><div class="circle-earn">Earn</div>Dining</span></div>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <div class="offer-item" id="lod-en-box01" data-content="l-content-1-1" data-mobile="l-m-box-1-1" data-desktop="l-d-box-1-1">
+                        <div class="offer-item-image">
+                            <figure class="hidden-xs hidden-sm"><img class="img-responsive nlui-widget" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_foodpanda_desktop_unexpand.jpg" unselectable="on" /></figure>
+                            <figure class="visible-xs visible-sm"><img class="img-responsive nlui-widget" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_foodpanda_mobile_unexpand.jpg" unselectable="on" /></figure>
+                        </div>
+                        <p>foodpanda</p>
+                        <h4>Top You Up with Enough Miles to Redeem Your Next Trip with foodpanda</h4>
+                        <p>Diners can now enjoy the convenience of foodpanda&rsquo;s delivery service and earn a short-haul flight to your favourite destination...<span class="aml-text-yellow">&gt; more</span></p>
+                    </div>
+                    <div class="offer-detail-mobile" id="l-m-box-1-1"></div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="offer-detail-desktop" id="l-d-box-1-1"></div>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <div class="offer-item" id="lod-en-box02" data-content="l-content-1-2" data-mobile="l-m-box-1-2" data-desktop="l-d-box-1-2">
+                        <div class="offer-item-image">
+                            <figure class="hidden-xs hidden-sm"><img class="img-responsive nlui-widget" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_hullethouse_desktop_unexpand.jpg" unselectable="on" /></figure>
+                            <figure class="visible-xs visible-sm"><img class="img-responsive nlui-widget" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_hullethouse_mobile_unexpand.jpg" unselectable="on" /></figure>
+                        </div>
+                        <p>Hullett House</p>
+                        <h4>Enjoy a Night Out and 200 Bonus Miles at Hullett House For a Rewarding Experience</h4>
+                        <p>Immerse into the colonial past of Hong Kong by enjoying a night out at one of seven dining establishments at Hullett House...<span class="aml-text-yellow">&gt; more</span></p>
+                    </div>
+                    <div class="offer-detail-mobile" id="l-m-box-1-2"></div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="offer-detail-desktop" id="l-d-box-1-2"></div>
+                </div>
+            </div>
+            <div id="shopping-earn">
+                <div class="col-xs-12" id="lod-section-2">
+                    <div class="title-separator"><span>
+            <div class="circle-earn">Earn</div>
+            Shopping</span></div>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <div class="offer-item" id="lod-en-box03" data-content="l-content-2-1" data-mobile="l-m-box-2-1" data-desktop="l-d-box-2-1">
+                        <div class="offer-item-image">
+                            <figure class="hidden-xs hidden-sm"><img class="img-responsive nlui-widget" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_mtm_desktop_unexpand.jpg" unselectable="on" /></figure>
+                            <figure class="visible-xs visible-sm"><img class="img-responsive nlui-widget" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_mtm_mobile_unexpand.jpg" unselectable="on" /></figure>
+                        </div>
+                        <p>MTM Skincare</p>
+                        <h4>Experience NEW MTM Custom-Blended Re-White Formulas and Earn HKD1 = <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />1</nobr> and More</h4>
+                        <p>Calibrate your skin with MTM&rsquo;s all-new Quasi-drug whitening solution, the Custom-Blended Re-White Formulas help protect your skin while achieving full restoration of your original fairness...<span class="aml-text-yellow">&gt; more</span></p>
+                    </div>
+                    <div class="offer-detail-mobile" id="l-m-box-2-1"></div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="offer-detail-desktop" id="l-d-box-2-1"></div>
+                </div>
+                <div class="col-xs-12 col-md-6 text-center">
+                    <div class="offer-item" id="lod-en-box04" data-content="l-content-2-2" data-mobile="l-m-box-2-2" data-desktop="l-d-box-2-2">
+                        <div class="offer-item-image">
+                            <figure><img class="img-responsive nlui-widget" alt="iShop - Apple" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_rakuten_desktop_unexpand.jpg" unselectable="on" /></figure>
+                        </div>
+                        <p>iShop - Rakuten Global Market</p>
+                        <h4>Celebrate Mother&rsquo;s Day with Double Miles</h4>
+                        <p>Send your love from Japan. Look for the perfect gift for mom from the Rakuten Global Market collection online at iShop and enjoy Double Miles...<span class="aml-text-yellow">&gt; more</span></p>
+                    </div>
+                    <div class="offer-detail-mobile" id="l-m-box-2-2"></div>
+                </div>
+                <div class="col-xs-12 col-md-6 text-center">
+                    <div class="offer-item" id="lod-en-box05" data-content="l-content-2-3" data-mobile="l-m-box-2-3" data-desktop="l-d-box-2-3">
+                        <div class="offer-item-image">
+                            <figure><img class="img-responsive nlui-widget" alt="Florentia Village" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_laithwaites_mobile_unexpand.jpg" unselectable="on" /></figure>
+                        </div>
+                        <p>Laithwaites Direct Wines</p>
+                        <h4>Purchase Laithwaites Gold-winning Wines and Receive 2 Complimentary Bottles While Earning up to 1,500 Miles</h4>
+                        <p>Every dinner party needs the proper complement and Laithwaites Direct Wines has the perfect pairing to whatever dish you&rsquo;re serving, delivered to your doorstep...<span class="aml-text-yellow">&gt; more</span></p>
+                    </div>
+                    <div class="offer-detail-mobile" id="l-m-box-2-3"></div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="offer-detail-desktop left" id="l-d-box-2-2"></div>
+                    <div class="offer-detail-desktop right" id="l-d-box-2-3"></div>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <div class="offer-item" id="lod-en-box06" data-content="l-content-2-4" data-mobile="l-m-box-2-4" data-desktop="l-d-box-2-4">
+                        <div class="offer-item-image">
+                            <figure class="hidden-xs hidden-sm"><img class="img-responsive nlui-widget" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_zalora_desktop_unexpand.jpg" unselectable="on" /></figure>
+                            <figure class="visible-xs visible-sm"><img class="img-responsive nlui-widget" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_zalora_mobile_unexpand.jpg" unselectable="on" /></figure>
+                        </div>
+                        <p>ZALORA</p>
+                        <h4>Shop and enjoy 15% off Storewide with Promo Code to &ldquo;AM15&rdquo; and Earn 150 Miles at ZALORA</h4>
+                        <p>With the latest trends from around the world, ZALORA offers a wide-range of chic fashion in its online collection...<span class="aml-text-yellow">&gt; more</span></p>
+                    </div>
+                    <div class="offer-detail-mobile" id="l-m-box-2-4"></div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="offer-detail-desktop" id="l-d-box-2-4"></div>
+                </div>
+            </div>
+            <div id="lifestye-awards">
+                <div class="col-xs-12" id="lod-section-3">
+                    <div class="title-separator"><span>
+            <div class="circle-earn">Redeem</div>
+            Lifestyle Awards</span></div>
+                </div>
+                <div class="col-xs-12 text-center">
+                    <div class="offer-item" id="lod-en-box07" data-content="l-content-3-1" data-mobile="l-m-box-3-1" data-desktop="l-d-box-3-1">
+                        <div class="offer-item-image">
+                            <figure class="hidden-xs hidden-sm"><img class="img-responsive nlui-widget" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_iredeem_desktop_unexpand.jpg" unselectable="on" /></figure>
+                            <figure class="visible-xs visible-sm"><img class="img-responsive nlui-widget" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_iredeem_mobile_unexpand.jpg" unselectable="on" /></figure>
+                        </div>
+                        <p>iRedeem - Latest Hot Picks</p>
+                        <h4>Let iRedeem Make Life Better for You</h4>
+                        <p>Find rare gems on iRedeem across all categories with a lot of new items added to our collection...<span class="aml-text-yellow">&gt; more</span></p>
+                    </div>
+                    <div class="offer-detail-mobile" id="l-m-box-3-1"></div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="offer-detail-desktop" id="l-d-box-3-1"></div>
+                </div>
+                <div class="col-xs-12 col-md-6 text-center">
+                    <div class="offer-item" id="lod-en-box08" data-content="l-content-3-2" data-mobile="l-m-box-3-2" data-desktop="l-d-box-3-2">
+                        <div class="offer-item-image">
+                            <figure><img class="img-responsive nlui-widget" alt="Mr Maria Smiley Lamp" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_smileylamp_desktop_unexpand.jpg" unselectable="on" /></figure>
+                        </div>
+                        <p>Mr Maria Smiley Lamp</p>
+                        <h4>Smile, It&rsquo;s a Brighter Day!</h4>
+                        <p>You cannot help but smile when looking at Smiley! Fill your home with laughter, smiles, and relaxation...<span class="aml-text-yellow">&gt; more</span></p>
+                    </div>
+                    <div class="offer-detail-mobile" id="l-m-box-3-2"></div>
+                </div>
+                <div class="col-xs-12 col-md-6 text-center">
+                    <div class="offer-item" id="lod-en-box09" data-content="l-content-3-3" data-mobile="l-m-box-3-3" data-desktop="l-d-box-3-3">
+                        <div class="offer-item-image">
+                            <figure><img class="img-responsive nlui-widget" alt="Florentia Village" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_nintendo_desktop_unexpand.jpg" unselectable="on" /></figure>
+                        </div>
+                        <p>Nintendo FC Mini Famicom Console (Japan Version)</p>
+                        <h4>Play Like It&rsquo;s Still in Style</h4>
+                        <p>Remember Super Mario Brothers or Donkey Kong? Fully loaded with 30 of your favourite video games growing up in a compact and handy console, Nintendo takes you back in time...<span class="aml-text-yellow">&gt; more</span></p>
+                    </div>
+                    <div class="offer-detail-mobile" id="l-m-box-3-3"></div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="offer-detail-desktop left" id="l-d-box-3-2"></div>
+                    <div class="offer-detail-desktop right" id="l-d-box-3-3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row od_page" data-page="tod">
+
+        </div>
+    </div>
+</div>
+<footer>
+    <div id="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <div id="social_btn">
+                        <ul class="list-inline list-unstyled">
+                            <li>
+                                <a href="https://www.facebook.com/sharer.php?u=http://asiamiles-mkt-stage1-m.campaign.adobe.com/webApp/tod_may_2017_en" target="_blank">
+                                    <img width="16" height="23" class="nlui-widget" alt="Share to Facebook" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Facebook.jpg" unselectable="on" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="http://service.weibo.com/share/share.php?url=http://asiamiles-mkt-stage1-m.campaign.adobe.com/webApp/tod_may_2017_en" target="_blank">
+                                    <img width="29" height="23" class="nlui-widget" alt="Share on Weibo" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Weibo.jpg" unselectable="on" />
+                                </a>
+                            </li>
+                            <li>
+                                <a href="javascript:void(0);" data-target="#myModal_weChat" data-toggle="modal">
+                                    <img width="29" height="23" class="nlui-widget" alt="Share on WeChat" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_WeChat.jpg" unselectable="on" />
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <p>Copyright &copy; Asia Miles is managed and operated by Asia Miles Limited.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="hidden" id="od_expansions">
+    <div id="l-content-1-1">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li>
+                        <!--<a href="https://www.foodpanda.hk/" target="_blank">-->
+                        <img class="img-responsive nlui-widget" alt="foodpanda" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_panda_expansion_logo.png" unselectable="on" />
+                        <!--</a>-->
+                    </li>
+                    <li><strong>Promotion Period:</strong> <br class="visible-xs visible-sm" />
+                        1 May - 15 Jun</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="lod-en-box01">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Offer</h5>
+                <ul class="line-break">
+                    <li>The first 10 Asia Miles members who accumulate HKD2,000 in spending with foodpanda during the promotion period will receive a top up of another <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />14,000</nobr> Bonus Miles to go towards your next getaway. Look forward to more enticing offers to come!</li>
+                    <li>So members can earn up to <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />15,000</nobr> in total. <a href="https://www.asiamiles.com/web/content/dam/afr/index.html" target="_blank">Check out</a> where you can go with <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />15,000</nobr></li>
+                    <li>And you can earn more if you are a new customer in foodpanda!</li>
+                </ul>
+                <h5>How to Earn</h5>
+                <ol>
+                    <li>Input your Asia Miles Membership No. when checking out at <a href="http://www.foodpanda.hk" target="_blank">www.foodpanda.hk</a> or the foodpanda mobile app</li>
+                    <li>Be the first 10 spenders to accumulate HKD2,000 spending during the promotion period, and you can earn <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />1,000</nobr> Regular Miles* plus <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />14,000</nobr> Bonus Miles</li>
+                    <li>New Asia Miles members who registered through <a href="http://downloads.asiamiles.com/campaign/foodpanda_recruitment_hk/en/enrol/index.html" target="_blank">here</a> and make eligible spending in foodpanda can earn 300 Bonus Miles</li>
+                    <li>Any Asia Miles members who spend in foodpanda for the first time can earn <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />300</nobr> Bonus Miles</li>
+                </ol>
+                <p>*Regular Dining Miles Earning HKD2 = <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />1</nobr> upon HKD300 spending</p>
+                <p><a class="link-tnc" href="#">Terms &amp; Conditions <span class="aml-text-yellow">&gt; more</span></a></p>
+                <div class="offer-tnc">
+                    <ol>
+                        <li>The foodpanda &ldquo;Top Up for Your Next Getaway&rdquo; Promotion Wave 1 (&ldquo;promotion&rdquo;) lasts from 1 May to 15 June 2017 (GMT+8), both dates inclusive (&ldquo;promotion period&rdquo;)</li>
+                        <li>This promotion is applicable to eligible spending of HKD300 or above through <a href="http://www.foodpanda.hk" target="_blank">www.foodpanda.hk</a> or through the foodpanda mobile app ("mobile app").</li>
+                        <li>The first 10 members who reach accumulated eligible spending of HKD2,000 within the promotion period can earn 14,000 Bonus Miles.</li>
+                        <li>During the promotion period, Asia Miles members who become new foodpanda member and order foodpanda for the first time of their Asia Miles membership can earn 300 Bonus Miles.</li>
+                        <li>During the promotion period, new registered Asia Miles members through <a href="http://downloads.asiamiles.com/campaign/foodpanda_recruitment_hk/en/enrol/index.html" target="_blank">this link</a> who make an eligible spending through foodpanda can earn 300 Bonus Miles.</li>
+                        <li>The 10 winner list, prize arrangement and details will be announced via the latest news under Asia Miles homepage by 31 July 2017. Winners will be contacted by Asia Miles using their contact details on record.</li>
+                        <li>In order to successfully earn your Asia Miles, members are required to input their Asia Miles membership number when checking out at <a href="http://www.foodpanda.hk" target="_blank">www.foodpanda.hk</a> or the foodpanda mobile app using a foodpanda account registered under the same name as the Asia Miles membership.</li>
+                        <li>Asia Miles earned are based on the total amount spent, including delivery fee but excluding tips.</li>
+                        <li>Asia Miles awarded through this promotion are non-refundable, non-reversible and non-transferable. Bonus Miles will be credited to the member's account within 6 weeks after the promotion ends.</li>
+                        <li>Members can still enjoy Asia Miles Foodies 11 offer on 11 May and 11 June 2017.</li>
+                        <li>Asia Miles cannot be earned on other foodpanda promotions and discounts. Members are advised to check with foodpanda prior to dining transaction.</li>
+                        <li>Foodpanda Corporate cannot participate in this promotion.</li>
+                        <li>Asia Miles Limited reserves the right to change the terms and conditions or terminate this promotion at any time without prior notice.</li>
+                        <li>In case of discrepancy between the English and Chinese versions of these terms and conditions, the English version will prevail.</li>
+                        <li>In case of any dispute, the decision of Asia Miles Limited and foodpanda shall be final.</li>
+                        <li>All photos are for reference only.</li>
+                        <li>Other <a href="https://www.asiamiles.com/am/en/site/terms" target="_blank">Asia Miles terms and conditions</a> apply.</li>
+                    </ol>
+                </div>
+                <p class="text-center"><a class="btn-aml" id="lod-en-201704-cta1-1" href="http://asiamil.es/2q1k8Xt" target="_blank">ORDER NOW</a></p>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="foodpanda" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_panda_expansion_image1.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="foodpanda" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_panda_expansion_image2.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="foodpanda" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_panda_expansion_image3.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="lod-en-box01">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="l-content-1-2">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><!--<a href="http://www.hulletthouse.com/dining" target="_blank">--> <img class="img-responsive nlui-widget" alt="Hullett House" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_hulletthouse_expansion_logo.png" unselectable="on" /> <!--</a>--></li>
+                    <li><strong>Promotion Period:</strong> <br class="visible-xs visible-sm" />
+                        1 May &ndash; 30 June <br />
+                        <strong>Price Range:</strong> <br class="visible-xs visible-sm" />
+                        HKD500 or above</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="lod-en-box02">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Offer</h5>
+                <p><span style="text-decoration: underline;">Offer 1</span> <br />
+                    Spend HKD500 or more at all participating restaurants at Hullett House to earn 200 Bonus Miles.</p>
+                <p><span style="text-decoration: underline;">Offer 2</span> <br />
+                    All guests can enjoy a complimentary wine or champagne or dessert with HKD500 spending or more at below participating Hullett House restaurants:</p>
+                <ul>
+                    <li><a href="http://dining.asiamiles.com/partner/champagne-gallery" target="_blank">Champagne Gallery</a></li>
+                    <li><a href="http://dining.asiamiles.com/partner/loong-toh-yuen" target="_blank">Loong Toh Yuen</a></li>
+                    <li><a href="http://dining.asiamiles.com/partner/mariners-rest" target="_blank">Mariners&rsquo; Rest</a></li>
+                    <li><a href="http://dining.asiamiles.com/partner/stables-grill" target="_blank">Stables Grill</a></li>
+                    <li><a href="http://dining.asiamiles.com/partner/the-parlour" target="_blank">The Parlour</a></li>
+                    <li><a href="http://dining.asiamiles.com/partner/whisky-stables" target="_blank">Whisky@Stables</a></li>
+                </ul>
+                <p>Or <br />
+                    You can enjoy a complimentary champagne recommended by our sommelier to match your cuisine if you order Le French GourMay Menu at <a href="http://dining.asiamiles.com/partner/st--george" target="_blank">St. George</a>!</p>
+                <h5>How to Earn</h5>
+                <h5>3 Steps to earn Miles and Offers</h5>
+                <ol>
+                    <li>Inform Staff that you want to earn Asia Miles from Dining and ask for the complimentary drink or dessert when place meal/ beverage order</li>
+                    <li>Present your Asia Miles Membership Card with your Membership number in any form:
+                        <ul>
+                            <li>Physical Membership Card or</li>
+                            <li>Mobile Membership Card or</li>
+                            <li>Co-brand Credit Card</li>
+                        </ul>
+                    </li>
+                    <li>Staff will pass you &ldquo;Asia Miles Dining Receipt&rdquo; for record</li>
+                </ol>
+                <p><a class="link-tnc" href="#">Terms &amp; Conditions <span class="aml-text-yellow">&gt; more</span></a></p>
+                <div class="offer-tnc">
+                    <ol>
+                        <li>To enjoy a complimentary wine or champagne or dessert at Hullett House ("Offer 1"), members need made a minimum of HKD500 or more dine-in transaction at participating Hullett House restaurants, except St. George.</li>
+                        <li>To enjoy a complimentary champagne at St. George ("Offer 2"), members need to order the Le French GourMay Menu at St. George.</li>
+                        <li>Offer 1 and Offer 2 are available from 1 May to 30 June 2017 (GMT+8), both dates inclusive ("Offer Period").</li>
+                        <li>Members will receive 200 Bonus Miles with HKD500 more dine-in transaction at Hullett House restaurants. Bonus Asia Miles Miles will be credited to member&rsquo;s account within 6 to 8 weeks after promotion.</li>
+                        <li>To enjoy the offers, members are required to present their valid Asia Miles membership card and inform restaurant staff about redeeming the complimentary wine or champagne or dessert when placing the dining order.</li>
+                        <li>Members are required to present their physical /mobile Asia Miles membership card, or co-branded credit card when requesting the bill and at the time of payment in order to earn Asia Miles on dining transactions.</li>
+                        <li>The offers cannot be used in conjunction with any other discounts or promotional offers, including Asia Miles "Foodies 11" offer on 11 May and 11 June 2017.</li>
+                        <li>The offers are non-exchangeable, non-refundable, and cannot be redeemed for cash, other products and services, or discounts.</li>
+                        <li>Asia Miles earned are based on the total amount spent, including service charges and taxes, but excluding tips.</li>
+                        <li>Asia Miles Limited and Hullett House reserve the right to change the terms and conditions or terminate this offer at any time without prior notice.</li>
+                        <li>In case of any dispute, the decision of Asia Miles Limited and Hullett House shall be final.</li>
+                        <li>All photos are for reference only.</li>
+                        <li>Other <a href="https://www.asiamiles.com/am/en/site/terms" target="_blank">Asia Miles terms and conditions</a> apply.</li>
+                    </ol>
+                </div>
+                <p class="text-center"><a class="btn-aml" id="lod-en-201704-cta1-2" href="http://asiamil.es/2pZFulg" target="_blank">RESERVE A TABLE NOW</a></p>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Hullett House" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_hullethouse_expansion_image1.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Hullett House" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_hullethouse_expansion_image2.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Hullett House" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_hullethouse_expansion_image3.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="lod-en-box02">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="l-content-2-1">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><!--<a href="https://www.asiamiles.com/am/en/earn/retail/promotion?refID=486a5a85c99ea510VgnVCM62000007d21c39RCRD" target="_blank">--> <img class="img-responsive nlui-widget" alt="MTM Skincare" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_mtm_expansion_logo.png" unselectable="on" /> <!--</a>--></li>
+                    <li><strong>Promotion Period:</strong> <br class="visible-xs visible-sm" />
+                        Now to 31 May 2017</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="lod-en-box03">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Offer</h5>
+                <ul class="line-break">
+                    <li>Authenticated as a &ldquo;Quasi-drug&rdquo; in Japan, MTM Custom-Blended Re-White Formulas is the skin whitening solution that everyone is raving about and now is even more enticing.</li>
+                    <li>MTM presents you with the latest Custom-Blended Re-White Formulas, a whitening collection that has been officially authenticated as a &ldquo;Quasi-drug&rdquo; in Japan. This collection with its key ingredient, Tranexamic Acid, fights melanin in a double action, with your skin well protected in a comprehensive manner and the formation of pigmentation and freckles prevented. It leads to a new vision of whitening aesthetics while paying the highest respect to product safety. Experience a new vision of whitening aesthetics and restore the original fairness of your skin now!</li>
+                    <li>You can enjoy multiple bonus miles offers when you purchase regular items or services at any MTM participating shops!
+                        <ol class="line-break">
+                            <li>Earn 1 mile for every HKD1 spent on purchases of HKD500 or more on skincare products, facial treatments or spa services.</li>
+                            <li>Enjoy 500 bonus miles for each purchase of a full set of Custom-Blended Re-White Formulas*</li>
+                            <li>Earn a one-off bonus of 1,000 miles for spending HKD500 or more on any two categories of MTM regular-priced skincare products, facial treatments or spa services.</li>
+                        </ol>
+                    </li>
+                    <li>What's more, receive a complimentary pair of Custom-Blended Eye Mask (valued at HKD140) with Asia Miles membership number while stock lasts.**</li>
+                </ul>
+                <p>* A full set of Custom-Blended Re-White Formulas includes Custom-Blended Re-White Essence, Custom-Blended Re-White Cream and Custom-Blended Re-White Mask</p>
+                <p>**The member should present their Asia Miles membership number for the complimentary redemption. Photocopies are not accepted. One redemption per person while stocks last.</p>
+                <h5>How to Earn</h5>
+                <p>Present your Asia Miles membership number by showing physical membership card, co-brand credit card or mobile app membership card when making your purchase.</p>
+                <p><a class="link-tnc-no-expand" href="https://www.asiamiles.com/am/en/earn/retail/promotion?refID=486a5a85c99ea510VgnVCM62000007d21c39RCRD" target="_blank">Terms &amp; Conditions</a></p>
+                <p class="text-center"><a class="btn-aml" id="lod-en-201704-cta2-1" href="http://asiamil.es/2ovucrY" target="_blank">View Details</a></p>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="MTM Skincare" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_mtm_expansion_image2.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="MTM Skincare" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_mtm_expansion_image3.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="lod-en-box03">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="l-content-2-2">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><!--<a href="https://shop.asiamiles.com/en/department-stores/rakuten-global-market" target="_blank">--> <img class="img-responsive nlui-widget" alt="Rakuten Global Market" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_rakuten_expansion_logo.png" unselectable="on" /> <!--</a>--></li>
+                    <li><strong>Promotion Period:</strong> <br class="visible-xs visible-sm" />
+                        Now to 11 May 2017</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="lod-en-box04">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Offer</h5>
+                <ul>
+                    <li>With over a million items across 13 categories, Rakuten Global Market offers a wide spectrum of gift ideas for Mother&rsquo;s Day. From now to 11 May 2017, earn Double Miles at a rate of USD1 = <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />5</nobr> when you purchase Rakuten Global Market items through iShop.</li>
+                </ul>
+                <h5>How to Earn</h5>
+                <ol>
+                    <li>Log in to iShop</li>
+                    <li>Browse at the dedicated iShop Rakuten Global Market link by pressing "Shop Now"</li>
+                    <li>Complete the transaction via the dedicated link</li>
+                </ol>
+                <p><a class="link-tnc-no-expand" href="https://shop.asiamiles.com/en/department-stores/rakuten-global-market" target="_blank">Terms &amp; Conditions</a></p>
+                <p class="text-center"><a class="btn-aml" id="lod-en-201704-cta2-2" href="http://asiamil.es/2oLuuH2" target="_blank">Shop Now</a></p>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Rakuten Global Market" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_rakuten_expansion_image1.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Rakuten Global Market" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_rakuten_expansion_image2.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="lod-en-box04">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="l-content-2-3">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><!--<a href="http://www.directwines.com.hk/LOD" target="_blank">--> <img class="img-responsive nlui-widget" alt="Laithwaites Direct Wines" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_laithwaites_expansion_logo.png" unselectable="on" /> <!--</a>--></li>
+                    <li><strong>Promotion Period:</strong> <br class="visible-xs visible-sm" />
+                        Now to 19 June 2017</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="lod-en-box05">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Offer</h5>
+                <ul>
+                    <li>Treat yourself to Gold-winning wines from some of Europe&rsquo;s greatest estates! You&rsquo;ll enjoy French classics with berry-rich tastes and easy consumption, Spanish favourites that are a match-made in heaven with steaks, and Italian treasures that deliver long, concentrated black fruit flavours, the hallmark of top Chianti.</li>
+                </ul>
+                <h5>There are two offers you can enjoy:</h5>
+                <ul class="line-break">
+                    <li>Offer 1 (12-bottle case): <br />
+                        With each 12-bottle case purchase at HKD999, you can earn 1,500 Miles and also receive 2 complimentary bottles of the 'King of the Big Reds' Le XV du Pr&eacute;sident 2015 from prestigious France along with FREE delivery.</li>
+                    <li>Offer 2 (6-bottle case): <br />
+                        You can earn 1,000 Miles with each 6-bottle case purchased at HKD599 and enjoy FREE delivery!</li>
+                </ul>
+                <h5>How to Earn</h5>
+                <p>Quote your Asia Miles membership number when making your purchase online or via the phone.</p>
+                <p><a class="link-tnc-no-expand" href="http://www.asiamiles.com/am/en/earn/retail/promotion?refID=ba7b5d948006b510VgnVCM62000007d21c39RCRD" target="_blank">Terms &amp; Conditions</a></p>
+                <p class="text-center"><a class="btn-aml" id="lod-en-201704-cta2-3" href="http://asiamil.es/2q4RQJ9" target="_blank">Order Now</a></p>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Laithwaites Direct Wines" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_laithwaites_expansion_image1.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Laithwaites Direct Wines" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_laithwaites_expansion_image2.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="lod-en-box05">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="l-content-2-4">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><!--<a href="https://www.zalora.com.hk/" target="_blank">--> <img class="img-responsive nlui-widget" alt="Zalora" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_zalora_expansion_logo.png" unselectable="on" /> <!--</a>--></li>
+                    <li><strong>Promotion Period:</strong> <br class="visible-xs visible-sm" />
+                        Now to 2 May 2017</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="lod-en-box06">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Offer</h5>
+                <ul class="line-break">
+                    <li>ZALORA is Asia&rsquo;s online fashion destination. Providing the latest high-street looks through an extensive collection of global and local fashion, bringing the latest trends from the fashion runways to your computer screens and mobile devices, and have them speedily delivered straight to your doorstep.</li>
+                    <li>Now you can shop and earn 1 mile for every HKD10 spent (minimum spending: HKD300), earn <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />150</nobr> in total when you spend HKD400 or more, and what&rsquo;s more, enjoy 15% off storewide with promo code &ldquo;AM15&rdquo;!</li>
+                </ul>
+                <h5>How to Earn</h5>
+                <p>Enter your Asia Miles Membership number at checkout when making your purchase.</p>
+                <p><a class="link-tnc-no-expand" href="http://www.asiamiles.com/am/en/earn/retail/promotion?refID=24fda3589eeea510VgnVCM62000007d21c39RCRD" target="_blank">Terms &amp; Conditions</a></p>
+                <p class="text-center"><a class="btn-aml" id="lod-en-201704-cta2-4" href="http://asiamil.es/2p0db7H" target="_blank">Shop Now</a></p>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Zalora" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_zalora_expansion_image1.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Zalora" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_zalora_expansion_image2.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="lod-en-box06">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="l-content-3-1">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <!--<li><a href="#" target="_blank"><img src="{URL TO LOGO IMAGE }" class="img-responsive" alt="iRedeem - Latest Hot Picks"></a></li>-->
+                    <li style="max-width: none; border-right: none;"><strong>Promotion Period:</strong> <br class="visible-xs visible-sm" />
+                        Now till 4 Jun 2017 <br />
+                        <strong>Miles:</strong> <br class="visible-xs visible-sm" />
+                        Starts from <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />4,000</nobr></li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="lod-en-box07">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Offer</h5>
+                <ul class="line-break">
+                    <li>Ready to travel? Want to spoil yourself? Surprise your kids?</li>
+                    <li>We source what's new to enhance your life and we just added more than 70 new items on iRedeem. See what&rsquo;s new and indulge yourself in what&rsquo;s hot!</li>
+                </ul>
+                <p class="text-center"><a class="btn-aml" id="lod-en-201704-cta3-1" href="http://asiamil.es/2oIJq8i" target="_blank">Redeem Now</a></p>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="iRedeem - Latest Hot Picks" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_nar_expansion_image1.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="lod-en-box07">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="l-content-3-2">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><!--<a href="http://redeem.asiamiles.com/default/mr-maria-smiley-floor-lamp.html" target="_blank">--> <img class="img-responsive nlui-widget" alt="Mr Maria Smiley Lamp" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_smileylamp_expansion_logo.png" unselectable="on" /> <!--</a>--></li>
+                    <li><strong>Promotion Period:</strong> <br class="visible-xs visible-sm" />
+                        Now till 30 Sep 2017 <br />
+                        <strong>Miles:</strong> <br class="visible-xs visible-sm" />
+                        <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />38,800</nobr></li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="lod-en-box08">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Offer</h5>
+                <p>Smiley Lamp is round in shape, just like the iconic Smiley face, one of the most popular emoticons we all love, making it fit for people of all ages.</p>
+                <p>With LED lighting and dimmer function, you can adjust the light brighter during bedtime stories and dimmer as a night-light. Kids can touch it, play with it, and cuddle it worry-free thanks to the heat resistant polyethylene diffuser.</p>
+                <p class="text-center"><a class="btn-aml" id="lod-en-201704-cta3-2" href="http://asiamil.es/2pyQj0N" target="_blank">Redeem Now</a></p>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Mr Maria Smiley Lamp" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_smileylamp_expansion_image1.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="lod-en-box08">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="l-content-3-3">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><!--<a href="http://redeem.asiamiles.com/default/nintendo-fc-mini-famicom-console-japan-version.html" target="_blank">--> <img class="img-responsive nlui-widget" alt="Nintendo FC Mini Famicom Console" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_nintendo_expansion_logo.png" unselectable="on" /> <!--</a>--></li>
+                    <li><strong>Promotion Period:</strong> <br class="visible-xs visible-sm" />
+                        Now till 31 Jul 2017 <br />
+                        <strong>Miles:</strong> <br class="visible-xs visible-sm" />
+                        <nobr><img class="icon-am nlui-widget" alt="(A)" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_icon-am-blk.png" unselectable="on" />20,200</nobr></li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="lod-en-box09">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Offer</h5>
+                <p>Even though it&rsquo;s been years since you&rsquo;ve played Nintendo, once you pick up the controller, you&rsquo;ll remember how to play. With 30 of your favourite video games from Donkey Kong to Super Mario Brothers growing up in this compact and handy console, these classics have been upgraded with enhanced video quality for your playing pleasure.</p>
+                <p class="text-center"><a class="btn-aml" id="lod-en-201704-cta3-3" href="http://asiamil.es/2p3BnWM" target="_blank">Redeem Now</a></p>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Nintendo FC Mini Famicom Console" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_nintendo_expansion_image1.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Nintendo FC Mini Famicom Console" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/lod_201704_en_nintendo_expansion_image2.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="lod-en-box09">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+
+    <div id="t-content-2-1">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><a href="http://www.asiamiles.com/am/en/earn/hotels/detail?refID=4ab8f19fa8dea110VgnVCM62000007d21c39RCRD" target="_blank">
+                        <img class="img-responsive nlui-widget" alt="Peninsula Hotel" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Logo.png" unselectable="on" /></a></li>
+                    <li><strong>Booking Period:</strong><br class="visible-xs visible-sm" />
+                        16 May – 8 September 2017<br />
+                        <br class="visible-xs visible-sm" />
+                        <strong>Stay Period:</strong><br class="visible-xs visible-sm" />
+                        16 May – 8 September 2017</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="tod-en-box05">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Offer</h5>
+                <ul>
+                    <li>Earn <strong>Triple Asia Miles</strong> by booking “Family Moments package”</li>
+                    <li>Exclusive benefit “Family Moments package”:
+                        <ol>
+                            <li>Daily breakfast for two</li>
+                            <li>Eligible for 50% discount on the second connecting/ adjoining room</li>
+                            <li>Complimentary kids menu for children (aged 12 & under) dining with parents</li>
+                            <li>Array of amenities and programs for junior guests</li>
+                            <li>Exclusive use of The Peninsula Stokke VIB (Very Important Baby) Products (for Suite staying guests in The Peninsula Manila only)</li>
+                        </ol>
+                    </li>
+                </ul>
+
+                <p>For detailed participating properties list, please click <a href="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_PDF_EN.pdf" target="_blank">here</a>.</p>
+
+                <h5>How to Earn</h5>
+                <ol type="1">
+                    <li>Make your booking of “Family Moments package” through dedicated website from Peninsula Hotels.</li>
+                    <li>Quote promotional code “CXTRIPLE” when making reservations.</li>
+                    <li>Present your Asia Miles membership card upon check-in.</li>
+                </ol>
+                <p><a class="link-tnc" href="#">Terms &amp; Conditions <span class="aml-text-yellow">&gt; more</span></a></p>
+                <div class="offer-tnc">
+                    <ol type="1">
+                        <li>The offer is valid for bookings between 16 May and 29 August 2017 between 16 May and 8 September 2017, all dates inclusive, on the Family Moment Package rate.</li>
+                        <li>The “Family Moment Package” is applicable for family travel, maximum of two adults and two children (aged 12 & under).</li>
+                        <li>This offer is subject to availability and advance reservation on the package is required.</li>
+                        <li>Second connecting/adjoining is subject to availability, confirmation will be advised by hotel separately.</li>
+                        <li>Children's meal, amenities or programmes will not be available without a valid second room booking.</li>
+                        <li>Additional charge may be applied and advance booking may be required for junior activities.</li>
+                        <li>Use of The Peninsula Stokke VIB Products is subject to availability for the Suite staying guests in The Peninsula Manila, please contact the hotel upon booking for confirmation.</li>
+                        <li>Blackout dates may apply. Please check at the time of making your reservation.</li>
+                        <li>Asia Miles will be credited to the member's account 4 to 6 weeks after each eligible stay.</li>
+                        <li>Bonus miles can only be earned by 1 member per room, per stay.</li>
+                        <li>This offer cannot be used in conjunction with any other promotional offers.</li>
+                        <li>Other terms and conditions for The Peninsula Hotels apply.</li>
+                        <li>Other <a href="https://www.asiamiles.com/am/en/amtsl/termsandconditions?format=popup" target="_blank">Asia Miles terms and conditions</a> apply.</li>
+                    </ol>
+                </div>
+                <p class="text-center"><a class="btn-aml" id="tod-en-201705-cta2-1" href="https://secure1.peninsula.com/en/make-a-booking?bookingCodeType=promotionID&bookingCode=CXTRIPLE" target="_blank">Book Now</a></p>
+
+                <h5 class="hidden-xs hidden-sm">Hotel Highlight</h5>
+                <h5 class="title-offer-hl visible-xs visible-sm">Hotel Highlight <span class="aml-text-yellow">&gt; more</span></h5>
+                <div class="offer-hl">
+                    <p>The Peninsula Hotels operate the most prestigious properties in ten major cities around the globe. Each award-winning hotel offers unique characteristics that reflect the local architecture, art and dynamic culture of the city. Elegantly designed rooms are also equipped with state-of-the-art in-room technology.</p>
+                    <p>With every stay, each guest will enjoy unparalleled service customized to their personal needs.  Families traveling together will be treated to a range of amenities and programs tailored for children and adults alike that will ensure cherished memories for all.</p>
+                    <p>While you are earning Triple Miles and other exclusive benefits when staying at any participating property of Peninsula Hotels, let us introduce you to the following hotels from their portfolio this month:</p>
+                    <h5>The Peninsula Paris - a Palace sitting in the heart of Paris</h5>
+                    <p>Located adjacent to Arc de Triomphe and surrounded by some of the most famous monuments, museums and luxury boutiques in the world, the Peninsula Paris is accorded “Palace” distinction by French Tourism Development Agency, ATOUT France, delivering exceptional services and comfort while offering stunning views of the city skyline. The hotel also offers suites with private rooftop gardens where you can enjoy an intimate cocktail gathering with a panoramic view of the Eiffel Tower and other emblematic monuments in Paris.</p>
+                    <h5>The Peninsula Beijing - where Chinese artistry meets craftsmanship</h5>
+                    <p>The Peninsula Beijing is the group’s first all-suite hotel, delivering the largest standard guest rooms in the heart of China’s dynamic capital. The hotel offers a bespoke cultural programme with culinary and wellness experiences, from a visit to the most private part of the Shu Fang Zhai Temple in the Forbidden City ending with a tea-infused set lunch to an exclusive tour giving visitors an inside view of China’s rich history including the ancient art of kite-making, guided by esteemed historians from the city’s renowned universities.</p>
+                </div>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Peninsula Hotel" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Expansion_1_EN.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Peninsula Hotel" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Expansion_2_EN.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Peninsula Hotel" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Expansion_3_EN.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="tod-en-box05">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="t-content-2-2">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><a href="http://www.asiamiles.com/am/en/earn/hotels/detail?refID=6c48f19fa8dea110VgnVCM62000007d21c39RCRD" target="_blank">
+                        <img class="img-responsive nlui-widget" alt="Shangri-La Hotels and Resorts" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Logo_Shangri-La_EN.jpg" unselectable="on" /></a></li>
+                    <li><strong>Promotion Period:</strong><br class="visible-xs visible-sm" />
+                        16 May 2017 – 31 August 2017<br />
+                        <br class="visible-xs visible-sm" />
+                        <strong>Stay Period:</strong><br class="visible-xs visible-sm" />
+                        1 June 2017 – 31 August 2017</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="tod-en-box06">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+
+                <h5>Offer</h5>
+                <p>Book the Best Available Rate to enjoy up to Quadruple Asia Miles when staying at any Shangri-La hotels, and resorts* , Kerry hotels, Hotel Jen and Traders hotels.</p>
+
+                <ul>
+                    <li>Earn <strong>Quadruple Asia Miles</strong> for 4 or more consecutive nights</li>
+                    <li>Earn <strong>Triple Asia Miles</strong> for 3 consecutive nights</li>
+                    <li>Earn <strong>Double Asia Miles</strong> for 2 consecutive nights </li>
+                </ul>
+                <p>
+                    <img src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_Expansion_logo_EN.png" alt="Shangri-La Hotels and Resorts, Kerry hotels, Hotel Jen and Traders Hotels" class="img-responsive"/>
+                </p>
+                <p><small>*Except Shangri-La Hotel, The Marina, Cairns</small></p>
+                <h5>How to Earn</h5>
+                <ol>
+                    <li>Book online through Shangri-La Hotels and Resorts dedicated webpage.</li>
+                    <li>Please quote your Asia Miles membership number when making your reservation.</li>
+                    <li>Present your membership card at check-in.</li>
+                </ol>
+                <p><a class="link-tnc" href="#">Terms &amp; Conditions <span class="aml-text-yellow">&gt; more</span></a></p>
+                <div class="offer-tnc">
+                    <ol>
+                        <li>This offer is valid for stays completed between 1 June 2017 – 31 August 2017, inclusive, at any participating Shangri-La hotels, and resorts , Kerry hotels, Hotel Jen and Traders hotels properties worldwide, except Shangri-La Hotel, The Marina, Cairns.</li>
+                        <li>This offer is based on the Best Available Rate.</li>
+                        <li>This offer is subject to availability and advance reservation is required.</li>
+                        <li>Bonus Asia Miles will only be awarded for stays booking through directly with Shangri-La.</li>
+                        <li>Members must quote their Asia Miles membership number and present their Asia Miles membership card upon check-in for mileage credit.</li>
+                        <li>Bonus Asia Miles will be credited to the member's account within 4 to 6 weeks after the completion of each qualifying stay.</li>
+                        <li>This offer cannot be used in conjunction with other promotions.</li>
+                        <li>Other Shangri-La Hotels and Resorts and <a target="_blank" href="https://www.asiamiles.com/am/en/site/terms">Asia Miles terms and conditions</a> apply.</li>
+                    </ol>
+                </div>
+                <p class="text-center"><a class="btn-aml" id="tod-en-201705-cta2-2" href="http://www.shangri-la.com" target="_blank">Book Now</a></p>
+                <h5 class="hidden-xs hidden-sm">Hotel Highlight</h5>
+                <h5 class="title-offer-hl visible-xs visible-sm">Hotel Highlight <span class="aml-text-yellow">&gt; more</span></h5>
+                <div class="offer-hl">
+                    <p>Hong Kong based Shangri-La Hotels and Resorts is a leading luxury hotel group in Asia Pacific, owning over 95 hotels and resorts throughout Asia Pacific, North America, the Middle East and Europe, with over 40,000 room inventory.</p>
+                    <p>While you are earning up to Quadruple Miles when staying at any participating property of Shangri-La Hotels and Resorts, let us introduce you to the latest addition to the brand:</p>
+                    <h5>Kerry Hotel, Hong Kong - a  vibrant place buzzing with life and activity</h5>
+                    <p>Opened in April 2017, it is the only hotel in Hong Kong that offers alfresco dining in all of its restaurants & bar along with their comfortable and luxurious accommodations. The pleasant summer breeze and panoramic view of Victoria Harbour will let you indulge in every moment of the dining experience.</p>
+                </div>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Shangri-La Hotels and Resorts" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_Expansion_1.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Shangri-La Hotels and Resorts" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_Expansion_2.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Shangri-La Hotels and Resorts" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_Expansion_3.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="tod-en-box06">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="t-content-2-3">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><a href="http://www.asiamiles.com/am/en/earn/hotels/detail?refID=34b7d038d7dea110VgnVCM62000007d21c39RCRD" target="_blank">
+                        <img class="img-responsive nlui-widget" alt="Pan Pacific Hotel and Resorts" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Logo_Pancific_EN.png" unselectable="on" /></a></li>
+                    <li><strong>Booking Period:</strong><br class="visible-xs visible-sm" />
+                        15 May – 14 August 2017<br />
+                        <br class="visible-xs visible-sm" />
+                        <strong>Stay Period:</strong><br class="visible-xs visible-sm" />
+                        15 May - 14 August 2017
+                        <br>
+                        (Pan Pacific Beijing and<br class="visible-xs" /> Pan Pacific Melbourne:
+                        <br>1 June - 14 August 2017)
+                    </li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="tod-en-box07">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <h5>Offer</h5>
+                <ul>
+                    <li>Earn <strong>Triple Asia Miles</strong></li>
+                    <li>Join DISCOVERY to enjoy exclusive membership benefits.
+                        <ul>
+                            <li>Extra 300 Miles</li>
+                            <li>Member rates</li>
+                            <li>Complimentary internet access</li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>For detailed participating properties list, please click <a target="_blank" href="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_PanPacific_PDF_EN.pdf">here</a>.</p>
+                <h5>How to Earn</h5>
+                <ol>
+                    <li>Book Online through the dedicated website or Pan Pacific toll free reservation numbers.</li>
+                    <li>Quote your Asia Miles membership number when making a reservation.</li>
+                    <li>Present your Asia Miles membership card upon check-in.</li>
+                </ol>
+                <p><a class="link-tnc" href="#">Terms &amp; Conditions <span class="aml-text-yellow">&gt; more</span></a></p>
+                <div class="offer-tnc">
+                    <ol>
+                        <li>This offer is valid for eligible stays booked and completed between 15 May and 14 August 2017, inclusive, at Pan Pacific Hotels and Resorts participating properties except Beijing and Melbourne. Booking period and stay period for Pan Pacific Beijing and Pan Pacific Melbourne are from 1 June till 14 August 2017.</li>
+                        <li>This offer is only available for bookings made through the dedicated website or through the Pan Pacific worldwide toll-free reservation number.</li>
+                        <li>This offer is eligible for bookings made at the Best Available Rates only.</li>
+                        <li>Best Available Rates do not include tour operator rates, groups and packages, corporate rates, free or complimentary stays, travel industry rates, internet wholesaler rates or third-party rates.</li>
+                        <li>Room rates are subject to prevailing taxes, service fees and other surcharges.</li>
+                        <li>A minimum of 2 nights’ stay applies.</li>
+                        <li>Blackout dates apply and vary between properties.</li>
+                        <li>Reservations must be made in advance and is subject to availability.</li>
+                        <li>A cancellation policy applies and varies by property.</li>
+                        <li>This offer is not exchangeable, transferable or redeemable for cash and cannot be used in conjunction with any other promotional offers.</li>
+                        <li>Asia Miles will be awarded to one member per room, per eligible stay.</li>
+                        <li>The additional 300 Asia Miles when members join DISCOVERY programme will be credited to members’ account within one month after the promotion period ends.</li>
+                        <li>Bonus Asia Miles will be credited to the member's account 4 to 6 weeks after each eligible stay.</li>
+                        <li>Other <a target="_blank" href="https://www.asiamiles.com/am/zh/site/terms">Asia Miles terms and conditions</a> apply.</li>
+                    </ol>
+                </div>
+                <p class="text-center"><a class="btn-aml" id="tod-en-201705-cta2-3" href="http://www.panpacific.com/asiamiles/triplemiles" target="_blank">Book Now</a></p>
+                <h5 class="hidden-xs hidden-sm">Hotel Highlight</h5>
+                <h5 class="title-offer-hl visible-xs visible-sm">Hotel Highlight <span class="aml-text-yellow">&gt; more</span></h5>
+                <div class="offer-hl">
+                    <p>Make it a memorable summer with Pan Pacific Hotels and Resorts. With 12 awards under their belt at the TripAdvisor Travellers’ Choice Hotel Awards, Pan Pacific Hotels and Resorts offers travellers genuine hospitality and an invigorating blend of the best that the Pacific has to offer. </p>
+                    <h5>While you are earning Triple Miles and enjoying other special offers when staying at a Pan Pacific Hotels and Resorts property, let us introduce you to our landmark properties in Singapore and Australia – Pan Pacific Singapore and Pan Pacific Perth.</h5>
+                    <p><strong>Pan Pacific Singapore - Revel in luxury 5 star hotel in Singapore</strong></p>
+                    <p>Whether for business or leisure, a stay at the Pan Pacific Singapore hotel is your assurance of world-class service and five-star luxury accommodation.</p>
+                    <p>The hotel overlooks the iconic Marina Bay and has been consistently voted the World’s Leading Business Hotel by World Travel Awards. The hotel's strategic location at the gateway to the Central Business District provides easy access for business travellers, and at the same time offers a wide array of sightseeing, retail and entertainment options in the vicinity. Discover the invigorating energy of one of Southeast Asia’s most dynamic cities from the indulgent comfort of Pan Pacific Singapore.</p>
+                    <p><strong>Pan Pacific Perth – Embrace 5 star luxury hotel and signature service in Perth</strong></p>
+                    <p>Take in scenic vistas of Perth’s famous Swan River or explore the lush historic gardens of Kings Park when staying at the Pan Pacific Perth hotel in Australia. Whether you are travelling for business or leisure, the luxury 5 star hotel will offer you a refreshing and revitalising experience.</p>
+                    <p>Moments away from the river and a short walk from the city’s main retail, dining and entertainment precincts, Pan Pacific Perth provides the perfect location for a relaxing and indulgent stay.</p>
+                </div>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Pan Pacific Hotel and Resorts" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Pan_Pacific_Expansion_1_EN.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Pan Pacific Hotel and Resorts" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Pan_Pacific_Expansion_2_EN.jpg" unselectable="on" /></figure>
+                    </li>
+                    <li>
+                        <figure><img class="img-responsive nlui-widget" alt="Pan Pacific Hotel and Resorts" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Pan_Pacific_Expansion_3_EN.jpg" unselectable="on" /></figure>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="tod-en-box07">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="t-content-3-1">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><a href="http://www.asiamiles.com/am/en/earn/transport/detail?refID=e6189e7add1ba510VgnVCM62000007d21c39RCRD" target="_blank">
+                        <img class="img-responsive nlui-widget" alt="Sixt" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Logo_Sixt_EN_TC_SC.png" unselectable="on" /></a></li>
+                    <li><strong>Booking Period:</strong><br class="visible-xs visible-sm" />
+                        15 May – 30 June 2017 <br />
+                        <br class="visible-xs visible-sm" />
+                        <strong>Travel Period:</strong><br class="visible-xs visible-sm" />
+                        15 May – 15 July 2017</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="tod-en-box08">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+
+                <h5>Offer</h5>
+                <ul>
+                    <li>Earn up to <strong>Quadruple Asia Miles</strong> when you book with Sixt, for example:
+                        <ul>
+                            <li><strong>Double Miles</strong> for 1 to 4 days’ car rental</li>
+                            <li><strong>Triple Miles</strong> for 5 to 6 days’ car rental</li>
+                            <li><strong>Quadruple Miles</strong> for a minimum of 7 days’ car rental</li>
+                        </ul>
+                    </li>
+                    <li>Enjoy <strong>up to 10% off</strong> on rental rates for eligible bookings made.</li>
+                </ul>
+                <h5>How to Earn</h5>
+                <ol>
+                    <li>Make your booking through the <a target="_blank" href="http://partner.sixt.de/php/reservation/loginsec?q=wAJ0kX9bvS7prkBPFKPPS2Qmw2MHPjGpL97B51P-I2EjzLdaUqLj4Zt94lsf6cJTHsRXkptT-6tpRz1athD9Q5rrrC4ssmMPpUeXDkzbkC8">Sixt dedicated webpage</a> and include your Asia Miles membership number during reservation.</li>
+                    <li>Present your Asia Miles membership card at the rental counter when picking up your car.</li>
+                </ol>
+                <p>Founded more than a hundred years ago, Sixt is a pioneer in car rental industry, being the first company with a website and the first to accept mobile reservations. It is now operating in 105 countries with branches in over 4,000 locations, such as airports, train stations, cruise ports, and even hotels.</p>
+                <p>Wide-range of vehicles from 4x4 SUV, convertible to sports car are available at Sixt to make your journey more convenient and memorable.</p>
+
+                <p><a class="link-tnc" href="#">Terms &amp; Conditions <span class="aml-text-yellow">&gt; more</span></a></p>
+                <div class="offer-tnc">
+                    <ol>
+                        <li>The offer is valid for bookings between 15 May and 30 June 2017, inclusive, and car rental periods between 15 May and 15 July 2017, inclusive. Latest car return by 15 July 2017.</li>
+                        <li>Bonus miles will be awarded to members during the promotion period according to the period of rental:
+                            <ul type="disc">
+                                <li>2X miles for 1 to 4 days’ car rental</li>
+                                <li>3X miles for 5 to 6 days’ car rental</li>
+                                <li>4X miles for a minimum of 7 days’ car rental</li>
+                            </ul>
+                        </li>
+                        <li>Bookings at long-term rates, corporate rates and truck rates are not eligible to earn miles.</li>
+                        <li>Retroactive miles collection is permitted for a period of six months after the rental start date.</li>
+                        <li>This offer cannot be combined with any other offers and is subject to change without prior notice.</li>
+                        <li>Asia Miles will be credited to the member’s account within 4 to 6 weeks after completion of an eligible car rental.</li>
+                        <li>The up to 10% off discount is subject to availability from different rental locations.</li>
+                        <li>All rentals are subject to Sixt standard terms and conditions.</li>
+                        <li>Other <a href="https://www.asiamiles.com/am/en/amtsl/termsandconditions?format=popup" target="_blank">Asia Miles terms and conditions</a> apply.</li>
+                    </ol>
+                </div>
+                <p class="text-center"><a class="btn-aml" id="tod-en-201705-cta3-1" href="http://partner.sixt.de/php/reservation/loginsec?q=wAJ0kX9bvS7prkBPFKPPS2Qmw2MHPjGpL97B51P-I2EjzLdaUqLj4Zt94lsf6cJTHsRXkptT-6tpRz1athD9Q5rrrC4ssmMPpUeXDkzbkC8" target="_blank">Book Now</a></p>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li><img class="img-responsive nlui-widget" alt="Sixt" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Car_Sixt_Expansion_1_EN.jpg" unselectable="on" /></li>
+                    <li><img class="img-responsive nlui-widget" alt="Sixt" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Car_Sixt_Expansion_2_EN.jpg" unselectable="on" /></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="tod-en-box08">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="t-content-4-1">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><img class="img-responsive nlui-widget" alt="Hotels.com" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Logo_Hotels.com_EN_TC.png" unselectable="on" /></li>
+                    <li><strong>Booking Period:</strong><br class="visible-xs visible-sm" />
+                        16 May -15 June 2017<br />
+                        <br class="visible-xs visible-sm" />
+                        <strong>Staying Period:</strong><br class="visible-xs visible-sm" />
+                        16 May -31 July 2017</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="tod-en-box09">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+
+                <h5>Offer</h5>
+                <ul>
+                    <li>Earn <strong>Double Asia Miles</strong> or <strong>4 miles for every HKD10</strong> with a minimum of HKD$3,500 spent*.</li>
+                    <li>Earn 500 bonus miles to Asia Miles members if it is their first time booking with Hotels.com.</li>
+                    <li>Get 1 free night^ for 10 nights booked.</li>
+                </ul>
+                <p><small>*Or the equivalent amount in any foreign currency, excluding tax and handling fees.</small>
+                    <br><small>^To find out more about the free night, please click here.</small></p>
+                <h5>How to Earn</h5>
+                <ol>
+                    <li>Make your hotel booking via the dedicated webpage below based on your location of residence:
+                        <ul>
+                            <li><a target="_blank" href="https://au.hotels.com/hotel-deals/asiamileshub-au/?rffrid=mdp.hcom.au.330.000.10">Australia</a></li>
+                            <li><a target="_blank" href="https://www.hotels.cn/jiu-dian-you-hui/asiamileshub-cn/?rffrid=mdp.hcom.cn.330.000.10">China</a></li>
+                            <li><a target="_blank" href="https://zh.hotels.com/hotel-deals/asiamileshub-hk/?rffrid=mdp.hcom.hk.330.000.10">Hong Kong</a></li>
+                            <li><a target="_blank" href="https://tw.hotels.com/fan-dian-you-hui/asiamileshub-tw/?rffrid=mdp.hcom.tw.330.000.10">Taiwan</a></li>
+                            <li><a target="_blank" href="https://www.hotels.com/hotel-deals/asiamileshub-asia?pos=HCOM_ASIA&locale=en_MY&rffrid=mdp.hcom.my.330.000.10">Malaysia</a></li>
+                            <li><a target="_blank" href="https://sg.hotels.com/hotel-deals/asiamileshub-sg/?rffrid=mdp.hcom.sg.330.000.10">Singapore</a></li>
+                            <li><a target="_blank" href="https://www.hotels.com/hotel-deals/asiamiles-then/?pos=HCOM_ASIA&locale=en_TH&rffrid=mdp.hcom.th.330.000.10">Thailand</a></li>
+                        </ul>
+                    </li>
+                    <li>Please quote your Asia Miles membership number in the checkout field when making your reservation.</li>
+                    <li>Complete your hotel stay.</li>
+                </ol>
+                <p><a class="link-tnc" href="#">Terms &amp; Conditions <span class="aml-text-yellow">&gt; more</span></a></p>
+                <div class="offer-tnc">
+                    <ol>
+                        <li>Asia Miles members earn miles on hotel bookings made via Hotels.com (regular miles: 2 Asia Miles per HKD$10 spent). During promotion period, Asia Miles members will receive bonus miles, (4 Asia Miles per HKD10 spent if the booking is over HKD3,500,or the equivalent amount in any foreign currency, excluding tax and handling fees) for eligible hotel stays booked between 16 May - 15 June 2017 (the “Booking Period”) inclusive and completed between 16 May - 31 July 2017 (the “Stay Period”), inclusive.</li>
+                        <li>For an eligible booking to be awarded Bonus Asia Miles, members must enter their Asia Miles membership number in the check-out field at the time of booking via the dedicated Hotels.com webpages.</li>
+                        <li>Bonus Asia Miles will be awarded for eligible bookings if the booking has not been altered or cancelled following the initial booking, once the Asia Miles member has paid in full and checked out of the accommodation booked.</li>
+                        <li>For the exact amount of Asia Miles earned from each booking, members can check the payment amount equivalent to Hong Kong dollars by selecting “Hong Kong Dollar” as the currency on the dedicated Hotels.com webpage. For non-Hong Kong residents, foreign currency conversions may lead to changes in amounts based on currency conversion and variations due to the applicable exchange rate, and your payments may also involve additional transaction costs depending on your banking institution.</li>
+                        <li>By completing an eligible booking and entering their valid Asia Miles membership number, the Asia Miles member agrees to let Hotels.com send details of its booking to Asia Miles, for the purpose of crediting miles to the member’s Asia Miles account.</li>
+                        <li>To receive the Asia Miles, the name for eligible booking is required to be the same as the relevant Asia Miles account.</li>
+                        <li>Asia Miles will be credited to the relevant Asia Miles account 6 to 8 weeks after the completion of an eligible hotel stay.</li>
+                        <li>In addition to Asia Miles, members who have joined the Hotels.com Rewards loyalty program may also collect Hotels.com Rewards (i.e. collect 10 nights, get 1 free) for stays at eligible Hotels.com Rewards properties in accordance with these <a target="_blank" href="https://www.hotels.com/customer_care/terms_conditions.html">terms and conditions</a>. Hotels.com Rewards terms and conditions apply.  Asia Miles members may earn Asia Miles on eligible bookings where the member redeems any Hotels.com Reward Free Nights but only for any residual amount paid by regular payment method.</li>
+                        <li>Asia Miles will be issued regardless of payment method, except for any amount paid by redeeming Hotels.com Reward Nights.</li>
+                        <li>All bookings are subject to availability.</li>
+                        <li>General <a target="_blank" href="https://www.hotels.com/customer_care/terms_conditions.html">Hotels.com terms and conditions</a> apply.</li>
+                        <li>Other <a target="_blank" href="https://www.asiamiles.com/am/en/site/terms">Asia Miles terms and conditions</a> apply.</li>
+                    </ol>
+                </div>
+                <!--<p class="text-center hidden-xs hidden-sm"><a class="btn-aml" id="tod-en-201705-cta4-1" href="#" target="_blank">Book Now</a></p>-->
+
+                <h5>Early booking for rewarding summer vocations</h5>
+
+                <p>Hotels.com is a leading online accommodation booking website with properties ranging from international chains and all-inclusive resorts to local hotels and B&Bs. You can also collect one free night^ for ten nights booked to have a more rewarding journey. Under Price Guarantee#, if you can find the same deal for less on a prepaid hotel, Hotels.com will refund the difference.</p>
+
+                <p><small>#For detailed Price Guarantee, please <a target="_blank" href="https://www.hotels.com/customer_care/pillar/price_guarantee.html?pos=HCOM_ASIA&locale=en_AS&intlid=cn_hcom_pmg">click here</a>.</small>
+                    <br><small>^To find out more about the free night, please <a target="_blank" href="https://www.hotels.com/hotel-rewards-pillar/hotelscomrewards.html?locale=en_AS&pos=HCOM_ASIA">click here</a>.</small></p>
+
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li><img class="img-responsive nlui-widget" alt="Hotels.com" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Travel_Leisure_Hotels.com_Expansion_1.jpg" unselectable="on" /></li>
+                    <li><img class="img-responsive nlui-widget" alt="Hotels.com" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Travel_Leisure_Hotels.com_Expansion_2.jpg" unselectable="on" /></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="tod-en-box09">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="t-content-4-2">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li>
+                        <img class="img-responsive nlui-widget" alt="Cartoon Network" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Logo_Cartoon Network_EN_TC_SC.png" unselectable="on" />
+                    </li>
+                    <li><strong>Promotion Period:</strong><br class="visible-xs visible-sm" />
+                        15 May - 31 August 2017<br />
+                        <br class="visible-xs visible-sm" />
+                        <strong>Visiting Period:</strong><br class="visible-xs visible-sm" />
+                        15 May - 30 September 2017</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="tod-en-box10">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                <p class="text-center visible-xs visible-sm"><a class="btn-aml" id="cte-register-box2" href="#" target="_blank">Book Now</a></p>
+                <h5>Offer</h5>
+                <p><span style="text-decoration: underline">Single 1 Day Ticket (Adult, Child, Senior)</span></p>
+                <ul>
+                    <li>200 bonus Asia Miles</li>
+                    <li>10% discount</li>
+                    <li>Free round trip transportation from Pattaya City to the park’s location</li>
+                </ul>
+                <p><span style="text-decoration: underline">Package*</span></p>
+                <ul>
+                    <li>1,000 bonus Asia Miles</li>
+                    <li>10% discount</li>
+                    <li>Free round trip transportation from Pattaya City to the park’s location</li>
+                </ul>
+                <p>*Including</p>
+                <ul>
+                    <li>Family Package [2 adults & 2 children or senior]</li>
+                    <li>Group Package [4 adults]</li>
+                    <li>VIP Family Package [2 adults & 2 children or senior + cabana rent]</li>
+                    <li>VIP Group package [4 adults + cabana rent]</li>
+                </ul>
+                <h5>How to Earn</h5>
+                <ol>
+                    <li>Purchase your single 1-Day ticket(s) / package(s) through the <a target="_blank" href="http://www.cartoonnetworkamazone.com">www.cartoonnetworkamazone.com</a>.</li>
+                    <li>Input your Asia Miles membership number when you make your order.</li>
+                    <li>Claim the 1-Day ticket(s) / package(s) at the park on the day of your visit.</li>
+                </ol>
+                <p><a class="link-tnc" href="#">Terms &amp; Conditions <span class="aml-text-yellow">&gt; more</span></a></p>
+                <div class="offer-tnc">
+                    <ol>
+                        <li>The offer is only valid for single 1-Day ticket(s)/package(s) purchased via website <a target="_blank" href="http://www.cartoonnetworkamazone.com">www.cartoonnetworkamazone.com</a> from 15 May 2017 – 31 August 2017 (inclusive) and used from 15 May 2017 – 30 September 2017 (inclusive). The offer does not apply for the ticket purchased via other channels.</li>
+                        <li>Cartoon Network Amazone reserves the right to decline any bookings on the date of Cartoon Network Amazone special events which will be announced from time-to-time on <a target="_blank" href="http://www.cartoonnetworkamazone.com">www.cartoonnetworkamazone.com</a></li>
+                        <li>For both Thai and non-Thai residents, on top of regular earning of 1 Asia Mile for every THB 10 spent, the offer of 1,000 bonus Asia Miles will be rewarded to the member who purchases i) Family Package, ii) Group Package, iii) VIP Family Package or iv) VIP Group package and 200 bonus Asia Miles will be rewarded to the member who purchases single 1-Day ticket(s).</li>
+                        <li>For both Thai and non-Thai residents, purchase of any package(s) or single 1-Day ticket(s) will be provided with round trip transportation between hotels in Pattaya and Cartoon Network Amazone Waterpark.</li>
+                        <li>To confirm your bookings of Cabana and transportation, please email your booking including (1) Invoice number  (2) Date of your visit (3) Your transportation pick up/ drop off point and schedule to <a href="mailto:onlineticket@cartoonnetworkamazone.com">onlineticket@cartoonnetworkamazone.com</a> at least 24 hours in advance of your visit day. Please visit <a target="_blank" href="https://www.cartoonnetworkamazone.com/transportation/">https://www.cartoonnetworkamazone.com/transportation/</a> for the detailed pick up/drop off point and schedule.</li>
+                        <li>This offer cannot be combined with any other offers and is subject to change without prior notice.</li>
+                        <li>Asia Miles will be credited to member’s account within 6-8 weeks after eligible ticket claimed at the park.</li>
+                        <li>General Cartoon Network Amazone Waterpark terms and conditions  apply.</li>
+                        <li>Other <a href="https://www.asiamiles.com/am/en/amtsl/termsandconditions?format=popup" target="_blank">Asia Miles terms and conditions</a> apply.</li>
+                    </ol>
+                </div>
+                <p class="text-center hidden-xs hidden-sm"><a class="btn-aml" id="tod-en-201705-cta4-2" href="http://www.cartoonnetworkamazone.com" target="_blank">Book Now</a></p>
+
+                <p>Have a splashing summer with your favorite characters at Asia’s most trendy waterpark – the world’s first ever Cartoon Network-themed experience. Meet your favorite Cartoon Network friends, including Ben 10 and his aliens, The Powerpuff Girls, Johnny Bravo and many more.</p>
+                <p>Located less than 20 minutes from Pattaya City, the waterpark offers inclusive fun for all ages with 10 themed zones. Highlights include high-speed water roller coasters, a lazy river, Cartoonival (the world’s largest aqua playground boasting 150 different water features) and the Mega Wave pool which provides beach-inspired action. Blast down Thailand's longest  water roller coasters, you can have a heart-pounding rides over 80 feet high.</p>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    <li><img class="img-responsive nlui-widget" alt="Cartoon Network" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Travel_Leisure_Cartoon_Network_Expansion_1.jpg" unselectable="on" /></li>
+                    <li><img class="img-responsive nlui-widget" alt="Cartoon Network" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Travel_Leisure_Cartoon_Network_Expansion_2.jpg" unselectable="on" /></li>
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="tod-en-box10">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+    <div id="t-content-5-1">
+        <div class="row">
+            <div class="col-xs-12 col-md-9 text-center-xs">
+                <p>Complete with recreation, shopping, exquisite culinary adventures and Disney entertainment, the brand-new hotel Disney Explorers Lodge at Hong Kong Disneyland making it the perfect “staycation” for you.  Book now with instant booking and confirmation.</p>
+                <p>Hotels, Car Rentals and Experiences Awards are arranged by Asia Miles Travel Services Limited (353953).</p>
+                <p><a class="link-tnc-no-expand" href="https://www.asiamiles.com/am/en/amtsl/termsandconditions?format=popup" target="_blank">Terms &amp; Conditions</a></p>
+                <p class="text-center"><a class="btn-aml" id="tod-en-201705-cta5-1" href="https://travel.asiamiles.com/ibe/deeplink/ancillary.do?PRO=http&LAN=EN&SD=true&DES=CouHk00HongK635&DD1=2017-06-26&DT1=01:00&ESC=HKDISNEY0011N&EC=XE-5HE9QQE6AEJE&SITE=Promotion&TA=1&PT=E&DD2=2017-06-27&DT2=01:00&CKB=4deb7f3b492bef713e9aad95f9fa8054ac5cf59bfe9004124ff20613f010e925" target="_blank">Redeem Now</a></p>
+            </div>
+            <div class="col-xs-12 text-center-xs col-md-3 text-right">
+                <div class="btn-close" data-target="tod-en-box11">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade in" id="myModal_weChat" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <p><strong>Explore Your Offer Digest for May - bringing you the best ways to earn and redeem from everyday to once-in-a-lifetime experiences.</strong></p>
+                <p><img class="nlui-widget" src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_QR_EN.jpg" unselectable="on" /></p>
+                <p>Screenshot QR Code and Scan in Wechat to Share</p>
+                <p>
+                    <button class="btn btn-primary" id="input149331175446278" type="button" data-dismiss="modal">OK</button>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_jquery-1.12.4.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_bootstrap.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_jquery.waypoints.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_TweenMax.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_ScrollToPlugin.min.js" type="text/javascript"></script>
+<!--<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_imagesloaded.pkgd.min.js" type="text/javascript"></script> -->
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_iscroll-lite.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_is.min.js" type="text/javascript"></script>
+<!--<script src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_aml-en.js" type="text/javascript"></script>-->
+<!--<script src="scripts/TOD_201705_aml-en.js" type="text/javascript"></script>-->
+<script src="data/main.js" type="text/javascript"></script>
+
+</body>
+</html>
