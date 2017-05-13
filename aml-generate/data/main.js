@@ -9,7 +9,6 @@ function pad(num, size) {
 }
 
 function escapeHtml(str) {
-    console.log(str);
     var html = $('<div>' + str + '</div>');
     return html.text();
 }
@@ -38,11 +37,12 @@ $(function(){
 
 
         var selectorSection = $('.selector-section');
-        var index = 0;
+        var odExpansions = $('#od_expansions');
+        var indexPage = 0;
         $.each(response.pages, function(page, pageObject){
 
             var pageHtml = $('.od_page[data-page="' + page + '"]'),
-            index = 0;
+                indexPage = 0;
 
             $.get('templates/pageKV.html', function(html){
                 var kvHtml = $(html);
@@ -60,21 +60,23 @@ $(function(){
                         sectionHtml.find('.col-xs-12').attr('id', id);
                         sectionHtml.find('.title-separator').html('<span><div class="circle-earn">' + sectionObject.prefix + '</div> ' + sectionObject.name + '</span>');
 
+                        var nSection = 0;
+
                         $.each(sectionObject.rows, function(rowIndex, rowObject){
 
                             $.get('templates/' + rowObject.template, function(html){
                                 var rowHtml = $(html);
-                                var n = 0;
+                                var nFlag = 0;
 
                                 $.each(rowObject.data, function(itemIndex, itemObject){
 
                                     $.get('templates/' + itemObject.template, function(html){
 
                                         var itemHtml = $(html);
-                                        var itemId = page + '-en-box' + pad(++index, 2);
-                                        var itemDesktop = page + '-d-box-' + (rowIndex + 1) + '-' + (itemIndex + 1);
-                                        var itemMobile = page + '-m-box-' + (rowIndex + 1) + '-' + (itemIndex + 1);
-                                        var itemContent = page + '-content-' + (rowIndex + 1) + '-' + (itemIndex + 1);
+                                        var itemId = page + '-en-box' + pad(++indexPage, 2);
+                                        var itemDesktop = page + '-d-box-' + (sectionIndex + 1) + '-' + (++nSection);
+                                        var itemMobile = page + '-m-box-' + (sectionIndex + 1) + '-' + (nSection);
+                                        var itemContent = page + '-content-' + (sectionIndex + 1) + '-' + (nSection);
 
                                         itemHtml.find('.offer-item, .offer-item-no-expand').attr('id', itemId)
                                             .attr('data-content', itemContent)
@@ -107,15 +109,19 @@ $(function(){
                                         }
 
                                         // Expansion
+                                        itemHtml.find('.offer-expansion').attr('id', itemContent);
+                                        itemHtml.find('.btn-close').attr('data-target', itemId);
 
-
+                                        if(itemHtml.find('.offer-expansion').length > 0) {
+                                            console.log(itemHtml.find('.offer-expansion').get(0));
+                                        }
 
                                         rowHtml.find('.col-xs-12:nth-child(' + (itemIndex + 1) + ')').prepend(itemHtml.find('.offer-item, .offer-item-no-expand').get(0));
                                         rowHtml.find('.col-xs-12:nth-child(' + (itemIndex + 1) + ') .offer-detail-mobile').attr('id', itemMobile);
                                         rowHtml.find('.col-xs-12:nth-child(' + (rowObject.data.length + 1) + ') .offer-detail-desktop:nth-child(' + (itemIndex + 1) + ')').attr('id', itemDesktop);
 
-                                        n++;
-                                        if(n === rowObject.data.length){
+                                        nFlag++;
+                                        if(nFlag === rowObject.data.length){
                                             sectionHtml.append(rowHtml.get(0).innerHTML);
                                         }
                                     });

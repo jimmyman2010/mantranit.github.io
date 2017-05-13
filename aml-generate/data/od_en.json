@@ -135,6 +135,29 @@
                             ]
                         }
                     ]
+                },
+                {
+                    "id": "car-transport-earn",
+                    "hash": "transport",
+                    "prefix": "Earn",
+                    "name": "Car &amp; Transport",
+                    "rows": [
+                        {
+                            "template": "moduleContentOne.html",
+                            "data": [
+                                {
+                                    "template": "contentExpansion.html",
+                                    "brandName": "Sixt",
+                                    "headline": "Up to 4X Miles | Up to 10% off on rental rate",
+                                    "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Car_Sixt_KV.jpg",
+                                    "imageMobile": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Car_Sixt_KV_Mobile.jpg",
+                                    "leadIn": "With a wide-range of options in their collection, Sixt offer vehicles of all sizes from 4x4 SUVs and trucks to speedy convertibles and sports cars at an affordable rate.",
+                                    "tip": "",
+                                    "externalLink": ""
+                                }
+                            ]
+                        }
+                    ]
                 }
             ]
         }
