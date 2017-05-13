@@ -1,9 +1,58 @@
-<div class="offer-item" id="{DESIGNATED ID}" data-desktop="{DESKTOP EXPANSION DIV ID}" data-mobile="{MOBILE EXPANSION DIV ID}" data-content="{EXPANSION CONTENT DIV ID}">
-    <div id="{ID FOR TRACKING OR TAGGING}">
-        <figure class="hidden-xs hidden-sm"><img src="{URL FOR DESKTOP IMAGE}" alt="" class="img-responsive"></figure>
-        <figure class="visible-xs visible-sm"><img src="{URL FOR MOBILE IMAGE}" alt="" class="img-responsive"></figure>
+<div>
+
+    <div class="offer-item" id="{DESIGNATED ID}" data-desktop="{DESKTOP EXPANSION DIV ID}" data-mobile="{MOBILE EXPANSION DIV ID}" data-content="{EXPANSION CONTENT DIV ID}">
+        <div class="offer-item-image">
+            <figure class="hidden-xs hidden-sm loaded"><img src="{URL FOR DESKTOP IMAGE}" alt="" title="" class="img-responsive"></figure>
+            <figure class="visible-xs visible-sm loaded"><img src="{URL FOR MOBILE IMAGE}" alt="" title="" class="img-responsive"></figure>
+        </div>
+        <p class="brand">{BRAND NAME}</p>
+        <h4>{H/L}</h4>
+        <p><span>{LEAD IN}</span> <span class="aml-text-yellow">&gt; more</span></p>
+        <h6><span>{TIP}</span></h6>
     </div>
-    <p>{BRAND NAME}</p>
-    <h4>{H/L}</h4>
-    <p>{LEAD IN} <span class="aml-text-yellow">&gt;</span></p>
+
+    <div class="offer-content">
+        <div class="row">
+            <div class="col-xs-12 col-md-10 text-center-xs">
+                <ul class="offer-logo list-inline list-unstyled">
+                    <li><a href="http://www.asiamiles.com/am/en/earn/hotels/detail?refID=4ab8f19fa8dea110VgnVCM62000007d21c39RCRD" target="_blank">
+                        <img class="img-responsive nlui-widget loaded" alt="Peninsula Hotel" src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Logo.png" data-src="http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Logo.png" unselectable="on"></a></li>
+                    <li><strong>Booking Period:</strong><br class="visible-xs visible-sm">
+                        16 May – 7 September 2017<br>
+                        <br class="visible-xs visible-sm">
+                        <strong>Stay Period:</strong><br class="visible-xs visible-sm">
+                        17 May – 8 September 2017</li>
+                </ul>
+            </div>
+            <div class="col-md-2 text-right hidden-xs hidden-sm">
+                <div class="btn-close" data-target="tod-en-box05">Close To View Other Offers</div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-8">
+                {OFFER BODY}
+
+                <p><a class="link-tnc" href="#">Terms &amp; Conditions <span class="aml-text-yellow">&gt; more</span></a></p>
+                <div class="offer-tnc">
+                    {TnC}
+                </div>
+                <p class="text-center"><a class="btn-aml" id="tod-en-201705-cta2-1" href="http://asiamil.es/2qLyhsd" target="_blank">Book Now</a></p>
+
+                <h5 class="hidden-xs hidden-sm">Hotel Highlight</h5>
+                <h5 class="title-offer-hl visible-xs visible-sm">Hotel Highlight <span class="aml-text-yellow">&gt; more</span></h5>
+                <div class="offer-hl">
+                    {HOTEL HIGHLIGHT}
+                </div>
+            </div>
+            <div class="col-md-4 pull-right-md">
+                <ul class="list-unstyled offer-gallery">
+                    {GALLERY}
+                </ul>
+            </div>
+            <div class="col-xs-12 text-center visible-xs visible-sm">
+                <div class="btn-close" data-target="tod-en-box05">Close To View Other Offers</div>
+            </div>
+        </div>
+    </div>
+
 </div>

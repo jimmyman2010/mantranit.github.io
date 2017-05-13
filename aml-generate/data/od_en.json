@@ -44,7 +44,7 @@
                                     "brandName": "Cathay Pacific",
                                     "headline": "2X Miles",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_NZ_2X_Miles_KV.jpg",
-                                    "imageMobile": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_NZ_2X_Miles_KV.jpg",
+                                    "imageMobile": "",
                                     "leadIn": "Register now and travel from 5 May to 20 June 2017 to earn Double Miles when flying in Business Class, Premium Economy Class or Economy Class between Auckland and Hong Kong.",
                                     "tip": "For members residing in Mainland China, Hong Kong, New Zealand and Taiwan only",
                                     "externalLink": "http://www.asiamiles.com/am/en/earn/airlines/promotion?refID=3de3ee93b0f9b510VgnVCM1000000ad21c39RCRD"
@@ -54,7 +54,7 @@
                                     "brandName": "Cathay Pacific",
                                     "headline": "3X Miles",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_IN_NAM_3X_Miles_KV.jpg",
-                                    "imageMobile": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_IN_NAM_3X_Miles_KV.jpg",
+                                    "imageMobile": "",
                                     "leadIn": "Register now and travel from India to San Francisco or Los Angeles by 30 June 2017 in Business Class to earn Triple Miles.",
                                     "tip": "For members residing in India only",
                                     "externalLink": "http://www.asiamiles.com/am/en/earn/airlines/promotion?refID=34b6ee93b0f9b510VgnVCM1000000ad21c39RCRD"
@@ -69,7 +69,7 @@
                                     "brandName": "Cathay Pacific",
                                     "headline": "2X Miles | Extra Online Booking Bonus Miles",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_AU_2X_Miles_KV.jpg",
-                                    "imageMobile": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_AU_2X_Miles_KV.jpg",
+                                    "imageMobile": "",
                                     "leadIn": "Register now until 5 June 2017, and fly a round-trip to Europe, North America or Tel Aviv between 5 May and 5 August 2017 in Economy Class to earn Double Miles. If you book your tickets through Cathay Pacific website can enjoy 1,000 Bonus Miles.",
                                     "tip": "For members residing in Australia only",
                                     "externalLink": "http://www.asiamiles.com/am/en/earn/airlines/promotion?refID=2077ee93b0f9b510VgnVCM1000000ad21c39RCRD"
@@ -79,7 +79,7 @@
                                     "brandName": "Cathay Pacific",
                                     "headline": "2X Miles | Extra Online Booking Bonus Miles",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_ZA_2X_Miles_KV.jpg",
-                                    "imageMobile": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_ZA_2X_Miles_KV.jpg",
+                                    "imageMobile": "",
                                     "leadIn": "Register and fly from South Africa to selected Asia destinations by 30 June 2017 in all classes to earn Double Miles. Book your tickets through Cathay Pacific website can earn up to 3,000 Bonus Miles.",
                                     "tip": "For members residing in Botswana, Kenya, Madagascar, Malawi, Mauritius, Mozambique, Namibia, Nigeria, South Africa, Zambia, Lesotho, Swaziland and Zimbabwe only",
                                     "externalLink": "http://www.asiamiles.com/am/en/earn/airlines/promotion?refID=b5b6ee93b0f9b510VgnVCM1000000ad21c39RCRD"
@@ -95,25 +95,17 @@
                     "name": "Hotels",
                     "rows": [
                         {
-                            "template": "moduleContentTwo.html",
+                            "template": "moduleContentOne.html",
                             "data": [
                                 {
-                                    "brandName": "Cathay Pacific",
-                                    "headline": "2X Miles",
-                                    "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_NZ_2X_Miles_KV.jpg",
-                                    "imageMobile": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_NZ_2X_Miles_KV.jpg",
-                                    "leadIn": "Register now and travel from 5 May to 20 June 2017 to earn Double Miles when flying in Business Class, Premium Economy Class or Economy Class between Auckland and Hong Kong.",
-                                    "tip": "For members residing in Mainland China, Hong Kong, New Zealand and Taiwan only",
-                                    "externalLink": "http://www.asiamiles.com/am/en/earn/airlines/promotion?refID=3de3ee93b0f9b510VgnVCM1000000ad21c39RCRD"
-                                },
-                                {
-                                    "brandName": "Cathay Pacific",
-                                    "headline": "3X Miles",
-                                    "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_IN_NAM_3X_Miles_KV.jpg",
-                                    "imageMobile": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_IN_NAM_3X_Miles_KV.jpg",
-                                    "leadIn": "Register now and travel from India to San Francisco or Los Angeles by 30 June 2017 in Business Class to earn Triple Miles.",
-                                    "tip": "For members residing in India only",
-                                    "externalLink": "http://www.asiamiles.com/am/en/earn/airlines/promotion?refID=34b6ee93b0f9b510VgnVCM1000000ad21c39RCRD"
+                                    "template": "contentExpansion.html",
+                                    "brandName": "The Peninsula Hotels",
+                                    "headline": "3X Miles | 50% discount for the 2<sup style=\"font-size: 75%; line-height: 1;\">nd</sup> room",
+                                    "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_KV.jpg",
+                                    "imageMobile": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_KV_Mobile.jpg",
+                                    "leadIn": "Permeating elegance, prestige and distinction in each of their award-winning hotels, The Peninsula Hotels offers bespoke service and state-of-the-art amenities. Catering for family excursions, guests can enjoy a range of amenities and programs tailored just for junior guests that encompasses cultural and entertaining activities.",
+                                    "tip": "",
+                                    "externalLink": ""
                                 }
                             ]
                         },
@@ -121,22 +113,24 @@
                             "template": "moduleContentTwo.html",
                             "data": [
                                 {
-                                    "brandName": "Cathay Pacific",
-                                    "headline": "2X Miles | Extra Online Booking Bonus Miles",
-                                    "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_AU_2X_Miles_KV.jpg",
-                                    "imageMobile": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_AU_2X_Miles_KV.jpg",
-                                    "leadIn": "Register now until 5 June 2017, and fly a round-trip to Europe, North America or Tel Aviv between 5 May and 5 August 2017 in Economy Class to earn Double Miles. If you book your tickets through Cathay Pacific website can enjoy 1,000 Bonus Miles.",
-                                    "tip": "For members residing in Australia only",
-                                    "externalLink": "http://www.asiamiles.com/am/en/earn/airlines/promotion?refID=2077ee93b0f9b510VgnVCM1000000ad21c39RCRD"
+                                    "template": "contentExpansion.html",
+                                    "brandName": "Shangri-La Hotels and Resorts",
+                                    "headline": "Up to 4X Miles",
+                                    "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_KV.jpg",
+                                    "imageMobile": "",
+                                    "leadIn": "With locations in premier cities across the globe and exotic islands, each Shangri-La brand is distinct yet provides the same home away from home hospitality.",
+                                    "tip": "",
+                                    "externalLink": ""
                                 },
                                 {
-                                    "brandName": "Cathay Pacific",
-                                    "headline": "2X Miles | Extra Online Booking Bonus Miles",
-                                    "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_ZA_2X_Miles_KV.jpg",
-                                    "imageMobile": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_ZA_2X_Miles_KV.jpg",
-                                    "leadIn": "Register and fly from South Africa to selected Asia destinations by 30 June 2017 in all classes to earn Double Miles. Book your tickets through Cathay Pacific website can earn up to 3,000 Bonus Miles.",
-                                    "tip": "For members residing in Botswana, Kenya, Madagascar, Malawi, Mauritius, Mozambique, Namibia, Nigeria, South Africa, Zambia, Lesotho, Swaziland and Zimbabwe only",
-                                    "externalLink": "http://www.asiamiles.com/am/en/earn/airlines/promotion?refID=b5b6ee93b0f9b510VgnVCM1000000ad21c39RCRD"
+                                    "template": "contentExpansion.html",
+                                    "brandName": "Pan Pacific Hotels and Resorts",
+                                    "headline": "3X Miles",
+                                    "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Pan_Pacific_KV.jpg",
+                                    "imageMobile": "",
+                                    "leadIn": "TripAdvisor Travellers’ Choice Hotel Award winner Pan Pacific Hotels and Resorts offers a wide-range of relevant choices set against a modern and luxurious backdrop.",
+                                    "tip": "",
+                                    "externalLink": ""
                                 }
                             ]
                         }
