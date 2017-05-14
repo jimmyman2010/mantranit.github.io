@@ -1,18 +1,7 @@
 {
-    "url": [
-        {
-            "txt": "EN",
-            "url": "/aml-generate/tod_may_2017_en.html"
-        },
-        {
-            "txt": "繁",
-            "url": "/aml-generate/tod_may_2017_tc.html"
-        },
-        {
-            "txt": "简",
-            "url": "/aml-generate/tod_may_2017_sc.html"
-        }
-    ],
+    "urlEN": "/aml-generate/tod_may_2017_en.html",
+    "urlTC": "/aml-generate/tod_may_2017_tc.html",
+    "urlSC": "/aml-generate/tod_may_2017_sc.html",
     "title": "Offer Digest | May",
     "ogTitle": "Asia Miles - Offer Digests",
     "ogDescription": "This Month’s Travel Offer Digest – The month of May has some great new travel offers!",
@@ -29,6 +18,10 @@
             "kv": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Leadin_KV_EN.jpg",
             "kvAlt": "Best Summer Escape Offers of up to 4X Miles",
             "intro": "Planning your next summer holiday? Enjoy the latest travel offers to earn more and redeem miles for a rewarding summer getaway!",
+
+            "beforeQr":"Asia Miles - Offer Digests<br>This Month’s Travel Offer Digest – The month of May has some great new travel offers!",
+            "qrCode":"http://res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_QR_EN.jpg",
+            "afterQr":"Screenshot QR Code and Scan in Wechat to Share",
             "sections": [
                 {
                     "id": "flights-earn",

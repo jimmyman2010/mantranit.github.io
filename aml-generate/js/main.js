@@ -3,6 +3,7 @@
  */
 
 $(function(){
+    var siteData;
     var source = $('#source');
     $('#one-column').on('click', function(){
         $.get('templates/moduleContentOne.html', function(result){
@@ -49,5 +50,29 @@ $(function(){
         minHeight: 200
     });
 
+    $('#ok').on('click', function(){
+        localStorage.setItem('siteData', JSON.stringify(siteData));
+    });
+
+    $('#fill').on('click', function(){
+        if(!siteData){
+            $.getJSON('data/od_en.json', function(response){
+                siteData = response;
+                localStorage.setItem('siteData', JSON.stringify(siteData));
+            });
+        } else {
+
+        }
+    });
 
 });
+
+function slugify(text)
+{
+    return text.toString().toLowerCase()
+        .replace(/\s+/g, '-')           // Replace spaces with -
+        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
+        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
+        .replace(/^-+/, '')             // Trim - from start of text
+        .replace(/-+$/, '');            // Trim - from end of text
+}
