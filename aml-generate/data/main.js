@@ -15,7 +15,7 @@ function escapeHtml(str) {
 
 $(function(){
     $.getJSON('data/od_en.json', function(response){
-        console.log(response);
+
         var head = $('head');
         head.find('title').html(response.title);
         head.find('link[rel="image_src"]').attr('href', response.ogImage);
@@ -74,51 +74,96 @@ $(function(){
 
                                         var itemHtml = $(html);
                                         var itemId = page + '-en-box' + pad(++indexPage, 2);
-                                        var itemDesktop = page + '-d-box-' + (sectionIndex + 1) + '-' + (++nSection);
-                                        var itemMobile = page + '-m-box-' + (sectionIndex + 1) + '-' + (nSection);
-                                        var itemContent = page + '-content-' + (sectionIndex + 1) + '-' + (nSection);
+                                        var itemIdDesktop = page + '-d-box-' + (sectionIndex + 1) + '-' + (++nSection);
+                                        var itemIdMobile = page + '-m-box-' + (sectionIndex + 1) + '-' + (nSection);
+                                        var itemIdContent = page + '-content-' + (sectionIndex + 1) + '-' + (nSection);
+                                        var itemIdCta = page + '-cta-' + (sectionIndex + 1) + '-' + (nSection);
 
-                                        itemHtml.find('.offer-item, .offer-item-no-expand').attr('id', itemId)
-                                            .attr('data-content', itemContent)
-                                            .attr('data-mobile', itemMobile)
-                                            .attr('data-desktop', itemDesktop);
+                                        var itemBeforeExpansion = itemHtml.find('.offer-item, .offer-item-no-expand');
+                                        itemBeforeExpansion.attr('id', itemId)
+                                            .attr('data-content', itemIdContent)
+                                            .attr('data-mobile', itemIdMobile)
+                                            .attr('data-desktop', itemIdDesktop);
 
-                                        itemHtml.find('.brand').html(itemObject.brandName);
-                                        itemHtml.find('h4').html(itemObject.headline);
-                                        itemHtml.find('p span:nth-child(1)').html(itemObject.leadIn);
-                                        itemHtml.find('figure img:nth-child(1)')
+                                        itemBeforeExpansion.find('.brand').html(itemObject.brandName);
+                                        itemBeforeExpansion.find('h4').html(itemObject.headline);
+                                        itemBeforeExpansion.find('p span:nth-child(1)').html(itemObject.leadIn);
+                                        itemBeforeExpansion.find('figure img:nth-child(1)')
                                             .attr('src', itemObject.imageDesktop)
                                             .attr('alt', escapeHtml(itemObject.headline))
                                             .attr('title', escapeHtml(itemObject.headline));
                                         if(!itemObject.imageMobile){
                                             itemObject.imageMobile = itemObject.imageDesktop
                                         }
-                                        itemHtml.find('figure img:nth-child(2)')
+                                        itemBeforeExpansion.find('figure img:nth-child(2)')
                                             .attr('src', itemObject.imageMobile)
                                             .attr('alt', escapeHtml(itemObject.headline))
                                             .attr('title', escapeHtml(itemObject.headline));
 
                                         // No Expansion
                                         if(itemObject.externalLink) {
-                                            itemHtml.find('a').attr('href', itemObject.externalLink).attr('title', escapeHtml(itemObject.headline));
+                                            itemBeforeExpansion.find('a').attr('href', itemObject.externalLink).attr('title', escapeHtml(itemObject.headline));
                                         }
                                         if(itemObject.tip){
-                                            itemHtml.find('h6 span').html(itemObject.tip);
+                                            itemBeforeExpansion.find('h6 span').html(itemObject.tip);
                                         } else {
-                                            itemHtml.find('h6').remove();
+                                            itemBeforeExpansion.find('h6').remove();
                                         }
 
                                         // Expansion
-                                        itemHtml.find('.offer-expansion').attr('id', itemContent);
-                                        itemHtml.find('.btn-close').attr('data-target', itemId);
+                                        var itemAfterExpansion = itemHtml.find('.offer-expansion');
+                                        if(itemAfterExpansion.length > 0) {
+                                            itemAfterExpansion.attr('id', itemIdContent);
+                                            itemAfterExpansion.find('.btn-close').attr('data-target', itemId);
+                                            itemAfterExpansion.find('.offer-logo li:first-child a')
+                                                .attr('href', itemObject.logoUrl)
+                                                .attr('title', escapeHtml(itemObject.brandName));
+                                            itemAfterExpansion.find('.offer-logo li:first-child img')
+                                                .attr('src', itemObject.logo)
+                                                .attr('alt', escapeHtml(itemObject.brandName));
+                                            itemAfterExpansion.find('.offer-logo li:last-child').html(itemObject.period);
 
-                                        if(itemHtml.find('.offer-expansion').length > 0) {
-                                            console.log(itemHtml.find('.offer-expansion').get(0));
+                                            if (itemObject.gallery && itemObject.gallery.length > 0) {
+                                                $.each(itemObject.gallery, function (i, v) {
+                                                    itemAfterExpansion.find('.offer-gallery').append('<li><img src="' + v + '" alt="' + itemObject.brandName + '" title="' + itemObject.brandName + ' class="img-responsive"/></li>');
+                                                });
+                                            } else {
+                                                itemAfterExpansion.find('.col-md-4.pull-right-md').remove();
+                                            }
+
+                                            itemAfterExpansion.find('.col-md-8').prepend(itemObject.offerBody);
+
+                                            itemAfterExpansion.find('.btn-aml')
+                                                .html(itemObject.cta)
+                                                .attr('href', itemObject.ctaUrl)
+                                                .attr('id', itemIdCta);
+
+                                            if(itemObject.tandcUrl){
+                                                itemAfterExpansion.find('.link-tnc')
+                                                    .attr('href', itemObject.tandcUrl)
+                                                    .addClass('link-tnc-no-expand').removeClass('link-tnc');
+
+                                                itemAfterExpansion.find('.offer-tnc').remove();
+                                            } else {
+                                                itemAfterExpansion.find('.offer-tnc')
+                                                    .html(itemObject.tandcBody);
+                                            }
+
+                                            if(itemObject.hotelHighlight){
+                                                itemAfterExpansion.find('.offer-hl')
+                                                    .html(itemObject.hotelHighlight);
+                                            } else {
+                                                itemAfterExpansion.find('.title-offer-hl, .offer-hl, h5.hidden-xs.hidden-sm').remove();
+                                                itemAfterExpansion.find('.col-md-8').append(itemObject.extraBody);
+                                            }
+
+                                            console.log(itemAfterExpansion.get(0));
+                                            odExpansions.append(itemAfterExpansion.get(0));
                                         }
 
-                                        rowHtml.find('.col-xs-12:nth-child(' + (itemIndex + 1) + ')').prepend(itemHtml.find('.offer-item, .offer-item-no-expand').get(0));
-                                        rowHtml.find('.col-xs-12:nth-child(' + (itemIndex + 1) + ') .offer-detail-mobile').attr('id', itemMobile);
-                                        rowHtml.find('.col-xs-12:nth-child(' + (rowObject.data.length + 1) + ') .offer-detail-desktop:nth-child(' + (itemIndex + 1) + ')').attr('id', itemDesktop);
+                                        rowHtml.find('.col-xs-12:nth-child(' + (itemIndex + 1) + ')').prepend(itemBeforeExpansion.get(0));
+                                        rowHtml.find('.col-xs-12:nth-child(' + (itemIndex + 1) + ') .offer-detail-mobile').attr('id', itemIdMobile);
+                                        rowHtml.find('.col-xs-12:nth-child(' + (rowObject.data.length + 1) + ') .offer-detail-desktop:nth-child(' + (itemIndex + 1) + ')').attr('id', itemIdDesktop);
 
                                         nFlag++;
                                         if(nFlag === rowObject.data.length){
