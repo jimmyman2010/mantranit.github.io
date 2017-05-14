@@ -10,7 +10,7 @@
 
     "logo": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_AML_EN.png",
     "logoUrl": "https://www.asiamiles.com/am/en/homepage",
-    "logAlt": "Asia Miles",
+    "logoAlt": "Asia Miles",
     "od": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_OfferDigest_EN.png",
     "odAlt": "Offer Digest",
     "pages": {
@@ -34,6 +34,7 @@
                             "data": [
                                 {
                                     "template": "contentNoExpansion.html",
+                                    "note": "NZ",
                                     "brandName": "Cathay Pacific",
                                     "headline": "2X Miles",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_NZ_2X_Miles_KV.jpg",
@@ -44,6 +45,7 @@
                                 },
                                 {
                                     "template": "contentNoExpansion.html",
+                                    "note": "IN NAM",
                                     "brandName": "Cathay Pacific",
                                     "headline": "3X Miles",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_IN_NAM_3X_Miles_KV.jpg",
@@ -59,6 +61,7 @@
                             "data": [
                                 {
                                     "template": "contentNoExpansion.html",
+                                    "note": "AU",
                                     "brandName": "Cathay Pacific",
                                     "headline": "2X Miles | Extra Online Booking Bonus Miles",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_AU_2X_Miles_KV.jpg",
@@ -69,6 +72,7 @@
                                 },
                                 {
                                     "template": "contentNoExpansion.html",
+                                    "note": "ZA",
                                     "brandName": "Cathay Pacific",
                                     "headline": "2X Miles | Extra Online Booking Bonus Miles",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Air_ZA_2X_Miles_KV.jpg",
@@ -92,6 +96,7 @@
                             "data": [
                                 {
                                     "template": "contentExpansion.html",
+                                    "note": "Peninsula",
                                     "brandName": "The Peninsula Hotels",
                                     "headline": "3X Miles | 50% discount for the 2<sup style=\"font-size: 75%; line-height: 1;\">nd</sup> room",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_KV.jpg",
@@ -123,6 +128,7 @@
                             "data": [
                                 {
                                     "template": "contentExpansion.html",
+                                    "note": "Shangri-La",
                                     "brandName": "Shangri-La Hotels and Resorts",
                                     "headline": "Up to 4X Miles",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_KV.jpg",
@@ -149,6 +155,7 @@
                                 },
                                 {
                                     "template": "contentExpansion.html",
+                                    "note": "Pan Pacific",
                                     "brandName": "Pan Pacific Hotels and Resorts",
                                     "headline": "3X Miles",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Pan_Pacific_KV.jpg",
@@ -188,6 +195,7 @@
                             "data": [
                                 {
                                     "template": "contentExpansion.html",
+                                    "note": "Sixt",
                                     "brandName": "Sixt",
                                     "headline": "Up to 4X Miles | Up to 10% off on rental rate",
                                     "imageDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Car_Sixt_KV.jpg",

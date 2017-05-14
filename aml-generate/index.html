@@ -70,8 +70,16 @@
                             </div>
 
                             <div id="design" class="tab-pane fade in active">
-                                <form id="form">
+                                <form id="formMain">
 
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label>Title</label>
+                                                <input type="text" name="title" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -168,11 +176,16 @@
                                             </div>
                                         </div>
                                     </div>
+
+                                </form>
+
                                     <hr>
-                                    <div id="source" class="image-group">
+                                <form id="formSection">
+                                    <div id="section-html" class="panel-group">
 
                                     </div>
                                 </form>
+
                                 <div class="buttons text-center">
                                     <br>
                                     <button id="one-column" class="btn btn-info btn-sm">One</button>
@@ -201,6 +214,87 @@
 </div>
 <!-- /#wrapper -->
 <a href="javascript:void(0);" class="to-top"><i class="fa fa-angle-up"></i></a>
+
+<script id="section" type="text/html">
+    <div class="type-section panel panel-primary">
+        <div class="panel-heading">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Name</label>
+                        <input type="text" name="name" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Prefix</label>
+                        <input type="text" name="prefix" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Id</label>
+                        <input type="text" name="id" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Hash</label>
+                        <input type="text" name="hash" class="form-control">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel-body panel-body--section">
+
+        </div>
+    </div>
+</script>
+
+<script id="row-2" type="text/html">
+
+    <div class="type-row panel panel-default">
+        <div class="panel-heading">
+            Module 2 Content
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <h5 class="note"></h5>
+                        <button class="edit btn btn-sm btn-info">Edit</button>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="text-center">
+                        <h5 class="note"></h5>
+                        <button class="edit btn btn-sm btn-info">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</script>
+
+<script id="row-1" type="text/html">
+
+    <div class="type-row panel panel-default">
+        <div class="panel-heading">
+            Module 1 Content
+        </div>
+
+        <div class="panel-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-center">
+                        <h5 class="note"></h5>
+                        <button class="edit btn btn-sm btn-info">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</script>
 
 <!-- Modal Face -->
 <div class="modal fade" id="modalContent" tabindex="-1" role="dialog" aria-labelledby="modalContentLabel">

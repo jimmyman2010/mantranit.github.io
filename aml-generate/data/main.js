@@ -14,6 +14,9 @@ function escapeHtml(str) {
 }
 
 function process(response){
+
+    console.log(response);
+
     var head = $('head');
     head.find('title').html(response.title);
     head.find('link[rel="image_src"]').attr('href', response.ogImage);
@@ -21,6 +24,8 @@ function process(response){
     head.find('meta[property="og:title"]').attr('content', response.ogTitle);
     head.find('meta[property="og:image"]').attr('content', response.ogImage);
     head.find('meta[property="og:description"]').attr('content', response.ogDescription);
+
+    console.log(response);
 
     var logo = $('.logo');
     logo.attr('href', response.logoUrl);
@@ -183,10 +188,11 @@ function process(response){
 
 $(function(){
     var siteDataPreview = localStorage.getItem('siteData');
+
     if(!siteDataPreview) {
-        //$.getJSON('data/od_en.json', function (response) {
-        //    process(response);
-        //});
+        $.getJSON('data/od_en.json', function (response) {
+            process(response);
+        });
     } else {
         process(JSON.parse(siteDataPreview));
     }
