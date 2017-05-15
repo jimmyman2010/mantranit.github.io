@@ -24,29 +24,7 @@ $(function(){
         $('#modalContent').modal('show');
     });
 
-    $('select[name="selectContentType"]').on('change', function(){
-        if($(this).val() === 'expansion'){
-            $('#modalContent .show-expansion').show();
-            $('#modalContent .show-no-expansion').hide();
-        } else {
-            $('#modalContent .show-expansion').hide();
-            $('#modalContent .show-no-expansion').show();
-        }
-    });
-
-    $('#offerAndJoin').summernote({
-        minHeight: 200
-    });
-
-    $('#bodyMore').summernote({
-        minHeight: 100
-    });
-
-    $('#hotelHighlight').summernote({
-        minHeight: 100
-    });
-
-    $('#termAndConditions').summernote({
+    $('.summernote').summernote({
         minHeight: 200
     });
 
@@ -107,8 +85,10 @@ $(function(){
                     tplRow = $($('#row-2').html());
                 }
                 tplRow.find('.col-md-6:first-child .note, .col-md-12 .note').html(objRow.data[0].note);
+                tplRow.find('.col-md-6:first-child .data-item, .col-md-12 .data-item').val(JSON.stringify(objRow.data[0]));
                 if(objRow.data[1]) {
                     tplRow.find('.col-md-6:last-child .note').html(objRow.data[1].note);
+                    tplRow.find('.col-md-6:last-child .data-item').val(JSON.stringify(objRow.data[1]));
                 }
 
                 tplSection.find('.panel-body--section').append(tplRow);
@@ -118,6 +98,62 @@ $(function(){
             sectionHtml.append(tplSection);
         });
     }
+
+    $('#modalContent select[name="template"]').on('change', function(){
+        if($(this).val() === 'contentExpansion.html'){
+            $('#modalContent .show-expansion').show();
+            $('#modalContent .show-no-expansion').hide();
+        } else {
+            $('#modalContent .show-expansion').hide();
+            $('#modalContent .show-no-expansion').show();
+        }
+    });
+
+    $('#design').on('click', '.edit-item', function(){
+        var itemObject = JSON.parse($(this).siblings('.data-item').val());
+        console.log(itemObject);
+
+        var modal = $('#modalContent');
+
+        modal.find('[name="template"]').val(itemObject.template).trigger('change');
+        modal.find('[name="note"]').val(itemObject.note);
+        modal.find('[name="brandName"]').val(itemObject.brandName);
+        modal.find('[name="headline"]').val(itemObject.headline);
+        modal.find('[name="imageDesktop"]').val(itemObject.imageDesktop);
+        modal.find('[name="imageMobile"]').val(itemObject.imageMobile);
+        modal.find('[name="leadIn"]').val(itemObject.leadIn);
+        modal.find('[name="tip"]').val(itemObject.tip);
+        modal.find('[name="externalLink"]').val(itemObject.externalLink);
+
+        if(!itemObject.externalLink) {
+
+            if (itemObject.gallery[0]) {
+                modal.find('[name="image1"]').val(itemObject.gallery[0]);
+            }
+            if (itemObject.gallery[1]) {
+                modal.find('[name="image2"]').val(itemObject.gallery[1]);
+            }
+            if (itemObject.gallery[2]) {
+                modal.find('[name="image3"]').val(itemObject.gallery[2]);
+            }
+
+            modal.find('[name="logo"]').val(itemObject.logo);
+            modal.find('[name="logoUrl"]').val(itemObject.logoUrl);
+
+            modal.find('[name="cta"]').val(itemObject.cta);
+            modal.find('[name="ctaUrl"]').val(itemObject.ctaUrl);
+
+            modal.find('[name="tandcUrl"]').val(itemObject.tandcUrl);
+
+            $('#period').summernote('code', itemObject.period);
+            $('#offerBody').summernote('code', itemObject.offerBody);
+            $('#extraBody').summernote('code', itemObject.extraBody);
+            $('#hotelHighlight').summernote('code', itemObject.hotelHighlight);
+            $('#tandcBody').summernote('code', itemObject.tandcBody);
+        }
+
+        $('#modalContent').modal('show');
+    });
 
 });
 
