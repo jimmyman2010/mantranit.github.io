@@ -179,17 +179,20 @@
 
                                 </form>
 
-                                    <hr>
-                                <form id="formSection">
-                                    <div id="section-html" class="panel-group">
+                                <hr>
 
-                                    </div>
-                                </form>
+                                <div id="section-html" class="panel-group">
+
+                                </div>
 
                                 <div class="buttons text-center">
                                     <br>
-                                    <button type="button" id="one-column" class="btn btn-info btn-sm">One</button>
-                                    <button type="button" id="two-columns" class="btn btn-info btn-sm">Two</button>
+                                    <div class="panel-footer">
+                                        <div class="text-center">
+                                            <button type="button" id="add-section" class="btn btn-sm btn-info">Add Section</button>
+                                        </div>
+
+                                    </div>
                                     <br><br>
                                     <button type="button" id="ok" class="btn btn-primary">OK</button>
                                     <button type="button" id="fill" class="btn btn-primary">Fill</button>
@@ -216,36 +219,47 @@
 <a href="javascript:void(0);" class="to-top"><i class="fa fa-angle-up"></i></a>
 
 <script id="section" type="text/html">
-    <div class="type-section panel panel-primary">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Prefix</label>
-                        <input type="text" name="prefix" class="form-control">
+    <form class="formSection">
+        <div class="type-section panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Prefix</label>
+                                <input type="text" name="prefix" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Id</label>
+                                <input type="text" name="id" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Hash</label>
+                                <input type="text" name="hash" class="form-control">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Id</label>
-                        <input type="text" name="id" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Hash</label>
-                        <input type="text" name="hash" class="form-control">
-                    </div>
+
+                <div class="panel-body panel-body--section">
+
                 </div>
+
+            <div class="panel-footer">
+                <div class="text-center">
+                    <button type="button" class="add-row-1 btn btn-sm btn-info">Add Module 1 Content</button>
+                    <button type="button" class="add-row-2 btn btn-sm btn-info">Add Module 2 Content</button>
+                    <button type="button" class="delete-section btn btn-sm btn-danger pull-right">Delete section</button>
+                </div>
+
             </div>
         </div>
-
-        <div class="panel-body panel-body--section">
-
-        </div>
-    </div>
+    </form>
 </script>
 
 <script id="row-2" type="text/html">
@@ -259,18 +273,23 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="text-center">
-                        <h5 class="note"></h5>
+                        <h4 class="note"></h4>
                         <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
                         <input type="hidden" class="data-item" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="text-center">
-                        <h5 class="note"></h5>
+                        <h4 class="note"></h4>
                         <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
                         <input type="hidden" class="data-item" />
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-right">
+                <button type="button" class="delete-row btn btn-sm btn-danger">Delete row</button>
             </div>
         </div>
     </div>
@@ -288,11 +307,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <h5 class="note"></h5>
+                        <h4 class="note"></h4>
                         <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
                         <input type="hidden" class="data-item" />
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-right">
+                <button type="button" class="delete-row btn btn-sm btn-danger">Delete row</button>
             </div>
         </div>
     </div>

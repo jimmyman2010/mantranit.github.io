@@ -103,7 +103,7 @@ function process(response){
                                         .attr('title', escapeHtml(itemObject.headline));
 
                                     // No Expansion
-                                    if(itemObject.externalLink) {
+                                    if(itemObject.template === 'contentNoExpansion.html') {
                                         itemBeforeExpansion.find('a').attr('href', itemObject.externalLink).attr('title', escapeHtml(itemObject.headline));
                                     }
                                     if(itemObject.tip){
