@@ -110,8 +110,11 @@ $(function(){
     });
 
     $('#design').on('click', '.edit-item', function(){
-        var itemObject = JSON.parse($(this).siblings('.data-item').val());
-        console.log(itemObject);
+        var dataStore = $(this).siblings('.data-item');
+        var itemObject = JSON.parse(dataStore.val());
+
+        $('#design .data-item').removeClass('current');
+        dataStore.addClass('current');
 
         var modal = $('#modalContent');
 
@@ -125,16 +128,22 @@ $(function(){
         modal.find('[name="tip"]').val(itemObject.tip);
         modal.find('[name="externalLink"]').val(itemObject.externalLink);
 
-        if(!itemObject.externalLink) {
+        $('#period').summernote('code', "");
+        $('#offerBody').summernote('code', "");
+        $('#extraBody').summernote('code', "");
+        $('#hotelHighlight').summernote('code', "");
+        $('#tandcBody').summernote('code', "");
+
+        if(itemObject.template === 'contentExpansion.html') {
 
             if (itemObject.gallery[0]) {
-                modal.find('[name="image1"]').val(itemObject.gallery[0]);
+                modal.find('[name="gallery0"]').val(itemObject.gallery[0]);
             }
             if (itemObject.gallery[1]) {
-                modal.find('[name="image2"]').val(itemObject.gallery[1]);
+                modal.find('[name="gallery1"]').val(itemObject.gallery[1]);
             }
             if (itemObject.gallery[2]) {
-                modal.find('[name="image3"]').val(itemObject.gallery[2]);
+                modal.find('[name="gallery2"]').val(itemObject.gallery[2]);
             }
 
             modal.find('[name="logo"]').val(itemObject.logo);
@@ -155,14 +164,55 @@ $(function(){
         $('#modalContent').modal('show');
     });
 
+    $('#ok-item').on('click', function(){
+        var itemObject = toJSONString(document.getElementById('form-item'));
+        //console.log(json);
+        $('#design .data-item.current').val(JSON.stringify(itemObject)).removeClass('current');
+
+        $('#modalContent').modal('hide');
+    });
+
 });
 
-function slugify(text)
-{
-    return text.toString().toLowerCase()
-        .replace(/\s+/g, '-')           // Replace spaces with -
-        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-        .replace(/^-+/, '')             // Trim - from start of text
-        .replace(/-+$/, '');            // Trim - from end of text
+
+function toJSONString( form ) {
+    var obj = {};
+    var elements = form.querySelectorAll( "input, select, textarea" );
+    for( var i = 0; i < elements.length; ++i ) {
+        var element = elements[i];
+        var name = element.name;
+        var value = element.value;
+
+        if(name && name !== 'files') {
+            if(element.type === 'checkbox') {
+                obj[name] = element.checked;
+            } else {
+                if (name.indexOf('gallery') >= 0) {
+                    if (!obj.gallery) {
+                        obj['gallery'] = [];
+                    }
+                    if (value) {
+                        obj['gallery'][obj['gallery'].length] = value;
+                    }
+                } else {
+                    obj[name] = value;
+                    if (value && !isNaN(value)) {
+                        obj[name] = parseInt(value, 10);
+                    }
+                    if (value && value === 'false') {
+                        obj[name] = false;
+                    }
+                }
+            }
+        }
+    }
+
+    obj.period = $('#period').summernote('code');
+    obj.offerBody = $('#offerBody').summernote('code');
+    obj.extraBody = $('#extraBody').summernote('code');
+    obj.hotelHighlight = $('#hotelHighlight').summernote('code');
+    obj.tandcBody = $('#tandcBody').summernote('code');
+
+    return obj;
 }
+
