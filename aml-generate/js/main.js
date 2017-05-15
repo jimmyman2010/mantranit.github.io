@@ -24,44 +24,19 @@ $(function(){
         $('#modalContent').modal('show');
     });
 
-    $('select[name="selectContentType"]').on('change', function(){
-        if($(this).val() === 'expansion'){
-            $('#modalContent .show-expansion').show();
-            $('#modalContent .show-no-expansion').hide();
-        } else {
-            $('#modalContent .show-expansion').hide();
-            $('#modalContent .show-no-expansion').show();
-        }
-    });
-
-    $('#offerAndJoin').summernote({
+    $('.summernote').summernote({
         minHeight: 200
-    });
-
-    $('#bodyMore').summernote({
-        minHeight: 100
-    });
-
-    $('#hotelHighlight').summernote({
-        minHeight: 100
-    });
-
-    $('#termAndConditions').summernote({
-        minHeight: 200
-    });
-
-    $('#ok').on('click', function(){
-        localStorage.setItem('siteData', JSON.stringify(siteData));
     });
 
     $('#fill').on('click', function(){
-        if(!siteData){
-            $.getJSON('data/od_en.json', function(response){
-                fillData(response);
-            });
-        } else {
-            fillData(JSON.parse(siteData));
-        }
+
+        $.getJSON('data/od_en.json', function(response){
+
+            $('#section-html').empty();
+
+            fillData(response);
+        });
+
     });
 
     function fillData(response){
@@ -107,8 +82,10 @@ $(function(){
                     tplRow = $($('#row-2').html());
                 }
                 tplRow.find('.col-md-6:first-child .note, .col-md-12 .note').html(objRow.data[0].note);
+                tplRow.find('.col-md-6:first-child .data-item, .col-md-12 .data-item').val(JSON.stringify(objRow.data[0]));
                 if(objRow.data[1]) {
                     tplRow.find('.col-md-6:last-child .note').html(objRow.data[1].note);
+                    tplRow.find('.col-md-6:last-child .data-item').val(JSON.stringify(objRow.data[1]));
                 }
 
                 tplSection.find('.panel-body--section').append(tplRow);
@@ -119,14 +96,212 @@ $(function(){
         });
     }
 
+    $('#modalContent select[name="template"]').on('change', function(){
+        if($(this).val() === 'contentExpansion.html'){
+            $('#modalContent .show-expansion').show();
+            $('#modalContent .show-no-expansion').hide();
+        } else {
+            $('#modalContent .show-expansion').hide();
+            $('#modalContent .show-no-expansion').show();
+        }
+    });
+
+    $('#design').on('click', '.edit-item', function(){
+        var dataStore = $(this).siblings('.data-item');
+
+        $('#design .data-item').removeClass('current');
+        dataStore.addClass('current');
+
+        var modal = $('#modalContent');
+
+        document.getElementById('form-item').reset();
+        $('#period').summernote('code', "");
+        $('#offerBody').summernote('code', "");
+        $('#extraBody').summernote('code', "");
+        $('#hotelHighlight').summernote('code', "");
+        $('#tandcBody').summernote('code', "");
+
+        if(dataStore.val()) {
+
+            var itemObject = JSON.parse(dataStore.val());
+
+            modal.find('[name="template"]').val(itemObject.template).trigger('change');
+            modal.find('[name="note"]').val(itemObject.note);
+            modal.find('[name="brandName"]').val(itemObject.brandName);
+            modal.find('[name="headline"]').val(itemObject.headline);
+            modal.find('[name="imageDesktop"]').val(itemObject.imageDesktop);
+            modal.find('[name="imageMobile"]').val(itemObject.imageMobile);
+            modal.find('[name="leadIn"]').val(itemObject.leadIn);
+            modal.find('[name="tip"]').val(itemObject.tip);
+            modal.find('[name="externalLink"]').val(itemObject.externalLink);
+
+            if (itemObject.template === 'contentExpansion.html') {
+
+                if (itemObject.gallery[0]) {
+                    modal.find('[name="gallery0"]').val(itemObject.gallery[0]);
+                }
+                if (itemObject.gallery[1]) {
+                    modal.find('[name="gallery1"]').val(itemObject.gallery[1]);
+                }
+                if (itemObject.gallery[2]) {
+                    modal.find('[name="gallery2"]').val(itemObject.gallery[2]);
+                }
+
+                modal.find('[name="logo"]').val(itemObject.logo);
+                modal.find('[name="logoUrl"]').val(itemObject.logoUrl);
+
+                modal.find('[name="cta"]').val(itemObject.cta);
+                modal.find('[name="ctaUrl"]').val(itemObject.ctaUrl);
+
+                modal.find('[name="tandcUrl"]').val(itemObject.tandcUrl);
+
+                $('#period').summernote('code', itemObject.period);
+                $('#offerBody').summernote('code', itemObject.offerBody);
+                $('#extraBody').summernote('code', itemObject.extraBody);
+                $('#hotelHighlight').summernote('code', itemObject.hotelHighlight);
+                $('#tandcBody').summernote('code', itemObject.tandcBody);
+            }
+        }
+
+        modal.modal('show');
+    });
+
+    $('#ok-item').on('click', function(){
+        var itemObject = toJSONString(document.getElementById('form-item'));
+
+        itemObject.period = $('#period').summernote('code');
+        itemObject.offerBody = $('#offerBody').summernote('code');
+        itemObject.extraBody = $('#extraBody').summernote('code');
+        itemObject.hotelHighlight = $('#hotelHighlight').summernote('code');
+        itemObject.tandcBody = $('#tandcBody').summernote('code');
+
+        $('#design .data-item.current').siblings('.note').html(itemObject.note);
+        $('#design .data-item.current').val(JSON.stringify(itemObject)).removeClass('current');
+
+        $('#modalContent').modal('hide');
+    });
+
+    $('#add-section').on('click', function(){
+
+        var sectionHtml = $('#section-html');
+
+        var tplSection = $($('#section').html());
+
+        sectionHtml.append(tplSection);
+
+    });
+
+    $('#design').on('click', '.delete-section', function(){
+        if(confirm('Are you sure you want to delete this section?') == true) {
+            $(this).parents('.type-section').remove();
+        }
+    });
+
+    $('#design').on('click', '.delete-row', function(){
+        if(confirm('Are you sure you want to delete this row?') == true) {
+            $(this).parents('.type-row').remove();
+        }
+    });
+
+    $('#design').on('click', '.add-row-2', function(){
+        var tplRow = $($('#row-2').html());
+
+        $(this).parents('.type-section').find('.panel-body--section').append(tplRow);
+    });
+
+    $('#design').on('click', '.add-row-1', function(){
+        var tplRow = $($('#row-1').html());
+
+        $(this).parents('.type-section').find('.panel-body--section').append(tplRow);
+    });
+
+    $('#ok').on('click', function(){
+        var siteData = toJSONString(document.getElementById('formMain'));
+
+        siteData.pages[siteData.defaultPage]['sections'] = [];
+
+        $('#section-html .formSection').each(function(iS, eS){
+
+            var sectionData = toJSONString(eS);
+
+            $(eS).find('.type-row').each(function(iR, eR){
+
+                var itemHtml = $(eR).find('.data-item');
+                var rowObject = {
+                    template: 'moduleContentOne.html'
+                };
+                if(itemHtml.length == 2){
+                    rowObject.template = 'moduleContentTwo.html';
+                }
+                itemHtml.each(function(iA, eA){
+                    if(!rowObject.data){
+                        rowObject.data = [];
+                    }
+
+                    rowObject.data[rowObject.data.length] = JSON.parse($(eA).val());
+                });
+
+                if(!sectionData.rows){
+                    sectionData.rows = [];
+                }
+                sectionData.rows[sectionData.rows.length] = rowObject;
+            });
+
+
+            console.log(sectionData);
+            siteData.pages[siteData.defaultPage]['sections'][siteData.pages[siteData.defaultPage]['sections'].length] = sectionData;
+        });
+
+        $('#json-view').html(JSON.stringify(siteData, null, 2));
+        localStorage.setItem('siteData', JSON.stringify(siteData));
+    });
+
 });
 
-function slugify(text)
-{
-    return text.toString().toLowerCase()
-        .replace(/\s+/g, '-')           // Replace spaces with -
-        .replace(/[^\w\-]+/g, '')       // Remove all non-word chars
-        .replace(/\-\-+/g, '-')         // Replace multiple - with single -
-        .replace(/^-+/, '')             // Trim - from start of text
-        .replace(/-+$/, '');            // Trim - from end of text
+
+function toJSONString( form ) {
+    var obj = {};
+    var elements = form.querySelectorAll( "input, select, textarea" );
+    for( var i = 0; i < elements.length; ++i ) {
+        var element = elements[i];
+        var name = element.name;
+        var value = element.value;
+
+        if(name && name !== 'files') {
+            if(element.type === 'checkbox') {
+                obj[name] = element.checked;
+            } else {
+                var od = ['kv', 'kvAlt', 'intro', 'beforeQr', 'qrCode', 'afterQr'];
+                if(od.indexOf(name) >= 0){
+                    if(!obj.pages){
+                        obj.pages = {};
+                    }
+                    if(!obj.pages[obj.defaultPage]){
+                        obj.pages[obj.defaultPage] = {};
+                    }
+                    obj.pages[obj.defaultPage][name] = value;
+                } else {
+                    if (name.indexOf('gallery') >= 0) {
+                        if (!obj.gallery) {
+                            obj['gallery'] = [];
+                        }
+                        if (value) {
+                            obj['gallery'][obj['gallery'].length] = value;
+                        }
+                    } else {
+                        obj[name] = value;
+                        if (value && !isNaN(value)) {
+                            obj[name] = parseInt(value, 10);
+                        }
+                        if (value && value === 'false') {
+                            obj[name] = false;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    return obj;
 }
+

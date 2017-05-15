@@ -179,20 +179,23 @@
 
                                 </form>
 
-                                    <hr>
-                                <form id="formSection">
-                                    <div id="section-html" class="panel-group">
+                                <hr>
 
-                                    </div>
-                                </form>
+                                <div id="section-html" class="panel-group">
+
+                                </div>
 
                                 <div class="buttons text-center">
                                     <br>
-                                    <button id="one-column" class="btn btn-info btn-sm">One</button>
-                                    <button id="two-columns" class="btn btn-info btn-sm">Two</button>
+                                    <div class="panel-footer">
+                                        <div class="text-center">
+                                            <button type="button" id="add-section" class="btn btn-sm btn-info">Add Section</button>
+                                        </div>
+
+                                    </div>
                                     <br><br>
-                                    <button id="ok" class="btn btn-primary">OK</button>
-                                    <button id="fill" class="btn btn-primary">Fill</button>
+                                    <button type="button" id="ok" class="btn btn-primary">OK</button>
+                                    <button type="button" id="fill" class="btn btn-primary">Fill</button>
                                 </div>
                             </div>
 
@@ -216,36 +219,47 @@
 <a href="javascript:void(0);" class="to-top"><i class="fa fa-angle-up"></i></a>
 
 <script id="section" type="text/html">
-    <div class="type-section panel panel-primary">
-        <div class="panel-heading">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Name</label>
-                        <input type="text" name="name" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Prefix</label>
-                        <input type="text" name="prefix" class="form-control">
+    <form class="formSection">
+        <div class="type-section panel panel-primary">
+                <div class="panel-heading">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" name="name" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Prefix</label>
+                                <input type="text" name="prefix" class="form-control">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Id</label>
+                                <input type="text" name="id" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label>Hash</label>
+                                <input type="text" name="hash" class="form-control">
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <div class="form-group">
-                        <label>Id</label>
-                        <input type="text" name="id" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label>Hash</label>
-                        <input type="text" name="hash" class="form-control">
-                    </div>
+
+                <div class="panel-body panel-body--section">
+
                 </div>
+
+            <div class="panel-footer">
+                <div class="text-center">
+                    <button type="button" class="add-row-1 btn btn-sm btn-info">Add Module 1 Content</button>
+                    <button type="button" class="add-row-2 btn btn-sm btn-info">Add Module 2 Content</button>
+                    <button type="button" class="delete-section btn btn-sm btn-danger pull-right">Delete section</button>
+                </div>
+
             </div>
         </div>
-
-        <div class="panel-body panel-body--section">
-
-        </div>
-    </div>
+    </form>
 </script>
 
 <script id="row-2" type="text/html">
@@ -259,16 +273,23 @@
             <div class="row">
                 <div class="col-md-6">
                     <div class="text-center">
-                        <h5 class="note"></h5>
-                        <button class="edit btn btn-sm btn-info">Edit</button>
+                        <h4 class="note"></h4>
+                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
+                        <input type="hidden" class="data-item" />
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="text-center">
-                        <h5 class="note"></h5>
-                        <button class="edit btn btn-sm btn-info">Edit</button>
+                        <h4 class="note"></h4>
+                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
+                        <input type="hidden" class="data-item" />
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-right">
+                <button type="button" class="delete-row btn btn-sm btn-danger">Delete row</button>
             </div>
         </div>
     </div>
@@ -286,10 +307,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="text-center">
-                        <h5 class="note"></h5>
-                        <button class="edit btn btn-sm btn-info">Edit</button>
+                        <h4 class="note"></h4>
+                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
+                        <input type="hidden" class="data-item" />
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="panel-footer">
+            <div class="text-right">
+                <button type="button" class="delete-row btn btn-sm btn-danger">Delete row</button>
             </div>
         </div>
     </div>
@@ -304,12 +331,12 @@
                 <h4 class="modal-title" id="modalContentLabel">Content type</h4>
             </div>
             <div class="modal-body">
-                <form id="form-content">
+                <form id="form-item">
                     <div class="row">
                         <div class="form-group col-xs-12">
-                            <select name="selectContentType" class="form-control">
-                                <option value="expansion">Expansion</option>
-                                <option value="no-expansion">No Expansion</option>
+                            <select name="template" class="form-control">
+                                <option value="contentExpansion.html">Expansion</option>
+                                <option value="contentNoExpansion.html">No Expansion</option>
                             </select>
                         </div>
                     </div>
@@ -317,27 +344,37 @@
                         <div class="col-lg-6">
                             <div class="row">
                                 <div class="form-group col-xs-12">
+                                    <label>Note:</label>
+                                    <input type="text" class="form-control" name="note">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
                                     <label>KV Desktop:</label>
-                                    <input type="text" class="form-control" name="kvDesktop">
+                                    <input type="text" class="form-control" name="imageDesktop">
                                 </div>
                                 <div class="form-group col-xs-12">
                                     <label>KV Mobile:</label>
-                                    <input type="text" class="form-control" name="kvMobile">
+                                    <input type="text" class="form-control" name="imageMobile">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="form-group col-xs-12">
                                     <label>Brand:</label>
-                                    <input type="text" class="form-control" name="brand">
+                                    <input type="text" class="form-control" name="brandName">
                                 </div>
                                 <div class="form-group col-xs-12">
                                     <label>Headline:</label>
-                                    <input type="text" class="form-control" name="headLine">
+                                    <input type="text" class="form-control" name="headline">
                                 </div>
                                 <div class="form-group col-xs-12">
                                     <label>Lead In:</label>
                                     <textarea name="leadIn" id="leadIn" rows="5" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label>Tip:</label>
+                                    <input type="text" class="form-control" name="tip">
                                 </div>
                             </div>
                         </div>
@@ -346,8 +383,8 @@
                                 <h4>No expansion</h4>
                                 <div class="row">
                                     <div class="form-group col-xs-12">
-                                        <label>Url:</label>
-                                        <input type="url" class="form-control" name="url">
+                                        <label>External Link:</label>
+                                        <input type="url" class="form-control" name="externalLink">
                                     </div>
                                 </div>
                             </div>
@@ -360,44 +397,57 @@
                                         <input type="text" class="form-control" name="logo">
                                     </div>
                                     <div class="form-group col-xs-12">
-                                        <label>Url logo:</label>
-                                        <input type="url" class="form-control" name="urlLogo">
+                                        <label>Logo url:</label>
+                                        <input type="url" class="form-control" name="logoUrl">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-xs-12">
-                                        <label>Image 1:</label>
-                                        <input type="url" class="form-control" name="image1">
-                                    </div>
-                                    <div class="form-group col-xs-12">
-                                        <label>Image 2:</label>
-                                        <input type="url" class="form-control" name="image2">
-                                    </div>
-                                    <div class="form-group col-xs-12">
-                                        <label>Image 3:</label>
-                                        <input type="url" class="form-control" name="image3">
+                                        <label>Period:</label>
+                                        <div id="period" class="summernote"></div>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
-
+                    <hr>
                     <div class="show-expansion">
                         <h4>Expansion</h4>
                         <div class="row">
-                            <div class="form-group col-xs-12">
-                                <label>CTA Text:</label>
-                                <input type="text" class="form-control" name="ctaText">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="form-group col-xs-12">
+                                        <label>CTA:</label>
+                                        <input type="text" class="form-control" name="cta">
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label>CTA Url:</label>
+                                        <input type="text" class="form-control" name="ctaUrl">
+                                    </div>
+                                </div>
                             </div>
-                            <div class="form-group col-xs-12">
-                                <label>CTA Url:</label>
-                                <input type="text" class="form-control" name="ctaUrl">
+                            <div class="col-md-6">
+                                <div class="row">
+                                    <div class="form-group col-xs-12">
+                                        <label>Image 1:</label>
+                                        <input type="url" class="form-control" name="gallery0">
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label>Image 2:</label>
+                                        <input type="url" class="form-control" name="gallery1">
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label>Image 3:</label>
+                                        <input type="url" class="form-control" name="gallery2">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="form-group col-xs-12">
                                 <label>Offer & How to join:</label>
-                                <div id="offerAndJoin" class="summernote">
+                                <div id="offerBody" class="summernote">
                                     <h5>Offer</h5>
                                     <ol>
                                         <li>Offer 1</li>
@@ -412,7 +462,7 @@
                         <div class="row">
                             <div class="form-group col-xs-12">
                                 <label>Body more:</label>
-                                <div id="bodyMore" class="summernote"></div>
+                                <div id="extraBody" class="summernote"></div>
                             </div>
                         </div>
                         <div class="row">
@@ -430,7 +480,7 @@
                             </div>
                             <div class="form-group col-xs-12">
                                 <label>Terms & Conditions:</label>
-                                <div id="termAndConditions" class="summernote">
+                                <div id="tandcBody" class="summernote">
                                     <ol>
                                         <li>Term 1</li>
                                     </ol>
@@ -442,7 +492,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button type="button" id="init-canvas" class="btn btn-primary">OK</button>
+                <button type="button" id="ok-item" class="btn btn-primary">OK</button>
             </div>
         </div>
     </div>
