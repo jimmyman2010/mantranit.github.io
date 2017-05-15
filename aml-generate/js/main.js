@@ -59,7 +59,8 @@ $(function(){
         $('#formMain input[name="odAlt"]').val(response.odAlt);
         $('#formMain input[name="defaultPage"]').val(response.defaultPage);
 
-        $('#formMain input[name="kv"]').val(response.pages[response.defaultPage].kv);
+        $('#formMain input[name="kvDesktop"]').val(response.pages[response.defaultPage].kvDesktop);
+        $('#formMain input[name="kvMobile"]').val(response.pages[response.defaultPage].kvMobile);
         $('#formMain input[name="kvAlt"]').val(response.pages[response.defaultPage].kvAlt);
         $('#formMain input[name="intro"]').val(response.pages[response.defaultPage].intro);
 
