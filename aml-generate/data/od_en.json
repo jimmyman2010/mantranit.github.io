@@ -1,4 +1,5 @@
 {
+    "fileName": "od_en.json",
     "urlEN": "/aml-generate/tod_may_2017_en.html",
     "urlTC": "/aml-generate/tod_may_2017_tc.html",
     "urlSC": "/aml-generate/tod_may_2017_sc.html",
@@ -15,7 +16,8 @@
     "odAlt": "Offer Digest",
     "pages": {
         "tod": {
-            "kv": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Leadin_KV_EN.jpg",
+            "kvDesktop": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Leadin_KV_EN.jpg",
+            "kvMobile": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Leadin_KV_EN.jpg",
             "kvAlt": "Best Summer Escape Offers of up to 4X Miles",
             "intro": "Planning your next summer holiday? Enjoy the latest travel offers to earn more and redeem miles for a rewarding summer getaway!",
 
@@ -30,10 +32,10 @@
                     "name": "Flights",
                     "rows": [
                         {
-                            "template": "moduleContentTwo.html",
+                            "template": "moduleContentTwo",
                             "data": [
                                 {
-                                    "template": "contentNoExpansion.html",
+                                    "template": "contentNoExpansion",
                                     "note": "NZ",
                                     "brandName": "Cathay Pacific",
                                     "headline": "2X Miles",
@@ -44,7 +46,7 @@
                                     "externalLink": "http://www.asiamiles.com/am/en/earn/airlines/promotion?refID=3de3ee93b0f9b510VgnVCM1000000ad21c39RCRD"
                                 },
                                 {
-                                    "template": "contentNoExpansion.html",
+                                    "template": "contentNoExpansion",
                                     "note": "IN NAM",
                                     "brandName": "Cathay Pacific",
                                     "headline": "3X Miles",
@@ -57,10 +59,10 @@
                             ]
                         },
                         {
-                            "template": "moduleContentTwo.html",
+                            "template": "moduleContentTwo",
                             "data": [
                                 {
-                                    "template": "contentNoExpansion.html",
+                                    "template": "contentNoExpansion",
                                     "note": "AU",
                                     "brandName": "Cathay Pacific",
                                     "headline": "2X Miles | Extra Online Booking Bonus Miles",
@@ -71,7 +73,7 @@
                                     "externalLink": "http://www.asiamiles.com/am/en/earn/airlines/promotion?refID=2077ee93b0f9b510VgnVCM1000000ad21c39RCRD"
                                 },
                                 {
-                                    "template": "contentNoExpansion.html",
+                                    "template": "contentNoExpansion",
                                     "note": "ZA",
                                     "brandName": "Cathay Pacific",
                                     "headline": "2X Miles | Extra Online Booking Bonus Miles",
@@ -92,10 +94,10 @@
                     "name": "Hotels",
                     "rows": [
                         {
-                            "template": "moduleContentOne.html",
+                            "template": "moduleContentOne",
                             "data": [
                                 {
-                                    "template": "contentExpansion.html",
+                                    "template": "contentExpansion",
                                     "note": "Peninsula",
                                     "brandName": "The Peninsula Hotels",
                                     "headline": "3X Miles | 50% discount for the 2<sup style=\"font-size: 75%; line-height: 1;\">nd</sup> room",
@@ -116,18 +118,27 @@
                                     "hotelHighlight": "<p>The Peninsula Hotels operates the most prestigious properties in ten major cities around the globe. Each award-winning hotel offers unique characteristics that reflect the local architecture, art and dynamic culture of the city. Elegantly designed rooms are also equipped with state-of-the-art in-room technology.</p><p>With every stay, each guest will enjoy unparalleled service customized to their personal needs.  Families traveling together will be treated to a range of amenities and programs tailored for children and adults alike that will ensure cherished memories for all.</p><p>While you are earning Triple Miles and other exclusive benefits when staying at any participating property of Peninsula Hotels, let us introduce you to the following hotels from their portfolio this month:</p><p><strong>The Peninsula Paris - a Palace sitting in the heart of Paris</strong><br>Located adjacent to Arc de Triomphe and surrounded by some of the most famous monuments, museums and luxury boutiques in the world, the Peninsula Paris is accorded “Palace” distinction by French Tourism Development Agency, ATOUT France, delivering exceptional services and comfort while offering stunning views of the city skyline. The hotel also offers suites with private rooftop gardens where you can enjoy an intimate cocktail gathering with a panoramic view of the Eiffel Tower and other emblematic monuments in Paris.</p><p><strong>The Peninsula Beijing - where Chinese artistry meets craftsmanship</strong><br>The Peninsula Beijing is the group’s first all-suite hotel, delivering the largest standard guest rooms in the heart of China’s dynamic capital. The hotel offers a bespoke cultural programme with culinary and wellness experiences, from a visit to the most private part of the Shu Fang Zhai Temple in the Forbidden City ending with a tea-infused set lunch to an exclusive tour giving visitors an inside view of China’s rich history including the ancient art of kite-making, guided by esteemed historians from the city’s renowned universities.</p>",
                                     "extraBody": "",
                                     "gallery": [
-                                        "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Expansion_1_EN.jpg",
-                                        "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Expansion_2_EN.jpg",
-                                        "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Expansion_3_EN.jpg"
+                                        {
+                                            "src": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Expansion_1_EN.jpg",
+                                            "alt": ""
+                                        },
+                                        {
+                                            "src": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Expansion_2_EN.jpg",
+                                            "alt": ""
+                                        },
+                                        {
+                                            "src": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_The_Peninsula_Expansion_3_EN.jpg",
+                                            "alt": ""
+                                        }
                                     ]
                                 }
                             ]
                         },
                         {
-                            "template": "moduleContentTwo.html",
+                            "template": "moduleContentTwo",
                             "data": [
                                 {
-                                    "template": "contentExpansion.html",
+                                    "template": "contentExpansion",
                                     "note": "Shangri-La",
                                     "brandName": "Shangri-La Hotels and Resorts",
                                     "headline": "Up to 4X Miles",
@@ -148,13 +159,22 @@
                                     "hotelHighlight": "<p>Hong Kong based Shangri-La Hotels and Resorts is a leading luxury hotel group in Asia Pacific, owning over 95 hotels and resorts throughout Asia Pacific, North America, the Middle East and Europe, with over 40,000 room inventory.</p><p>While you are earning up to Quadruple Miles when staying at any participating property of Shangri-La Hotels and Resorts, let us introduce you to the latest addition to the brand:</p><p><strong>Kerry Hotel, Hong Kong - a  vibrant place buzzing with life and activity</strong><br>Opened in April 2017, it is the only hotel in Hong Kong that offers alfresco dining in all of its restaurants &amp; bar along with their comfortable and luxurious accommodations. The pleasant summer breeze and panoramic view of Victoria Harbour will let you indulge in every moment of the dining experience.</p>",
                                     "extraBody": "",
                                     "gallery": [
-                                        "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_Expansion_1.jpg",
-                                        "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_Expansion_2.jpg",
-                                        "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_Expansion_3.jpg"
+                                        {
+                                            "src": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_Expansion_1.jpg",
+                                            "alt": ""
+                                        },
+                                        {
+                                            "src": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_Expansion_2.jpg",
+                                            "alt": ""
+                                        },
+                                        {
+                                            "src": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Shangri-La_Expansion_3.jpg",
+                                            "alt": ""
+                                        }
                                     ]
                                 },
                                 {
-                                    "template": "contentExpansion.html",
+                                    "template": "contentExpansion",
                                     "note": "Pan Pacific",
                                     "brandName": "Pan Pacific Hotels and Resorts",
                                     "headline": "3X Miles",
@@ -175,9 +195,18 @@
                                     "hotelHighlight": "<p>Make it a memorable summer with Pan Pacific Hotels and Resorts. With 12 awards under their belt at the TripAdvisor Travellers’ Choice Hotel Awards, Pan Pacific Hotels and Resorts offers travellers genuine hospitality and an invigorating blend of the best that the Pacific has to offer. </p><p>While you are earning Triple Miles and enjoying other special offers when staying at a Pan Pacific Hotels and Resorts property, let us introduce you to our landmark properties in Singapore and Australia – Pan Pacific Singapore and Pan Pacific Perth.</p><p><strong>Pan Pacific Singapore - Revel in luxury 5 star hotel in Singapore</strong><br>Whether for business or leisure, a stay at the Pan Pacific Singapore hotel is your assurance of world-class service and five-star luxury accommodation.</p><p>The hotel overlooks the iconic Marina Bay and has been consistently voted the World’s Leading Business Hotel by World Travel Awards. The hotel's strategic location at the gateway to the Central Business District provides easy access for business travellers, and at the same time offers a wide array of sightseeing, retail and entertainment options in the vicinity. Discover the invigorating energy of one of Southeast Asia’s most dynamic cities from the indulgent comfort of Pan Pacific Singapore.</p><p><strong>Pan Pacific Perth – Embrace 5 star luxury hotel and signature service in Perth</strong><br>Take in scenic vistas of Perth’s famous Swan River or explore the lush historic gardens of Kings Park when staying at the Pan Pacific Perth hotel in Australia. Whether you are travelling for business or leisure, the luxury 5 star hotel will offer you a refreshing and revitalising experience.</p><p>Moments away from the river and a short walk from the city’s main retail, dining and entertainment precincts, Pan Pacific Perth provides the perfect location for a relaxing and indulgent stay.</p>",
                                     "extraBody": "",
                                     "gallery": [
-                                        "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Pan_Pacific_Expansion_1_EN.jpg",
-                                        "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Pan_Pacific_Expansion_2_EN.jpg",
-                                        "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Pan_Pacific_Expansion_3_EN.jpg"
+                                        {
+                                            "src": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Pan_Pacific_Expansion_1_EN.jpg",
+                                            "alt": ""
+                                        },
+                                        {
+                                            "src": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Pan_Pacific_Expansion_2_EN.jpg",
+                                            "alt": ""
+                                        },
+                                        {
+                                            "src": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Hotel_Pan_Pacific_Expansion_3_EN.jpg",
+                                            "alt": ""
+                                        }
                                     ]
                                 }
                             ]
@@ -191,10 +220,10 @@
                     "name": "Car &amp; Transport",
                     "rows": [
                         {
-                            "template": "moduleContentOne.html",
+                            "template": "moduleContentOne",
                             "data": [
                                 {
-                                    "template": "contentExpansion.html",
+                                    "template": "contentExpansion",
                                     "note": "Sixt",
                                     "brandName": "Sixt",
                                     "headline": "Up to 4X Miles | Up to 10% off on rental rate",
@@ -215,8 +244,14 @@
                                     "hotelHighlight": "",
                                     "extraBody": "<p>Founded more than a hundred years ago, Sixt is a pioneer in car rental industry, being the first company with a website and the first to accept mobile reservations. It is now operating in 105 countries with branches in over 4,000 locations, such as airports, train stations, cruise ports, and even hotels.</p><p>Wide-range of vehicles from 4x4 SUV, convertible to sports car are available at Sixt to make your journey more convenient and memorable.</p>",
                                     "gallery": [
-                                        "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Car_Sixt_Expansion_1_EN.jpg",
-                                        "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Car_Sixt_Expansion_2_EN.jpg"
+                                        {
+                                            "src": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Car_Sixt_Expansion_1_EN.jpg",
+                                            "alt": ""
+                                        },
+                                        {
+                                            "src": "http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Car_Sixt_Expansion_2_EN.jpg",
+                                            "alt": ""
+                                        }
                                     ]
                                 }
                             ]

@@ -1,6 +1,20 @@
 <?php
-$json = file_get_contents('data/tod_may_2017_en.json');
-$siteData = json_decode($json);
+$main = isset($_REQUEST['main']) ? $_REQUEST['main'] : NULL;
+$other = isset($_REQUEST['other']) ? $_REQUEST['other'] : NULL;
+
+if(!$main || !$other){
+    echo '<h1>No data</h1>';
+    exit(0);
+}
+
+$jsonMain = file_get_contents( getcwd() . '/data/' . $main);
+
+$siteData = json_decode($jsonMain);
+
+$jsonOther = file_get_contents( getcwd() . '/data/' . $other);
+$tmp = json_decode($jsonOther);
+
+$siteData->pages->{$tmp->defaultPage} = $tmp->pages->{$tmp->defaultPage};
 
 $menu = '';
 foreach ($siteData->pages as $keyPage => $contentPage) {
@@ -26,8 +40,8 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-    <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <meta name="description" content="@asiamileslimited">
     <link rel="image_src" href="<?= $siteData->ogImage ?>">

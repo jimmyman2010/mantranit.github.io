@@ -38,7 +38,7 @@
 
             <?php if($item->hotelHighlight) { ?>
             <h5 class="hidden-xs hidden-sm">Hotel Highlight</h5>
-            <h5 class="title-offer-hl visible-xs visible-sm">Hotel Highlight <span class="aml-text-yellow">&gt; more</span></h5>
+            <h5 class="title-offer-hl visible-xs visible-sm" data-offer-id="<?= $keyPage.'-en-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>">Hotel Highlight <span class="aml-text-yellow">&gt; more</span></h5>
             <div class="offer-hl">
                 <?= $item->hotelHighlight ?>
             </div>
@@ -53,7 +53,7 @@
             <ul class="list-unstyled offer-gallery">
                 <?php
                 foreach ($item->gallery as $image) {
-                    echo '<li><img data-src="'.$image.'" src="'.$siteData->logo.'" alt="'.strip_tags($item->brandName).'" title="'.strip_tags($item->brandName).'" class="img-responsive"></li>';
+                    echo '<li><img data-src="'.$image->src.'" src="'.$siteData->logo.'" alt="' . ($item->alt ? strip_tags($item->alt) : strip_tags($item->brandName)) . '" title="' . ($item->alt ? strip_tags($item->alt) : strip_tags($item->brandName)) . '" class="img-responsive"></li>';
                 }
 
                 ?>

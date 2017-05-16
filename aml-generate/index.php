@@ -31,22 +31,21 @@
         <div class="header-top">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-sm-12 text-right">
+                    <div class="col-md-6">
+                        <div class="text-center clearfix">
+                            <button type="button" id="ok" class="btn btn-primary">OK</button>
+
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPreview">Preview</button>
+                            <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#modalLoadData">Load data</button>
+                        </div>
+                    </div>
+                    <div class="col-md-6 text-right">
                         <input type="file" id="input-html" accept="text/html"/>
 
                         <button id="upload-html" class="btn btn-primary" type="button">
                             <span class="normal">Upload</span>
                             <span class="process"><i class="fa fa-refresh fa-spin"></i> Uploading</span>
                         </button>
-                    </div>
-                </div>
-                <div class="row tab-sticky">
-                    <div class="col-sm-12">
-                        <ul class="nav nav-tabs">
-                            <li><a data-toggle="tab" href="#input">Input</a></li>
-                            <li class="active"><a data-toggle="tab" href="#design">Design</a></li>
-                            <li><a data-toggle="tab" href="#preview">Preview</a></li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -61,22 +60,20 @@
 
                         <div class="tab-content">
 
-                            <div id="input" class="tab-pane fade">
-                                <div class="buttons text-center">
-                                <button class="btn btn-info btn-sm" data-toggle="modal" data-target="#modalInputJson">Open Input Modal</button>
-                                </div>
-                                <br>
-                                <pre id="json-view" class="image-group"></pre>
-                            </div>
-
                             <div id="design" class="tab-pane fade in active">
                                 <form id="formMain">
 
                                     <div class="row">
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Title</label>
                                                 <input type="text" name="title" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>File Name</label>
+                                                <input type="text" name="fileName" class="form-control" readonly="readonly" />
                                             </div>
                                         </div>
                                     </div>
@@ -139,7 +136,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>defaultPage</label>
-                                                <input type="text" name="defaultPage" class="form-control" />
+                                                <input type="text" name="defaultPage" class="form-control" readonly="readonly" />
                                             </div>
                                         </div>
                                     </div>
@@ -198,13 +195,7 @@
 
                                     </div>
                                     <br><br>
-                                    <button type="button" id="ok" class="btn btn-primary">OK</button>
-                                    <button type="button" id="fill" class="btn btn-primary">Fill</button>
                                 </div>
-                            </div>
-
-                            <div id="preview" class="tab-pane fade">
-                                <iframe src="tod_may_2017_en.html" frameborder="0" width="1280" height="600"></iframe>
                             </div>
 
                         </div>
@@ -339,8 +330,9 @@
                     <div class="row">
                         <div class="form-group col-xs-12">
                             <select name="template" class="form-control">
-                                <option value="contentExpansion.html">Expansion</option>
-                                <option value="contentNoExpansion.html">No Expansion</option>
+                                <option value="contentExpansion">Expansion</option>
+                                <option value="contentNoExpansion">No Expansion</option>
+                                <option value="contentExpansionNoLogo">Expansion No Logo</option>
                             </select>
                         </div>
                     </div>
@@ -419,33 +411,49 @@
                     <div class="show-expansion">
                         <h4>Expansion</h4>
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="row">
                                     <div class="form-group col-xs-12">
                                         <label>CTA:</label>
                                         <input type="text" class="form-control" name="cta">
                                     </div>
+                                </div>
+                            </div>
+                            <div class="col-md-8">
+                                <div class="row">
                                     <div class="form-group col-xs-12">
                                         <label>CTA Url:</label>
                                         <input type="text" class="form-control" name="ctaUrl">
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-6">
-                                <div class="row">
-                                    <div class="form-group col-xs-12">
-                                        <label>Image 1:</label>
-                                        <input type="url" class="form-control" name="gallery0">
-                                    </div>
-                                    <div class="form-group col-xs-12">
-                                        <label>Image 2:</label>
-                                        <input type="url" class="form-control" name="gallery1">
-                                    </div>
-                                    <div class="form-group col-xs-12">
-                                        <label>Image 3:</label>
-                                        <input type="url" class="form-control" name="gallery2">
-                                    </div>
-                                </div>
+                        </div>
+                        <div class="row">
+                            <div class="form-group col-xs-8">
+                                <label>Image 1:</label>
+                                <input type="url" class="form-control" name="galleryImage0">
+                            </div>
+                            <div class="form-group col-xs-4">
+                                <label>Alt 1:</label>
+                                <input type="url" class="form-control" name="galleryAlt0">
+                            </div>
+
+                            <div class="form-group col-xs-8">
+                                <label>Image 2:</label>
+                                <input type="url" class="form-control" name="galleryImage1">
+                            </div>
+                            <div class="form-group col-xs-4">
+                                <label>Alt 2:</label>
+                                <input type="url" class="form-control" name="galleryAlt1">
+                            </div>
+
+                            <div class="form-group col-xs-8">
+                                <label>Image 3:</label>
+                                <input type="url" class="form-control" name="galleryImage2">
+                            </div>
+                            <div class="form-group col-xs-4">
+                                <label>Alt 3:</label>
+                                <input type="url" class="form-control" name="galleryAlt2">
                             </div>
                         </div>
                         <div class="row">
@@ -521,6 +529,120 @@
             <div class="modal-footer">
                 <button type="button" id="input-json" class="btn btn-primary">OK</button>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal InputJson -->
+<div class="modal fade" id="modalLoadData" tabindex="-1" role="dialog" aria-labelledby="modalLoadDataLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalLoadDataLabel">Select data</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="form-group col-xs-12">
+                        <select name="selectData" id="selectData" class="form-control">
+                            <option value="">-- Select --</option>
+                            <?php
+                            $dir = getcwd() . "/data/";
+
+                            // Open a directory, and read its contents
+                            if (is_dir($dir)){
+                                if ($dh = opendir($dir)){
+                                    while (($file = readdir($dh)) !== false){
+                                        $ext = pathinfo($file, PATHINFO_EXTENSION);
+                                        if($ext === 'json') {
+                                            echo '<option value="/aml-generate/data/' . $file . '">' . $file . '</option>';
+                                        }
+                                    }
+                                    closedir($dh);
+                                }
+                            }
+
+                            ?>
+                        </select>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="fill" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal InputJson -->
+<div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalPreviewLabel">Select data</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="form-group col-xs-6">
+                        <div class="form-group">
+                            <label>Main</label>
+                            <select name="main" id="previewMain" class="form-control">
+                                <option value="">-- Select --</option>
+                                <?php
+                                $dir = getcwd() . "/data/";
+
+                                // Open a directory, and read its contents
+                                if (is_dir($dir)){
+                                    if ($dh = opendir($dir)){
+                                        while (($file = readdir($dh)) !== false){
+                                            $ext = pathinfo($file, PATHINFO_EXTENSION);
+                                            if($ext === 'json') {
+                                                echo '<option value="' . $file . '">' . $file . '</option>';
+                                            }
+                                        }
+                                        closedir($dh);
+                                    }
+                                }
+
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group col-xs-6">
+                        <div class="form-group">
+                            <label>Other</label>
+                            <select name="other" id="previewOther" class="form-control" disabled="disabled">
+                                <option value="">-- Select --</option>
+                                <?php
+                                $dir = getcwd() . "/data/";
+
+                                // Open a directory, and read its contents
+                                if (is_dir($dir)){
+                                    if ($dh = opendir($dir)){
+                                        while (($file = readdir($dh)) !== false){
+                                            $ext = pathinfo($file, PATHINFO_EXTENSION);
+                                            if($ext === 'json') {
+                                                echo '<option value="' . $file . '">' . $file . '</option>';
+                                            }
+                                        }
+                                        closedir($dh);
+                                    }
+                                }
+
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="preview" class="btn btn-primary">OK</button>
+            </div>
+
         </div>
     </div>
 </div>

@@ -4,43 +4,30 @@
 
 $(function(){
     var siteData;
-    var source = $('#source');
-    $('#one-column').on('click', function(){
-        $.get('templates/moduleContentOne.html', function(result){
-            source.append(result);
-        });
-    });
-
-    $('#two-columns').on('click', function(){
-        $.get('templates/moduleContentTwo.html', function(result){
-            source.append(result);
-        });
-    });
-
-    source.on('click', '.add-content', function(){
-        var that = $(this),
-            papa = that.parent();
-
-        $('#modalContent').modal('show');
-    });
 
     $('.summernote').summernote({
         minHeight: 200
     });
 
     $('#fill').on('click', function(){
+        var url = $('#selectData').val();
+        if(url) {
+            $.getJSON(url, function (response) {
 
-        $.getJSON('data/od_en.json', function(response){
+                $('#section-html').empty();
 
-            $('#section-html').empty();
+                fillData(response);
+            });
 
-            fillData(response);
-        });
-
+            $('#modalLoadData').modal('hide');
+        } else {
+            alert('Please select data.');
+        }
     });
 
     function fillData(response){
 
+        $('#formMain input[name="fileName"]').val(response.fileName);
         $('#formMain input[name="title"]').val(response.title);
 
         $('#formMain input[name="logo"]').val(response.logo);
@@ -79,7 +66,7 @@ $(function(){
             $.each(objSection.rows, function(idxRow, objRow){
 
                 var tplRow = $($('#row-1').html());
-                if(objRow.template === 'moduleContentTwo.html'){
+                if(objRow.template === 'moduleContentTwo'){
                     tplRow = $($('#row-2').html());
                 }
                 tplRow.find('.col-md-6:first-child .note, .col-md-12 .note').html(objRow.data[0].note);
@@ -98,7 +85,7 @@ $(function(){
     }
 
     $('#modalContent select[name="template"]').on('change', function(){
-        if($(this).val() === 'contentExpansion.html'){
+        if($(this).val() === 'contentExpansion'){
             $('#modalContent .show-expansion').show();
             $('#modalContent .show-no-expansion').hide();
         } else {
@@ -136,16 +123,19 @@ $(function(){
             modal.find('[name="tip"]').val(itemObject.tip);
             modal.find('[name="externalLink"]').val(itemObject.externalLink);
 
-            if (itemObject.template === 'contentExpansion.html') {
+            if (itemObject.template === 'contentExpansion') {
 
                 if (itemObject.gallery[0]) {
-                    modal.find('[name="gallery0"]').val(itemObject.gallery[0]);
+                    modal.find('[name="galleryImage0"]').val(itemObject.gallery[0].src);
+                    modal.find('[name="galleryAlt0"]').val(itemObject.gallery[0].alt);
                 }
                 if (itemObject.gallery[1]) {
-                    modal.find('[name="gallery1"]').val(itemObject.gallery[1]);
+                    modal.find('[name="galleryImage1"]').val(itemObject.gallery[1].src);
+                    modal.find('[name="galleryAlt1"]').val(itemObject.gallery[1].alt);
                 }
                 if (itemObject.gallery[2]) {
-                    modal.find('[name="gallery2"]').val(itemObject.gallery[2]);
+                    modal.find('[name="galleryImage2"]').val(itemObject.gallery[2].src);
+                    modal.find('[name="galleryAlt2"]').val(itemObject.gallery[2].alt);
                 }
 
                 modal.find('[name="logo"]').val(itemObject.logo);
@@ -217,6 +207,7 @@ $(function(){
     });
 
     $('#ok').on('click', function(){
+
         var siteData = toJSONString(document.getElementById('formMain'));
 
         siteData.pages[siteData.defaultPage]['sections'] = [];
@@ -229,10 +220,10 @@ $(function(){
 
                 var itemHtml = $(eR).find('.data-item');
                 var rowObject = {
-                    template: 'moduleContentOne.html'
+                    template: 'moduleContentOne'
                 };
                 if(itemHtml.length == 2){
-                    rowObject.template = 'moduleContentTwo.html';
+                    rowObject.template = 'moduleContentTwo';
                 }
                 itemHtml.each(function(iA, eA){
                     if(!rowObject.data){
@@ -248,13 +239,43 @@ $(function(){
                 sectionData.rows[sectionData.rows.length] = rowObject;
             });
 
-
-            console.log(sectionData);
             siteData.pages[siteData.defaultPage]['sections'][siteData.pages[siteData.defaultPage]['sections'].length] = sectionData;
         });
 
-        $('#json-view').html(JSON.stringify(siteData, null, 2));
-        localStorage.setItem('siteData', JSON.stringify(siteData));
+        // Send the request
+        $.post('save.php', {"data": JSON.stringify(siteData)}, function(response) {
+            // Do something with the request
+        }, 'json');
+
+    });
+
+    var main = $('#previewMain'),
+        other = $('#previewOther');
+    $('#preview').on('click', function(){
+
+        if(main.val() && other.val()) {
+            window.open('od.php?main=' + main.val() + '&other=' + other.val(), '_blank');
+            $('#modalPreview').modal('hide');
+        } else {
+            alert('Please select data.');
+        }
+    });
+
+    main.on('change', function(){
+        var value = $(this).val();
+        if(value){
+            var page = value.substr(0, 2);
+            other.find('option').each(function(i,e){
+                if($(this).html().indexOf(page) === 0){
+                    $(this).hide();
+                } else {
+                    $(this).show();
+                }
+            });
+            other.removeAttr('disabled');
+        } else {
+            other.val('').attr('disabled', 'disabled');
+        }
     });
 
 });
