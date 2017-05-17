@@ -11,11 +11,11 @@ if($data) {
 
     if($data->fileName) {
 
-        echo '{"data": "'.$data->fileName.'"}';
-
         $myFile = fopen(getcwd() . '/data/' . $data->fileName, "w") or die("Unable to open file!");
         fwrite($myFile, json_encode($data));
         fclose($myFile);
+
+        echo '{"data": "'.$data->fileName.'"}';
     }
     else {
         echo '{"data": ""}';

@@ -17,29 +17,6 @@ function getUrlVars()
 }
 
 $(function(){
-    var siteData;
-
-    $('.summernote').summernote({
-        minHeight: 200,
-        toolbar: [
-            ['para', ['style', 'ul', 'ol', 'paragraph']],
-            ['style', ['bold', 'italic', 'underline', 'clear']],
-            ['font', ['superscript', 'subscript']],
-            ['insert', ['picture', 'link']],
-            ['misc', ['undo', 'redo', 'fullscreen', 'codeview']]
-        ],
-        cleaner:{
-            notTime: 2400, // Time to display Notifications.
-            action: 'both', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
-            newline: '<br>', // Summernote's default is to use '<p><br></p>'
-            notStyle: 'position:absolute;top:0;left:0;right:0', // Position of Notification
-            icon: '<i class="note-icon">[Your Button]</i>',
-            keepHtml: false, // Remove all Html formats
-            keepClasses: false, // Remove Classes
-            badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
-            badAttributes: ['style', 'start'] // Remove attributes from remaining tags
-        }
-    });
 
     var urlVars = getUrlVars();
 
@@ -215,6 +192,8 @@ $(function(){
         if(dataStore.val()) {
             var itemObject = JSON.parse(dataStore.val());
 
+            $('#period').val(itemObject.period);
+
             if (itemObject.gallery[0]) {
                 modal.find('[name="galleryImage0"]').val(itemObject.gallery[0].src);
                 modal.find('[name="galleryAlt0"]').val(itemObject.gallery[0].alt);
@@ -238,20 +217,20 @@ $(function(){
     $('#input-json-logo').on('click', function(){
 
         var itemObject = toJSONString(document.getElementById('form-item-logo'));
-        itemObject.period = $('#period').summernote('code');
+        itemObject.period = $('#period').val();
 
         var curHtml = $('#design .data-item.current');
 
         var currentObject = JSON.parse(curHtml.val());
 
-        curHtml.siblings('.note').html(itemObject.note);
-
         curHtml.val(JSON.stringify($.extend(currentObject, itemObject))).removeClass('current');
+
+        $('#period').val('');
 
         $('#modalContentLogo').modal('hide');
     });
 
-
+    $('.summernote').ckeditor();
 
     $('#design').on('click', '.edit-item-offer', function(){
         var dataStore = $(this).siblings('.data-item');
@@ -261,12 +240,10 @@ $(function(){
 
         var modal = $('#modalContentOffer');
 
-        $('#offerBody').summernote('code', "");
-
         if(dataStore.val()) {
             var itemObject = JSON.parse(dataStore.val());
 
-            $('#offerBody').summernote('code', itemObject.offerBody);
+            $('#offerBody').val(itemObject.offerBody);
         }
 
         modal.modal('show');
@@ -279,8 +256,10 @@ $(function(){
         var currentObject = JSON.parse(curHtml.val());
 
         curHtml.val(JSON.stringify($.extend(currentObject, {
-            offerBody: $('#offerBody').summernote('code')
+            offerBody: $('#offerBody').val()
         }))).removeClass('current');
+
+        $('#offerBody').val('');
 
         $('#modalContentOffer').modal('hide');
     });
@@ -295,14 +274,11 @@ $(function(){
 
         var modal = $('#modalContentTandc');
 
-        $('#tandcUrl').val('');
-        $('#tandcBody').summernote('code', "");
-
         if(dataStore.val()) {
             var itemObject = JSON.parse(dataStore.val());
 
             $('#tandcUrl').val(itemObject.tandcUrl);
-            $('#tandcBody').summernote('code', itemObject.tandcBody);
+            $('#tandcBody').val(itemObject.tandcBody);
         }
 
         modal.modal('show');
@@ -316,8 +292,11 @@ $(function(){
 
         curHtml.val(JSON.stringify($.extend(currentObject, {
             tandcUrl: $('#tandcUrl').val(),
-            tandcBody: $('#tandcBody').summernote('code')
+            tandcBody: $('#tandcBody').val()
         }))).removeClass('current');
+
+        $('#tandcUrl').val('');
+        $('#tandcBody').val('');
 
         $('#modalContentTandc').modal('hide');
     });
@@ -333,14 +312,11 @@ $(function(){
 
         var modal = $('#modalContentOther');
 
-        $('#extraBody').summernote('code', "");
-        $('#hotelHighlight').summernote('code', "");
-
         if(dataStore.val()) {
             var itemObject = JSON.parse(dataStore.val());
 
-            $('#extraBody').summernote('code', itemObject.extraBody);
-            $('#hotelHighlight').summernote('code', itemObject.hotelHighlight);
+            $('#extraBody').val(itemObject.extraBody);
+            $('#hotelHighlight').val(itemObject.hotelHighlight);
         }
 
         modal.modal('show');
@@ -353,9 +329,12 @@ $(function(){
         var currentObject = JSON.parse(curHtml.val());
 
         curHtml.val(JSON.stringify($.extend(currentObject, {
-            extraBody: $('#extraBody').summernote('code'),
-            hotelHighlight: $('#hotelHighlight').summernote('code')
+            extraBody: $('#extraBody').val(),
+            hotelHighlight: $('#hotelHighlight').val()
         }))).removeClass('current');
+
+        $('#extraBody').val('');
+        $('#hotelHighlight').val('');
 
         $('#modalContentOther').modal('hide');
     });
@@ -561,9 +540,17 @@ $(function(){
 
     $(document).bind('keydown', 'ctrl+s', function(event){
 
-        if(confirm('SAVE and RELOAD?') === true) {
+        var modal = $('.modal.in');
+        if(modal.length > 0) {
+            modal.each(function () {
+                $(this).find('.modal-footer button').trigger('click');
+            });
+        } else {
+
             $('#ok').trigger('click');
+
         }
+
 
         event.preventDefault();
         return false;
@@ -571,8 +558,15 @@ $(function(){
 
     $('body *').bind('keydown', 'ctrl+s', function(event){
 
-        if(confirm('SAVE and RELOAD?') === true) {
+        var modal = $('.modal.in');
+        if(modal.length > 0) {
+            modal.each(function () {
+                $(this).find('.modal-footer button').trigger('click');
+            });
+        } else {
+
             $('#ok').trigger('click');
+
         }
 
         event.preventDefault();

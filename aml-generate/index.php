@@ -16,7 +16,6 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 
-    <link rel="stylesheet" href="summernote/summernote.css"/>
     <link rel="stylesheet" href="css/main.css"/>
 
 </head>
@@ -519,7 +518,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Period:</label>
-                                <div id="period" class="summernote"></div>
+                                <textarea id="period" class="summernote"></textarea>
                             </div>
 
                         </div>
@@ -582,7 +581,7 @@
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label>Offer:</label>
-                            <div id="offerBody" class="summernote"></div>
+                            <textarea id="offerBody" class="summernote"></textarea>
                         </div>
                     </div>
                 </div>
@@ -615,7 +614,7 @@
                     </div>
                     <div class="col-xs-12">
                         <div class="form-group">
-                            <div id="tandcBody" class="summernote"></div>
+                            <textarea id="tandcBody" class="summernote"></textarea>
                         </div>
                     </div>
                 </div>
@@ -644,14 +643,14 @@
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label>hotelHighlight:</label>
-                            <div id="hotelHighlight" class="summernote"></div>
+                            <textarea id="hotelHighlight" class="summernote"></textarea>
                         </div>
                     </div>
 
                     <div class="col-xs-12">
                         <div class="form-group">
                             <label>extraBody:</label>
-                            <div id="extraBody" class="summernote"></div>
+                            <textarea id="extraBody" class="summernote"></textarea>
                         </div>
                     </div>
 
@@ -1029,16 +1028,12 @@
 <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<script src="summernote/summernote.min.js"></script>
-<script src="summernote/summernote-cleaner.js"></script>
+<script src="ckeditor/ckeditor.js"></script>
+<script src="ckeditor/adapters/jquery.js"></script>
 <script src="js/jquery.hotkeys.js"></script>
 <script src="js/main.js"></script>
 
 <script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
     $('.to-top').click(function(e){
         var body = $("html, body");
         body.stop().animate({scrollTop:0}, '500', 'swing');
