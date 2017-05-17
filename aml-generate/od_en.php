@@ -279,7 +279,7 @@ const HOTEL_HIGHLIGHT = 'Hotel Highlight';
 
                     if($item->template === 'contentExpansion') {
 
-                        if($item->logo || ($item->period && $item->period != '<p><br></p>' && $item->period != '<div><br></div>')) {
+                        if($item->logo || ($item->period && count($item->period) > 0)) {
                             require('templates/contentExpansionAfter.php');
                         } else {
                             require('templates/contentExpansionAfterNoLogo.php');

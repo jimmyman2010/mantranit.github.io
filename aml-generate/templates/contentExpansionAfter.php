@@ -4,7 +4,7 @@
         <div class="col-xs-12 col-md-10 text-center-xs">
             <ul class="offer-logo list-inline list-unstyled">
                 <?php if($item->logo) { ?>
-                <li<?php if(!($item->period && $item->period != '<p><br></p>' && $item->period != '<div><br></div>')) { echo ' style="border: none;"'; } ?>>
+                <li<?php if(!($item->period && ($item->period && count($item->period) > 0))) { echo ' style="border: none;"'; } ?>>
                     <?php if($item->logoUrl) { ?>
                     <a target="_blank" href="<?= $item->logoUrl ?>" title="<?= strip_tags($item->brandName) ?>">
                     <?php } ?>
@@ -15,7 +15,7 @@
                 </li>
                 <?php } ?>
 
-                <?php if($item->period && $item->period != '<p><br></p>' && $item->period != '<div><br></div>') { ?>
+                <?php if($item->period && ($item->period && count($item->period) > 0)) { ?>
                 <li<?php if(!$item->logo) { echo ' style="max-width: none; border: none;"'; } ?>><?= $item->period ?></li>
                 <?php } ?>
             </ul>
@@ -31,7 +31,7 @@
             <?php if($item->tandcUrl) { ?>
             <p><a class="link-tnc-no-expand" target="_blank" href="<?= $item->tandcUrl ?>"><?= TANDC ?> <?= MORE ?></a></p>
             <?php } ?>
-            <?php if($item->tandcBody && $item->tandcBody != '<p><br></p>' && $item->tandcBody != '<div><br></div>') { ?>
+            <?php if($item->tandcBody) { ?>
             <p><a class="link-tnc" href="#"><?= TANDC ?> <?= MORE ?></a></p>
             <div class="offer-tnc">
                 <?= $item->tandcBody ?>
@@ -42,7 +42,7 @@
             <p class="text-center"><a class="btn-aml" id="<?= $keyPage.'-en-cta'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>" href="<?= $item->ctaUrl ?>" target="_blank"><?= $item->cta ?></a></p>
             <?php } ?>
 
-            <?php if($item->hotelHighlight && $item->hotelHighlight != '<p><br></p>' && $item->hotelHighlight != '<div><br></div>') { ?>
+            <?php if($item->hotelHighlight) { ?>
             <h5 class="hidden-xs hidden-sm"><?= HOTEL_HIGHLIGHT ?></h5>
             <h5 class="title-offer-hl visible-xs visible-sm" data-offer-id="<?= $keyPage.'-en-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>"><?= HOTEL_HIGHLIGHT ?> <?= MORE ?></h5>
             <div class="offer-hl">
@@ -50,7 +50,7 @@
             </div>
             <?php } ?>
 
-            <?php if($item->extraBody && $item->extraBody != '<p><br></p>' && $item->extraBody != '<div><br></div>') { ?>
+            <?php if($item->extraBody) { ?>
                 <?= $item->extraBody ?>
             <?php } ?>
         </div>
