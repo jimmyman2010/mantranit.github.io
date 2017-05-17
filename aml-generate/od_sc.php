@@ -47,6 +47,11 @@ function process_alt($default, $alt){
     return strip_tags($alt);
 }
 
+const MORE = '<span class="aml-text-yellow">&gt; 更多</span>';
+const CLOSE = '关闭以浏览更多';
+const TANDC = '条款及细则';
+const HOTEL_HIGHLIGHT = '酒店简介';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

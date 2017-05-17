@@ -20,7 +20,25 @@ $(function(){
     var siteData;
 
     $('.summernote').summernote({
-        minHeight: 200
+        minHeight: 200,
+        toolbar: [
+            ['para', ['style', 'ul', 'ol', 'paragraph']],
+            ['style', ['bold', 'italic', 'underline', 'clear']],
+            ['font', ['superscript', 'subscript']],
+            ['insert', ['picture', 'link']],
+            ['misc', ['undo', 'redo', 'fullscreen', 'codeview']]
+        ],
+        cleaner:{
+            notTime: 2400, // Time to display Notifications.
+            action: 'both', // both|button|paste 'button' only cleans via toolbar button, 'paste' only clean when pasting content, both does both options.
+            newline: '<br>', // Summernote's default is to use '<p><br></p>'
+            notStyle: 'position:absolute;top:0;left:0;right:0', // Position of Notification
+            icon: '<i class="note-icon">[Your Button]</i>',
+            keepHtml: false, // Remove all Html formats
+            keepClasses: false, // Remove Classes
+            badTags: ['style', 'script', 'applet', 'embed', 'noframes', 'noscript', 'html'], // Remove full tags with contents
+            badAttributes: ['style', 'start'] // Remove attributes from remaining tags
+        }
     });
 
     var urlVars = getUrlVars();

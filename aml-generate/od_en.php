@@ -47,6 +47,11 @@ function process_alt($default, $alt){
     return strip_tags($alt);
 }
 
+const MORE = '<span class="aml-text-yellow">&gt; more</span>';
+const CLOSE = 'Close To View Other Offers';
+const TANDC = 'Terms &amp; Conditions';
+const HOTEL_HIGHLIGHT = 'Hotel Highlight';
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

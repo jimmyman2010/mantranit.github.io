@@ -21,7 +21,7 @@
             </ul>
         </div>
         <div class="col-md-2 text-right hidden-xs hidden-sm">
-            <div class="btn-close" data-target="<?= $keyPage.'-en-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>">Close To View Other Offers</div>
+            <div class="btn-close" data-target="<?= $keyPage.'-en-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>"><?= CLOSE ?></div>
         </div>
     </div>
     <div class="row">
@@ -29,10 +29,10 @@
             <?= $item->offerBody ?>
 
             <?php if($item->tandcUrl) { ?>
-            <p><a class="link-tnc-no-expand" target="_blank" href="<?= $item->tandcUrl ?>">Terms &amp; Conditions <span class="aml-text-yellow">&gt; more</span></a></p>
+            <p><a class="link-tnc-no-expand" target="_blank" href="<?= $item->tandcUrl ?>"><?= TANDC ?> <?= MORE ?></a></p>
             <?php } ?>
             <?php if($item->tandcBody && $item->tandcBody != '<p><br></p>' && $item->tandcBody != '<div><br></div>') { ?>
-            <p><a class="link-tnc" href="#">Terms &amp; Conditions <span class="aml-text-yellow">&gt; more</span></a></p>
+            <p><a class="link-tnc" href="#"><?= TANDC ?> <?= MORE ?></a></p>
             <div class="offer-tnc">
                 <?= $item->tandcBody ?>
             </div>
@@ -43,8 +43,8 @@
             <?php } ?>
 
             <?php if($item->hotelHighlight && $item->hotelHighlight != '<p><br></p>' && $item->hotelHighlight != '<div><br></div>') { ?>
-            <h5 class="hidden-xs hidden-sm">Hotel Highlight</h5>
-            <h5 class="title-offer-hl visible-xs visible-sm" data-offer-id="<?= $keyPage.'-en-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>">Hotel Highlight <span class="aml-text-yellow">&gt; more</span></h5>
+            <h5 class="hidden-xs hidden-sm"><?= HOTEL_HIGHLIGHT ?></h5>
+            <h5 class="title-offer-hl visible-xs visible-sm" data-offer-id="<?= $keyPage.'-en-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>"><?= HOTEL_HIGHLIGHT ?> <?= MORE ?></h5>
             <div class="offer-hl">
                 <?= $item->hotelHighlight ?>
             </div>
@@ -67,7 +67,7 @@
         </div>
         <?php } ?>
         <div class="col-xs-12 text-center visible-xs visible-sm">
-            <div class="btn-close" data-target="<?= $keyPage.'-en-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>">Close To View Other Offers</div>
+            <div class="btn-close" data-target="<?= $keyPage.'-en-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>"><?= CLOSE ?></div>
         </div>
     </div>
 </div>

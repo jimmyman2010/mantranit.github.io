@@ -12,7 +12,7 @@
     <p><?= $item->brandName ?></p>
     <?php } ?>
     <h4><?= $item->headline ?></h4>
-    <p><?= $item->leadIn ?> <span class="aml-text-yellow">&gt; more</span></p>
+    <p><?= $item->leadIn ?> <?= MORE ?></p>
     <?php if($item->tip) { ?>
     <h6><span><?= $item->tip ?></span></h6>
     <?php } ?>
