@@ -26,6 +26,19 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
     }
 }
 
+function process_image($siteData, $src){
+    if (strpos($src, 'http') === false) {
+        return $siteData->defaultImage . $src;
+    }
+    return $src;
+}
+
+function process_url($siteData, $url){
+    if (strpos($url, 'http') === false) {
+        return $siteData->defaultUrl . $url;
+    }
+    return $url;
+}
 
 ?>
 <!DOCTYPE html>
@@ -206,18 +219,18 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
                     <div id="social_btn">
                         <ul class="list-inline list-unstyled">
                             <li>
-                                <a href="//www.facebook.com/sharer.php?u=http://asiamiles-mkt-stage1-m.campaign.adobe.com/webApp/tod_may_2017_en" target="_blank">
-                                    <img width="16" height="23" class="nlui-widget" alt="Share to Facebook" src="//asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Facebook.jpg" unselectable="on" />
+                                <a href="//www.facebook.com/sharer.php?u=<?= process_url($siteData, $siteData->urlEN) ?>" target="_blank">
+                                    <img width="16" height="23" class="nlui-widget" alt="Share to Facebook" src="<?= process_image($siteData, $siteData->facebookImage) ?>" unselectable="on" />
                                 </a>
                             </li>
                             <li>
-                                <a href="//service.weibo.com/share/share.php?url=http://asiamiles-mkt-stage1-m.campaign.adobe.com/webApp/tod_may_2017_en" target="_blank">
-                                    <img width="29" height="23" class="nlui-widget" alt="Share on Weibo" src="//asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Weibo.jpg" unselectable="on" />
+                                <a href="//service.weibo.com/share/share.php?url=<?= process_url($siteData, $siteData->urlEN) ?>" target="_blank">
+                                    <img width="29" height="23" class="nlui-widget" alt="Share on Weibo" src="<?= process_image($siteData, $siteData->weiboImage) ?>" unselectable="on" />
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);" data-target="#myModal_weChat" data-toggle="modal">
-                                    <img width="29" height="23" class="nlui-widget" alt="Share on WeChat" src="//asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_WeChat.jpg" unselectable="on" />
+                                    <img width="29" height="23" class="nlui-widget" alt="Share on WeChat" src="<?= process_image($siteData, $siteData->wechatImage) ?>" unselectable="on" />
                                 </a>
                             </li>
                         </ul>

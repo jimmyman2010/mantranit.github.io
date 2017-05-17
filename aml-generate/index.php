@@ -82,8 +82,33 @@
                                                 <label>Default Image</label>
                                                 <input type="text" name="defaultImage" class="form-control" />
                                             </div>
+                                        </div><div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Default Url</label>
+                                                <input type="text" name="defaultUrl" class="form-control" />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Facebook Image</label>
+                                                <input type="text" name="facebookImage" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>Weibo Image</label>
+                                                <input type="text" name="weiboImage" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                <label>WeChat Image</label>
+                                                <input type="text" name="wechatImage" class="form-control" />
+                                            </div>
                                         </div>
                                     </div>
+                                    <hr>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
@@ -644,7 +669,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group col-xs-6">
+                    <div class="form-group col-xs-12">
                         <div class="form-group">
                             <label>Other</label>
                             <select name="other" id="previewLang" class="form-control">

@@ -49,6 +49,11 @@ $(function(){
         $('#formMain input[name="fileName"]').val(response.fileName);
         $('#formMain input[name="title"]').val(response.title);
         $('#formMain input[name="defaultImage"]').val(response.defaultImage);
+        $('#formMain input[name="defaultUrl"]').val(response.defaultUrl);
+
+        $('#formMain input[name="facebookImage"]').val(response.facebookImage);
+        $('#formMain input[name="weiboImage"]').val(response.weiboImage);
+        $('#formMain input[name="wechatImage"]').val(response.wechatImage);
 
         $('#formMain input[name="logo"]').val(response.logo);
         $('#formMain input[name="logoUrl"]').val(response.logoUrl);
@@ -278,7 +283,7 @@ $(function(){
     $('#preview').on('click', function(){
 
         if(main.val() && other.val()) {
-            window.open('od_' + $('#previewLang'),val() + '.php?main=' + main.val() + '&other=' + other.val(), '_blank');
+            window.open('od_' + $('#previewLang').val() + '.php?main=' + main.val() + '&other=' + other.val(), '_blank');
             $('#modalPreview').modal('hide');
         } else {
             alert('Please select data.');
