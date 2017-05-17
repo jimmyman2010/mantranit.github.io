@@ -126,6 +126,7 @@ $(function(){
         dataStore.addClass('current');
 
         var modal = $('#modalContentGeneral');
+        document.getElementById('form-item-general').reset();
 
         if(dataStore.val()) {
             var itemObject = JSON.parse(dataStore.val());
@@ -142,22 +143,6 @@ $(function(){
 
             modal.find('[name="cta"]').val(itemObject.cta);
             modal.find('[name="ctaUrl"]').val(itemObject.ctaUrl);
-
-            if (itemObject.gallery[0]) {
-                modal.find('[name="galleryImage0"]').val(itemObject.gallery[0].src);
-                modal.find('[name="galleryAlt0"]').val(itemObject.gallery[0].alt);
-            }
-            if (itemObject.gallery[1]) {
-                modal.find('[name="galleryImage1"]').val(itemObject.gallery[1].src);
-                modal.find('[name="galleryAlt1"]').val(itemObject.gallery[1].alt);
-            }
-            if (itemObject.gallery[2]) {
-                modal.find('[name="galleryImage2"]').val(itemObject.gallery[2].src);
-                modal.find('[name="galleryAlt2"]').val(itemObject.gallery[2].alt);
-            }
-
-            modal.find('[name="logo"]').val(itemObject.logo);
-            modal.find('[name="logoUrl"]').val(itemObject.logoUrl);
         }
 
         modal.modal('show');
@@ -188,23 +173,25 @@ $(function(){
         dataStore.addClass('current');
 
         var modal = $('#modalContentLogo');
+        document.getElementById('form-item-logo').reset();
 
         if(dataStore.val()) {
             var itemObject = JSON.parse(dataStore.val());
 
+            var i;
+            for(i = 0; i < 3; i++){
+                if (itemObject.period[i]) {
+                    modal.find('[name="periodName' + i + '"]').val(itemObject.period[i].name);
+                    modal.find('[name="periodValue' + i + '"]').val(itemObject.period[i].value);
+                }
+            }
             $('#period').val(itemObject.period);
 
-            if (itemObject.gallery[0]) {
-                modal.find('[name="galleryImage0"]').val(itemObject.gallery[0].src);
-                modal.find('[name="galleryAlt0"]').val(itemObject.gallery[0].alt);
-            }
-            if (itemObject.gallery[1]) {
-                modal.find('[name="galleryImage1"]').val(itemObject.gallery[1].src);
-                modal.find('[name="galleryAlt1"]').val(itemObject.gallery[1].alt);
-            }
-            if (itemObject.gallery[2]) {
-                modal.find('[name="galleryImage2"]').val(itemObject.gallery[2].src);
-                modal.find('[name="galleryAlt2"]').val(itemObject.gallery[2].alt);
+            for(i = 0; i < 3; i++) {
+                if (itemObject.gallery[i]) {
+                    modal.find('[name="galleryImage' + i + '"]').val(itemObject.gallery[i].src);
+                    modal.find('[name="galleryAlt' + i + '"]').val(itemObject.gallery[i].alt);
+                }
             }
 
             modal.find('[name="logo"]').val(itemObject.logo);
@@ -217,15 +204,12 @@ $(function(){
     $('#input-json-logo').on('click', function(){
 
         var itemObject = toJSONString(document.getElementById('form-item-logo'));
-        itemObject.period = $('#period').val();
 
         var curHtml = $('#design .data-item.current');
 
         var currentObject = JSON.parse(curHtml.val());
 
         curHtml.val(JSON.stringify($.extend(currentObject, itemObject))).removeClass('current');
-
-        $('#period').val('');
 
         $('#modalContentLogo').modal('hide');
     });
@@ -588,7 +572,9 @@ function toJSONString( form ) {
             if(element.type === 'checkbox') {
                 obj[name] = element.checked;
             } else {
+
                 var od = ['kvDesktop', 'kvMobile', 'kvAlt', 'intro', 'beforeQr', 'qrCode', 'afterQr'];
+
                 if(od.indexOf(name) >= 0){
                     if(!obj.pages){
                         obj.pages = {};
@@ -597,42 +583,47 @@ function toJSONString( form ) {
                         obj.pages[obj.defaultPage] = {};
                     }
                     obj.pages[obj.defaultPage][name] = value;
-                } else {
-                    if (name.indexOf('galleryImage') >= 0) {
+                } else if (name.indexOf('galleryImage') >= 0) {
 
-                        if (!obj.gallery) {
-                            obj['gallery'] = [];
+                    if (!obj.gallery) {
+                        obj['gallery'] = [];
+                    }
+                    if (value) {
+                        if (typeof obj['gallery'][parseInt(name[name.length - 1], 10)] !== 'object') {
+                            obj['gallery'][parseInt(name[name.length - 1], 10)] = {};
                         }
-                        if (value) {
-                            if (typeof obj['gallery'][parseInt(name[name.length - 1], 10)] !== 'object') {
-                                obj['gallery'][parseInt(name[name.length - 1], 10)] = {};
-                            }
-                            obj['gallery'][parseInt(name[name.length - 1], 10)]['src'] = value;
-                            obj['gallery'][parseInt(name[name.length - 1], 10)]['alt'] = '';
+                        obj['gallery'][parseInt(name[name.length - 1], 10)]['src'] = value;
+                        obj['gallery'][parseInt(name[name.length - 1], 10)]['alt'] = '';
+                    }
+                } else if (name.indexOf('galleryAlt') >= 0) {
+                    if (value) {
+                        obj['gallery'][parseInt(name[name.length - 1], 10)]['alt'] = value;
+                    }
+                } else if (name.indexOf('periodName') >= 0) {
+
+                    if (!obj.period) {
+                        obj['period'] = [];
+                    }
+                    if (value) {
+                        if (typeof obj['period'][parseInt(name[name.length - 1], 10)] !== 'object') {
+                            obj['period'][parseInt(name[name.length - 1], 10)] = {};
                         }
-                    } else {
-                        if (name.indexOf('galleryAlt') >= 0) {
-                            if (!obj.gallery) {
-                                obj['gallery'] = [];
-                            }
-                            if (value) {
-                                if (typeof obj['gallery'][parseInt(name[name.length - 1], 10)] !== 'object') {
-                                    obj['gallery'][parseInt(name[name.length - 1], 10)] = {};
-                                }
-                                obj['gallery'][parseInt(name[name.length - 1], 10)]['alt'] = value;
-                            }
-                        }
-                        else {
-                            obj[name] = value;
-                            if (value && !isNaN(value)) {
-                                obj[name] = parseInt(value, 10);
-                            }
-                            if (value && value === 'false') {
-                                obj[name] = false;
-                            }
-                        }
+                        obj['period'][parseInt(name[name.length - 1], 10)]['name'] = value;
+                        obj['period'][parseInt(name[name.length - 1], 10)]['value'] = '';
                     }
 
+                } else if (name.indexOf('periodValue') >= 0) {
+                    if (value) {
+                        obj['period'][parseInt(name[name.length - 1], 10)]['value'] = value;
+                    }
+                } else {
+                    obj[name] = value;
+                    if (value && !isNaN(value)) {
+                        obj[name] = parseInt(value, 10);
+                    }
+                    if (value && value === 'false') {
+                        obj[name] = false;
+                    }
                 }
             }
         }

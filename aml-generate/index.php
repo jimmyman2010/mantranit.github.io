@@ -498,27 +498,68 @@
                 <form id="form-item-logo">
 
                     <div class="row">
-
-                    </div>
-                    <div class="row">
-
-                    </div>
-                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Logo:</label>
                                 <input type="text" class="form-control" name="logo">
                             </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label>Logo url:</label>
                                 <input type="url" class="form-control" name="logoUrl">
                             </div>
 
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Period:</label>
-                                <textarea id="period" class="summernote"></textarea>
+                        <div class="col-md-4">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Name 1:</label>
+                                        <input type="text" class="form-control" name="periodName0">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Value 1:</label>
+                                        <input type="text" class="form-control" name="periodValue0">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Name 2:</label>
+                                        <input type="text" class="form-control" name="periodName1">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Value 2:</label>
+                                        <input type="text" class="form-control" name="periodValue1">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Name 3:</label>
+                                        <input type="text" class="form-control" name="periodName2">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Value 3:</label>
+                                        <input type="text" class="form-control" name="periodValue2">
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
