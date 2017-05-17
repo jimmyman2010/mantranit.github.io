@@ -55,8 +55,8 @@ function process_alt($default, $alt){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $siteData->title ?></title>
-    <link href="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_bootstrap.min.css" rel="stylesheet">
-    <link href="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_aml.css" rel="stylesheet">
+    <link href="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_bootstrap.min.css" rel="stylesheet">
+    <link href="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_aml.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -113,6 +113,10 @@ function process_alt($default, $alt){
         #nav h2.nav a{  float: left; width: 50%; padding: 5px 15px; text-align: center; }
         #nav h2.nav a:hover, #nav h2.nav a.active{  color: #272f38;  background-color: #facf00;  }
         .link-tnc-no-expand{ text-decoration: none !important; }
+        .offer-detail-desktop ul,
+        .offer-detail-mobile ul{ list-style: disc; }
+        .offer-detail-desktop .list-unstyled,
+        .offer-detail-mobile .list-unstyled{ list-style: none; }
         @media screen and (max-width: 768px) {
             .img-responsive{ width: 100%; }
             .offer-logo a img{ max-width: 170px; }
@@ -131,8 +135,16 @@ function process_alt($default, $alt){
         window.defaultPage = '<?= $siteData->defaultPage ?>';
     </script>
 </head>
-<body style="" class="">
-<div id="bk2top"><a class="scrollToTop" href="#"><img class="^ nlui-widget" src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_Lifestyle_scrollback_button.png" /></a></div>
+<body>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', '<?= $siteData->gaKey ?>', 'auto');
+    ga('send', 'pageview');
+</script>
+<div id="bk2top"><a class="scrollToTop" href="#"><img class="to-top" src="<?= $siteData->toTop ?>" /></a></div>
 <header class="navbar-header">
     <div id="header">
         <div class="container-fluid">
@@ -226,12 +238,12 @@ function process_alt($default, $alt){
                     <div id="social_btn">
                         <ul class="list-inline list-unstyled">
                             <li>
-                                <a href="//www.facebook.com/sharer.php?u=<?= process_url($siteData, $siteData->urlEN) ?>" target="_blank">
+                                <a href="//www.facebook.com/sharer.php?u=<?= $siteData->urlEN ?>" target="_blank">
                                     <img width="16" height="23" class="nlui-widget" alt="Share to Facebook" src="<?= process_image($siteData, $siteData->facebookImage) ?>" unselectable="on" />
                                 </a>
                             </li>
                             <li>
-                                <a href="//service.weibo.com/share/share.php?url=<?= process_url($siteData, $siteData->urlEN) ?>" target="_blank">
+                                <a href="//service.weibo.com/share/share.php?url=<?= $siteData->urlEN ?>" target="_blank">
                                     <img width="29" height="23" class="nlui-widget" alt="Share on Weibo" src="<?= process_image($siteData, $siteData->weiboImage) ?>" unselectable="on" />
                                 </a>
                             </li>
@@ -268,7 +280,7 @@ function process_alt($default, $alt){
 
                     if($item->template === 'contentExpansion') {
 
-                        if($item->logo && ($item->period && $item->period != '<p><br></p>')) {
+                        if($item->logo || ($item->period && $item->period != '<p><br></p>' && $item->period != '<div><br></div>')) {
                             require('templates/contentExpansionAfter.php');
                         } else {
                             require('templates/contentExpansionAfterNoLogo.php');
@@ -302,15 +314,15 @@ function process_alt($default, $alt){
         </div>
     </div>
 </div>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_jquery-1.12.4.min.js" type="text/javascript"></script>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_bootstrap.min.js" type="text/javascript"></script>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_jquery.waypoints.min.js" type="text/javascript"></script>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_TweenMax.min.js" type="text/javascript"></script>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_ScrollToPlugin.min.js" type="text/javascript"></script>
-<!--<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_imagesloaded.pkgd.min.js" type="text/javascript"></script> -->
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_iscroll-lite.js" type="text/javascript"></script>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_is.min.js" type="text/javascript"></script>
-<script src="//asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_aml-en.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_jquery-1.12.4.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_bootstrap.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_jquery.waypoints.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_TweenMax.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_ScrollToPlugin.min.js" type="text/javascript"></script>
+<!--<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_imagesloaded.pkgd.min.js" type="text/javascript"></script> -->
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_iscroll-lite.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_is.min.js" type="text/javascript"></script>
+<script src="<?= $siteData->fileJs ?>" type="text/javascript"></script>
 <!--<script src="scripts/TOD_201705_aml-en.js" type="text/javascript"></script>-->
 
 </body>

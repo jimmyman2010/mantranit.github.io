@@ -176,4 +176,7 @@ input[type="number"] {
 .modal-xlg {
   width: 90%; }
 
+.modal {
+  overflow-y: scroll !important; }
+
 /*# sourceMappingURL=main.css.map */

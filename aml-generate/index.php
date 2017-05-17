@@ -76,19 +76,36 @@
                                                 <input type="text" name="fileName" class="form-control" readonly="readonly" />
                                             </div>
                                         </div>
-
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>To Top</label>
+                                                <input type="text" name="toTop" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>File Js</label>
+                                                <input type="text" name="fileJs" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>GA Key</label>
+                                                <input type="text" name="gaKey" class="form-control" />
+                                            </div>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Default Image</label>
                                                 <input type="text" name="defaultImage" class="form-control" />
                                             </div>
-                                        </div><div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Default Url</label>
-                                                <input type="text" name="defaultUrl" class="form-control" />
-                                            </div>
                                         </div>
-
+                                    </div>
+                                    <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Facebook Image</label>

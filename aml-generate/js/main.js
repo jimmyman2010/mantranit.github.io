@@ -49,7 +49,10 @@ $(function(){
         $('#formMain [name="fileName"]').val(response.fileName);
         $('#formMain [name="title"]').val(response.title);
         $('#formMain [name="defaultImage"]').val(response.defaultImage);
-        $('#formMain [name="defaultUrl"]').val(response.defaultUrl);
+
+        $('#formMain [name="gaKey"]').val(response.gaKey);
+        $('#formMain [name="toTop"]').val(response.toTop);
+        $('#formMain [name="fileJs"]').val(response.fileJs);
 
         $('#formMain [name="facebookImage"]').val(response.facebookImage);
         $('#formMain [name="weiboImage"]').val(response.weiboImage);

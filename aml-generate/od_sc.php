@@ -26,10 +26,30 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
     }
 }
 
+function process_image($siteData, $src){
+    if (strpos($src, 'http') === false) {
+        return $siteData->defaultImage . $src;
+    }
+    return $src;
+}
+
+function process_url($siteData, $url){
+    if (strpos($url, 'http') === false) {
+        return $siteData->defaultUrl . $url;
+    }
+    return $url;
+}
+
+function process_alt($default, $alt){
+    if (!$alt) {
+        return strip_tags($default);
+    }
+    return strip_tags($alt);
+}
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -44,10 +64,10 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <meta name="description" content="@asiamileslimited">
-    <link rel="image_src" href="<?= $siteData->ogImage ?>">
+    <link rel="image_src" href="<?= process_image($siteData, $siteData->ogImage) ?>">
     <meta name="title" content="<?= $siteData->ogTitle ?>">
     <meta property="og:title" content="<?= $siteData->ogTitle ?>">
-    <meta property="og:image" content="<?= $siteData->ogImage ?>">
+    <meta property="og:image" content="<?= process_image($siteData, $siteData->ogImage) ?>">
     <meta property="og:description" content="<?= $siteData->ogDescription ?>">
     <style type="text/css">
         #header{ border-top: none; height: 82px; border-bottom-width: 5px; }
@@ -92,7 +112,11 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
         }
         #nav h2.nav a{  float: left; width: 50%; padding: 5px 15px; text-align: center; }
         #nav h2.nav a:hover, #nav h2.nav a.active{  color: #272f38;  background-color: #facf00;  }
-
+        .link-tnc-no-expand{ text-decoration: none !important; }
+        .offer-detail-desktop ul,
+        .offer-detail-mobile ul{ list-style: disc; }
+        .offer-detail-desktop .list-unstyled,
+        .offer-detail-mobile .list-unstyled{ list-style: none; }
         @media screen and (max-width: 768px) {
             .img-responsive{ width: 100%; }
             .offer-logo a img{ max-width: 170px; }
@@ -111,8 +135,16 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
         window.defaultPage = '<?= $siteData->defaultPage ?>';
     </script>
 </head>
-<body style="" class="">
-<div id="bk2top"><a class="scrollToTop" href="#"><img class="^ nlui-widget" src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_Lifestyle_scrollback_button.png" unselectable="on" /></a></div>
+<body>
+<script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+    ga('create', '<?= $siteData->gaKey ?>', 'auto');
+    ga('send', 'pageview');
+</script>
+<div id="bk2top"><a class="scrollToTop" href="#"><img class="to-top" src="<?= $siteData->toTop ?>" /></a></div>
 <header class="navbar-header">
     <div id="header">
         <div class="container-fluid">
@@ -120,8 +152,8 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
                 <div class="col-xs-7 col-md-3">
                     <div class="nav-toggle"><span></span><span></span><span></span></div>
                     <div class="navbar-brand">
-                        <a class="logo" href="<?= $siteData->logoUrl ?>" title="<?= $siteData->logoAlt ?>" target="_top">
-                            <img class="img-responsive nlui-widget" id="AM_Logo" alt="<?= $siteData->logoAlt ?>" src="<?= $siteData->logo ?>" unselectable="on" />
+                        <a class="logo" href="<?= process_url($siteData, $siteData->logoUrl) ?>" title="Asia Miles" target="_top">
+                            <img class="img-responsive" id="AM_Logo" alt="Asia Miles" src="<?= process_image($siteData, $siteData->logo) ?>" />
                         </a>
                     </div>
                 </div>
@@ -158,11 +190,11 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <h1><img class="img-responsive nlui-widget" alt="<?= $siteData->odAlt ?>" src="<?= $siteData->od ?>" unselectable="on" /></h1>
+                    <h1><img class="img-responsive" alt="Offer Digest" src="<?= process_image($siteData, $siteData->od) ?>" /></h1>
                     <h2 class="nav">
                 <span class="clearfix">
-                    <a class="lod_page_link" href="#lod" data-type="lod">Lifestyle</a>
-                    <a class="tod_page_link active" href="#tod" data-type="tod">Travel</a>
+                    <a class="lod_page_link<?= $siteData->defaultPage === 'lod' ? ' active' : '' ?>" href="#lod" data-type="lod">Lifestyle</a>
+                    <a class="tod_page_link<?= $siteData->defaultPage === 'tod' ? ' active' : '' ?>" href="#tod" data-type="tod">Travel</a>
                 </span>
                     </h2>
                 </div>
@@ -206,23 +238,23 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
                     <div id="social_btn">
                         <ul class="list-inline list-unstyled">
                             <li>
-                                <a href="//www.facebook.com/sharer.php?u=http://asiamiles-mkt-stage1-m.campaign.adobe.com/webApp/tod_may_2017_en" target="_blank">
-                                    <img width="16" height="23" class="nlui-widget" alt="Share to Facebook" src="//asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Facebook.jpg" unselectable="on" />
+                                <a href="//www.facebook.com/sharer.php?u=<?= $siteData->urlEN ?>" target="_blank">
+                                    <img width="16" height="23" class="nlui-widget" alt="Share to Facebook" src="<?= process_image($siteData, $siteData->facebookImage) ?>" unselectable="on" />
                                 </a>
                             </li>
                             <li>
-                                <a href="//service.weibo.com/share/share.php?url=http://asiamiles-mkt-stage1-m.campaign.adobe.com/webApp/tod_may_2017_en" target="_blank">
-                                    <img width="29" height="23" class="nlui-widget" alt="Share on Weibo" src="//asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_Weibo.jpg" unselectable="on" />
+                                <a href="//service.weibo.com/share/share.php?url=<?= $siteData->urlEN ?>" target="_blank">
+                                    <img width="29" height="23" class="nlui-widget" alt="Share on Weibo" src="<?= process_image($siteData, $siteData->weiboImage) ?>" unselectable="on" />
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);" data-target="#myModal_weChat" data-toggle="modal">
-                                    <img width="29" height="23" class="nlui-widget" alt="Share on WeChat" src="//asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_WeChat.jpg" unselectable="on" />
+                                    <img width="29" height="23" class="nlui-widget" alt="Share on WeChat" src="<?= process_image($siteData, $siteData->wechatImage) ?>" unselectable="on" />
                                 </a>
                             </li>
                         </ul>
                     </div>
-                    <p>Copyright &copy; Asia Miles is managed and operated by Asia Miles Limited.</p>
+                    <p>版权所有 &copy; 「亚洲万里通」由亚洲万里通有限公司管理。</p>
                 </div>
             </div>
         </div>
@@ -246,9 +278,18 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
                     $indexBox++;
                     $positionItem++;
 
-                    if($item->template !== 'contentNoExpansion') {
+                    if($item->template === 'contentExpansion') {
 
-                        require('templates/contentExpansionAfter.php');
+                        if($item->logo || ($item->period && $item->period != '<p><br></p>' && $item->period != '<div><br></div>')) {
+                            require('templates/contentExpansionAfter.php');
+                        } else {
+                            require('templates/contentExpansionAfterNoLogo.php');
+                        }
+                    }
+
+                    if($item->template === 'contentExpansionNoLogo') {
+
+                        require('templates/contentExpansionAfterNoLogo.php');
                     }
                 }
 
@@ -273,15 +314,15 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
         </div>
     </div>
 </div>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_jquery-1.12.4.min.js" type="text/javascript"></script>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_bootstrap.min.js" type="text/javascript"></script>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_jquery.waypoints.min.js" type="text/javascript"></script>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_TweenMax.min.js" type="text/javascript"></script>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_ScrollToPlugin.min.js" type="text/javascript"></script>
-<!--<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_imagesloaded.pkgd.min.js" type="text/javascript"></script> -->
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_iscroll-lite.js" type="text/javascript"></script>
-<script src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_is.min.js" type="text/javascript"></script>
-<script src="//asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/TOD_201705_aml-en.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_jquery-1.12.4.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_bootstrap.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_jquery.waypoints.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_TweenMax.min.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_ScrollToPlugin.min.js" type="text/javascript"></script>
+<!--<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_imagesloaded.pkgd.min.js" type="text/javascript"></script> -->
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_iscroll-lite.js" type="text/javascript"></script>
+<script src="http://res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_is.min.js" type="text/javascript"></script>
+<script src="<?= $siteData->fileJs ?>" type="text/javascript"></script>
 <!--<script src="scripts/TOD_201705_aml-en.js" type="text/javascript"></script>-->
 
 </body>

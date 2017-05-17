@@ -4,7 +4,7 @@
         <div class="col-xs-12 col-md-10 text-center-xs">
             <ul class="offer-logo list-inline list-unstyled">
                 <?php if($item->logo) { ?>
-                <li<?php if(!($item->period && $item->period != '<p><br></p>')) { echo ' style="border: none;"'; } ?>>
+                <li<?php if(!($item->period && $item->period != '<p><br></p>' && $item->period != '<div><br></div>')) { echo ' style="border: none;"'; } ?>>
                     <?php if($item->logoUrl) { ?>
                     <a target="_blank" href="<?= $item->logoUrl ?>" title="<?= strip_tags($item->brandName) ?>">
                     <?php } ?>
