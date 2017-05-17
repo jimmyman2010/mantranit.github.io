@@ -318,7 +318,7 @@
                 <div class="col-md-6">
                     <div class="text-center">
                         <h4 class="note"></h4>
-                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
+<!--                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>-->
                         <button type="button" class="edit-item-general btn btn-sm btn-info">Edit General</button>
                         <button type="button" class="edit-item-logo btn btn-sm btn-info">Edit Logo</button>
                         <button type="button" class="edit-item-offer btn btn-sm btn-info">Edit Offer</button>
@@ -330,7 +330,7 @@
                 <div class="col-md-6">
                     <div class="text-center">
                         <h4 class="note"></h4>
-                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
+<!--                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>-->
                         <button type="button" class="edit-item-general btn btn-sm btn-info">Edit General</button>
                         <button type="button" class="edit-item-logo btn btn-sm btn-info">Edit Logo</button>
                         <button type="button" class="edit-item-offer btn btn-sm btn-info">Edit Offer</button>
@@ -362,7 +362,7 @@
                 <div class="col-md-12">
                     <div class="text-center">
                         <h4 class="note"></h4>
-                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
+<!--                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>-->
                         <button type="button" class="edit-item-general btn btn-sm btn-info">Edit General</button>
                         <button type="button" class="edit-item-logo btn btn-sm btn-info">Edit Logo</button>
                         <button type="button" class="edit-item-offer btn btn-sm btn-info">Edit Offer</button>
@@ -473,40 +473,6 @@
                                 </div>
                             </div>
 
-                        </div>
-                    </div>
-
-
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Image 1:</label>
-                                <input type="url" class="form-control" name="galleryImage0">
-                            </div>
-                            <div class="form-group">
-                                <label>Alt 1:</label>
-                                <input type="url" class="form-control" name="galleryAlt0">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Image 2:</label>
-                                <input type="url" class="form-control" name="galleryImage1">
-                            </div>
-                            <div class="form-group">
-                                <label>Alt 2:</label>
-                                <input type="url" class="form-control" name="galleryAlt1">
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label>Image 3:</label>
-                                <input type="url" class="form-control" name="galleryImage2">
-                            </div>
-                            <div class="form-group">
-                                <label>Alt 3:</label>
-                                <input type="url" class="form-control" name="galleryAlt2">
-                            </div>
                         </div>
                     </div>
 

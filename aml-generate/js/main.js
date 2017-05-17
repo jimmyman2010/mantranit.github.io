@@ -361,7 +361,7 @@ $(function(){
     });
 
 
-    $('#design').on('click', '.edit-item', function(){
+    /*$('#design').on('click', '.edit-item', function(){
         var dataStore = $(this).siblings('.data-item');
 
         $('#design .data-item').removeClass('current');
@@ -437,7 +437,7 @@ $(function(){
         $('#design .data-item.current').val(JSON.stringify(itemObject)).removeClass('current');
 
         $('#modalContent').modal('hide');
-    });
+    });*/
 
     $('#add-section').on('click', function(){
 
@@ -561,7 +561,9 @@ $(function(){
 
     $(document).bind('keydown', 'ctrl+s', function(event){
 
-        $('#ok').trigger('click');
+        if(confirm('SAVE and RELOAD?') === true) {
+            $('#ok').trigger('click');
+        }
 
         event.preventDefault();
         return false;
@@ -569,7 +571,9 @@ $(function(){
 
     $('body *').bind('keydown', 'ctrl+s', function(event){
 
-        $('#ok').trigger('click');
+        if(confirm('SAVE and RELOAD?') === true) {
+            $('#ok').trigger('click');
+        }
 
         event.preventDefault();
         return false;
