@@ -8,7 +8,7 @@
                     <?php if($item->logoUrl) { ?>
                     <a target="_blank" href="<?= $item->logoUrl ?>" title="<?= strip_tags($item->brandName) ?>">
                     <?php } ?>
-                        <img alt="<?= strip_tags($item->brandName) ?>" data-src="<?= process_image($siteData, $item->logo) ?>" src="<?= process_image($siteData, $siteData->logo) ?>" class="img-responsive" />
+                        <img alt="<?= strip_tags($item->brandName) ?>" data-src="<?= process_image($item->logo) ?>" src="<?= process_image($siteData->logo) ?>" class="img-responsive" />
                     <?php if($item->logoUrl) { ?>
                     </a>
                     <?php } ?>
@@ -59,7 +59,7 @@
             <ul class="list-unstyled offer-gallery">
                 <?php
                 foreach ($item->gallery as $image) {
-                    echo '<li><img data-src="'.process_image($siteData, $image->src).'" src="'.process_image($siteData, $siteData->logo).'" alt="' . ($image->alt ? strip_tags($image->alt) : strip_tags($item->brandName)) . '" title="' . ($image->alt ? strip_tags($image->alt) : strip_tags($item->brandName)) . '" class="img-responsive"></li>';
+                    echo '<li><img data-src="'.process_image($image->src).'" src="'.process_image($siteData->logo).'" alt="' . ($image->alt ? strip_tags($image->alt) : strip_tags($item->brandName)) . '" title="' . ($image->alt ? strip_tags($image->alt) : strip_tags($item->brandName)) . '" class="img-responsive"></li>';
                 }
 
                 ?>

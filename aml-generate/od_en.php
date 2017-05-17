@@ -26,18 +26,12 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
     }
 }
 
-function process_image($siteData, $src){
+function process_image($src){
     if (strpos($src, 'http') === false) {
+        global $siteData;
         return $siteData->defaultImage . $src;
     }
     return $src;
-}
-
-function process_url($siteData, $url){
-    if (strpos($url, 'http') === false) {
-        return $siteData->defaultUrl . $url;
-    }
-    return $url;
 }
 
 function process_alt($default, $alt){
@@ -69,10 +63,10 @@ const HOTEL_HIGHLIGHT = 'Hotel Highlight';
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <meta name="description" content="@asiamileslimited">
-    <link rel="image_src" href="<?= process_image($siteData, $siteData->ogImage) ?>">
+    <link rel="image_src" href="<?= process_image($siteData->ogImage) ?>">
     <meta name="title" content="<?= $siteData->ogTitle ?>">
     <meta property="og:title" content="<?= $siteData->ogTitle ?>">
-    <meta property="og:image" content="<?= process_image($siteData, $siteData->ogImage) ?>">
+    <meta property="og:image" content="<?= process_image($siteData->ogImage) ?>">
     <meta property="og:description" content="<?= $siteData->ogDescription ?>">
     <style type="text/css">
         #header{ border-top: none; height: 82px; border-bottom-width: 5px; }
@@ -157,8 +151,8 @@ const HOTEL_HIGHLIGHT = 'Hotel Highlight';
                 <div class="col-xs-7 col-md-3">
                     <div class="nav-toggle"><span></span><span></span><span></span></div>
                     <div class="navbar-brand">
-                        <a class="logo" href="<?= process_url($siteData, $siteData->logoUrl) ?>" title="Asia Miles" target="_top">
-                            <img class="img-responsive" id="AM_Logo" alt="Asia Miles" src="<?= process_image($siteData, $siteData->logo) ?>" />
+                        <a class="logo" href="<?= $siteData->logoUrl ?>" title="Asia Miles" target="_top">
+                            <img class="img-responsive" id="AM_Logo" alt="Asia Miles" src="<?= process_image($siteData->logo) ?>" />
                         </a>
                     </div>
                 </div>
@@ -195,7 +189,7 @@ const HOTEL_HIGHLIGHT = 'Hotel Highlight';
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <h1><img class="img-responsive" alt="Offer Digest" src="<?= process_image($siteData, $siteData->od) ?>" /></h1>
+                    <h1><img class="img-responsive" alt="Offer Digest" src="<?= process_image($siteData->od) ?>" /></h1>
                     <h2 class="nav">
                 <span class="clearfix">
                     <a class="lod_page_link<?= $siteData->defaultPage === 'lod' ? ' active' : '' ?>" href="#lod" data-type="lod">Lifestyle</a>
@@ -244,17 +238,17 @@ const HOTEL_HIGHLIGHT = 'Hotel Highlight';
                         <ul class="list-inline list-unstyled">
                             <li>
                                 <a href="//www.facebook.com/sharer.php?u=<?= $siteData->urlEN ?>" target="_blank">
-                                    <img width="16" height="23" class="nlui-widget" alt="Share to Facebook" src="<?= process_image($siteData, $siteData->facebookImage) ?>" unselectable="on" />
+                                    <img width="16" height="23" class="nlui-widget" alt="Share to Facebook" src="<?= process_image($siteData->facebookImage) ?>" unselectable="on" />
                                 </a>
                             </li>
                             <li>
                                 <a href="//service.weibo.com/share/share.php?url=<?= $siteData->urlEN ?>" target="_blank">
-                                    <img width="29" height="23" class="nlui-widget" alt="Share on Weibo" src="<?= process_image($siteData, $siteData->weiboImage) ?>" unselectable="on" />
+                                    <img width="29" height="23" class="nlui-widget" alt="Share on Weibo" src="<?= process_image($siteData->weiboImage) ?>" unselectable="on" />
                                 </a>
                             </li>
                             <li>
                                 <a href="javascript:void(0);" data-target="#myModal_weChat" data-toggle="modal">
-                                    <img width="29" height="23" class="nlui-widget" alt="Share on WeChat" src="<?= process_image($siteData, $siteData->wechatImage) ?>" unselectable="on" />
+                                    <img width="29" height="23" class="nlui-widget" alt="Share on WeChat" src="<?= process_image($siteData->wechatImage) ?>" unselectable="on" />
                                 </a>
                             </li>
                         </ul>
