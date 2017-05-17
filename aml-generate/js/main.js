@@ -142,6 +142,225 @@ $(function(){
         }
     });
 
+    $('#design').on('click', '.edit-item-general', function(){
+        var dataStore = $(this).siblings('.data-item');
+
+        $('#design .data-item').removeClass('current');
+        dataStore.addClass('current');
+
+        var modal = $('#modalContentGeneral');
+
+        if(dataStore.val()) {
+            var itemObject = JSON.parse(dataStore.val());
+
+            modal.find('[name="template"]').val(itemObject.template).trigger('change');
+            modal.find('[name="note"]').val(itemObject.note);
+            modal.find('[name="brandName"]').val(itemObject.brandName);
+            modal.find('[name="headline"]').val(itemObject.headline);
+            modal.find('[name="imageDesktop"]').val(itemObject.imageDesktop);
+            modal.find('[name="imageMobile"]').val(itemObject.imageMobile);
+            modal.find('[name="leadIn"]').val(itemObject.leadIn);
+            modal.find('[name="tip"]').val(itemObject.tip);
+            modal.find('[name="externalLink"]').val(itemObject.externalLink);
+
+            modal.find('[name="cta"]').val(itemObject.cta);
+            modal.find('[name="ctaUrl"]').val(itemObject.ctaUrl);
+
+            if (itemObject.gallery[0]) {
+                modal.find('[name="galleryImage0"]').val(itemObject.gallery[0].src);
+                modal.find('[name="galleryAlt0"]').val(itemObject.gallery[0].alt);
+            }
+            if (itemObject.gallery[1]) {
+                modal.find('[name="galleryImage1"]').val(itemObject.gallery[1].src);
+                modal.find('[name="galleryAlt1"]').val(itemObject.gallery[1].alt);
+            }
+            if (itemObject.gallery[2]) {
+                modal.find('[name="galleryImage2"]').val(itemObject.gallery[2].src);
+                modal.find('[name="galleryAlt2"]').val(itemObject.gallery[2].alt);
+            }
+
+            modal.find('[name="logo"]').val(itemObject.logo);
+            modal.find('[name="logoUrl"]').val(itemObject.logoUrl);
+        }
+
+        modal.modal('show');
+    });
+
+    $('#input-json-general').on('click', function(){
+
+        var itemObject = toJSONString(document.getElementById('form-item-general'));
+
+        var curHtml = $('#design .data-item.current');
+
+        var currentObject = JSON.parse(curHtml.val());
+
+        curHtml.siblings('.note').html(itemObject.note);
+
+        curHtml.val(JSON.stringify($.extend(currentObject, itemObject))).removeClass('current');
+
+        $('#modalContentGeneral').modal('hide');
+    });
+
+
+
+
+    $('#design').on('click', '.edit-item-logo', function(){
+        var dataStore = $(this).siblings('.data-item');
+
+        $('#design .data-item').removeClass('current');
+        dataStore.addClass('current');
+
+        var modal = $('#modalContentLogo');
+
+        if(dataStore.val()) {
+            var itemObject = JSON.parse(dataStore.val());
+
+            if (itemObject.gallery[0]) {
+                modal.find('[name="galleryImage0"]').val(itemObject.gallery[0].src);
+                modal.find('[name="galleryAlt0"]').val(itemObject.gallery[0].alt);
+            }
+            if (itemObject.gallery[1]) {
+                modal.find('[name="galleryImage1"]').val(itemObject.gallery[1].src);
+                modal.find('[name="galleryAlt1"]').val(itemObject.gallery[1].alt);
+            }
+            if (itemObject.gallery[2]) {
+                modal.find('[name="galleryImage2"]').val(itemObject.gallery[2].src);
+                modal.find('[name="galleryAlt2"]').val(itemObject.gallery[2].alt);
+            }
+
+            modal.find('[name="logo"]').val(itemObject.logo);
+            modal.find('[name="logoUrl"]').val(itemObject.logoUrl);
+        }
+
+        modal.modal('show');
+    });
+
+    $('#input-json-logo').on('click', function(){
+
+        var itemObject = toJSONString(document.getElementById('form-item-logo'));
+        itemObject.period = $('#period').summernote('code');
+
+        var curHtml = $('#design .data-item.current');
+
+        var currentObject = JSON.parse(curHtml.val());
+
+        curHtml.siblings('.note').html(itemObject.note);
+
+        curHtml.val(JSON.stringify($.extend(currentObject, itemObject))).removeClass('current');
+
+        $('#modalContentLogo').modal('hide');
+    });
+
+
+
+    $('#design').on('click', '.edit-item-offer', function(){
+        var dataStore = $(this).siblings('.data-item');
+
+        $('#design .data-item').removeClass('current');
+        dataStore.addClass('current');
+
+        var modal = $('#modalContentOffer');
+
+        $('#offerBody').summernote('code', "");
+
+        if(dataStore.val()) {
+            var itemObject = JSON.parse(dataStore.val());
+
+            $('#offerBody').summernote('code', itemObject.offerBody);
+        }
+
+        modal.modal('show');
+    });
+
+    $('#input-json-offer').on('click', function(){
+
+        var curHtml = $('#design .data-item.current');
+
+        var currentObject = JSON.parse(curHtml.val());
+
+        curHtml.val(JSON.stringify($.extend(currentObject, {
+            offerBody: $('#offerBody').summernote('code')
+        }))).removeClass('current');
+
+        $('#modalContentOffer').modal('hide');
+    });
+
+
+
+    $('#design').on('click', '.edit-item-tandc', function(){
+        var dataStore = $(this).siblings('.data-item');
+
+        $('#design .data-item').removeClass('current');
+        dataStore.addClass('current');
+
+        var modal = $('#modalContentTandc');
+
+        $('#tandcUrl').val('');
+        $('#tandcBody').summernote('code', "");
+
+        if(dataStore.val()) {
+            var itemObject = JSON.parse(dataStore.val());
+
+            $('#tandcUrl').val(itemObject.tandcUrl);
+            $('#tandcBody').summernote('code', itemObject.tandcBody);
+        }
+
+        modal.modal('show');
+    });
+
+    $('#input-json-tandc').on('click', function(){
+
+        var curHtml = $('#design .data-item.current');
+
+        var currentObject = JSON.parse(curHtml.val());
+
+        curHtml.val(JSON.stringify($.extend(currentObject, {
+            tandcUrl: $('#tandcUrl').val(),
+            tandcBody: $('#tandcBody').summernote('code')
+        }))).removeClass('current');
+
+        $('#modalContentTandc').modal('hide');
+    });
+
+
+
+
+    $('#design').on('click', '.edit-item-other', function(){
+        var dataStore = $(this).siblings('.data-item');
+
+        $('#design .data-item').removeClass('current');
+        dataStore.addClass('current');
+
+        var modal = $('#modalContentOther');
+
+        $('#extraBody').summernote('code', "");
+        $('#hotelHighlight').summernote('code', "");
+
+        if(dataStore.val()) {
+            var itemObject = JSON.parse(dataStore.val());
+
+            $('#extraBody').summernote('code', itemObject.extraBody);
+            $('#hotelHighlight').summernote('code', itemObject.hotelHighlight);
+        }
+
+        modal.modal('show');
+    });
+
+    $('#input-json-other').on('click', function(){
+
+        var curHtml = $('#design .data-item.current');
+
+        var currentObject = JSON.parse(curHtml.val());
+
+        curHtml.val(JSON.stringify($.extend(currentObject, {
+            extraBody: $('#extraBody').summernote('code'),
+            hotelHighlight: $('#hotelHighlight').summernote('code')
+        }))).removeClass('current');
+
+        $('#modalContentOther').modal('hide');
+    });
+
+
     $('#design').on('click', '.edit-item', function(){
         var dataStore = $(this).siblings('.data-item');
 

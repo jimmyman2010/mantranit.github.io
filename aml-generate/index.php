@@ -319,6 +319,11 @@
                     <div class="text-center">
                         <h4 class="note"></h4>
                         <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
+                        <button type="button" class="edit-item-general btn btn-sm btn-info">Edit General</button>
+                        <button type="button" class="edit-item-logo btn btn-sm btn-info">Edit Logo</button>
+                        <button type="button" class="edit-item-offer btn btn-sm btn-info">Edit Offer</button>
+                        <button type="button" class="edit-item-tandc btn btn-sm btn-info">Edit TandC</button>
+                        <button type="button" class="edit-item-other btn btn-sm btn-info">Edit Other</button>
                         <input type="hidden" class="data-item" />
                     </div>
                 </div>
@@ -326,6 +331,11 @@
                     <div class="text-center">
                         <h4 class="note"></h4>
                         <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
+                        <button type="button" class="edit-item-general btn btn-sm btn-info">Edit General</button>
+                        <button type="button" class="edit-item-logo btn btn-sm btn-info">Edit Logo</button>
+                        <button type="button" class="edit-item-offer btn btn-sm btn-info">Edit Offer</button>
+                        <button type="button" class="edit-item-tandc btn btn-sm btn-info">Edit TandC</button>
+                        <button type="button" class="edit-item-other btn btn-sm btn-info">Edit Other</button>
                         <input type="hidden" class="data-item" />
                     </div>
                 </div>
@@ -353,6 +363,11 @@
                     <div class="text-center">
                         <h4 class="note"></h4>
                         <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>
+                        <button type="button" class="edit-item-general btn btn-sm btn-info">Edit General</button>
+                        <button type="button" class="edit-item-logo btn btn-sm btn-info">Edit Logo</button>
+                        <button type="button" class="edit-item-offer btn btn-sm btn-info">Edit Offer</button>
+                        <button type="button" class="edit-item-tandc btn btn-sm btn-info">Edit TandC</button>
+                        <button type="button" class="edit-item-other btn btn-sm btn-info">Edit Other</button>
                         <input type="hidden" class="data-item" />
                     </div>
                 </div>
@@ -367,7 +382,326 @@
 
 </script>
 
-<!-- Modal Face -->
+
+<!-- Modal InputJson -->
+<div class="modal fade" id="modalContentGeneral" tabindex="-1" role="dialog" aria-labelledby="modalContentGeneralLabel">
+    <div class="modal-dialog modal-lg modal-xlg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalContentGeneralLabel">General Content</h4>
+            </div>
+            <div class="modal-body">
+
+                <form id="form-item-general">
+                    <div class="row">
+                        <div class="form-group col-xs-12">
+                            <select name="template" class="form-control">
+                                <option value="contentExpansion">Expansion</option>
+                                <option value="contentNoExpansion">No Expansion</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <label>Note:</label>
+                                    <input type="text" class="form-control" name="note">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <label>Brand:</label>
+                                    <input type="text" class="form-control" name="brandName">
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label>Headline:</label>
+                                    <textarea name="headline" id="headline" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label>Lead In:</label>
+                                    <textarea name="leadIn" id="leadIn" rows="5" class="form-control"></textarea>
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label>Tip:</label>
+                                    <input type="text" class="form-control" name="tip">
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>KV Desktop:</label>
+                                        <input type="text" class="form-control" name="imageDesktop">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>KV Mobile:</label>
+                                        <input type="text" class="form-control" name="imageMobile">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>CTA:</label>
+                                        <input type="text" class="form-control" name="cta">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>CTA Url:</label>
+                                        <input type="text" class="form-control" name="ctaUrl">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>External Link:</label>
+                                        <input type="url" class="form-control" name="externalLink">
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Image 1:</label>
+                                <input type="url" class="form-control" name="galleryImage0">
+                            </div>
+                            <div class="form-group">
+                                <label>Alt 1:</label>
+                                <input type="url" class="form-control" name="galleryAlt0">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Image 2:</label>
+                                <input type="url" class="form-control" name="galleryImage1">
+                            </div>
+                            <div class="form-group">
+                                <label>Alt 2:</label>
+                                <input type="url" class="form-control" name="galleryAlt1">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Image 3:</label>
+                                <input type="url" class="form-control" name="galleryImage2">
+                            </div>
+                            <div class="form-group">
+                                <label>Alt 3:</label>
+                                <input type="url" class="form-control" name="galleryAlt2">
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="input-json-general" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal InputJson -->
+<div class="modal fade" id="modalContentLogo" tabindex="-1" role="dialog" aria-labelledby="modalContentLogoLabel">
+    <div class="modal-dialog modal-lg modal-xlg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalContentLogoLabel">Logo Content</h4>
+            </div>
+            <div class="modal-body">
+
+                <form id="form-item-logo">
+
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Logo:</label>
+                                <input type="text" class="form-control" name="logo">
+                            </div>
+                            <div class="form-group">
+                                <label>Logo url:</label>
+                                <input type="url" class="form-control" name="logoUrl">
+                            </div>
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Period:</label>
+                                <div id="period" class="summernote"></div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Image 1:</label>
+                                <input type="url" class="form-control" name="galleryImage0">
+                            </div>
+                            <div class="form-group">
+                                <label>Alt 1:</label>
+                                <input type="url" class="form-control" name="galleryAlt0">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Image 2:</label>
+                                <input type="url" class="form-control" name="galleryImage1">
+                            </div>
+                            <div class="form-group">
+                                <label>Alt 2:</label>
+                                <input type="url" class="form-control" name="galleryAlt1">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Image 3:</label>
+                                <input type="url" class="form-control" name="galleryImage2">
+                            </div>
+                            <div class="form-group">
+                                <label>Alt 3:</label>
+                                <input type="url" class="form-control" name="galleryAlt2">
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="input-json-logo" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal InputJson -->
+<div class="modal fade" id="modalContentOffer" tabindex="-1" role="dialog" aria-labelledby="modalContentOfferLabel">
+    <div class="modal-dialog modal-lg modal-xlg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalContentOfferLabel">Offer Content</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label>Offer:</label>
+                            <div id="offerBody" class="summernote"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="input-json-offer" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal InputJson -->
+<div class="modal fade" id="modalContentTandc" tabindex="-1" role="dialog" aria-labelledby="modalContentTandcLabel">
+    <div class="modal-dialog modal-lg modal-xlg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalContentTandcLabel">T and C Content</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label>T&C Url:</label>
+                            <input type="text" class="form-control" name="tandcUrl" id="tandcUrl">
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <div id="tandcBody" class="summernote"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="input-json-tandc" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- Modal InputJson -->
+<div class="modal fade" id="modalContentOther" tabindex="-1" role="dialog" aria-labelledby="modalContentOtherLabel">
+    <div class="modal-dialog modal-lg modal-xlg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="modalContentOtherLabel">Other Content</h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label>hotelHighlight:</label>
+                            <div id="hotelHighlight" class="summernote"></div>
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="form-group">
+                            <label>extraBody:</label>
+                            <div id="extraBody" class="summernote"></div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" id="input-json-other" class="btn btn-primary">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Modal Face
 <div class="modal fade" id="modalContent" tabindex="-1" role="dialog" aria-labelledby="modalContentLabel">
     <div class="modal-dialog modal-lg modal-xlg" role="document">
         <div class="modal-content">
