@@ -24,7 +24,7 @@ $(function(){
     });
 
     var urlVars = getUrlVars();
-    console.log(urlVars);
+
     if(urlVars.length > 0 && urlVars['data']){
 
         $.getJSON('data/' + urlVars['data'], function (response) {
@@ -46,47 +46,47 @@ $(function(){
 
     function fillData(response){
 
-        $('#formMain input[name="fileName"]').val(response.fileName);
-        $('#formMain input[name="title"]').val(response.title);
-        $('#formMain input[name="defaultImage"]').val(response.defaultImage);
-        $('#formMain input[name="defaultUrl"]').val(response.defaultUrl);
+        $('#formMain [name="fileName"]').val(response.fileName);
+        $('#formMain [name="title"]').val(response.title);
+        $('#formMain [name="defaultImage"]').val(response.defaultImage);
+        $('#formMain [name="defaultUrl"]').val(response.defaultUrl);
 
-        $('#formMain input[name="facebookImage"]').val(response.facebookImage);
-        $('#formMain input[name="weiboImage"]').val(response.weiboImage);
-        $('#formMain input[name="wechatImage"]').val(response.wechatImage);
+        $('#formMain [name="facebookImage"]').val(response.facebookImage);
+        $('#formMain [name="weiboImage"]').val(response.weiboImage);
+        $('#formMain [name="wechatImage"]').val(response.wechatImage);
 
-        $('#formMain input[name="logo"]').val(response.logo);
-        $('#formMain input[name="logoUrl"]').val(response.logoUrl);
-        $('#formMain input[name="logoAlt"]').val(response.logoAlt);
+        $('#formMain [name="logo"]').val(response.logo);
+        $('#formMain [name="logoUrl"]').val(response.logoUrl);
+        $('#formMain [name="logoAlt"]').val(response.logoAlt);
 
-        $('#formMain input[name="urlEN"]').val(response.urlEN);
-        $('#formMain input[name="urlTC"]').val(response.urlTC);
-        $('#formMain input[name="urlSC"]').val(response.urlSC);
+        $('#formMain [name="urlEN"]').val(response.urlEN);
+        $('#formMain [name="urlTC"]').val(response.urlTC);
+        $('#formMain [name="urlSC"]').val(response.urlSC);
 
-        $('#formMain input[name="ogTitle"]').val(response.ogTitle);
-        $('#formMain input[name="ogImage"]').val(response.ogImage);
-        $('#formMain input[name="ogDescription"]').val(response.ogDescription);
+        $('#formMain [name="ogTitle"]').val(response.ogTitle);
+        $('#formMain [name="ogImage"]').val(response.ogImage);
+        $('#formMain [name="ogDescription"]').val(response.ogDescription);
 
-        $('#formMain input[name="od"]').val(response.od);
-        $('#formMain input[name="odAlt"]').val(response.odAlt);
-        $('#formMain input[name="defaultPage"]').val(response.defaultPage);
+        $('#formMain [name="od"]').val(response.od);
+        $('#formMain [name="odAlt"]').val(response.odAlt);
+        $('#formMain [name="defaultPage"]').val(response.defaultPage);
 
-        $('#formMain input[name="kvDesktop"]').val(response.pages[response.defaultPage].kvDesktop);
-        $('#formMain input[name="kvMobile"]').val(response.pages[response.defaultPage].kvMobile);
-        $('#formMain input[name="kvAlt"]').val(response.pages[response.defaultPage].kvAlt);
-        $('#formMain input[name="intro"]').val(response.pages[response.defaultPage].intro);
+        $('#formMain [name="kvDesktop"]').val(response.pages[response.defaultPage].kvDesktop);
+        $('#formMain [name="kvMobile"]').val(response.pages[response.defaultPage].kvMobile);
+        $('#formMain [name="kvAlt"]').val(response.pages[response.defaultPage].kvAlt);
+        $('#formMain [name="intro"]').val(response.pages[response.defaultPage].intro);
 
-        $('#formMain input[name="beforeQr"]').val(response.pages[response.defaultPage].beforeQr);
-        $('#formMain input[name="qrCode"]').val(response.pages[response.defaultPage].qrCode);
-        $('#formMain input[name="afterQr"]').val(response.pages[response.defaultPage].afterQr);
+        $('#formMain [name="beforeQr"]').val(response.pages[response.defaultPage].beforeQr);
+        $('#formMain [name="qrCode"]').val(response.pages[response.defaultPage].qrCode);
+        $('#formMain [name="afterQr"]').val(response.pages[response.defaultPage].afterQr);
 
         var sectionHtml = $('#section-html');
         $.each(response.pages[response.defaultPage].sections, function(idxSection, objSection){
             var tplSection = $($('#section').html());
-            tplSection.find('input[name="name"]').val(objSection.name);
-            tplSection.find('input[name="prefix"]').val(objSection.prefix);
-            tplSection.find('input[name="id"]').val(objSection.id);
-            tplSection.find('input[name="hash"]').val(objSection.hash);
+            tplSection.find('[name="name"]').val(objSection.name);
+            tplSection.find('[name="prefix"]').val(objSection.prefix);
+            tplSection.find('[name="id"]').val(objSection.id);
+            tplSection.find('[name="hash"]').val(objSection.hash);
 
             $.each(objSection.rows, function(idxRow, objRow){
 
@@ -107,10 +107,12 @@ $(function(){
 
             sectionHtml.append(tplSection);
         });
+
+        initSortable();
     }
 
     $('#modalContent select[name="template"]').on('change', function(){
-        if($(this).val() === 'contentExpansion'){
+        if($(this).val() !== 'contentNoExpansion'){
             $('#modalContent .show-expansion').show();
             $('#modalContent .show-no-expansion').hide();
         } else {
@@ -205,6 +207,7 @@ $(function(){
 
         sectionHtml.append(tplSection);
 
+        initSortable();
     });
 
     $('#design').on('click', '.delete-section', function(){
@@ -223,12 +226,16 @@ $(function(){
         var tplRow = $($('#row-2').html());
 
         $(this).parents('.type-section').find('.panel-body--section').append(tplRow);
+
+        initSortable();
     });
 
     $('#design').on('click', '.add-row-1', function(){
         var tplRow = $($('#row-1').html());
 
         $(this).parents('.type-section').find('.panel-body--section').append(tplRow);
+
+        initSortable();
     });
 
     $('#ok').on('click', function(){
@@ -307,7 +314,9 @@ $(function(){
         }
     });
 
-
+    function initSortable() {
+        $('.panel-body--section').sortable();
+    }
 
 
     $(document).bind('keydown', 'ctrl+s', function(event){
@@ -351,22 +360,41 @@ function toJSONString( form ) {
                     }
                     obj.pages[obj.defaultPage][name] = value;
                 } else {
-                    if (name.indexOf('gallery') >= 0) {
+                    if (name.indexOf('galleryImage') >= 0) {
+
                         if (!obj.gallery) {
                             obj['gallery'] = [];
                         }
                         if (value) {
-                            obj['gallery'][obj['gallery'].length] = value;
+                            if (typeof obj['gallery'][parseInt(name[name.length - 1], 10)] !== 'object') {
+                                obj['gallery'][parseInt(name[name.length - 1], 10)] = {};
+                            }
+                            obj['gallery'][parseInt(name[name.length - 1], 10)]['src'] = value;
+                            obj['gallery'][parseInt(name[name.length - 1], 10)]['alt'] = '';
                         }
                     } else {
-                        obj[name] = value;
-                        if (value && !isNaN(value)) {
-                            obj[name] = parseInt(value, 10);
+                        if (name.indexOf('galleryAlt') >= 0) {
+                            if (!obj.gallery) {
+                                obj['gallery'] = [];
+                            }
+                            if (value) {
+                                if (typeof obj['gallery'][parseInt(name[name.length - 1], 10)] !== 'object') {
+                                    obj['gallery'][parseInt(name[name.length - 1], 10)] = {};
+                                }
+                                obj['gallery'][parseInt(name[name.length - 1], 10)]['alt'] = value;
+                            }
                         }
-                        if (value && value === 'false') {
-                            obj[name] = false;
+                        else {
+                            obj[name] = value;
+                            if (value && !isNaN(value)) {
+                                obj[name] = parseInt(value, 10);
+                            }
+                            if (value && value === 'false') {
+                                obj[name] = false;
+                            }
                         }
                     }
+
                 }
             }
         }

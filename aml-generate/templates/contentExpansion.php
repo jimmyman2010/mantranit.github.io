@@ -5,7 +5,7 @@
         <figure class="hidden-xs hidden-sm"><img data-src="<?= process_image($siteData, $item->imageDesktop) ?>" src="<?= process_image($siteData, $siteData->logo) ?>" alt="<?= strip_tags($item->headline) ?>" class="img-responsive"></figure>
         <figure class="visible-xs visible-sm"><img data-src="<?= process_image($siteData, $item->imageMobile) ?>" src="<?= process_image($siteData, $siteData->logo) ?>" alt="<?= strip_tags($item->headline) ?>" class="img-responsive"></figure>
         <?php } else { ?>
-        <figure><img data-src="<?= $item->imageDesktop ?>" alt="<?= strip_tags($item->headline) ?>" src="<?= $siteData->logo ?>" class="img-responsive"></figure>
+        <figure><img data-src="<?= process_image($siteData, $item->imageDesktop) ?>" src="<?= process_image($siteData, $siteData->logo) ?>" alt="<?= strip_tags($item->headline) ?>" class="img-responsive"></figure>
         <?php } ?>
     </div>
     <?php if($item->brandName) { ?>

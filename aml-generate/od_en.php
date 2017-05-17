@@ -40,6 +40,13 @@ function process_url($siteData, $url){
     return $url;
 }
 
+function process_alt($default, $alt){
+    if (!$alt) {
+        return strip_tags($default);
+    }
+    return strip_tags($alt);
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,10 +64,10 @@ function process_url($siteData, $url){
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <meta name="description" content="@asiamileslimited">
-    <link rel="image_src" href="<?= $siteData->ogImage ?>">
+    <link rel="image_src" href="<?= process_image($siteData, $siteData->ogImage) ?>">
     <meta name="title" content="<?= $siteData->ogTitle ?>">
     <meta property="og:title" content="<?= $siteData->ogTitle ?>">
-    <meta property="og:image" content="<?= $siteData->ogImage ?>">
+    <meta property="og:image" content="<?= process_image($siteData, $siteData->ogImage) ?>">
     <meta property="og:description" content="<?= $siteData->ogDescription ?>">
     <style type="text/css">
         #header{ border-top: none; height: 82px; border-bottom-width: 5px; }
@@ -105,7 +112,7 @@ function process_url($siteData, $url){
         }
         #nav h2.nav a{  float: left; width: 50%; padding: 5px 15px; text-align: center; }
         #nav h2.nav a:hover, #nav h2.nav a.active{  color: #272f38;  background-color: #facf00;  }
-
+        .link-tnc-no-expand{ text-decoration: none !important; }
         @media screen and (max-width: 768px) {
             .img-responsive{ width: 100%; }
             .offer-logo a img{ max-width: 170px; }
@@ -125,7 +132,7 @@ function process_url($siteData, $url){
     </script>
 </head>
 <body style="" class="">
-<div id="bk2top"><a class="scrollToTop" href="#"><img class="^ nlui-widget" src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_Lifestyle_scrollback_button.png" unselectable="on" /></a></div>
+<div id="bk2top"><a class="scrollToTop" href="#"><img class="^ nlui-widget" src="//res.e.asiamiles.com/res/asiamil_mkt_prod1/TOD_201704_Lifestyle_scrollback_button.png" /></a></div>
 <header class="navbar-header">
     <div id="header">
         <div class="container-fluid">
@@ -133,8 +140,8 @@ function process_url($siteData, $url){
                 <div class="col-xs-7 col-md-3">
                     <div class="nav-toggle"><span></span><span></span><span></span></div>
                     <div class="navbar-brand">
-                        <a class="logo" href="<?= $siteData->logoUrl ?>" title="<?= $siteData->logoAlt ?>" target="_top">
-                            <img class="img-responsive nlui-widget" id="AM_Logo" alt="<?= $siteData->logoAlt ?>" src="<?= $siteData->logo ?>" unselectable="on" />
+                        <a class="logo" href="<?= process_url($siteData, $siteData->logoUrl) ?>" title="Asia Miles" target="_top">
+                            <img class="img-responsive" id="AM_Logo" alt="Asia Miles" src="<?= process_image($siteData, $siteData->logo) ?>" />
                         </a>
                     </div>
                 </div>
@@ -171,11 +178,11 @@ function process_url($siteData, $url){
         <div class="container">
             <div class="row">
                 <div class="col-xs-12 text-center">
-                    <h1><img class="img-responsive nlui-widget" alt="<?= $siteData->odAlt ?>" src="<?= $siteData->od ?>" unselectable="on" /></h1>
+                    <h1><img class="img-responsive" alt="Offer Digest" src="<?= process_image($siteData, $siteData->od) ?>" /></h1>
                     <h2 class="nav">
                 <span class="clearfix">
-                    <a class="lod_page_link" href="#lod" data-type="lod">Lifestyle</a>
-                    <a class="tod_page_link active" href="#tod" data-type="tod">Travel</a>
+                    <a class="lod_page_link<?= $siteData->defaultPage === 'lod' ? ' active' : '' ?>" href="#lod" data-type="lod">Lifestyle</a>
+                    <a class="tod_page_link<?= $siteData->defaultPage === 'tod' ? ' active' : '' ?>" href="#tod" data-type="tod">Travel</a>
                 </span>
                     </h2>
                 </div>
@@ -259,9 +266,18 @@ function process_url($siteData, $url){
                     $indexBox++;
                     $positionItem++;
 
-                    if($item->template !== 'contentNoExpansion') {
+                    if($item->template === 'contentExpansion') {
 
-                        require('templates/contentExpansionAfter.php');
+                        if($item->logo && ($item->period && $item->period != '<p><br></p>')) {
+                            require('templates/contentExpansionAfter.php');
+                        } else {
+                            require('templates/contentExpansionAfterNoLogo.php');
+                        }
+                    }
+
+                    if($item->template === 'contentExpansionNoLogo') {
+
+                        require('templates/contentExpansionAfterNoLogo.php');
                     }
                 }
 

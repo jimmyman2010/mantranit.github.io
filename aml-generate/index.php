@@ -110,35 +110,39 @@
                                     </div>
                                     <hr>
                                     <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Logo</label>
-                                                <input type="text" name="logo" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Logo Url</label>
-                                                <input type="text" name="logoUrl" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>Logo Alt</label>
-                                                <input type="text" name="logoAlt" class="form-control" />
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Url EN</label>
                                                 <input type="text" name="urlEN" class="form-control" />
                                             </div>
+                                        </div>
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Url TC</label>
                                                 <input type="text" name="urlTC" class="form-control" />
                                             </div>
+                                        </div>
+                                        <div class="col-md-4">
                                             <div class="form-group">
                                                 <label>Url SC</label>
                                                 <input type="text" name="urlSC" class="form-control" />
                                             </div>
                                         </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Logo</label>
+                                                <input type="text" name="logo" class="form-control" />
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Logo Url</label>
+                                                <input type="text" name="logoUrl" class="form-control" />
+                                            </div>
+                                        </div>
+
                                     </div>
                                     <hr>
                                     <div class="row">
@@ -161,10 +165,6 @@
                                             <div class="form-group">
                                                 <label>od</label>
                                                 <input type="text" name="od" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>odAlt</label>
-                                                <input type="text" name="odAlt" class="form-control" />
                                             </div>
                                             <div class="form-group">
                                                 <label>defaultPage</label>
@@ -190,7 +190,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label>intro</label>
-                                                <input type="text" name="intro" class="form-control" />
+                                                <textarea name="intro" class="form-control"></textarea>
                                             </div>
                                         </div>
 
@@ -273,7 +273,7 @@
                     </div>
                 </div>
 
-                <div class="panel-body panel-body--section">
+                <div class="panel-body panel-body--section list-group">
 
                 </div>
 
@@ -364,26 +364,15 @@
                             <select name="template" class="form-control">
                                 <option value="contentExpansion">Expansion</option>
                                 <option value="contentNoExpansion">No Expansion</option>
-                                <option value="contentExpansionNoLogo">Expansion No Logo</option>
                             </select>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-6">
+                        <div class="col-md-7">
                             <div class="row">
                                 <div class="form-group col-xs-12">
                                     <label>Note:</label>
                                     <input type="text" class="form-control" name="note">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="form-group col-xs-12">
-                                    <label>KV Desktop:</label>
-                                    <input type="text" class="form-control" name="imageDesktop">
-                                </div>
-                                <div class="form-group col-xs-12">
-                                    <label>KV Mobile:</label>
-                                    <input type="text" class="form-control" name="imageMobile">
                                 </div>
                             </div>
 
@@ -394,7 +383,7 @@
                                 </div>
                                 <div class="form-group col-xs-12">
                                     <label>Headline:</label>
-                                    <input type="text" class="form-control" name="headline">
+                                    <textarea name="headline" id="headline" class="form-control"></textarea>
                                 </div>
                                 <div class="form-group col-xs-12">
                                     <label>Lead In:</label>
@@ -405,8 +394,20 @@
                                     <input type="text" class="form-control" name="tip">
                                 </div>
                             </div>
+                            <hr>
+                            <div class="row">
+                                <div class="form-group col-xs-12">
+                                    <label>KV Desktop:</label>
+                                    <input type="text" class="form-control" name="imageDesktop">
+                                </div>
+                                <div class="form-group col-xs-12">
+                                    <label>KV Mobile:</label>
+                                    <input type="text" class="form-control" name="imageMobile">
+                                </div>
+                            </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-md-5">
+
                             <div class="show-no-expansion" style="display: none;">
                                 <h4>No expansion</h4>
                                 <div class="row">
@@ -436,79 +437,101 @@
                                     </div>
                                 </div>
 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="form-group col-xs-12">
+                                                <label>CTA:</label>
+                                                <input type="text" class="form-control" name="cta">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="form-group col-xs-12">
+                                                <label>CTA Url:</label>
+                                                <input type="text" class="form-control" name="ctaUrl">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="show-expansion">
                         <h4>Expansion</h4>
+
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-sm-8">
                                 <div class="row">
                                     <div class="form-group col-xs-12">
-                                        <label>CTA:</label>
-                                        <input type="text" class="form-control" name="cta">
+                                        <label>Offer & How to join:</label>
+                                        <div id="offerBody" class="summernote">
+                                            <h5>Offer</h5>
+                                            <ol>
+                                                <li>Offer 1</li>
+                                            </ol>
+                                            <h5>How to join:</h5>
+                                            <ol>
+                                                <li>Step 1</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="form-group col-xs-12">
+                                        <label>T&C Url:</label>
+                                        <input type="text" class="form-control" name="tandcUrl">
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label>Terms & Conditions:</label>
+                                        <div id="tandcBody" class="summernote">
+                                            <ol>
+                                                <li>Term 1</li>
+                                            </ol>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-8">
+
+                            <div class="col-sm-4">
                                 <div class="row">
                                     <div class="form-group col-xs-12">
-                                        <label>CTA Url:</label>
-                                        <input type="text" class="form-control" name="ctaUrl">
+                                        <label>Image 1:</label>
+                                        <input type="url" class="form-control" name="galleryImage0">
                                     </div>
+                                    <div class="form-group col-xs-12">
+                                        <label>Alt 1:</label>
+                                        <input type="url" class="form-control" name="galleryAlt0">
+                                    </div>
+                                    <hr>
+                                    <div class="form-group col-xs-12">
+                                        <label>Image 2:</label>
+                                        <input type="url" class="form-control" name="galleryImage1">
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label>Alt 2:</label>
+                                        <input type="url" class="form-control" name="galleryAlt1">
+                                    </div>
+                                    <hr>
+                                    <div class="form-group col-xs-12">
+                                        <label>Image 3:</label>
+                                        <input type="url" class="form-control" name="galleryImage2">
+                                    </div>
+                                    <div class="form-group col-xs-12">
+                                        <label>Alt 3:</label>
+                                        <input type="url" class="form-control" name="galleryAlt2">
+                                    </div>
+                                    <hr>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="form-group col-xs-8">
-                                <label>Image 1:</label>
-                                <input type="url" class="form-control" name="galleryImage0">
-                            </div>
-                            <div class="form-group col-xs-4">
-                                <label>Alt 1:</label>
-                                <input type="url" class="form-control" name="galleryAlt0">
-                            </div>
 
-                            <div class="form-group col-xs-8">
-                                <label>Image 2:</label>
-                                <input type="url" class="form-control" name="galleryImage1">
-                            </div>
-                            <div class="form-group col-xs-4">
-                                <label>Alt 2:</label>
-                                <input type="url" class="form-control" name="galleryAlt1">
-                            </div>
-
-                            <div class="form-group col-xs-8">
-                                <label>Image 3:</label>
-                                <input type="url" class="form-control" name="galleryImage2">
-                            </div>
-                            <div class="form-group col-xs-4">
-                                <label>Alt 3:</label>
-                                <input type="url" class="form-control" name="galleryAlt2">
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <label>Offer & How to join:</label>
-                                <div id="offerBody" class="summernote">
-                                    <h5>Offer</h5>
-                                    <ol>
-                                        <li>Offer 1</li>
-                                    </ol>
-                                    <h5>How to join:</h5>
-                                    <ol>
-                                        <li>Step 1</li>
-                                    </ol>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="form-group col-xs-12">
-                                <label>Body more:</label>
-                                <div id="extraBody" class="summernote"></div>
-                            </div>
-                        </div>
                         <div class="row">
                             <div class="form-group col-xs-12">
                                 <label>Hotel highlight:</label>
@@ -517,20 +540,14 @@
                                 </div>
                             </div>
                         </div>
+
                         <div class="row">
                             <div class="form-group col-xs-12">
-                                <label>T&C Url:</label>
-                                <input type="text" class="form-control" name="tandcUrl">
-                            </div>
-                            <div class="form-group col-xs-12">
-                                <label>Terms & Conditions:</label>
-                                <div id="tandcBody" class="summernote">
-                                    <ol>
-                                        <li>Term 1</li>
-                                    </ol>
-                                </div>
+                                <label>Extra Body below CTA:</label>
+                                <div id="extraBody" class="summernote"></div>
                             </div>
                         </div>
+
                     </div>
 
                 </form>
@@ -693,6 +710,7 @@
 
 
 <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="//code.jquery.com/ui/1.12.0/jquery-ui.min.js" integrity="sha256-eGE6blurk5sHj+rmkfsGYeKyZx3M4bG+ZlFyA7Kns7E=" crossorigin="anonymous"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="summernote/summernote.min.js"></script>
 <script src="js/jquery.hotkeys.js"></script>
