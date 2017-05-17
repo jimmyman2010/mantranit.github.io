@@ -1,5 +1,6 @@
 {
     "fileName": "od_en.json",
+    "defaultImage":"http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/",
     "urlEN": "/aml-generate/tod_may_2017_en.html",
     "urlTC": "/aml-generate/tod_may_2017_tc.html",
     "urlSC": "/aml-generate/tod_may_2017_sc.html",

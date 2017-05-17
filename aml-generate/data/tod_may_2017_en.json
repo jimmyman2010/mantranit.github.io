@@ -1,5 +1,6 @@
 {
     "fileName": "tod_may_2017_en.json",
+    "defaultImage":"http://asiamiles-mkt-stage1-res.campaign.adobe.com/res/asiamil_mkt_stage1/",
     "urlEN": "/aml-generate/tod_may_2017_en",
     "urlTC": "/aml-generate/tod_may_2017_tc",
     "urlSC": "/aml-generate/tod_may_2017_sc",

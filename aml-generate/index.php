@@ -76,6 +76,13 @@
                                                 <input type="text" name="fileName" class="form-control" readonly="readonly" />
                                             </div>
                                         </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Default Image</label>
+                                                <input type="text" name="defaultImage" class="form-control" />
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="row">
                                         <div class="col-md-6">
@@ -555,7 +562,7 @@
                                     while (($file = readdir($dh)) !== false){
                                         $ext = pathinfo($file, PATHINFO_EXTENSION);
                                         if($ext === 'json') {
-                                            echo '<option value="/aml-generate/data/' . $file . '">' . $file . '</option>';
+                                            echo '<option value="' . $file . '">' . $file . '</option>';
                                         }
                                     }
                                     closedir($dh);
@@ -636,6 +643,17 @@
                             </select>
                         </div>
                     </div>
+
+                    <div class="form-group col-xs-6">
+                        <div class="form-group">
+                            <label>Other</label>
+                            <select name="other" id="previewLang" class="form-control">
+                                <option value="en">English</option>
+                                <option value="tc">Traditional Chinese</option>
+                                <option value="sc">Simplified Chinese</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
 
             </div>
@@ -652,6 +670,7 @@
 <script src="//code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="summernote/summernote.min.js"></script>
+<script src="js/jquery.hotkeys.js"></script>
 <script src="js/main.js"></script>
 
 <script>

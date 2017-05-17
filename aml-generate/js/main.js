@@ -2,6 +2,20 @@
  * Created by MinhMan.Tran on 5/3/2017.
  */
 
+// Read a page's GET URL variables and return them as an associative array.
+function getUrlVars()
+{
+    var vars = [], hash;
+    var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+    for(var i = 0; i < hashes.length; i++)
+    {
+        hash = hashes[i].split('=');
+        vars.push(hash[0]);
+        vars[hash[0]] = hash[1];
+    }
+    return vars;
+}
+
 $(function(){
     var siteData;
 
@@ -9,17 +23,22 @@ $(function(){
         minHeight: 200
     });
 
+    var urlVars = getUrlVars();
+    console.log(urlVars);
+    if(urlVars.length > 0 && urlVars['data']){
+
+        $.getJSON('data/' + urlVars['data'], function (response) {
+
+            $('#section-html').empty();
+
+            fillData(response);
+        });
+    }
+
     $('#fill').on('click', function(){
         var url = $('#selectData').val();
         if(url) {
-            $.getJSON(url, function (response) {
-
-                $('#section-html').empty();
-
-                fillData(response);
-            });
-
-            $('#modalLoadData').modal('hide');
+            window.location.href = '/aml-generate/?data=' + url;
         } else {
             alert('Please select data.');
         }
@@ -29,6 +48,7 @@ $(function(){
 
         $('#formMain input[name="fileName"]').val(response.fileName);
         $('#formMain input[name="title"]').val(response.title);
+        $('#formMain input[name="defaultImage"]').val(response.defaultImage);
 
         $('#formMain input[name="logo"]').val(response.logo);
         $('#formMain input[name="logoUrl"]').val(response.logoUrl);
@@ -244,7 +264,11 @@ $(function(){
 
         // Send the request
         $.post('save.php', {"data": JSON.stringify(siteData)}, function(response) {
-            // Do something with the request
+            if(response.data) {
+                window.location.href = '/aml-generate/?data=' + response.data;
+            } else {
+                alert('No data');
+            }
         }, 'json');
 
     });
@@ -254,7 +278,7 @@ $(function(){
     $('#preview').on('click', function(){
 
         if(main.val() && other.val()) {
-            window.open('od.php?main=' + main.val() + '&other=' + other.val(), '_blank');
+            window.open('od_' + $('#previewLang'),val() + '.php?main=' + main.val() + '&other=' + other.val(), '_blank');
             $('#modalPreview').modal('hide');
         } else {
             alert('Please select data.');
@@ -278,6 +302,25 @@ $(function(){
         }
     });
 
+
+
+
+    $(document).bind('keydown', 'ctrl+s', function(event){
+
+        $('#ok').trigger('click');
+
+        event.preventDefault();
+        return false;
+    });
+
+    $('body *').bind('keydown', 'ctrl+s', function(event){
+
+        $('#ok').trigger('click');
+
+        event.preventDefault();
+        return false;
+    });
+
 });
 
 
@@ -293,7 +336,7 @@ function toJSONString( form ) {
             if(element.type === 'checkbox') {
                 obj[name] = element.checked;
             } else {
-                var od = ['kv', 'kvAlt', 'intro', 'beforeQr', 'qrCode', 'afterQr'];
+                var od = ['kvDesktop', 'kvMobile', 'kvAlt', 'intro', 'beforeQr', 'qrCode', 'afterQr'];
                 if(od.indexOf(name) >= 0){
                     if(!obj.pages){
                         obj.pages = {};
