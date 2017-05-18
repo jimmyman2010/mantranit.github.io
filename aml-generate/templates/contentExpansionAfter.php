@@ -16,7 +16,14 @@
                 <?php } ?>
 
                 <?php if($item->period && ($item->period && count($item->period) > 0)) { ?>
-                <li<?php if(!$item->logo) { echo ' style="max-width: none; border: none;"'; } ?>><?= $item->period ?></li>
+                <li<?php if(!$item->logo) { echo ' style="max-width: none; border: none;"'; } ?>>
+                    <?php foreach($item->period as $iR => $range) { ?>
+                        <?php if($iR > 0) { ?>
+                            <br><br class="visible-xs visible-sm">
+                        <?php } ?>
+                        <strong><?= $range->name ?>:</strong> <br class="visible-xs visible-sm"><?= $range->value ?>
+                    <?php } ?>
+                </li>
                 <?php } ?>
             </ul>
         </div>
