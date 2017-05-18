@@ -107,6 +107,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <hr>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -127,7 +128,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <hr>
+
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="form-group">
@@ -148,6 +149,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                    <hr>
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
