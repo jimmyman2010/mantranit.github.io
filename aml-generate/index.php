@@ -188,11 +188,11 @@
                                                 <input type="text" name="od" class="form-control" />
                                             </div>
                                             <div class="form-group">
-                                                <label>Default Image</label>
+                                                <label>Prefix Image Url</label>
                                                 <input type="text" name="defaultImage" class="form-control" />
                                             </div>
                                             <div class="form-group">
-                                                <label>defaultIcon</label>
+                                                <label>AML Icon</label>
                                                 <input type="text" name="defaultIcon" class="form-control" />
                                             </div>
                                         </div>
@@ -214,7 +214,7 @@
                                                 <input type="text" name="kvAlt" class="form-control" />
                                             </div>
                                             <div class="form-group">
-                                                <label>intro</label>
+                                                <label>Lead In</label>
                                                 <textarea name="intro" class="form-control"></textarea>
                                             </div>
                                         </div>
@@ -225,7 +225,7 @@
                                                 <input type="text" name="beforeQr" class="form-control" />
                                             </div>
                                             <div class="form-group">
-                                                <label>qr code</label>
+                                                <label>Image qr code</label>
                                                 <input type="text" name="qrCode" class="form-control" />
                                             </div>
                                             <div class="form-group">
@@ -326,7 +326,6 @@
                 <div class="col-md-6">
                     <div class="text-center">
                         <h4 class="note"></h4>
-<!--                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>-->
                         <button type="button" class="edit-item-general btn btn-sm btn-info">Edit General</button>
                         <button type="button" class="edit-item-logo btn btn-sm btn-info">Edit Logo</button>
                         <button type="button" class="edit-item-offer btn btn-sm btn-info">Edit Offer</button>
@@ -338,7 +337,6 @@
                 <div class="col-md-6">
                     <div class="text-center">
                         <h4 class="note"></h4>
-<!--                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>-->
                         <button type="button" class="edit-item-general btn btn-sm btn-info">Edit General</button>
                         <button type="button" class="edit-item-logo btn btn-sm btn-info">Edit Logo</button>
                         <button type="button" class="edit-item-offer btn btn-sm btn-info">Edit Offer</button>
@@ -370,7 +368,6 @@
                 <div class="col-md-12">
                     <div class="text-center">
                         <h4 class="note"></h4>
-<!--                        <button type="button" class="edit-item btn btn-sm btn-info">Edit</button>-->
                         <button type="button" class="edit-item-general btn btn-sm btn-info">Edit General</button>
                         <button type="button" class="edit-item-logo btn btn-sm btn-info">Edit Logo</button>
                         <button type="button" class="edit-item-offer btn btn-sm btn-info">Edit Offer</button>
@@ -520,7 +517,7 @@
                             </div>
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="border: 1px solid;">
 
                             <div class="row">
                                 <div class="col-md-12">
@@ -537,7 +534,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="border: 1px solid;">
 
                             <div class="row">
                                 <div class="col-md-12">
@@ -555,7 +552,7 @@
                             </div>
 
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="border: 1px solid;">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -576,7 +573,7 @@
 
 
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="border: 1px solid;">
                             <div class="form-group">
                                 <label>Image 1:</label>
                                 <input type="url" class="form-control" name="galleryImage0">
@@ -586,7 +583,7 @@
                                 <input type="url" class="form-control" name="galleryAlt0">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="border: 1px solid;">
                             <div class="form-group">
                                 <label>Image 2:</label>
                                 <input type="url" class="form-control" name="galleryImage1">
@@ -596,7 +593,7 @@
                                 <input type="url" class="form-control" name="galleryAlt1">
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-4" style="border: 1px solid;">
                             <div class="form-group">
                                 <label>Image 3:</label>
                                 <input type="url" class="form-control" name="galleryImage2">
