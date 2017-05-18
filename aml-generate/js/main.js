@@ -157,7 +157,7 @@ $(function(){
 
         var curHtml = $('#design .data-item.current');
 
-        var currentObject = JSON.parse(curHtml.val());
+        var currentObject = curHtml.val() ? JSON.parse(curHtml.val()) : {};
 
         curHtml.siblings('.note').html(itemObject.note);
 
@@ -183,7 +183,7 @@ $(function(){
 
             var i;
             for(i = 0; i < 3; i++){
-                if (itemObject.period[i]) {
+                if (itemObject.period && itemObject.period[i]) {
                     modal.find('[name="periodName' + i + '"]').val(itemObject.period[i].name);
                     modal.find('[name="periodValue' + i + '"]').val(itemObject.period[i].value);
                 }
@@ -191,7 +191,7 @@ $(function(){
             $('#period').val(itemObject.period);
 
             for(i = 0; i < 3; i++) {
-                if (itemObject.gallery[i]) {
+                if (itemObject.gallery && itemObject.gallery[i]) {
                     modal.find('[name="galleryImage' + i + '"]').val(itemObject.gallery[i].src);
                     modal.find('[name="galleryAlt' + i + '"]').val(itemObject.gallery[i].alt);
                 }
@@ -210,7 +210,7 @@ $(function(){
 
         var curHtml = $('#design .data-item.current');
 
-        var currentObject = JSON.parse(curHtml.val());
+        var currentObject = curHtml.val() ? JSON.parse(curHtml.val()) : {};
 
         curHtml.val(JSON.stringify($.extend(currentObject, itemObject))).removeClass('current');
 
@@ -245,7 +245,7 @@ $(function(){
 
         var curHtml = $('#design .data-item.current');
 
-        var currentObject = JSON.parse(curHtml.val());
+        var currentObject = curHtml.val() ? JSON.parse(curHtml.val()) : {};
 
         curHtml.val(JSON.stringify($.extend(currentObject, {
             offerText: $('#offerText').get(0).checked,
@@ -281,7 +281,7 @@ $(function(){
 
         var curHtml = $('#design .data-item.current');
 
-        var currentObject = JSON.parse(curHtml.val());
+        var currentObject = curHtml.val() ? JSON.parse(curHtml.val()) : {};
 
         curHtml.val(JSON.stringify($.extend(currentObject, {
             tandcUrl: $('#tandcUrl').val(),
@@ -319,7 +319,7 @@ $(function(){
 
         var curHtml = $('#design .data-item.current');
 
-        var currentObject = JSON.parse(curHtml.val());
+        var currentObject = curHtml.val() ? JSON.parse(curHtml.val()) : {};
 
         curHtml.val(JSON.stringify($.extend(currentObject, {
             extraBody: $('#extraBody').val(),
