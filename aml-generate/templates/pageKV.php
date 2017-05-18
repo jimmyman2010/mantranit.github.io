@@ -5,5 +5,5 @@
     <?php } else { ?>
     <figure><img src="<?= process_image($contentPage->kvDesktop) ?>" alt="<?= strip_tags($contentPage->kvAlt) ?>" title="<?= strip_tags($contentPage->kvAlt) ?>" class="img-responsive" /></figure>
     <?php } ?>
-    <h3 class="text-center"><?= $contentPage->intro ?></h3>
+    <h3 class="text-center"><?= process_icon($contentPage->intro) ?></h3>
 </div>

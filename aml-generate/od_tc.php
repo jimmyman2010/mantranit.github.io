@@ -34,11 +34,9 @@ function process_image($src){
     return $src;
 }
 
-function process_alt($default, $alt){
-    if (!$alt) {
-        return strip_tags($default);
-    }
-    return strip_tags($alt);
+function process_icon($body){
+    global $siteData;
+    return str_replace('(A)', '<img src="' . process_image($siteData->defaultIcon) . '" alt="(A)" class="icon-am" />', $body);
 }
 
 const MORE = '<span class="aml-text-yellow">&gt; 更多</span>';
@@ -118,7 +116,8 @@ const HOTEL_HIGHLIGHT = '酒店簡介';
         .offer-detail-mobile .list-unstyled{ list-style: none; }
         @media screen and (max-width: 768px) {
             .img-responsive{ width: 100%; }
-            .offer-logo a img{ max-width: 170px; }
+            .offer-logo li{ display: block; }
+            .offer-logo .brand-logo{ max-width: 170px; display: inline-block; }
         }
         @media screen and (min-width: 769px) {
             .btn-aml { line-height: 44px; }

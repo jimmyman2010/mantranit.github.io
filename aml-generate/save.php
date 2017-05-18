@@ -15,7 +15,7 @@ if($data) {
         fwrite($myFile, json_encode($data));
         fclose($myFile);
 
-        echo '{"data": "'.$data->fileName.'"}';
+        echo '{"data": "'.$data->fileName.'&t='.time().'"}';
     }
     else {
         echo '{"data": ""}';

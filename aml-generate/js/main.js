@@ -68,6 +68,7 @@ $(function(){
         $('#formMain [name="od"]').val(response.od);
         $('#formMain [name="odAlt"]').val(response.odAlt);
         $('#formMain [name="defaultPage"]').val(response.defaultPage);
+        $('#formMain [name="defaultIcon"]').val(response.defaultIcon);
 
         $('#formMain [name="kvDesktop"]').val(response.pages[response.defaultPage].kvDesktop);
         $('#formMain [name="kvMobile"]').val(response.pages[response.defaultPage].kvMobile);

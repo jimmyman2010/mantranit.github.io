@@ -9,11 +9,11 @@
         <?php } ?>
     </div>
     <?php if($item->brandName) { ?>
-    <p><?= $item->brandName ?></p>
+    <p><?= process_icon($item->brandName) ?></p>
     <?php } ?>
-    <h4><?= $item->headline ?></h4>
-    <p><?= $item->leadIn ?> <?= MORE ?></p>
+    <h4><?= process_icon($item->headline) ?></h4>
+    <p><?= process_icon($item->leadIn) ?> <?= MORE ?></p>
     <?php if($item->tip) { ?>
-    <h6><span><?= $item->tip ?></span></h6>
+    <h6><span><?= process_icon($item->tip) ?></span></h6>
     <?php } ?>
 </div>

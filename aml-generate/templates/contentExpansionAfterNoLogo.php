@@ -3,7 +3,7 @@
 
     <div class="row">
         <div class="col-md-8">
-            <?= $item->offerBody ?>
+            <?= process_icon($item->offerBody) ?>
 
             <?php if($item->tandcUrl) { ?>
                 <p><a class="link-tnc-no-expand" target="_blank" href="<?= $item->tandcUrl ?>"><?= TANDC ?> <?= MORE ?></a></p>
@@ -11,7 +11,7 @@
             <?php if($item->tandcBody && $item->tandcBody != '<p><br></p>' && $item->tandcBody != '<div><br></div>') { ?>
                 <p><a class="link-tnc" href="#"><?= TANDC ?> <?= MORE ?></a></p>
                 <div class="offer-tnc">
-                    <?= $item->tandcBody ?>
+                    <?= process_icon($item->tandcBody) ?>
                 </div>
             <?php } ?>
 
@@ -23,12 +23,12 @@
                 <h5 class="hidden-xs hidden-sm"><?= HOTEL_HIGHLIGHT ?></h5>
                 <h5 class="title-offer-hl visible-xs visible-sm" data-offer-id="<?= $keyPage.'-en-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>"><?= HOTEL_HIGHLIGHT ?> <?= MORE ?></h5>
                 <div class="offer-hl">
-                    <?= $item->hotelHighlight ?>
+                    <?= process_icon($item->hotelHighlight) ?>
                 </div>
             <?php } ?>
 
             <?php if($item->extraBody && $item->extraBody != '<p><br></p>' && $item->extraBody != '<div><br></div>') { ?>
-                <?= $item->extraBody ?>
+                <?= process_icon($item->extraBody) ?>
             <?php } ?>
         </div>
         <div class="col-md-4 pull-right-md hidden-xs hidden-sm">

@@ -186,6 +186,10 @@
                                                 <label>defaultPage</label>
                                                 <input type="text" name="defaultPage" class="form-control" readonly="readonly" />
                                             </div>
+                                            <div class="form-group">
+                                                <label>defaultIcon</label>
+                                                <input type="text" name="defaultIcon" class="form-control" />
+                                            </div>
                                         </div>
                                     </div>
 
