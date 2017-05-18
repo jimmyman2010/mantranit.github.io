@@ -36,13 +36,16 @@ function process_image($src){
 
 function process_icon($body){
     global $siteData;
-    return str_replace('(A)', '<img src="' . process_image($siteData->defaultIcon) . '" alt="(A)" class="icon-am" />', $body);
+    $body = str_replace('(A)', '<img src="' . process_image($siteData->defaultIcon) . '" alt="(A)" class="icon-am" />', $body);
+    $body = str_replace('［A］', '<img src="' . process_image($siteData->defaultIcon) . '" alt="(A)" class="icon-am" />', $body);
+    return str_replace('[A]', '<img src="' . process_image($siteData->defaultIcon) . '" alt="(A)" class="icon-am" />', $body);
 }
 
 const MORE = '<span class="aml-text-yellow">&gt; 更多</span>';
 const CLOSE = '关闭以浏览更多';
 const TANDC = '条款及细则';
 const HOTEL_HIGHLIGHT = '酒店简介';
+const OFFER = '优惠详情';
 
 ?>
 <!DOCTYPE html>
@@ -150,8 +153,8 @@ const HOTEL_HIGHLIGHT = '酒店简介';
                 <div class="col-xs-7 col-md-3">
                     <div class="nav-toggle"><span></span><span></span><span></span></div>
                     <div class="navbar-brand">
-                        <a class="logo" href="<?= $siteData->logoUrl ?>" title="Asia Miles" target="_top">
-                            <img class="img-responsive" id="AM_Logo" alt="Asia Miles" src="<?= process_image($siteData->logo) ?>" />
+                        <a class="logo" href="<?= $siteData->logoUrl ?>" title="亚洲万里通" target="_top">
+                            <img class="img-responsive" id="AM_Logo" alt="亚洲万里通" src="<?= process_image($siteData->logo) ?>" />
                         </a>
                     </div>
                 </div>
@@ -191,8 +194,8 @@ const HOTEL_HIGHLIGHT = '酒店简介';
                     <h1><img class="img-responsive" alt="Offer Digest" src="<?= process_image($siteData->od) ?>" /></h1>
                     <h2 class="nav">
                 <span class="clearfix">
-                    <a class="lod_page_link<?= $siteData->defaultPage === 'lod' ? ' active' : '' ?>" href="#lod" data-type="lod">Lifestyle</a>
-                    <a class="tod_page_link<?= $siteData->defaultPage === 'tod' ? ' active' : '' ?>" href="#tod" data-type="tod">Travel</a>
+                    <a class="lod_page_link<?= $siteData->defaultPage === 'lod' ? ' active' : '' ?>" href="#lod" data-type="lod">生活休闲</a>
+                    <a class="tod_page_link<?= $siteData->defaultPage === 'tod' ? ' active' : '' ?>" href="#tod" data-type="tod">旅游</a>
                 </span>
                     </h2>
                 </div>

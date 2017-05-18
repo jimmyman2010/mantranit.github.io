@@ -36,13 +36,16 @@ function process_image($src){
 
 function process_icon($body){
     global $siteData;
-    return str_replace('(A)', '<img src="' . process_image($siteData->defaultIcon) . '" alt="(A)" class="icon-am" />', $body);
+    $body = str_replace('(A)', '<img src="' . process_image($siteData->defaultIcon) . '" alt="(A)" class="icon-am" />', $body);
+    $body = str_replace('［A］', '<img src="' . process_image($siteData->defaultIcon) . '" alt="(A)" class="icon-am" />', $body);
+    return str_replace('[A]', '<img src="' . process_image($siteData->defaultIcon) . '" alt="(A)" class="icon-am" />', $body);
 }
 
 const MORE = '<span class="aml-text-yellow">&gt; 更多</span>';
 const CLOSE = '關閉並查看其他優惠';
 const TANDC = '條款及細則';
 const HOTEL_HIGHLIGHT = '酒店簡介';
+const OFFER = '優惠詳情';
 
 ?>
 <!DOCTYPE html>
@@ -150,8 +153,8 @@ const HOTEL_HIGHLIGHT = '酒店簡介';
                 <div class="col-xs-7 col-md-3">
                     <div class="nav-toggle"><span></span><span></span><span></span></div>
                     <div class="navbar-brand">
-                        <a class="logo" href="<?= $siteData->logoUrl ?>" title="Asia Miles" target="_top">
-                            <img class="img-responsive" id="AM_Logo" alt="Asia Miles" src="<?= process_image($siteData->logo) ?>" />
+                        <a class="logo" href="<?= $siteData->logoUrl ?>" title="亞洲萬里通" target="_top">
+                            <img class="img-responsive" id="AM_Logo" alt="亞洲萬里通" src="<?= process_image($siteData->logo) ?>" />
                         </a>
                     </div>
                 </div>
