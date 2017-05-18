@@ -231,6 +231,11 @@ $(function(){
             var itemObject = JSON.parse(dataStore.val());
 
             $('#offerBody').val(itemObject.offerBody);
+            if(itemObject.offerText){
+                $('#offerText').prop('checked', true);
+            } else {
+                $('#offerText').prop('checked', false);
+            }
         }
 
         modal.modal('show');
@@ -243,6 +248,7 @@ $(function(){
         var currentObject = JSON.parse(curHtml.val());
 
         curHtml.val(JSON.stringify($.extend(currentObject, {
+            offerText: $('#offerText').get(0).checked,
             offerBody: $('#offerBody').val()
         }))).removeClass('current');
 

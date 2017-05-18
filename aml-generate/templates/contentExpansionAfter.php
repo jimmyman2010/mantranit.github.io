@@ -35,7 +35,7 @@
     </div>
     <div class="row">
         <div class="col-md-8">
-            <?php if(property_exists($item, 'offer') && $item->offer) { ?>
+            <?php if(property_exists($item, 'offerText') && $item->offerText) { ?>
             <h5><?= OFFER ?></h5>
             <?php } ?>
             <?= process_icon($item->offerBody) ?>
