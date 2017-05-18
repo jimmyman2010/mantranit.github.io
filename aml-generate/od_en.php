@@ -41,6 +41,7 @@ function process_icon($body){
     return str_replace('[A]', '<img src="' . process_image($siteData->defaultIcon) . '" alt="(A)" class="icon-am" />', $body);
 }
 
+const LANG = 'en';
 const MORE = '<span class="aml-text-yellow">&gt; more</span>';
 const CLOSE = 'Close To View Other Offers';
 const TANDC = 'Terms &amp; Conditions';

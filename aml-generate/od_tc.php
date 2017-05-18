@@ -41,6 +41,7 @@ function process_icon($body){
     return str_replace('[A]', '<img src="' . process_image($siteData->defaultIcon) . '" alt="(A)" class="icon-am" />', $body);
 }
 
+const LANG = 'tc';
 const MORE = '<span class="aml-text-yellow">&gt; 更多</span>';
 const CLOSE = '關閉並查看其他優惠';
 const TANDC = '條款及細則';
@@ -49,7 +50,7 @@ const OFFER = '優惠詳情';
 
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">

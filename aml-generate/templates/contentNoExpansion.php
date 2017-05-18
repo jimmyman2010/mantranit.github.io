@@ -1,5 +1,5 @@
 
-<div class="offer-item-no-expand" id="<?= $keyPage.'-en-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>">
+<div class="offer-item-no-expand" id="<?= $keyPage.'-'.LANG.'-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>">
     <a href="<?= $item->externalLink ?>" target="_blank" title="<?= strip_tags($item->headline) ?>"> </a>
     <div class="offer-item-image">
         <?php if($item->imageMobile) { ?>
