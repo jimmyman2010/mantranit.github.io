@@ -22,14 +22,20 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
         $defaultPage = $contentPage;
     }
     foreach ($contentPage->sections as $indexSection => $contentSection) {
-        $menu .= '<li data-page="'.$keyPage.'"><a href="#' . $contentSection->hash. '" data-target="' .$keyPage. '-section-'.($indexSection+1).'">'.$contentSection->name.'</a></li>';
+        $menu .= '<li data-page="'.$keyPage.'">
+                    <a href="#' . $contentSection->hash. '" data-target="' .$keyPage. '-section-'.($indexSection+1).'">'.$contentSection->name.'</a>
+                  </li>';
     }
 }
 
-function process_image($src){
+function process_image($src, $page = ''){
     if (strpos($src, 'http') === false) {
         global $siteData;
-        return $siteData->defaultImage . $src;
+        if($page !== '') {
+            return $siteData->pages->{$page}->defaultImage . $src;
+        } else {
+            return $siteData->pages->{$siteData->defaultPage}->defaultImage . $src;
+        }
     }
     return $src;
 }
@@ -269,6 +275,7 @@ const OFFER = 'Offer';
     foreach ($siteData->pages as $keyPage => $contentPage) {
 
         $indexBox = 0;
+        $GLOBALS['imageUrl'] = $contentPage->defaultImage;
 
         foreach ($contentPage->sections as $indexSection => $contentSection) {
 

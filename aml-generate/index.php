@@ -65,6 +65,10 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
+                                                <h1><?= $_GET['data'] ?></h1>
+                                            </div>
+
+                                            <div class="form-group">
                                                 <label>Title</label>
                                                 <input type="text" name="title" class="form-control" />
                                             </div>
@@ -73,6 +77,11 @@
                                             <div class="form-group">
                                                 <label>File Name</label>
                                                 <input type="text" name="fileName" class="form-control" readonly="readonly" />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label>defaultPage</label>
+                                                <input type="text" name="defaultPage" class="form-control" readonly="readonly" />
                                             </div>
                                         </div>
                                     </div>
@@ -95,12 +104,6 @@
                                             <div class="form-group">
                                                 <label>GA Key</label>
                                                 <input type="text" name="gaKey" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Default Image</label>
-                                                <input type="text" name="defaultImage" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -183,8 +186,8 @@
                                                 <input type="text" name="od" class="form-control" />
                                             </div>
                                             <div class="form-group">
-                                                <label>defaultPage</label>
-                                                <input type="text" name="defaultPage" class="form-control" readonly="readonly" />
+                                                <label>Default Image</label>
+                                                <input type="text" name="defaultImage" class="form-control" />
                                             </div>
                                             <div class="form-group">
                                                 <label>defaultIcon</label>

@@ -45,7 +45,6 @@ $(function(){
 
         $('#formMain [name="fileName"]').val(response.fileName);
         $('#formMain [name="title"]').val(response.title);
-        $('#formMain [name="defaultImage"]').val(response.defaultImage);
 
         $('#formMain [name="gaKey"]').val(response.gaKey);
         $('#formMain [name="toTop"]').val(response.toTop);
@@ -71,6 +70,8 @@ $(function(){
         $('#formMain [name="odAlt"]').val(response.odAlt);
         $('#formMain [name="defaultPage"]').val(response.defaultPage);
         $('#formMain [name="defaultIcon"]').val(response.defaultIcon);
+
+        $('#formMain [name="defaultImage"]').val(response.pages[response.defaultPage].defaultImage);
 
         $('#formMain [name="kvDesktop"]').val(response.pages[response.defaultPage].kvDesktop);
         $('#formMain [name="kvMobile"]').val(response.pages[response.defaultPage].kvMobile);
@@ -333,84 +334,6 @@ $(function(){
     });
 
 
-    /*$('#design').on('click', '.edit-item', function(){
-        var dataStore = $(this).siblings('.data-item');
-
-        $('#design .data-item').removeClass('current');
-        dataStore.addClass('current');
-
-        var modal = $('#modalContent');
-
-        document.getElementById('form-item').reset();
-        $('#period').summernote('code', "");
-        $('#offerBody').summernote('code', "");
-        $('#extraBody').summernote('code', "");
-        $('#hotelHighlight').summernote('code', "");
-        $('#tandcBody').summernote('code', "");
-
-        if(dataStore.val()) {
-
-            var itemObject = JSON.parse(dataStore.val());
-
-            modal.find('[name="template"]').val(itemObject.template).trigger('change');
-            modal.find('[name="note"]').val(itemObject.note);
-            modal.find('[name="brandName"]').val(itemObject.brandName);
-            modal.find('[name="headline"]').val(itemObject.headline);
-            modal.find('[name="imageDesktop"]').val(itemObject.imageDesktop);
-            modal.find('[name="imageMobile"]').val(itemObject.imageMobile);
-            modal.find('[name="leadIn"]').val(itemObject.leadIn);
-            modal.find('[name="tip"]').val(itemObject.tip);
-            modal.find('[name="externalLink"]').val(itemObject.externalLink);
-
-            if (itemObject.template === 'contentExpansion') {
-
-                if (itemObject.gallery[0]) {
-                    modal.find('[name="galleryImage0"]').val(itemObject.gallery[0].src);
-                    modal.find('[name="galleryAlt0"]').val(itemObject.gallery[0].alt);
-                }
-                if (itemObject.gallery[1]) {
-                    modal.find('[name="galleryImage1"]').val(itemObject.gallery[1].src);
-                    modal.find('[name="galleryAlt1"]').val(itemObject.gallery[1].alt);
-                }
-                if (itemObject.gallery[2]) {
-                    modal.find('[name="galleryImage2"]').val(itemObject.gallery[2].src);
-                    modal.find('[name="galleryAlt2"]').val(itemObject.gallery[2].alt);
-                }
-
-                modal.find('[name="logo"]').val(itemObject.logo);
-                modal.find('[name="logoUrl"]').val(itemObject.logoUrl);
-
-                modal.find('[name="cta"]').val(itemObject.cta);
-                modal.find('[name="ctaUrl"]').val(itemObject.ctaUrl);
-
-                modal.find('[name="tandcUrl"]').val(itemObject.tandcUrl);
-
-                $('#period').summernote('code', itemObject.period);
-                $('#offerBody').summernote('code', itemObject.offerBody);
-                $('#extraBody').summernote('code', itemObject.extraBody);
-                $('#hotelHighlight').summernote('code', itemObject.hotelHighlight);
-                $('#tandcBody').summernote('code', itemObject.tandcBody);
-            }
-        }
-
-        modal.modal('show');
-    });
-
-    $('#ok-item').on('click', function(){
-        var itemObject = toJSONString(document.getElementById('form-item'));
-
-        itemObject.period = $('#period').summernote('code');
-        itemObject.offerBody = $('#offerBody').summernote('code');
-        itemObject.extraBody = $('#extraBody').summernote('code');
-        itemObject.hotelHighlight = $('#hotelHighlight').summernote('code');
-        itemObject.tandcBody = $('#tandcBody').summernote('code');
-
-        $('#design .data-item.current').siblings('.note').html(itemObject.note);
-        $('#design .data-item.current').val(JSON.stringify(itemObject)).removeClass('current');
-
-        $('#modalContent').modal('hide');
-    });*/
-
     $('#add-section').on('click', function(){
 
         var sectionHtml = $('#section-html');
@@ -453,6 +376,8 @@ $(function(){
     $('#ok').on('click', function(){
 
         var siteData = toJSONString(document.getElementById('formMain'));
+
+        console.log(siteData);
 
         siteData.pages[siteData.defaultPage]['sections'] = [];
 
