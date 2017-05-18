@@ -152,7 +152,7 @@ const OFFER = 'Offer';
     ga('create', '<?= $siteData->gaKey ?>', 'auto');
     ga('send', 'pageview');
 </script>
-<div id="bk2top"><a class="scrollToTop" href="#"><img class="to-top" src="<?= $siteData->toTop ?>" /></a></div>
+<div id="bk2top"><a class="scrollToTop" href="#"><img class="to-top" src="<?= process_image($siteData->toTop) ?>" /></a></div>
 <header class="navbar-header">
     <div id="header">
         <div class="container-fluid">
