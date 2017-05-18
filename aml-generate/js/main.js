@@ -582,7 +582,7 @@ function toJSONString( form ) {
                 obj[name] = element.checked;
             } else {
 
-                var od = ['kvDesktop', 'kvMobile', 'kvAlt', 'intro', 'beforeQr', 'qrCode', 'afterQr'];
+                var od = ['defaultImage', 'kvDesktop', 'kvMobile', 'kvAlt', 'intro', 'beforeQr', 'qrCode', 'afterQr'];
 
                 if(od.indexOf(name) >= 0){
                     if(!obj.pages){
