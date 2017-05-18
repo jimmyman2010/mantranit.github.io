@@ -22,7 +22,8 @@ $(function(){
 
     if(urlVars.length > 0 && urlVars['data']){
 
-        $.getJSON('data/' + urlVars['data'], function (response) {
+        var d = new Date();
+        $.getJSON('data/' + urlVars['data'] + '?time=' + d.getTime(), function (response) {
 
             $('#section-html').empty();
 
