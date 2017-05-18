@@ -275,7 +275,6 @@ const OFFER = 'Offer';
     foreach ($siteData->pages as $keyPage => $contentPage) {
 
         $indexBox = 0;
-        $GLOBALS['imageUrl'] = $contentPage->defaultImage;
 
         foreach ($contentPage->sections as $indexSection => $contentSection) {
 
@@ -314,7 +313,7 @@ const OFFER = 'Offer';
         <div class="modal-content">
             <div class="modal-body text-center">
                 <p><strong><?= $defaultPage->beforeQr ?></strong></p>
-                <p><img class="nlui-widget" src="<?= $defaultPage->qrCode ?>" alt="qr code" unselectable="on" /></p>
+                <p><img class="nlui-widget" src="<?= process_image($defaultPage->qrCode) ?>" alt="qr code" unselectable="on" /></p>
                 <p><?= $defaultPage->afterQr ?></p>
                 <p>
                     <button class="btn btn-primary" type="button" data-dismiss="modal">OK</button>

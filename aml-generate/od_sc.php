@@ -22,14 +22,20 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
         $defaultPage = $contentPage;
     }
     foreach ($contentPage->sections as $indexSection => $contentSection) {
-        $menu .= '<li data-page="'.$keyPage.'"><a href="#' . $contentSection->hash. '" data-target="' .$keyPage. '-section-'.($indexSection+1).'">'.$contentSection->name.'</a></li>';
+        $menu .= '<li data-page="'.$keyPage.'">
+                    <a href="#' . $contentSection->hash. '" data-target="' .$keyPage. '-section-'.($indexSection+1).'">'.$contentSection->name.'</a>
+                  </li>';
     }
 }
 
-function process_image($src){
+function process_image($src, $page = ''){
     if (strpos($src, 'http') === false) {
         global $siteData;
-        return $siteData->defaultImage . $src;
+        if($page !== '') {
+            return $siteData->pages->{$page}->defaultImage . $src;
+        } else {
+            return $siteData->pages->{$siteData->defaultPage}->defaultImage . $src;
+        }
     }
     return $src;
 }
@@ -307,7 +313,7 @@ const OFFER = '优惠详情';
         <div class="modal-content">
             <div class="modal-body text-center">
                 <p><strong><?= $defaultPage->beforeQr ?></strong></p>
-                <p><img class="nlui-widget" src="<?= $defaultPage->qrCode ?>" alt="qr code" unselectable="on" /></p>
+                <p><img class="nlui-widget" src="<?= process_image($defaultPage->qrCode) ?>" alt="qr code" unselectable="on" /></p>
                 <p><?= $defaultPage->afterQr ?></p>
                 <p>
                     <button class="btn btn-primary" type="button" data-dismiss="modal">OK</button>
