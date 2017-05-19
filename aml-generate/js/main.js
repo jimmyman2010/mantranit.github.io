@@ -24,11 +24,16 @@ $(function(){
 
         var d = new Date();
         var url = 'data/' + urlVars['data'] + '?time=' + d.getTime();
+
+        $('#loading').show();
+
         $.getJSON(url, function (response) {
 
             $('#section-html').empty();
 
             fillData(response);
+
+            $('#loading').hide();
         });
     }
 
@@ -397,10 +402,11 @@ $(function(){
     });
 
     $('#ok').on('click', function(){
+        var that = $(this);
+        $('#loading').show();
+        that.addClass('process');
 
         var siteData = toJSONString(document.getElementById('formMain'));
-
-        console.log(siteData);
 
         siteData.pages[siteData.defaultPage]['sections'] = [];
 
@@ -442,6 +448,9 @@ $(function(){
             } else {
                 alert('No data');
             }
+
+            $('#loading').hide();
+            that.removeClass('process');
         }, 'json');
 
     });

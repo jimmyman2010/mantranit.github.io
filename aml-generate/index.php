@@ -20,7 +20,7 @@
 
 </head>
 <body>
-
+<div id="loading"></div>
 <div id="body-style" style="visibility: hidden; position: absolute; z-index: 1; max-width: 20px; overflow: hidden;"></div>
 
 <div id="wrapper" class="site-wrapper">
@@ -32,10 +32,11 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="text-right clearfix">
-                            <button type="button" id="ok" class="btn btn-primary">SAVE</button>
-
+                            <button type="button" id="ok" class="btn btn-primary">
+                                <span>SAVE</span>
+                                <span><i class="fa fa-refresh fa-spin"></i> SAVING</span>
+                            </button>
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPreview">Preview</button>
-
                         </div>
                     </div>
                     <?php $data = isset($_GET['data']) ? $_GET['data'] : ''; ?>
