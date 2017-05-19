@@ -373,6 +373,10 @@ $(function(){
         initSortable();
     });
 
+    $('#design').on('click', '.toggle-button', function(){
+        $(this).parent().toggleClass('toggle-close');
+    });
+
     $('#ok').on('click', function(){
 
         var siteData = toJSONString(document.getElementById('formMain'));
@@ -452,7 +456,12 @@ $(function(){
     });
 
     function initSortable() {
-        $('.panel-body--section').sortable();
+        $('#section-html').sortable({
+            handle: ".type-section > .panel-heading"
+        });
+        $('.panel-body--section').sortable({
+            handle: " > .panel-heading"
+        });
     }
 
 

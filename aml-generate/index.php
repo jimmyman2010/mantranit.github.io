@@ -273,34 +273,45 @@
 <script id="section" type="text/html">
     <form class="formSection">
         <div class="type-section panel panel-primary">
-                <div class="panel-heading">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Name</label>
-                                <input type="text" name="name" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Prefix</label>
-                                <input type="text" name="prefix" class="form-control">
-                            </div>
+            <div class="panel-heading">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Name</label>
+                            <input type="text" name="name" class="form-control">
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label>Id</label>
-                                <input type="text" name="id" class="form-control">
-                            </div>
-                            <div class="form-group">
-                                <label>Hash</label>
-                                <input type="text" name="hash" class="form-control">
-                            </div>
+                        <div class="form-group">
+                            <label>Prefix</label>
+                            <input type="text" name="prefix" class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label>Id</label>
+                            <input type="text" name="id" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label>Hash</label>
+                            <input type="text" name="hash" class="form-control">
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="panel-body panel-body--section list-group">
 
+
+            <div class="panel-body">
+                <div class="text-center">
+                    <button type="button" class="toggle-button btn"><span>Collapse</span><span>Expand</span></button>
                 </div>
+                <br>
+                <div class="toggle-content">
+                    <div class="panel-body--section">
+
+                    </div>
+                </div>
+
+            </div>
 
             <div class="panel-footer">
                 <div class="text-center">

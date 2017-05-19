@@ -228,3 +228,33 @@ input[type="number"] {
 .modal{
     overflow-y: scroll !important;
 }
+
+.ui-sortable-handle{
+    cursor: move;
+}
+.toggle-button{
+    span {
+        &:first-child {
+            display: inline-block;
+        }
+        &:last-child {
+            display: none;
+        }
+    }
+}
+.toggle-close {
+    .toggle-button {
+        span {
+            &:first-child {
+                display: none;
+            }
+            &:last-child {
+                display: inline-block;
+            }
+        }
+    }
+    ~ .toggle-content {
+        height: 0;
+        overflow: hidden;
+    }
+}
