@@ -39,7 +39,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 text-right">
-                        <h3 class="pull-left"><?= $_GET['data'] ?></h3>
+                        <h3 class="pull-left"><?= isset($_GET['data']) ? str_replace('.json', '', $_GET['data']) : '' ?></h3>
 <!--                        <input type="file" id="input-html" accept="text/html"/>-->
 <!---->
 <!--                        <button id="upload-html" class="btn btn-primary" type="button">-->
