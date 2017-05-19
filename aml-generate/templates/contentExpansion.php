@@ -1,4 +1,3 @@
-
 <div class="offer-item" id="<?= $keyPage.'-'.LANG.'-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>" data-desktop="<?= $keyPage.'-d-box-'.($indexSection+1).'-'.$positionItem ?>" data-mobile="<?= $keyPage.'-m-box-'.($indexSection+1).'-'.$positionItem ?>" data-content="<?= $keyPage.'-content-'.($indexSection+1).'-'.$positionItem ?>">
     <div class="offer-item-image" title="<?= strip_tags($item->headline) ?>">
         <?php if($item->imageMobile) { ?>

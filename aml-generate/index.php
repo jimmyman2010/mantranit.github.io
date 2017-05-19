@@ -756,29 +756,6 @@
 
 
 <!-- Modal InputJson -->
-<div class="modal fade" id="modalInputJson" tabindex="-1" role="dialog" aria-labelledby="modalInputJsonLabel">
-    <div class="modal-dialog modal-lg modal-xlg" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="modalInputJsonLabel">Content type</h4>
-            </div>
-            <div class="modal-body">
-
-                <div class="row">
-                    <div class="form-group col-xs-12">
-                        <textarea name="inputJson" class="form-control" rows="20">JSON format</textarea>
-                    </div>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="input-json" class="btn btn-primary">OK</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal InputJson -->
 <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

@@ -275,7 +275,6 @@ const PREFIX_REDEEM = 'Redeem';
 </footer>
 <div class="hidden" id="od_expansions">
 
-
     <?php
     foreach ($siteData->pages as $keyPage => $contentPage) {
 

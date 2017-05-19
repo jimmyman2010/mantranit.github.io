@@ -1,4 +1,3 @@
-
 <div id="<?= $keyPage.'-content-'.($indexSection+1).'-'.$positionItem ?>">
 
     <div class="row">

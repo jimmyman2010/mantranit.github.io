@@ -1,4 +1,3 @@
-
     <div class="col-xs-12 col-md-6 text-center">
         <?php
         $item = $contentRow->data[0];
