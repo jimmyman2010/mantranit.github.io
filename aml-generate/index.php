@@ -302,8 +302,8 @@
 
 
             <div class="panel-body">
-                <div class="text-center toggle-close">
-                    <button type="button" class="toggle-button btn"><span>Collapse</span><span>Expand</span></button>
+                <div class="text-center">
+                    <button type="button" class="toggle-button btn"><span>Collapse <i class="fa fa-angle-up"></i></span><span>Expand <i class="fa fa-angle-down"></i></span></button>
                 </div>
                 <br>
                 <div class="toggle-content">
@@ -405,7 +405,7 @@
     <div class="modal-dialog modal-lg modal-xlg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="modalContentGeneralLabel">General Content</h4>
+                <h4 class="modal-title" id="modalContentGeneralLabel">General Content: <span></span></h4>
             </div>
             <div class="modal-body">
 
@@ -509,7 +509,7 @@
     <div class="modal-dialog modal-lg modal-xlg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="modalContentLogoLabel">Logo Content</h4>
+                <h4 class="modal-title" id="modalContentLogoLabel">Logo Content: <span></span></h4>
             </div>
             <div class="modal-body">
 
@@ -632,7 +632,7 @@
     <div class="modal-dialog modal-lg modal-xlg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="modalContentOfferLabel">Offer Content</h4>
+                <h4 class="modal-title" id="modalContentOfferLabel">Offer Content: <span></span></h4>
             </div>
             <div class="modal-body">
 
@@ -666,7 +666,7 @@
     <div class="modal-dialog modal-lg modal-xlg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="modalContentTandcLabel">T and C Content</h4>
+                <h4 class="modal-title" id="modalContentTandcLabel">T and C Content: <span></span></h4>
             </div>
             <div class="modal-body">
 
@@ -700,7 +700,7 @@
     <div class="modal-dialog modal-lg modal-xlg" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title" id="modalContentOtherLabel">Other Content</h4>
+                <h4 class="modal-title" id="modalContentOtherLabel">Other Content: <span></span></h4>
             </div>
             <div class="modal-body">
 

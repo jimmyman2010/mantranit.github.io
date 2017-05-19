@@ -198,4 +198,7 @@ input[type="number"] {
   height: 0;
   overflow: hidden; }
 
+.modal-title span {
+  background-color: yellow; }
+
 /*# sourceMappingURL=main.css.map */

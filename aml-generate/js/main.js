@@ -130,10 +130,14 @@ $(function(){
         dataStore.addClass('current');
 
         var modal = $('#modalContentGeneral');
+        modal.find('.modal-title span').empty();
         document.getElementById('form-item-general').reset();
 
         if(dataStore.val()) {
             var itemObject = JSON.parse(dataStore.val());
+            if(itemObject.hasOwnProperty('note')){
+                modal.find('.modal-title span').html(itemObject.note);
+            }
 
             modal.find('[name="template"]').val(itemObject.template).trigger('change');
             modal.find('[name="note"]').val(itemObject.note);
@@ -177,10 +181,14 @@ $(function(){
         dataStore.addClass('current');
 
         var modal = $('#modalContentLogo');
+        modal.find('.modal-title span').empty();
         document.getElementById('form-item-logo').reset();
 
         if(dataStore.val()) {
             var itemObject = JSON.parse(dataStore.val());
+            if(itemObject.hasOwnProperty('note')){
+                modal.find('.modal-title span').html(itemObject.note);
+            }
 
             var i;
             for(i = 0; i < 3; i++){
@@ -227,9 +235,13 @@ $(function(){
         dataStore.addClass('current');
 
         var modal = $('#modalContentOffer');
+        modal.find('.modal-title span').empty();
 
         if(dataStore.val()) {
             var itemObject = JSON.parse(dataStore.val());
+            if(itemObject.hasOwnProperty('note')){
+                modal.find('.modal-title span').html(itemObject.note);
+            }
 
             $('#offerBody').val(itemObject.offerBody);
             if(itemObject.offerText){
@@ -267,9 +279,13 @@ $(function(){
         dataStore.addClass('current');
 
         var modal = $('#modalContentTandc');
+        modal.find('.modal-title span').empty();
 
         if(dataStore.val()) {
             var itemObject = JSON.parse(dataStore.val());
+            if(itemObject.hasOwnProperty('note')){
+                modal.find('.modal-title span').html(itemObject.note);
+            }
 
             $('#tandcUrl').val(itemObject.tandcUrl);
             $('#tandcBody').val(itemObject.tandcBody);
@@ -305,9 +321,13 @@ $(function(){
         dataStore.addClass('current');
 
         var modal = $('#modalContentOther');
+        modal.find('.modal-title span').empty();
 
         if(dataStore.val()) {
             var itemObject = JSON.parse(dataStore.val());
+            if(itemObject.hasOwnProperty('note')){
+                modal.find('.modal-title span').html(itemObject.note);
+            }
 
             $('#extraBody').val(itemObject.extraBody);
             $('#hotelHighlight').val(itemObject.hotelHighlight);
