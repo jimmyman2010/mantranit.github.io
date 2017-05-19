@@ -452,7 +452,7 @@ $(function(){
 
         if(main.val() && other.val()) {
             var d = new Date();
-            window.open('od_' + $('#previewLang').val() + '.php?main=' + main.val() + '&other=' + other.val() + '&t=' + d.getTime(), '_blank');
+            window.open('od_' + $('#previewLang').val() + '.php?main=' + main.val() + '&other=' + other.val() + '&t=' + d.getTime());
             $('#modalPreview').modal('hide');
         } else {
             alert('Please select data.');
