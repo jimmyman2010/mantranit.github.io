@@ -274,8 +274,6 @@ const PREFIX_REDEEM = '換';
     </div>
 </footer>
 <div class="hidden" id="od_expansions">
-
-
     <?php
     foreach ($siteData->pages as $keyPage => $contentPage) {
 
@@ -311,7 +309,6 @@ const PREFIX_REDEEM = '換';
         }
     }
     ?>
-
 </div>
 <div class="modal fade in" id="myModal_weChat" role="dialog">
     <div class="modal-dialog">
