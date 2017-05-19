@@ -54,6 +54,7 @@ const CLOSE = 'Close To View Other Offers';
 const TANDC = 'Terms &amp; Conditions';
 const HOTEL_HIGHLIGHT = 'Hotel Highlight';
 const OFFER = 'Offer';
+const COLON = ':';
 
 ?>
 <!DOCTYPE html>

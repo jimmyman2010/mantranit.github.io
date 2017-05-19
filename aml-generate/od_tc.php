@@ -54,6 +54,7 @@ const CLOSE = '關閉並查看其他優惠';
 const TANDC = '條款及細則';
 const HOTEL_HIGHLIGHT = '酒店簡介';
 const OFFER = '優惠詳情';
+const COLON = '：';
 
 ?>
 <!DOCTYPE html>

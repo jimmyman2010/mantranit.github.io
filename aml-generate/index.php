@@ -39,6 +39,7 @@
                         </div>
                     </div>
                     <div class="col-md-6 text-right">
+                        <h3 class="pull-left"><?= $_GET['data'] ?></h3>
                         <input type="file" id="input-html" accept="text/html"/>
 
                         <button id="upload-html" class="btn btn-primary" type="button">
@@ -65,7 +66,7 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <h1><?= $_GET['data'] ?></h1>
+
                                             </div>
 
                                             <div class="form-group">

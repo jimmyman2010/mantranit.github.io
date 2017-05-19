@@ -21,10 +21,11 @@
                         <?php if($iR > 0) { ?>
                             <br><br class="visible-xs visible-sm">
                         <?php } ?>
-                        <strong><?= $range->name ?>:</strong>
+                        <strong><?= $range->name ?><?= COLON ?></strong>
                         <br class="visible-xs visible-sm">
                         <?= process_icon($range->value) ?>
                     <?php } ?>
+
                 </li>
                 <?php } ?>
             </ul>

@@ -54,6 +54,7 @@ const CLOSE = '关闭以浏览更多';
 const TANDC = '条款及细则';
 const HOTEL_HIGHLIGHT = '酒店简介';
 const OFFER = '优惠详情';
+const COLON = '：';
 
 ?>
 <!DOCTYPE html>
