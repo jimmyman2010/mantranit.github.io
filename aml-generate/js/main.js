@@ -36,7 +36,7 @@ $(function(){
         var url = $(this).val();
         if(url) {
             var d = new Date();
-            window.open('/aml-generate/?data=' + url + '&t=' + d.getTime());
+            window.location.href = ('/aml-generate/?data=' + url + '&t=' + d.getTime());
         }
     });
 
@@ -438,7 +438,7 @@ $(function(){
         $.post('save.php', {"data": JSON.stringify(siteData)}, function(response) {
             if(response.data) {
                 var d = new Date();
-                window.open('/aml-generate/?data=' + response.data + '&t=' + d.getTime());
+                window.location.href = ('/aml-generate/?data=' + response.data + '&t=' + d.getTime());
             } else {
                 alert('No data');
             }
