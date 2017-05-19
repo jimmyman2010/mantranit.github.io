@@ -22,9 +22,8 @@ foreach ($siteData->pages as $keyPage => $contentPage) {
         $defaultPage = $contentPage;
     }
     foreach ($contentPage->sections as $indexSection => $contentSection) {
-        $menu .= '<li data-page="'.$keyPage.'">
-                    <a href="#' . $contentSection->hash. '" data-target="' .$keyPage. '-section-'.($indexSection+1).'">'.$contentSection->name.'</a>
-                  </li>';
+        $menu .= '<li data-page="'.$keyPage.'"><a href="#' . $contentSection->hash. '" data-target="' .$keyPage. '-section-'.($indexSection+1).'">'.$contentSection->name.'</a></li>
+                  ';
     }
 }
 

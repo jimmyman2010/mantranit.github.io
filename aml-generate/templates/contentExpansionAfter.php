@@ -13,7 +13,6 @@
                     <?php } ?>
                 </li>
                 <?php } ?>
-
                 <?php if($item->period && ($item->period && count($item->period) > 0)) { ?>
                 <li<?php if(!$item->logo) { echo ' style="max-width: none; border: none;"'; } ?>>
                     <?php foreach($item->period as $iR => $range) { ?>
@@ -24,7 +23,6 @@
                         <br class="visible-xs visible-sm">
                         <?= process_icon($range->value) ?>
                     <?php } ?>
-
                 </li>
                 <?php } ?>
             </ul>
@@ -39,7 +37,6 @@
             <h5><?= OFFER ?></h5>
             <?php } ?>
             <?= process_icon($item->offerBody) ?>
-
             <?php if($item->tandcUrl) { ?>
             <p><a class="link-tnc-no-expand" target="_blank" href="<?= $item->tandcUrl ?>"><?= TANDC ?> <?= MORE ?></a></p>
             <?php } ?>
@@ -49,11 +46,9 @@
                 <?= process_icon($item->tandcBody) ?>
             </div>
             <?php } ?>
-
             <?php if($item->cta) { ?>
             <p class="text-center"><a class="btn-aml" id="<?= $keyPage.'-'.LANG.'-cta'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>" href="<?= $item->ctaUrl ?>" target="_blank"><?= $item->cta ?></a></p>
             <?php } ?>
-
             <?php if(property_exists($item, 'hotelHighlight') && $item->hotelHighlight && $item->hotelHighlight != '<p><br></p>' && $item->hotelHighlight != '<div><br></div>') { ?>
             <h5 class="hidden-xs hidden-sm"><?= HOTEL_HIGHLIGHT ?></h5>
             <h5 class="title-offer-hl visible-xs visible-sm" data-offer-id="<?= $keyPage.'-'.LANG.'-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>"><?= HOTEL_HIGHLIGHT ?> <?= MORE ?></h5>
@@ -61,7 +56,6 @@
                 <?= process_icon($item->hotelHighlight) ?>
             </div>
             <?php } ?>
-
             <?php if(property_exists($item, 'extraBody') && $item->extraBody && $item->extraBody != '<p><br></p>' && $item->extraBody != '<div><br></div>') { ?>
                 <?= process_icon($item->extraBody) ?>
             <?php } ?>
@@ -71,7 +65,10 @@
             <ul class="list-unstyled offer-gallery">
                 <?php
                 foreach ($item->gallery as $image) {
-                    echo '<li><img data-src="'.process_image($image->src, $keyPage).'" src="'.process_image($siteData->logo).'" alt="' . ($image->alt ? strip_tags($image->alt) : strip_tags($item->brandName)) . '" title="' . ($image->alt ? strip_tags($image->alt) : strip_tags($item->brandName)) . '" class="img-responsive"></li>';
+                    echo '<li>
+                    <img data-src="'.process_image($image->src, $keyPage).'" src="'.process_image($siteData->logo).'" alt="' . ($image->alt ? strip_tags($image->alt) : strip_tags($item->brandName)) . '" title="' . ($image->alt ? strip_tags($image->alt) : strip_tags($item->brandName)) . '" class="img-responsive">
+                  </li>
+                    ';
                 }
 
                 ?>

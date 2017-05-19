@@ -6,7 +6,6 @@
             <h5><?= OFFER ?></h5>
             <?php } ?>
             <?= process_icon($item->offerBody) ?>
-
             <?php if($item->tandcUrl) { ?>
                 <p><a class="link-tnc-no-expand" target="_blank" href="<?= $item->tandcUrl ?>"><?= TANDC ?> <?= MORE ?></a></p>
             <?php } ?>
@@ -16,11 +15,9 @@
                     <?= process_icon($item->tandcBody) ?>
                 </div>
             <?php } ?>
-
             <?php if($item->cta) { ?>
                 <p class="text-center"><a class="btn-aml" id="<?= $keyPage.'-'.LANG.'-cta'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>" href="<?= $item->ctaUrl ?>" target="_blank"><?= $item->cta ?></a></p>
             <?php } ?>
-
             <?php if(property_exists($item, 'hotelHighlight') && $item->hotelHighlight && $item->hotelHighlight != '<p><br></p>' && $item->hotelHighlight != '<div><br></div>') { ?>
                 <h5 class="hidden-xs hidden-sm"><?= HOTEL_HIGHLIGHT ?></h5>
                 <h5 class="title-offer-hl visible-xs visible-sm" data-offer-id="<?= $keyPage.'-'.LANG.'-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>"><?= HOTEL_HIGHLIGHT ?> <?= MORE ?></h5>
@@ -28,7 +25,6 @@
                     <?= process_icon($item->hotelHighlight) ?>
                 </div>
             <?php } ?>
-
             <?php if(property_exists($item, 'extraBody') && $item->extraBody && $item->extraBody != '<p><br></p>' && $item->extraBody != '<div><br></div>') { ?>
                 <?= process_icon($item->extraBody) ?>
             <?php } ?>
