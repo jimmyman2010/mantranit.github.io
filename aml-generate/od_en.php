@@ -65,6 +65,7 @@ const OFFER = 'Offer';
     <title><?= $siteData->title ?></title>
     <link href="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_bootstrap.min.css" rel="stylesheet">
     <link href="//res.e.asiamiles.com/res/asiamil_mkt_prod1/OD_2017_aml.css" rel="stylesheet">
+    <link rel="shortcut icon" href="//redeem.asiamiles.com/skin/frontend/iredeem/cathaypacific/favicon.ico" />
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

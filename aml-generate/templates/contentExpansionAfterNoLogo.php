@@ -2,7 +2,7 @@
 <div id="<?= $keyPage.'-content-'.($indexSection+1).'-'.$positionItem ?>">
 
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-9">
             <?php if(property_exists($item, 'offerText') && $item->offerText) { ?>
             <h5><?= OFFER ?></h5>
             <?php } ?>
@@ -34,7 +34,7 @@
                 <?= process_icon($item->extraBody) ?>
             <?php } ?>
         </div>
-        <div class="col-md-4 pull-right-md hidden-xs hidden-sm">
+        <div class="col-md-3 pull-right-md hidden-xs hidden-sm">
             <div class="btn-close" data-target="<?= $keyPage.'-'.LANG.'-box'.($indexBox >= 10 ? $indexBox : '0'.$indexBox) ?>"><?= CLOSE ?></div>
         </div>
     </div>
