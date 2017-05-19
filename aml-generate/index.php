@@ -66,135 +66,42 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-
-                                            </div>
-
-                                            <div class="form-group">
                                                 <label>Title</label>
                                                 <input type="text" name="title" class="form-control" />
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>File Name</label>
-                                                <input type="text" name="fileName" class="form-control" readonly="readonly" />
-                                            </div>
 
-                                            <div class="form-group">
-                                                <label>defaultPage</label>
-                                                <input type="text" name="defaultPage" class="form-control" readonly="readonly" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>To Top</label>
-                                                <input type="text" name="toTop" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>File Js</label>
-                                                <input type="text" name="fileJs" class="form-control" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>GA Key</label>
-                                                <input type="text" name="gaKey" class="form-control" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Facebook Image</label>
-                                                <input type="text" name="facebookImage" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Weibo Image</label>
-                                                <input type="text" name="weiboImage" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>WeChat Image</label>
-                                                <input type="text" name="wechatImage" class="form-control" />
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Url EN</label>
-                                                <input type="text" name="urlEN" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Url TC</label>
-                                                <input type="text" name="urlTC" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <div class="form-group">
-                                                <label>Url SC</label>
-                                                <input type="text" name="urlSC" class="form-control" />
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>Logo</label>
                                                 <input type="text" name="logo" class="form-control" />
                                             </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>Logo Url</label>
-                                                <input type="text" name="logoUrl" class="form-control" />
-                                            </div>
-                                        </div>
 
-                                    </div>
-                                    <hr>
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label>ogTitle</label>
-                                                <input type="text" name="ogTitle" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>ogImage</label>
-                                                <input type="text" name="ogImage" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>ogDescription</label>
-                                                <input type="text" name="ogDescription" class="form-control" />
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>od</label>
                                                 <input type="text" name="od" class="form-control" />
                                             </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>File Name</label>
+                                                        <input type="text" name="fileName" class="form-control" readonly="readonly" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="form-group">
+                                                        <label>defaultPage</label>
+                                                        <input type="text" name="defaultPage" class="form-control" readonly="readonly" />
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label>File Js</label>
+                                                <input type="text" name="fileJs" class="form-control" />
+                                            </div>
                                             <div class="form-group">
                                                 <label>Prefix Image Url</label>
                                                 <input type="text" name="defaultImage" class="form-control" />
-                                            </div>
-                                            <div class="form-group">
-                                                <label>AML Icon</label>
-                                                <input type="text" name="defaultIcon" class="form-control" />
                                             </div>
                                         </div>
                                     </div>
@@ -232,6 +139,90 @@
                                             <div class="form-group">
                                                 <label>after qr</label>
                                                 <input type="text" name="afterQr" class="form-control" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <button type="button" data-toggle="collapse" data-target="#demo" class="btn btn-warning">Meta</button>
+
+                                    <div id="demo" class="collapse">
+
+                                        <hr>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Facebook Image</label>
+                                                    <input type="text" name="facebookImage" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Weibo Image</label>
+                                                    <input type="text" name="weiboImage" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>WeChat Image</label>
+                                                    <input type="text" name="wechatImage" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Url EN</label>
+                                                    <input type="text" name="urlEN" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Url TC</label>
+                                                    <input type="text" name="urlTC" class="form-control" />
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label>Url SC</label>
+                                                    <input type="text" name="urlSC" class="form-control" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <hr>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>ogTitle</label>
+                                                    <input type="text" name="ogTitle" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>ogImage</label>
+                                                    <input type="text" name="ogImage" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>ogDescription</label>
+                                                    <input type="text" name="ogDescription" class="form-control" />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>To Top</label>
+                                                    <input type="text" name="toTop" class="form-control" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>AML Icon</label>
+                                                    <input type="text" name="defaultIcon" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label>GA Key</label>
+                                                    <input type="text" name="gaKey" class="form-control" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -283,7 +274,10 @@
                         </div>
                         <div class="form-group">
                             <label>Prefix</label>
-                            <input type="text" name="prefix" class="form-control">
+                            <select name="prefix" class="form-control">
+                                <option value="Earn">Earn</option>
+                                <option value="Redeem">Redeem</option>
+                            </select>
                         </div>
                     </div>
                     <div class="col-md-6">

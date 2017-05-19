@@ -55,6 +55,8 @@ const TANDC = '条款及细则';
 const HOTEL_HIGHLIGHT = '酒店简介';
 const OFFER = '优惠详情';
 const COLON = '：';
+const PREFIX_EARN = '赚';
+const PREFIX_REDEEM = '换';
 
 ?>
 <!DOCTYPE html>
@@ -163,7 +165,7 @@ const COLON = '：';
                 <div class="col-xs-7 col-md-3">
                     <div class="nav-toggle"><span></span><span></span><span></span></div>
                     <div class="navbar-brand">
-                        <a class="logo" href="<?= $siteData->logoUrl ?>" title="亚洲万里通" target="_top">
+                        <a class="logo" href="https://www.asiamiles.com/am/sc/homepage" title="亚洲万里通" target="_top">
                             <img class="img-responsive" id="AM_Logo" alt="亚洲万里通" src="<?= process_image($siteData->logo) ?>" />
                         </a>
                     </div>

@@ -55,6 +55,8 @@ const TANDC = 'Terms &amp; Conditions';
 const HOTEL_HIGHLIGHT = 'Hotel Highlight';
 const OFFER = 'Offer';
 const COLON = ':';
+const PREFIX_EARN = 'Earn';
+const PREFIX_REDEEM = 'Redeem';
 
 ?>
 <!DOCTYPE html>
@@ -163,7 +165,7 @@ const COLON = ':';
                 <div class="col-xs-7 col-md-3">
                     <div class="nav-toggle"><span></span><span></span><span></span></div>
                     <div class="navbar-brand">
-                        <a class="logo" href="<?= $siteData->logoUrl ?>" title="Asia Miles" target="_top">
+                        <a class="logo" href="https://www.asiamiles.com/am/en/homepage" title="Asia Miles" target="_top">
                             <img class="img-responsive" id="AM_Logo" alt="Asia Miles" src="<?= process_image($siteData->logo) ?>" />
                         </a>
                     </div>
