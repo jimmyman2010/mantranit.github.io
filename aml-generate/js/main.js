@@ -32,13 +32,11 @@ $(function(){
         });
     }
 
-    $('#fill').on('click', function(){
-        var url = $('#selectData').val();
+    $('#selectData').on('change', function(){
+        var url = $(this).val();
         if(url) {
             var d = new Date();
-            window.open('/aml-generate/?data=' + url + '&t=' + d.getTime(), '_blank');
-        } else {
-            alert('Please select data.');
+            window.open('/aml-generate/?data=' + url + '&t=' + d.getTime());
         }
     });
 
@@ -439,7 +437,8 @@ $(function(){
         // Send the request
         $.post('save.php', {"data": JSON.stringify(siteData)}, function(response) {
             if(response.data) {
-                window.location.href = '/aml-generate/?data=' + response.data;
+                var d = new Date();
+                window.open('/aml-generate/?data=' + response.data + '&t=' + d.getTime());
             } else {
                 alert('No data');
             }

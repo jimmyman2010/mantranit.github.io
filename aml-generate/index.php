@@ -30,16 +30,46 @@
         <div class="header-top">
             <div class="container-fluid">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <div class="text-right clearfix">
-                            <button type="button" id="ok" class="btn btn-primary">OK</button>
+                            <button type="button" id="ok" class="btn btn-primary">SAVE</button>
 
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPreview">Preview</button>
-                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLoadData">Load data</button>
+
                         </div>
                     </div>
-                    <div class="col-md-6 text-right">
-                        <h3 class="pull-left"><?= isset($_GET['data']) ? str_replace('.json', '', $_GET['data']) : '' ?></h3>
+                    <?php $data = isset($_GET['data']) ? $_GET['data'] : ''; ?>
+                    <?php $dataArr = explode('_', str_replace('.json', '', $data)); ?>
+                    <div class="col-md-4">
+                        <div class="form-group" style="margin: 10px 0;">
+                            <select name="selectData" id="selectData" class="form-control">
+                                <option value="">-- Select --</option>
+                                <?php
+                                $dir = getcwd() . "/data/";
+
+                                // Open a directory, and read its contents
+                                if (is_dir($dir)){
+                                    if ($dh = opendir($dir)){
+                                        while (($file = readdir($dh)) !== false){
+                                            $ext = pathinfo($file, PATHINFO_EXTENSION);
+                                            if($ext === 'json') {
+                                                if($file === $data) {
+                                                    echo '<option value="' . $file . '" selected>' . $file . '</option>';
+                                                } else {
+                                                    echo '<option value="' . $file . '">' . $file . '</option>';
+                                                }
+                                            }
+                                        }
+                                        closedir($dh);
+                                    }
+                                }
+
+                                ?>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-md-4 text-right">
+                        <h3 class="pull-left" style="margin: 15px 0"><?= implode(' ', $dataArr) ?></h3>
 <!--                        <input type="file" id="input-html" accept="text/html"/>-->
 <!---->
 <!--                        <button id="upload-html" class="btn btn-primary" type="button">-->
@@ -85,13 +115,13 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>File Name</label>
-                                                        <input type="text" name="fileName" class="form-control" readonly="readonly" />
+                                                        <input type="text" name="fileName" class="form-control" />
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label>defaultPage</label>
-                                                        <input type="text" name="defaultPage" class="form-control" readonly="readonly" />
+                                                        <input type="text" name="defaultPage" class="form-control" />
                                                     </div>
                                                 </div>
                                             </div>
@@ -749,48 +779,6 @@
 </div>
 
 <!-- Modal InputJson -->
-<div class="modal fade" id="modalLoadData" tabindex="-1" role="dialog" aria-labelledby="modalLoadDataLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title" id="modalLoadDataLabel">Select data</h4>
-            </div>
-            <div class="modal-body">
-
-                <div class="row">
-                    <div class="form-group col-xs-12">
-                        <select name="selectData" id="selectData" class="form-control">
-                            <option value="">-- Select --</option>
-                            <?php
-                            $dir = getcwd() . "/data/";
-
-                            // Open a directory, and read its contents
-                            if (is_dir($dir)){
-                                if ($dh = opendir($dir)){
-                                    while (($file = readdir($dh)) !== false){
-                                        $ext = pathinfo($file, PATHINFO_EXTENSION);
-                                        if($ext === 'json') {
-                                            echo '<option value="' . $file . '">' . $file . '</option>';
-                                        }
-                                    }
-                                    closedir($dh);
-                                }
-                            }
-
-                            ?>
-                        </select>
-                    </div>
-                </div>
-
-            </div>
-            <div class="modal-footer">
-                <button type="button" id="fill" class="btn btn-primary">OK</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal InputJson -->
 <div class="modal fade" id="modalPreview" tabindex="-1" role="dialog" aria-labelledby="modalPreviewLabel">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -815,7 +803,11 @@
                                         while (($file = readdir($dh)) !== false){
                                             $ext = pathinfo($file, PATHINFO_EXTENSION);
                                             if($ext === 'json') {
-                                                echo '<option value="' . $file . '">' . $file . '</option>';
+                                                if($file === $data) {
+                                                    echo '<option value="' . $file . '" selected>' . $file . '</option>';
+                                                } else {
+                                                    echo '<option value="' . $file . '">' . $file . '</option>';
+                                                }
                                             }
                                         }
                                         closedir($dh);
@@ -829,7 +821,7 @@
                     <div class="form-group col-xs-6">
                         <div class="form-group">
                             <label>Other</label>
-                            <select name="other" id="previewOther" class="form-control" disabled="disabled">
+                            <select name="other" id="previewOther" class="form-control">
                                 <option value="">-- Select --</option>
                                 <?php
                                 $dir = getcwd() . "/data/";
@@ -840,7 +832,11 @@
                                         while (($file = readdir($dh)) !== false){
                                             $ext = pathinfo($file, PATHINFO_EXTENSION);
                                             if($ext === 'json') {
-                                                echo '<option value="' . $file . '">' . $file . '</option>';
+                                                if(strpos($file, $dataArr[0]) === true){
+                                                    echo '<option value="' . $file . '" style="display:none;">' . $file . '</option>';
+                                                } else {
+                                                    echo '<option value="' . $file . '">' . $file . '</option>';
+                                                }
                                             }
                                         }
                                         closedir($dh);
@@ -856,9 +852,9 @@
                         <div class="form-group">
                             <label>Other</label>
                             <select name="other" id="previewLang" class="form-control">
-                                <option value="en">English</option>
-                                <option value="tc">Traditional Chinese</option>
-                                <option value="sc">Simplified Chinese</option>
+                                <option value="en" <?= $dataArr[3] === 'en' ? 'selected' : '' ?>>English</option>
+                                <option value="tc" <?= $dataArr[3] === 'tc' ? 'selected' : '' ?>>Traditional Chinese</option>
+                                <option value="sc" <?= $dataArr[3] === 'sc' ? 'selected' : '' ?>>Simplified Chinese</option>
                             </select>
                         </div>
                     </div>
