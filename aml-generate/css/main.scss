@@ -244,6 +244,8 @@ input[type="number"] {
 }
 .toggle-close {
     .toggle-button {
+        background-color: yellow;
+        border: 1px solid;
         span {
             &:first-child {
                 display: none;

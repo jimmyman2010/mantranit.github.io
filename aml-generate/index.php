@@ -301,7 +301,7 @@
 
 
             <div class="panel-body">
-                <div class="text-center">
+                <div class="text-center toggle-close">
                     <button type="button" class="toggle-button btn"><span>Collapse</span><span>Expand</span></button>
                 </div>
                 <br>

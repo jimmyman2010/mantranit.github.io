@@ -187,10 +187,13 @@ input[type="number"] {
 .toggle-button span:last-child {
   display: none; }
 
-.toggle-close .toggle-button span:first-child {
-  display: none; }
-.toggle-close .toggle-button span:last-child {
-  display: inline-block; }
+.toggle-close .toggle-button {
+  background-color: yellow;
+  border: 1px solid; }
+  .toggle-close .toggle-button span:first-child {
+    display: none; }
+  .toggle-close .toggle-button span:last-child {
+    display: inline-block; }
 .toggle-close ~ .toggle-content {
   height: 0;
   overflow: hidden; }
