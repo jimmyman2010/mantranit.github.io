@@ -35,7 +35,8 @@ $(function(){
     $('#fill').on('click', function(){
         var url = $('#selectData').val();
         if(url) {
-            window.location.href = '/aml-generate/?data=' + url;
+            var d = new Date();
+            window.open('/aml-generate/?data=' + url + '&t=' + d.getTime(), '_blank');
         } else {
             alert('Please select data.');
         }
@@ -451,7 +452,8 @@ $(function(){
     $('#preview').on('click', function(){
 
         if(main.val() && other.val()) {
-            window.open('od_' + $('#previewLang').val() + '.php?main=' + main.val() + '&other=' + other.val(), '_blank');
+            var d = new Date();
+            window.open('od_' + $('#previewLang').val() + '.php?main=' + main.val() + '&other=' + other.val() + '&t=' + d.getTime(), '_blank');
             $('#modalPreview').modal('hide');
         } else {
             alert('Please select data.');

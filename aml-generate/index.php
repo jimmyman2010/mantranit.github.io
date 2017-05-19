@@ -31,21 +31,21 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="text-center clearfix">
+                        <div class="text-right clearfix">
                             <button type="button" id="ok" class="btn btn-primary">OK</button>
 
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalPreview">Preview</button>
-                            <button type="button" class="btn btn-primary pull-left" data-toggle="modal" data-target="#modalLoadData">Load data</button>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalLoadData">Load data</button>
                         </div>
                     </div>
                     <div class="col-md-6 text-right">
                         <h3 class="pull-left"><?= $_GET['data'] ?></h3>
-                        <input type="file" id="input-html" accept="text/html"/>
-
-                        <button id="upload-html" class="btn btn-primary" type="button">
-                            <span class="normal">Upload</span>
-                            <span class="process"><i class="fa fa-refresh fa-spin"></i> Uploading</span>
-                        </button>
+<!--                        <input type="file" id="input-html" accept="text/html"/>-->
+<!---->
+<!--                        <button id="upload-html" class="btn btn-primary" type="button">-->
+<!--                            <span class="normal">Upload</span>-->
+<!--                            <span class="process"><i class="fa fa-refresh fa-spin"></i> Uploading</span>-->
+<!--                        </button>-->
                     </div>
                 </div>
             </div>
@@ -130,7 +130,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label>before qr</label>
-                                                <input type="text" name="beforeQr" class="form-control" />
+                                                <textarea name="beforeQr" class="form-control"></textarea>
                                             </div>
                                             <div class="form-group">
                                                 <label>Image qr code</label>
@@ -205,7 +205,7 @@
                                                 </div>
                                                 <div class="form-group">
                                                     <label>ogDescription</label>
-                                                    <input type="text" name="ogDescription" class="form-control" />
+                                                    <textarea name="ogDescription" class="form-control"></textarea>
                                                 </div>
                                             </div>
 
@@ -510,13 +510,13 @@
                 <form id="form-item-logo">
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label>Logo:</label>
                                 <input type="text" class="form-control" name="logo">
                             </div>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label>Logo url:</label>
                                 <input type="url" class="form-control" name="logoUrl">
