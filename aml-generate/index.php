@@ -57,7 +57,7 @@
                                             if($file === $data) {
                                                 $selected = 'selected';
                                             }
-                                            if(strpos($file, 'lod') || strpos($file, 'lod') >= 0){
+                                            if(strpos($file, 'tod') !== false){
                                                 $lod .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
                                             } else {
                                                 $tod .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
