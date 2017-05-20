@@ -56,15 +56,19 @@
                                         $ext = pathinfo($file, PATHINFO_EXTENSION);
                                         if($ext === 'json') {
                                             $selected = '';
+                                            $hide = '';
                                             if($file === $data) {
                                                 $selected = 'selected';
                                             }
+                                            if(is_array($dataArr) && isset($dataArr[3]) && strpos($file, $dataArr[3]) !== false){
+                                                $show = 'style="display:none;"';
+                                            }
                                             if(strpos($file, 'tod') !== false){
                                                 $lodSelect .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
-                                                $lod .= '<option value="' . $file . '">' . $file . '</option>';
+                                                $lod .= '<option value="' . $file . '" ' . $hide . '>' . $file . '</option>';
                                             } else {
                                                 $todSelect .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
-                                                $tod .= '<option value="' . $file . '">' . $file . '</option>';
+                                                $tod .= '<option value="' . $file . '" ' . $hide . '>' . $file . '</option>';
                                             }
                                         }
                                     }
