@@ -57,7 +57,7 @@
                                             if($file === $data) {
                                                 $selected = 'selected';
                                             }
-                                            if(strpos($file, 'lod') >= 0){
+                                            if(strpos($file, 'lod') || strpos($file, 'lod') >= 0){
                                                 $lod .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
                                             } else {
                                                 $tod .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
@@ -778,27 +778,8 @@
                             <label>Main</label>
                             <select name="main" id="previewMain" class="form-control">
                                 <option value="">-- Select --</option>
-                                <?php
-                                $dir = getcwd() . "/data/";
-
-                                // Open a directory, and read its contents
-                                if (is_dir($dir)){
-                                    if ($dh = opendir($dir)){
-                                        while (($file = readdir($dh)) !== false){
-                                            $ext = pathinfo($file, PATHINFO_EXTENSION);
-                                            if($ext === 'json') {
-                                                if($file === $data) {
-                                                    echo '<option value="' . $file . '" selected>' . $file . '</option>';
-                                                } else {
-                                                    echo '<option value="' . $file . '">' . $file . '</option>';
-                                                }
-                                            }
-                                        }
-                                        closedir($dh);
-                                    }
-                                }
-
-                                ?>
+                                <?= $tod ?>
+                                <?= $lod ?>
                             </select>
                         </div>
                     </div>
@@ -809,24 +790,18 @@
                                 <option value="">-- Select --</option>
                                 <?php
                                 $dir = getcwd() . "/data/";
-
                                 // Open a directory, and read its contents
                                 if (is_dir($dir)){
                                     if ($dh = opendir($dir)){
                                         while (($file = readdir($dh)) !== false){
                                             $ext = pathinfo($file, PATHINFO_EXTENSION);
                                             if($ext === 'json') {
-                                                if(strpos($file, $dataArr[0]) >= 0){
-                                                    echo '<option value="' . $file . '" style="display:none;">' . $file . '</option>';
-                                                } else {
-                                                    echo '<option value="' . $file . '">' . $file . '</option>';
-                                                }
+                                                echo '<option value="' . $file . '" style="display:none;">' . $file . '</option>';
                                             }
                                         }
                                         closedir($dh);
                                     }
                                 }
-
                                 ?>
                             </select>
                         </div>
