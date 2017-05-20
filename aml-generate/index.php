@@ -43,29 +43,35 @@
                     <?php $dataArr = explode('_', str_replace('.json', '', $data)); ?>
                     <div class="col-md-4">
                         <div class="form-group" style="margin: 10px 0;">
-                            <select name="selectData" id="selectData" class="form-control">
-                                <option value="">-- Select --</option>
-                                <?php
-                                $dir = getcwd() . "/data/";
-
-                                // Open a directory, and read its contents
-                                if (is_dir($dir)){
-                                    if ($dh = opendir($dir)){
-                                        while (($file = readdir($dh)) !== false){
-                                            $ext = pathinfo($file, PATHINFO_EXTENSION);
-                                            if($ext === 'json') {
-                                                if($file === $data) {
-                                                    echo '<option value="' . $file . '" selected>' . $file . '</option>';
-                                                } else {
-                                                    echo '<option value="' . $file . '">' . $file . '</option>';
-                                                }
+                            <?php
+                            $dir = getcwd() . "/data/";
+                            $lod = '';
+                            $tod = '';
+                            // Open a directory, and read its contents
+                            if (is_dir($dir)){
+                                if ($dh = opendir($dir)){
+                                    while (($file = readdir($dh)) !== false){
+                                        $ext = pathinfo($file, PATHINFO_EXTENSION);
+                                        if($ext === 'json') {
+                                            $selected = '';
+                                            if($file === $data) {
+                                                $selected = 'selected';
+                                            }
+                                            if(strpos($file, 'lod') >= 0){
+                                                $lod .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
+                                            } else {
+                                                $tod .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
                                             }
                                         }
-                                        closedir($dh);
                                     }
+                                    closedir($dh);
                                 }
-
-                                ?>
+                            }
+                            ?>
+                            <select name="selectData" id="selectData" class="form-control">
+                                <option value="">-- Select --</option>
+                                <?= $tod ?>
+                                <?= $lod ?>
                             </select>
                         </div>
                     </div>
@@ -107,7 +113,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>od</label>
+                                                <label>Offer Digest</label>
                                                 <input type="text" name="od" class="form-control" />
                                             </div>
                                         </div>
@@ -141,15 +147,15 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label>kvDesktop</label>
+                                                <label>KV Desktop</label>
                                                 <input type="text" name="kvDesktop" class="form-control" />
                                             </div>
                                             <div class="form-group">
-                                                <label>kvMobile</label>
+                                                <label>KV Mobile</label>
                                                 <input type="text" name="kvMobile" class="form-control" />
                                             </div>
                                             <div class="form-group">
-                                                <label>kvAlt</label>
+                                                <label>KV Alt</label>
                                                 <input type="text" name="kvAlt" class="form-control" />
                                             </div>
                                             <div class="form-group">
