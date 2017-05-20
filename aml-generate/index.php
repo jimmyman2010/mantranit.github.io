@@ -816,7 +816,7 @@
                                         while (($file = readdir($dh)) !== false){
                                             $ext = pathinfo($file, PATHINFO_EXTENSION);
                                             if($ext === 'json') {
-                                                if(strpos($file, $dataArr[0]) === true){
+                                                if(strpos($file, $dataArr[0]) >= 0){
                                                     echo '<option value="' . $file . '" style="display:none;">' . $file . '</option>';
                                                 } else {
                                                     echo '<option value="' . $file . '">' . $file . '</option>';
