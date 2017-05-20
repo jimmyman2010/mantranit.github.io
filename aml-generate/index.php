@@ -117,7 +117,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Offer Digest</label>
+                                                <label>OD Image</label>
                                                 <input type="text" name="od" class="form-control" />
                                             </div>
                                         </div>
