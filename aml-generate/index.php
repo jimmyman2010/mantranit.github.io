@@ -45,6 +45,8 @@
                         <div class="form-group" style="margin: 10px 0;">
                             <?php
                             $dir = getcwd() . "/data/";
+                            $lodSelect = '';
+                            $todSelect = '';
                             $lod = '';
                             $tod = '';
                             // Open a directory, and read its contents
@@ -58,9 +60,11 @@
                                                 $selected = 'selected';
                                             }
                                             if(strpos($file, 'tod') !== false){
-                                                $lod .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
+                                                $lodSelect .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
+                                                $lod .= '<option value="' . $file . '">' . $file . '</option>';
                                             } else {
-                                                $tod .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
+                                                $todSelect .= '<option value="' . $file . '" ' . $selected . '>' . $file . '</option>';
+                                                $tod .= '<option value="' . $file . '">' . $file . '</option>';
                                             }
                                         }
                                     }
@@ -70,8 +74,8 @@
                             ?>
                             <select name="selectData" id="selectData" class="form-control">
                                 <option value="">-- Select --</option>
-                                <?= $tod ?>
-                                <?= $lod ?>
+                                <?= $todSelect ?>
+                                <?= $lodSelect ?>
                             </select>
                         </div>
                     </div>
@@ -778,8 +782,8 @@
                             <label>Main</label>
                             <select name="main" id="previewMain" class="form-control">
                                 <option value="">-- Select --</option>
-                                <?= $tod ?>
-                                <?= $lod ?>
+                                <?= $todSelect ?>
+                                <?= $lodSelect ?>
                             </select>
                         </div>
                     </div>
@@ -788,21 +792,8 @@
                             <label>Other</label>
                             <select name="other" id="previewOther" class="form-control">
                                 <option value="">-- Select --</option>
-                                <?php
-                                $dir = getcwd() . "/data/";
-                                // Open a directory, and read its contents
-                                if (is_dir($dir)){
-                                    if ($dh = opendir($dir)){
-                                        while (($file = readdir($dh)) !== false){
-                                            $ext = pathinfo($file, PATHINFO_EXTENSION);
-                                            if($ext === 'json') {
-                                                echo '<option value="' . $file . '" style="display:none;">' . $file . '</option>';
-                                            }
-                                        }
-                                        closedir($dh);
-                                    }
-                                }
-                                ?>
+                                <?= $tod ?>
+                                <?= $lod ?>
                             </select>
                         </div>
                     </div>
