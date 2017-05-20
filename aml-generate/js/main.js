@@ -25,8 +25,6 @@ $(function(){
         var d = new Date();
         var url = 'data/' + urlVars['data'] + '?time=' + d.getTime();
 
-        $('#loading').show();
-
         $.getJSON(url, function (response) {
 
             $('#section-html').empty();
@@ -35,6 +33,8 @@ $(function(){
 
             $('#loading').hide();
         });
+    } else {
+        $('#loading').hide();
     }
 
     $('#selectData').on('change', function(){
