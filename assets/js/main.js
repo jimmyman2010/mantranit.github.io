@@ -416,10 +416,10 @@
 				"I develop <br>Website.",
 				"I live in <br>Ho Chi Minh."
 			],
-            startDelay: 1000,
+            startDelay: 100,
             typeSpeed: 100,
             backSpeed: 10,
-            backDelay: 10000,
+            backDelay: 5000,
             loop: true
         });
     });
