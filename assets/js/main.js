@@ -414,7 +414,7 @@
 				"I am <br>a Freelancer.",
 				"I design <br>Website.",
 				"I develop <br>Website.",
-				"I'm based in <br>Ho Chi Minh."
+				"I'm based in <br>HCM City."
 			],
             startDelay: 100,
             typeSpeed: 100,
