@@ -54,9 +54,27 @@
 
 @keyframes animStar {
   from {
+    transform: translateY(-2000px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes animStar2 {
+  from {
     transform: translateY(-1000px);
   }
   to {
     transform: translateY(1000px);
+  }
+}
+
+@keyframes animStar3 {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(2000px);
   }
 }
