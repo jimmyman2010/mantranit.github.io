@@ -411,9 +411,9 @@
 
         Typed.new('#typing', {
             strings: [
+                "I develop <br>Website.",
+                "I design <br>Website.",
 				"I am <br>a Freelancer.",
-				"I design <br>Website.",
-				"I develop <br>Website.",
 				"I'm based in <br>Saigon."
 			],
             startDelay: 100,
