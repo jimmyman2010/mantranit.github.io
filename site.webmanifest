@@ -1,0 +1,14 @@
+{
+    "name": "Man Tran",
+    "short_name": "Man",
+    "icons": [
+        {
+            "src": "/assets/images/favicon/favicon-ios.png",
+            "sizes": "206/206",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
