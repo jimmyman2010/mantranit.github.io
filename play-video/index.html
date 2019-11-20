@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="main.js"></script>
+    <style type="text/css">
+        .animate img {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="animate">
+    <div>
+        <img src="imgs/001.jpg" alt=""/>
+        <img src="imgs/002.jpg" alt=""/>
+        <img src="imgs/003.jpg" alt=""/>
+        <img src="imgs/004.jpg" alt=""/>
+    </div>
+</div>
+
+<script>
+    const animate = new AnimateCanvas('.animate', null, null);
+    animate.play(2, false);
+</script>
+
+</body>
+</html>
